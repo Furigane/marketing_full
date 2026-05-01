@@ -317,6 +317,7 @@
   },
   "faq": {
     "title": "FAQ",
+    "availabilityNote": "We work with clients worldwide. Our time zone is GMT+3, and our team has offices on different continents, so we are ready to communicate with you 24/7.",
     "items": {
       "1": {
         "question": "How quickly do you launch campaigns after we start?",

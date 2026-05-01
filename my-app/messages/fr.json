@@ -317,6 +317,7 @@
   },
   "faq": {
     "title": "FAQ",
+    "availabilityNote": "Nous travaillons avec des clients dans le monde entier. Notre fuseau horaire est GMT+3, et notre equipe dispose de bureaux sur differents continents, nous sommes donc prets a communiquer avec vous 24 h/24 et 7 j/7.",
     "items": {
       "1": {
         "question": "À quelle vitesse lancez-vous la promotion après le démarrage ?",

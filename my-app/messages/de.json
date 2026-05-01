@@ -317,6 +317,7 @@
   },
   "faq": {
     "title": "FAQ",
+    "availabilityNote": "Wir arbeiten mit Kunden auf der ganzen Welt. Unsere Zeitzone ist GMT+3, und unser Team hat Buros auf verschiedenen Kontinenten, sodass wir bereit sind, rund um die Uhr mit Ihnen zu kommunizieren.",
     "items": {
       "1": {
         "question": "Wie schnell starten Sie die Bewerbung nach Projektbeginn?",

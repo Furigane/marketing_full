@@ -53,6 +53,10 @@ export default function Faq() {
           );
         })}
       </div>
+
+      <p className="mx-auto mt-6 max-w-4xl text-center text-base font-medium leading-7 text-(var(--foreground)) md:mt-8 md:text-lg md:leading-8">
+        {t("availabilityNote")}
+      </p>
     </section>
   );
 }
