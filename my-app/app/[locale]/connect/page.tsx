@@ -1,6 +1,7 @@
 import Header from "../../components/headaer/header";
 import Card from "../../components/card/card";
 import Footer from "../../components/footer/footer";
+import Faq from "../../components2/faq/faq";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 
 export default function SiteMapPage() {
@@ -14,6 +15,7 @@ export default function SiteMapPage() {
         <Header matchTeamSurface />
         <Card embedded />
       </TeamSurfaceHeaderSection>
+      <Faq />
     </main>
       <Footer />
     </>

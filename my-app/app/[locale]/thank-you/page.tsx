@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import Header from "../../components/headaer/header";
 import Footer from "../../components/footer/footer";
+import PageBottomSections from "../../components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 
 export default async function ThankYouPage() {
@@ -22,6 +23,7 @@ export default async function ThankYouPage() {
             </h1>
           </section>
         </TeamSurfaceHeaderSection>
+        <PageBottomSections />
       </main>
 
       <Footer />

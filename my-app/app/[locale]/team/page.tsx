@@ -6,6 +6,16 @@ import {
   getTeamMember,
   getTeamProfileContent,
 } from "@/lib/team-profiles";
+import type { ServiceId } from "@/lib/services";
+
+const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
+  designer: ["adCreatives", "uxUiDesign", "brandIdentity"],
+  targeting: ["targetedMetaVkTiktok", "contextGoogleYandex", "analyticsSetup"],
+  smm: ["smmManagement", "influencerAds", "videoProduction"],
+  seo: ["seoPromotion", "localSeo", "copywriting"],
+  manager: ["corporateWebsite", "crmAutomation", "analyticsSetup"],
+  content: ["copywriting", "emailMarketing", "smmManagement"],
+};
 
 export default async function TeamPage({
   params,
@@ -35,8 +45,10 @@ export default async function TeamPage({
       featureIconAlt={tFeatures("iconAlt")}
       image={member.image}
       imageAlt={name}
+      locale={locale}
       name={name}
       profile={getTeamProfileContent(locale, member.roleType)}
+      relatedServiceIds={RELATED_SERVICES_BY_ROLE[member.roleType] ?? RELATED_SERVICES_BY_ROLE.manager}
       socialLabels={{
         instagram: tDesign("socialInstagram"),
         telegram: tDesign("socialTelegram"),

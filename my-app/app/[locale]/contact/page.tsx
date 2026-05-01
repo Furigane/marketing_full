@@ -3,6 +3,7 @@ import { Mail, MessageCircleMore, Send } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Header from "../../components/headaer/header";
 import Footer from "../../components/footer/footer";
+import PageBottomSections from "../../components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 
 type ContactKey = "email" | "whatsapp" | "telegram";
@@ -94,6 +95,7 @@ export default async function ContactPage() {
             </div>
           </section>
         </TeamSurfaceHeaderSection>
+        <PageBottomSections />
       </main>
 
       <Footer />

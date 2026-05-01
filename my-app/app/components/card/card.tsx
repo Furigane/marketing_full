@@ -88,7 +88,7 @@ export default function Card({ embedded = false }: CardProps) {
       className={
         embedded
           ? "mt-4 w-full sm:mt-6"
-          : "rounded-[28px] shadow-sm sm:p-5 lg:p-8 lg:py-12 pt-0 sm:pt-0 lg:pt-0"
+          : "rounded-[28px] sm:p-5 lg:p-8 lg:py-12 pt-0 sm:pt-0 lg:pt-0"
       }
     >
       <div

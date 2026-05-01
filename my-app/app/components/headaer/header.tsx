@@ -91,10 +91,10 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     if (pathname === "/team" || pathname.startsWith("/team/")) {
       return `${t("breadcrumbs.mainPage")} / ${t("team")}`;
     }
-    if (pathname === "/services") {
+    if (pathname === "/services" || pathname.startsWith("/services/")) {
       return `${t("breadcrumbs.mainPage")} / ${t("services")}`;
     }
-    if (pathname === "/projects") {
+    if (pathname === "/projects" || pathname.startsWith("/projects/")) {
       return `${t("breadcrumbs.mainPage")} / ${t("projects")}`;
     }
     if (pathname === "/blog") {

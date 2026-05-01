@@ -3,6 +3,16 @@ import { notFound } from "next/navigation";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
 import { TEAM_MEMBERS, getTeamMember, getTeamProfileContent } from "@/lib/team-profiles";
+import type { ServiceId } from "@/lib/services";
+
+const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
+  designer: ["adCreatives", "uxUiDesign", "brandIdentity"],
+  targeting: ["targetedMetaVkTiktok", "contextGoogleYandex", "analyticsSetup"],
+  smm: ["smmManagement", "influencerAds", "videoProduction"],
+  seo: ["seoPromotion", "localSeo", "copywriting"],
+  manager: ["corporateWebsite", "crmAutomation", "analyticsSetup"],
+  content: ["copywriting", "emailMarketing", "smmManagement"],
+};
 
 export function generateStaticParams() {
   return TEAM_MEMBERS.map((member) => ({ slug: member.id }));
@@ -36,8 +46,10 @@ export default async function TeamMemberPage({
       featureIconAlt={tFeatures("iconAlt")}
       image={member.image}
       imageAlt={name}
+      locale={locale}
       name={name}
       profile={getTeamProfileContent(locale, member.roleType)}
+      relatedServiceIds={RELATED_SERVICES_BY_ROLE[member.roleType] ?? RELATED_SERVICES_BY_ROLE.manager}
       socialLabels={{
         instagram: tDesign("socialInstagram"),
         telegram: tDesign("socialTelegram"),

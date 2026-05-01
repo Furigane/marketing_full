@@ -2,6 +2,7 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/headaer/header";
 import PrivacyContent from "../../components/privacy/privacy-content";
 import Confidentel from "../../components2/confidental/confidental";
+import PageBottomSections from "../../components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 
 export default function Privacy() {
@@ -14,6 +15,7 @@ export default function Privacy() {
         <Confidentel />
       </TeamSurfaceHeaderSection>
       <PrivacyContent />
+      <PageBottomSections />
     </div>
       <Footer />
     </>

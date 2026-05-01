@@ -6,7 +6,9 @@ import Footer from "@/app/components/footer/footer";
 import Card from "@/app/components/card/card";
 import Faq from "@/app/components2/faq/faq";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import RelatedServicesSection from "@/app/components/services/related-services-section";
 import type { TeamProfileContent } from "@/lib/team-profiles";
+import type { ServiceId } from "@/lib/services";
 
 type TeamProfilePageProps = {
   breadcrumbTeam: string;
@@ -15,8 +17,10 @@ type TeamProfilePageProps = {
   featureIconAlt: string;
   image: string;
   imageAlt: string;
+  locale: string;
   name: string;
   profile: TeamProfileContent;
+  relatedServiceIds: ServiceId[];
   socialLabels: {
     instagram: string;
     telegram: string;
@@ -31,8 +35,10 @@ export default function TeamProfilePage({
   featureIconAlt,
   image,
   imageAlt,
+  locale,
   name,
   profile,
+  relatedServiceIds,
   socialLabels,
 }: TeamProfilePageProps) {
   return (
@@ -189,6 +195,7 @@ export default function TeamProfilePage({
           </div>
         </section>
 
+        <RelatedServicesSection locale={locale} serviceIds={relatedServiceIds} />
         <Card />
         <Faq />
       </main>
