@@ -3,37 +3,8 @@
 import Image from "next/image";
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-
-const workerDefs = [
-  {
-    id: "anastasia",
-    image: "/img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
-  },
-  {
-    id: "alexey",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
-  },
-  {
-    id: "maria",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
-  },
-  {
-    id: "arina",
-    image: "/img/workers/dawda.jpg",
-  },
-  {
-    id: "vyacheslav",
-    image: "/img/workers/beautifull-caucasiany-hair-smiles-isolated 1.jpg",
-  },
-  {
-    id: "ivan",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
-  },
-  {
-    id: "elizaveta",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
-  },
-];
+import { Link } from "@/i18n/navigation";
+import { TEAM_MEMBERS } from "@/lib/team-profiles";
 
 function countFullCards(rowWidthPx: number, cardW: number, gap: number): number {
   if (rowWidthPx <= 0 || cardW <= 0) return 1;
@@ -62,7 +33,6 @@ function WorkerCard({
   worker: WorkerItem;
   className: string;
   imageSizes: string;
-  /** Узкая сетка 2×N (мобилка до ~1024px): мельче типографика. */
   compact?: boolean;
 }) {
   const t = useTranslations("workers");
@@ -71,7 +41,11 @@ function WorkerCard({
     : "relative min-h-0 flex-[2] overflow-hidden bg-[var(--workers-bg)] rounded-t-[1.25rem] rounded-b-[1rem] sm:rounded-b-[1.1rem]";
 
   return (
-    <article className={className}>
+    <Link
+      href={`/team/${worker.id}`}
+      className={className}
+      aria-label={`${t("openProfile")}: ${worker.name}`}
+    >
       <div className={photoShell}>
         <Image
           src={worker.image}
@@ -125,28 +99,25 @@ function WorkerCard({
               {worker.role}
             </p>
           </div>
-          <button
-            type="button"
+          <span
+            aria-hidden
             className={
               compact
                 ? "grid h-6 w-6 shrink-0 place-items-center self-center rounded-full bg-[#acc2fd] text-xs text-zinc-800 transition-shadow hover:shadow-md min-[360px]:h-7 min-[360px]:w-7"
                 : "grid h-7 w-7 shrink-0 place-items-center self-center rounded-full bg-[#acc2fd] text-sm text-zinc-800 transition-shadow hover:shadow-md sm:h-8 sm:w-8 sm:text-base"
             }
-            aria-label={t("openProfile")}
           >
-            ↗
-          </button>
+            {"\u2197"}
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
-/** Мобильные: 2 колонки, карточка на всю ячейку (вплоть до ~320px экрана). */
 const CARD_MOBILE =
   "flex aspect-square w-full min-w-0 flex-col overflow-hidden rounded-[1.05rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] min-[360px]:rounded-[1.1rem] sm:rounded-[1.15rem]";
 
-/** Десктоп — карусель. */
 const CARD_DESKTOP =
   "flex aspect-square w-[clamp(200px,min(72vw,260px),260px)] max-w-[260px] shrink-0 flex-col overflow-hidden rounded-[1.25rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]";
 
@@ -154,7 +125,7 @@ export default function Workers() {
   const t = useTranslations("workers");
   const workers = useMemo(
     () =>
-      workerDefs.map((worker) => ({
+      TEAM_MEMBERS.map((worker) => ({
         ...worker,
         name: t(`items.${worker.id}.name`),
         role: t(`items.${worker.id}.role`),
@@ -218,7 +189,6 @@ export default function Workers() {
         {t("title")}
       </h2>
 
-      {/* До lg: сетка 2 колонки, адаптив от узких экранов (~320px+) */}
       <div className="mx-auto grid w-full max-w-[min(100%,42rem)] grid-cols-2 gap-2 px-2 min-[360px]:gap-3 min-[360px]:px-3 sm:gap-4 md:px-6 lg:hidden">
         {workers.map((worker) => (
           <WorkerCard
@@ -231,7 +201,6 @@ export default function Workers() {
         ))}
       </div>
 
-      {/* Десктоп: карусель */}
       <div className="hidden min-w-0 items-center gap-2 px-3 md:gap-3 md:px-6 lg:flex lg:px-8">
         <button
           type="button"
@@ -240,7 +209,7 @@ export default function Workers() {
           onClick={goPrev}
           className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-zinc-200 bg-white text-lg text-zinc-800 shadow-md transition-all hover:shadow-lg disabled:pointer-events-none disabled:opacity-30"
         >
-          ←
+          {"\u2190"}
         </button>
 
         <div
@@ -272,7 +241,7 @@ export default function Workers() {
           onClick={goNext}
           className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-zinc-200 bg-white text-lg text-zinc-800 shadow-md transition-all hover:shadow-lg disabled:pointer-events-none disabled:opacity-30"
         >
-          →
+          {"\u2192"}
         </button>
       </div>
     </section>

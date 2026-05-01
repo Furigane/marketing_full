@@ -88,20 +88,20 @@ export default function Card({ embedded = false }: CardProps) {
       className={
         embedded
           ? "mt-4 w-full sm:mt-6"
-          : "mt-8 rounded-[28px] bg-[var(--card-bg)] p-3 shadow-sm sm:p-5 lg:p-8 lg:py-12"
+          : "rounded-[28px] shadow-sm sm:p-5 lg:p-8 lg:py-12 pt-0 sm:pt-0 lg:pt-0"
       }
     >
       <div
         className={
           embedded
             ? "mx-auto max-w-6xl"
-            : "mx-auto max-w-6xl rounded-[28px] p-3 sm:p-4 lg:p-6"
+            : "mt-6 px-3 py-6 md:px-6 md:py-8 lg:px-8 rounded-[28px] bg-[var(--card-bg)]"
         }
       >
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
           <div className="hidden border-r border-dashed border-zinc-300 pr-6 lg:block">
             <h3 className="mb-3 text-3xl font-bold leading-tight text-[var(--foreground)] sm:text-4xl">
-              <span className="rounded-full bg-[var(--hero-span)]">
+              <span className="rounded-full pl-4 pr-4 bg-[var(--hero-span)]">
                 {t("left.titleTop")}
               </span>
               <br />{t("left.titleBottom")}

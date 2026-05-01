@@ -88,7 +88,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     if (linkFromPath) return linkFromPath.breadcrumb;
 
     if (pathname === "/main-page") return t("breadcrumbs.mainPage");
-    if (pathname === "/team") {
+    if (pathname === "/team" || pathname.startsWith("/team/")) {
       return `${t("breadcrumbs.mainPage")} / ${t("team")}`;
     }
     if (pathname === "/services") {

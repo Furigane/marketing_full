@@ -1,22 +1,23 @@
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
-import {
-  DEFAULT_TEAM_MEMBER_ID,
-  getTeamMember,
-  getTeamProfileContent,
-} from "@/lib/team-profiles";
+import { TEAM_MEMBERS, getTeamMember, getTeamProfileContent } from "@/lib/team-profiles";
 
-export default async function TeamPage({
+export function generateStaticParams() {
+  return TEAM_MEMBERS.map((member) => ({ slug: member.id }));
+}
+
+export default async function TeamMemberPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale } = await params;
-  const member = getTeamMember(DEFAULT_TEAM_MEMBER_ID);
+  const { locale, slug } = await params;
+  const member = getTeamMember(slug);
 
   if (!member) {
-    throw new Error("Default team member is missing.");
+    notFound();
   }
 
   const [tWorkers, tDesign, tFeatures] = await Promise.all([
