@@ -4,7 +4,17 @@
     "projects": "Портфолио",
     "services": "Услуги",
     "blog": "Блог",
-    "team": "Команда"
+    "team": "Команда",
+    "breadcrumbs": {
+      "mainPage": "Главная",
+      "specialists": "Специалисты",
+      "servicesSection": "Услуги",
+      "portfolioSection": "Портфолио",
+      "blogPage": "Блог",
+      "latestPosts": "Публикации",
+      "contactPage": "Контакты",
+      "contactChannels": "Каналы связи"
+    }
   },
   "hero": {
     "button": "Связаться с нами",

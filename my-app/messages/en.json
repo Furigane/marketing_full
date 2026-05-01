@@ -4,7 +4,17 @@
     "projects": "Portfolio",
     "services": "Services",
     "blog": "Blog",
-    "team": "Team"
+    "team": "Team",
+    "breadcrumbs": {
+      "mainPage": "Main Page",
+      "specialists": "Specialists",
+      "servicesSection": "Services",
+      "portfolioSection": "Portfolio",
+      "blogPage": "Blog",
+      "latestPosts": "Latest Posts",
+      "contactPage": "Contact",
+      "contactChannels": "Contact Channels"
+    }
   },
   "hero": {
     "button": "Contact us",
@@ -26,37 +36,37 @@
       "anastasia": {
         "name": "Anastasia Yakovleva",
         "role": "Designer",
-        "experience": "3 years of experience"
+        "experience": "3 years of exp"
       },
       "alexey": {
         "name": "Alexey Petrov",
         "role": "Targeting specialist",
-        "experience": "5 years of experience"
+        "experience": "5 years of exp"
       },
       "maria": {
         "name": "Maria Sokolova",
         "role": "SMM specialist",
-        "experience": "4 years of experience"
+        "experience": "4 years of exp"
       },
       "arina": {
         "name": "Arina Kuznetsova",
         "role": "SEO specialist",
-        "experience": "7 years of experience"
+        "experience": "7 years of exp"
       },
       "vyacheslav": {
         "name": "Vyacheslav Makushev",
         "role": "Targeting specialist",
-        "experience": "4 years of experience"
+        "experience": "4 years of exp"
       },
       "ivan": {
         "name": "Ivan Tikhonov",
         "role": "Manager",
-        "experience": "6 years of experience"
+        "experience": "6 years of exp"
       },
       "elizaveta": {
         "name": "Elizaveta Orlova",
         "role": "Content manager",
-        "experience": "5 years of experience"
+        "experience": "5 years of exp"
       }
     }
   },

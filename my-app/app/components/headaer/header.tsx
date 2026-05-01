@@ -37,6 +37,8 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isThemeReady, setIsThemeReady] = useState(false);
+  const [hoveredBreadcrumb, setHoveredBreadcrumb] = useState<string | null>(null);
+  const [currentHash, setCurrentHash] = useState("");
   const languageRef = useRef<HTMLDivElement>(null);
 
   const t = useTranslations('header');
@@ -47,12 +49,65 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const localeBase = String(locale).split("-")[0].toLowerCase();
 
   const navLinks = [
-    { label: t('team'), href: "/main-page#specialists" },
-    { label: t('services'), href: "/main-page#services" },
-    { label: t('projects'), href: "/main-page#portfolio" },
-    { label: t('blog'), href: "/blog" },
-    { label: t('connect'), href: "/contact" },
+    {
+      label: t('team'),
+      href: "/main-page#specialists",
+      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.specialists")}`,
+    },
+    {
+      label: t('services'),
+      href: "/main-page#services",
+      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.servicesSection")}`,
+    },
+    {
+      label: t('projects'),
+      href: "/main-page#portfolio",
+      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.portfolioSection")}`,
+    },
+    {
+      label: t('blog'),
+      href: "/blog",
+      breadcrumb: `${t("breadcrumbs.blogPage")} / ${t("breadcrumbs.latestPosts")}`,
+    },
+    {
+      label: t('connect'),
+      href: "/contact",
+      breadcrumb: `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.contactChannels")}`,
+    },
   ];
+
+  function resolveCurrentBreadcrumb() {
+    const linkFromHash = navLinks.find((link) => {
+      const [linkPath, linkHash = ""] = link.href.split("#");
+      return linkHash && pathname === linkPath && currentHash === `#${linkHash}`;
+    });
+
+    if (linkFromHash) return linkFromHash.breadcrumb;
+
+    const linkFromPath = navLinks.find((link) => link.href === pathname);
+    if (linkFromPath) return linkFromPath.breadcrumb;
+
+    if (pathname === "/main-page") return t("breadcrumbs.mainPage");
+    if (pathname === "/team") {
+      return `${t("breadcrumbs.mainPage")} / ${t("team")}`;
+    }
+    if (pathname === "/services") {
+      return `${t("breadcrumbs.mainPage")} / ${t("services")}`;
+    }
+    if (pathname === "/projects") {
+      return `${t("breadcrumbs.mainPage")} / ${t("projects")}`;
+    }
+    if (pathname === "/blog") {
+      return `${t("breadcrumbs.blogPage")} / ${t("breadcrumbs.latestPosts")}`;
+    }
+    if (pathname === "/contact" || pathname === "/connect") {
+      return `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.contactChannels")}`;
+    }
+
+    return t("breadcrumbs.mainPage");
+  }
+
+  const activeBreadcrumb = hoveredBreadcrumb ?? resolveCurrentBreadcrumb();
 
   function handleLocaleChange(nextLocale: (typeof languages)[number]) {
     router.replace(pathname, { locale: nextLocale });
@@ -90,11 +145,24 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    const updateHash = () => setCurrentHash(window.location.hash);
+
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, []);
+
+  useEffect(() => {
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
-    setIsDark(shouldUseDark);
-    setIsThemeReady(true);
+
+    const frameId = window.requestAnimationFrame(() => {
+      setIsDark(shouldUseDark);
+      setIsThemeReady(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
   useEffect(() => {
@@ -122,11 +190,19 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
         </button>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <nav>
-            <ul className="flex items-center gap-6 text-sm">
+          <nav onMouseLeave={() => setHoveredBreadcrumb(null)}>
+            <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--foreground)] transition-opacity duration-200 hover:opacity-80"
+                    onMouseEnter={() => setHoveredBreadcrumb(link.breadcrumb)}
+                    onFocus={() => setHoveredBreadcrumb(link.breadcrumb)}
+                    onBlur={() => setHoveredBreadcrumb(null)}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -209,6 +285,12 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
           </div>
         </div>
       </header>
+
+      <div className="mt-1 px-4 sm:px-5 lg:px-6">
+        <p className="text-[10px] font-normal tracking-[0.16em] text-[var(--foreground)] opacity-35 sm:text-[11px]">
+          {activeBreadcrumb}
+        </p>
+      </div>
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[color:var(--background)]/95 px-4 pb-6 pt-8 text-[var(--foreground)] shadow-[0_0_40px_rgba(0,0,0,0.12)] backdrop-blur-md dark:shadow-[0_0_48px_rgba(0,0,0,0.45)] sm:px-6 lg:hidden">

@@ -4,7 +4,17 @@
     "projects": "مَلَفّ",
     "services": "الخدمات",
     "blog": "مدونة",
-    "team": "فريق"
+    "team": "فريق",
+    "breadcrumbs": {
+      "mainPage": "الصفحة الرئيسية",
+      "specialists": "المتخصصون",
+      "servicesSection": "الخدمات",
+      "portfolioSection": "المعرض",
+      "blogPage": "المدونة",
+      "latestPosts": "المقالات",
+      "contactPage": "التواصل",
+      "contactChannels": "قنوات التواصل"
+    }
   },
   "hero": {
     "button": "اتصل بنا",

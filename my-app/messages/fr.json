@@ -4,7 +4,17 @@
     "projects": "Portefeuille",
     "services": "Services",
     "blog": "Blogue",
-    "team": "Équipe"
+    "team": "Équipe",
+    "breadcrumbs": {
+      "mainPage": "Page principale",
+      "specialists": "Spécialistes",
+      "servicesSection": "Services",
+      "portfolioSection": "Portfolio",
+      "blogPage": "Blog",
+      "latestPosts": "Articles",
+      "contactPage": "Contact",
+      "contactChannels": "Canaux de contact"
+    }
   },
   "hero": {
     "button": "Nous contacter",
