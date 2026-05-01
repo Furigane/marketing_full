@@ -1,0 +1,10 @@
+{
+  "name": "marketing-servers",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix google-sheets-crm run dev",
+    "start": "npm --prefix google-sheets-crm run dev",
+    "build": "npm --prefix google-sheets-crm run build",
+    "start:prod": "npm --prefix google-sheets-crm run start:prod"
+  }
+}
