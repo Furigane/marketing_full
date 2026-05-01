@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { socialIconSrc } from "@/lib/social-icons";
+import { Search } from "lucide-react";
 
 const languages = ["ru", "en", "fr", "ar", "de"] as const;
 // const navLinks = [
@@ -27,6 +28,33 @@ function localeShortLabel(code: string) {
   return map[code] ?? code.toUpperCase();
 }
 
+const SEARCH_COPY = {
+  ru: {
+    placeholder: "Поиск по сайту",
+    submit: "Найти",
+  },
+  en: {
+    placeholder: "Search the site",
+    submit: "Search",
+  },
+  fr: {
+    placeholder: "Recherche sur le site",
+    submit: "Rechercher",
+  },
+  de: {
+    placeholder: "Website durchsuchen",
+    submit: "Suchen",
+  },
+  ar: {
+    placeholder: "ابحث في الموقع",
+    submit: "بحث",
+  },
+} as const;
+
+function getLocalizedPath(locale: string, path: string) {
+  return locale === "ru" ? path : `/${locale}${path}`;
+}
+
 type HeaderProps = {
   /** Фон как у секции team-surface (connect). Не подменяем --header-bg на родителе — так ломается тёмная тема. */
   matchTeamSurface?: boolean;
@@ -39,6 +67,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const [isThemeReady, setIsThemeReady] = useState(false);
   const [hoveredBreadcrumb, setHoveredBreadcrumb] = useState<string | null>(null);
   const [currentHash, setCurrentHash] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const languageRef = useRef<HTMLDivElement>(null);
 
   const t = useTranslations('header');
@@ -47,6 +76,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const router = useRouter();
 
   const localeBase = String(locale).split("-")[0].toLowerCase();
+  const searchCopy = SEARCH_COPY[(localeBase in SEARCH_COPY ? localeBase : "ru") as keyof typeof SEARCH_COPY];
 
   const navLinks = [
     {
@@ -121,6 +151,16 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     const currentIndex = languages.indexOf(localeBase as (typeof languages)[number]);
     const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % languages.length;
     handleLocaleChange(languages[nextIndex]);
+  }
+
+  function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const trimmed = searchQuery.trim();
+    const targetPath = getLocalizedPath(localeBase, "/search");
+    const href = trimmed ? `${targetPath}?q=${encodeURIComponent(trimmed)}` : targetPath;
+
+    router.push(href);
+    setIsMobileMenuOpen(false);
   }
 
 
@@ -219,6 +259,32 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
             </ul>
           </nav>
 
+          <form
+            role="search"
+            onSubmit={handleSearchSubmit}
+            className="flex items-center gap-2 rounded-full border border-[color:var(--foreground)]/10 bg-[var(--background)]/60 px-3 py-2"
+          >
+            <label htmlFor="site-search-desktop" className="sr-only">
+              {searchCopy.placeholder}
+            </label>
+            <Search className="h-4 w-4 text-[var(--design-muted)]" aria-hidden="true" />
+            <input
+              id="site-search-desktop"
+              name="q"
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder={searchCopy.placeholder}
+              className="w-40 bg-transparent text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--design-muted)] xl:w-48"
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-[var(--foreground)] px-3 py-1 text-xs font-semibold text-[var(--background)] transition-opacity duration-200 hover:opacity-85"
+            >
+              {searchCopy.submit}
+            </button>
+          </form>
+
           <div className="flex items-center gap-2">
             <div className="relative" ref={languageRef}>
               <button
@@ -315,6 +381,32 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
           </button>
 
           <nav>
+            <form
+              role="search"
+              onSubmit={handleSearchSubmit}
+              className="mb-8 flex items-center gap-3 rounded-[24px] border border-[color:var(--foreground)]/12 bg-[var(--header-bg)] px-4 py-3"
+            >
+              <label htmlFor="site-search-mobile" className="sr-only">
+                {searchCopy.placeholder}
+              </label>
+              <Search className="h-5 w-5 text-[var(--design-muted)]" aria-hidden="true" />
+              <input
+                id="site-search-mobile"
+                name="q"
+                type="search"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder={searchCopy.placeholder}
+                className="min-w-0 flex-1 bg-transparent text-base text-[var(--foreground)] outline-none placeholder:text-[var(--design-muted)]"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-[var(--foreground)] px-4 py-2 text-sm font-semibold text-[var(--background)]"
+              >
+                {searchCopy.submit}
+              </button>
+            </form>
+
             <ul className="space-y-4 text-3xl font-semibold text-[var(--foreground)]">
               {navLinks.map((link) => (
                 <li key={link.label}>

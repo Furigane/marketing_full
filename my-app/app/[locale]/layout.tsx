@@ -2,6 +2,7 @@ import {NextIntlClientProvider, hasLocale} from "next-intl";
 import {getMessages} from "next-intl/server";
 import {notFound} from "next/navigation";
 import {routing} from "@/i18n/routing";
+import WebsiteSearchStructuredData from "@/app/components/seo/website-search-structured-data";
 
 export default async function LocaleLayout({
   children,
@@ -20,6 +21,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <WebsiteSearchStructuredData locale={locale} />
       {children}
     </NextIntlClientProvider>
   );

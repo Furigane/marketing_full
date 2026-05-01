@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { type BlogPost, getPostTranslation } from "@/lib/blog";
 
@@ -55,6 +55,25 @@ export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: st
     [locale, posts]
   );
 
+  useEffect(() => {
+    const syncOpenPostWithHash = () => {
+      const hash = window.location.hash;
+      if (!hash.startsWith("#post-")) {
+        return;
+      }
+
+      const slug = decodeURIComponent(hash.replace("#post-", ""));
+      const matchedPost = posts.find((post) => post.slug === slug);
+      if (matchedPost) {
+        setOpenId(matchedPost.id);
+      }
+    };
+
+    syncOpenPostWithHash();
+    window.addEventListener("hashchange", syncOpenPostWithHash);
+    return () => window.removeEventListener("hashchange", syncOpenPostWithHash);
+  }, [posts]);
+
   return (
     <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-3 pb-12 pt-3 sm:gap-8 sm:px-4 md:px-6 lg:max-w-[1400px]">
       <section className="rounded-[32px] bg-[var(--team-surface)] px-5 py-8 sm:px-8">
@@ -82,6 +101,7 @@ export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: st
           return (
             <article
               key={post.id}
+              id={`post-${post.slug}`}
               className="overflow-hidden rounded-[28px] border border-black/5 bg-[var(--header-bg)] shadow-sm dark:border-white/10"
             >
               <button
