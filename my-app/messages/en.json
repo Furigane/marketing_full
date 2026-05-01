@@ -123,7 +123,7 @@
       "titleTop": "Not sure",
       "titleBottom": "where to start?",
       "description": "Request a free audit of your task with our marketer.",
-      "free": "It's free.",
+      "free": "Free.",
       "illustrationAlt": "Services illustration",
       "tags": {
         "designBranding": "Design and branding",
@@ -139,16 +139,16 @@
     },
     "form": {
       "title": "Contact us",
-      "nameLabel": "Your name:",
-      "emailLabel": "Email:",
-      "contactMethodLabel": "Contact method",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "contactMethodLabel": "Contact",
       "telegramOption": "Telegram",
       "whatsappOption": "WhatsApp",
-      "contactValueLabelTelegram": "Your Telegram:",
-      "contactValueLabelWhatsapp": "Your WhatsApp number:",
+      "contactValueLabelTelegram": "Telegram",
+      "contactValueLabelWhatsapp": "WhatsApp",
       "contactPlaceholderTelegram": "@username",
       "contactPlaceholderWhatsapp": "Phone number",
-      "submit": "Get consultation",
+      "submit": "Send",
       "submitting": "Sending..."
     },
     "social": {

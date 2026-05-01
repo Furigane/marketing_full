@@ -123,7 +123,7 @@
       "titleTop": "Vous ne savez pas",
       "titleBottom": "par où commencer ?",
       "description": "Demandez un audit gratuit de votre tâche auprès de notre spécialiste marketing.",
-      "free": "C'est gratuit.",
+      "free": "Gratuit.",
       "illustrationAlt": "Illustration des services",
       "tags": {
         "designBranding": "Design et branding",
@@ -139,16 +139,16 @@
     },
     "form": {
       "title": "Contactez-nous",
-      "nameLabel": "Votre nom :",
-      "emailLabel": "Adresse e-mail :",
-      "contactMethodLabel": "Méthode de contact",
+      "nameLabel": "Nom",
+      "emailLabel": "E-mail",
+      "contactMethodLabel": "Contact",
       "telegramOption": "Telegram",
       "whatsappOption": "WhatsApp",
-      "contactValueLabelTelegram": "Votre Telegram :",
-      "contactValueLabelWhatsapp": "Votre numéro WhatsApp :",
+      "contactValueLabelTelegram": "Telegram",
+      "contactValueLabelWhatsapp": "WhatsApp",
       "contactPlaceholderTelegram": "@username",
       "contactPlaceholderWhatsapp": "Numéro de téléphone",
-      "submit": "Obtenir une consultation",
+      "submit": "Envoyer",
       "submitting": "Envoi..."
     },
     "social": {

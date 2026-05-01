@@ -123,7 +123,7 @@
       "titleTop": "Не знаете",
       "titleBottom": "с чего начать?",
       "description": "Оставьте заявку на бесплатный аудит вашей задачи с нашим маркетологом.",
-      "free": "Это бесплатно.",
+      "free": "Бесплатно.",
       "illustrationAlt": "Иллюстрация услуг",
       "tags": {
         "designBranding": "Дизайн и брендинг",
@@ -138,17 +138,17 @@
       }
     },
     "form": {
-      "title": "Свяжитесь с нами",
-      "nameLabel": "Ваше имя:",
-      "emailLabel": "Электронная почта:",
-      "contactMethodLabel": "Способ связи",
+      "title": "Связаться с нами",
+      "nameLabel": "Имя",
+      "emailLabel": "Email",
+      "contactMethodLabel": "Связь",
       "telegramOption": "Телега",
       "whatsappOption": "Вацап",
-      "contactValueLabelTelegram": "Ваш Telegram:",
-      "contactValueLabelWhatsapp": "Ваш номер WhatsApp:",
+      "contactValueLabelTelegram": "Telegram",
+      "contactValueLabelWhatsapp": "WhatsApp",
       "contactPlaceholderTelegram": "@username",
       "contactPlaceholderWhatsapp": "Номер телефона",
-      "submit": "Получить консультацию",
+      "submit": "Отправить",
       "submitting": "Отправка..."
     },
     "social": {

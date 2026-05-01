@@ -123,7 +123,7 @@
       "titleTop": "Sie wissen nicht,",
       "titleBottom": "wo Sie anfangen sollen?",
       "description": "Fordern Sie eine kostenlose Überprüfung Ihrer Aufgabe durch unseren Marketingexperten an.",
-      "free": "Es ist kostenlos.",
+      "free": "Kostenlos.",
       "illustrationAlt": "Dienstleistungsillustration",
       "tags": {
         "designBranding": "Design und Branding",
@@ -139,16 +139,16 @@
     },
     "form": {
       "title": "Kontaktieren Sie uns",
-      "nameLabel": "Ihr Name:",
-      "emailLabel": "E-Mail:",
-      "contactMethodLabel": "Kontaktmethode",
+      "nameLabel": "Name",
+      "emailLabel": "E-Mail",
+      "contactMethodLabel": "Kontakt",
       "telegramOption": "Telegram",
       "whatsappOption": "WhatsApp",
-      "contactValueLabelTelegram": "Ihr Telegram:",
-      "contactValueLabelWhatsapp": "Ihre WhatsApp-Nummer:",
+      "contactValueLabelTelegram": "Telegram",
+      "contactValueLabelWhatsapp": "WhatsApp",
       "contactPlaceholderTelegram": "@username",
       "contactPlaceholderWhatsapp": "Telefonnummer",
-      "submit": "Beratung erhalten",
+      "submit": "Senden",
       "submitting": "Wird gesendet..."
     },
     "social": {

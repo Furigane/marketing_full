@@ -123,7 +123,7 @@
       "titleTop": "لا تعرف",
       "titleBottom": "من أين تبدأ؟",
       "description": "اطلب مراجعة مجانية لمهمتك مع مسوقنا.",
-      "free": "هذا مجاني.",
+      "free": "مجاني.",
       "illustrationAlt": "صورة توضيحية للخدمات",
       "tags": {
         "designBranding": "التصميم والهوية",
@@ -139,16 +139,16 @@
     },
     "form": {
       "title": "تواصل معنا",
-      "nameLabel": "اسمك:",
-      "emailLabel": "البريد الإلكتروني:",
-      "contactMethodLabel": "طريقة التواصل",
+      "nameLabel": "الاسم",
+      "emailLabel": "البريد",
+      "contactMethodLabel": "التواصل",
       "telegramOption": "تيليجرام",
       "whatsappOption": "واتساب",
-      "contactValueLabelTelegram": "حساب Telegram الخاص بك:",
-      "contactValueLabelWhatsapp": "رقم واتساب الخاص بك:",
+      "contactValueLabelTelegram": "Telegram",
+      "contactValueLabelWhatsapp": "WhatsApp",
       "contactPlaceholderTelegram": "@username",
       "contactPlaceholderWhatsapp": "رقم الهاتف",
-      "submit": "احصل على استشارة",
+      "submit": "إرسال",
       "submitting": "جارٍ الإرسال..."
     },
     "social": {
