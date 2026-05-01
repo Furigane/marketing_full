@@ -54,7 +54,7 @@ export default function RelatedServicesSection({
             className="group rounded-[1.75rem] border border-zinc-200/70 bg-[var(--services-text-bg)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
           >
             <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[var(--services-bg)]">
-              <Image src={service.icon} alt="" width={18} height={18} className="h-[18px] w-[18px]" />
+              <Image src={service.icon} alt={service.content.title} width={18} height={18} className="h-[18px] w-[18px]" />
             </div>
             <h3 className="text-xl font-semibold text-[var(--foreground)]">
               {service.content.title}

@@ -3,12 +3,11 @@ import { Link } from "@/i18n/navigation";
 
 import Header from "@/app/components/headaer/header";
 import Footer from "@/app/components/footer/footer";
-import Card from "@/app/components/card/card";
-import Faq from "@/app/components2/faq/faq";
+import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
+import { getLocalizedService, getServiceById, type ServiceId } from "@/lib/services";
 import type { TeamProfileContent } from "@/lib/team-profiles";
-import type { ServiceId } from "@/lib/services";
 
 type TeamProfilePageProps = {
   breadcrumbTeam: string;
@@ -21,6 +20,7 @@ type TeamProfilePageProps = {
   name: string;
   profile: TeamProfileContent;
   relatedServiceIds: ServiceId[];
+  role: string;
   socialLabels: {
     instagram: string;
     telegram: string;
@@ -39,8 +39,11 @@ export default function TeamProfilePage({
   name,
   profile,
   relatedServiceIds,
+  role,
   socialLabels,
 }: TeamProfilePageProps) {
+  const isRussian = locale.toLowerCase().startsWith("ru");
+
   return (
     <>
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-8 px-3 sm:gap-10 sm:px-4 md:px-6 lg:max-w-[1400px]">
@@ -71,11 +74,11 @@ export default function TeamProfilePage({
                 </div>
 
                 <h1 className="mb-3 text-3xl font-extrabold leading-[1.15] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
-                  <span className="inline-block rounded-full bg-[var(--hero-span)] py-1 pl-3 pr-4 text-[var(--design-title)] sm:pl-4 sm:pr-4">
-                    {profile.titleHighlight}
-                  </span>
+                  {name}
                   <br />
-                  {profile.titleSecondLine}
+                  <span className="inline-block rounded-full bg-[var(--hero-span)] py-1 pl-3 pr-4 text-[var(--design-title)] sm:pl-4 sm:pr-4">
+                    {role}
+                  </span>
                 </h1>
 
                 <p className="mb-5 max-w-[520px] text-sm leading-6 text-[var(--design-text)] md:text-base">
@@ -195,9 +198,40 @@ export default function TeamProfilePage({
           </div>
         </section>
 
+        <section className="mt-2 p-4 md:p-6">
+          <div className="rounded-[2rem] bg-[var(--services-bg)] p-6">
+            <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+              {isRussian ? "Услуги этого специалиста" : "Services provided by this specialist"}
+            </h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-[var(--design-text)]">
+              {isRussian
+                ? "Ниже собраны смежные услуги, по которым этот специалист работает в проектной команде."
+                : "These are the related services this specialist supports inside the project team."}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {relatedServiceIds.map((serviceId) => {
+                const serviceDefinition = getServiceById(serviceId);
+                if (!serviceDefinition) {
+                  return null;
+                }
+                const service = getLocalizedService(serviceDefinition, locale);
+
+                return (
+                  <Link
+                    key={service.id}
+                    href={`/services/${service.slug}`}
+                    className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6] hover:text-[#7c9ff7]"
+                  >
+                    {service.content.title}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <RelatedServicesSection locale={locale} serviceIds={relatedServiceIds} />
-        <Card />
-        <Faq />
+        <PageBottomSections />
       </main>
 
       <Footer />

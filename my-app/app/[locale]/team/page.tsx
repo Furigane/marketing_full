@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
@@ -7,6 +8,7 @@ import {
   getTeamProfileContent,
 } from "@/lib/team-profiles";
 import type { ServiceId } from "@/lib/services";
+import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
 
 const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
   designer: ["adCreatives", "uxUiDesign", "brandIdentity"],
@@ -16,6 +18,24 @@ const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
   manager: ["corporateWebsite", "crmAutomation", "analyticsSetup"],
   content: ["copywriting", "emailMarketing", "smmManagement"],
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = isRussianLocale(locale);
+
+  return {
+    title: buildMetaTitle(isRussian ? "Специалисты агентства" : "Agency specialists"),
+    description: buildMetaDescription(
+      isRussian
+        ? "Профили специалистов агентства с услугами, которые они оказывают, и ссылками на смежные решения."
+        : "Agency specialist profiles with the services they provide and links to related solutions."
+    ),
+  };
+}
 
 export default async function TeamPage({
   params,
@@ -49,6 +69,7 @@ export default async function TeamPage({
       name={name}
       profile={getTeamProfileContent(locale, member.roleType)}
       relatedServiceIds={RELATED_SERVICES_BY_ROLE[member.roleType] ?? RELATED_SERVICES_BY_ROLE.manager}
+      role={tWorkers(`items.${member.id}.role`)}
       socialLabels={{
         instagram: tDesign("socialInstagram"),
         telegram: tDesign("socialTelegram"),

@@ -144,6 +144,11 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
   return posts.filter((post) => post.status === "published");
 }
 
+export async function getBlogPostBySlug(slug: string) {
+  const posts = await getPublishedBlogPosts();
+  return posts.find((post) => post.slug === slug) ?? null;
+}
+
 function validatePayload(payload: BlogPostPayload) {
   if (!payload.slug.trim()) {
     throw new Error("Slug is required.");

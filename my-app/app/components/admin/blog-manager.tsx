@@ -207,7 +207,7 @@ export function BlogManager() {
                         {post.status === "published" ? "Опубликовано" : "Черновик"}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm text-[var(--design-muted)]">Slug: /blog#{post.slug}</p>
+                    <p className="mt-1 text-sm text-[var(--design-muted)]">Slug: /blog/{post.slug}</p>
                     <p className="mt-2 text-sm text-[var(--design-muted)]">
                       Дата публикации: {post.publishedAt} • Обновлено:{" "}
                       {new Date(post.updatedAt).toLocaleString("ru-RU")}

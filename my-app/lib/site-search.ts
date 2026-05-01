@@ -83,7 +83,7 @@ export async function searchSite(locale: string, rawQuery: string) {
       type: "blog",
       title: translation.title,
       description: translation.excerpt,
-      href: `${getLocalizedPath(locale, "/blog")}#post-${post.slug}`,
+      href: getLocalizedPath(locale, `/blog/${post.slug}`),
       matchText: normalizeText(
         [translation.title, translation.excerpt, translation.content].join(" ")
       ),

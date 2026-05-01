@@ -63,7 +63,7 @@ export default async function ServiceDetailPage({
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--services-bg)]">
                   <Image
                     src={localizedService.icon}
-                    alt=""
+                    alt={localizedService.content.title}
                     width={24}
                     height={24}
                     className="h-6 w-6"
