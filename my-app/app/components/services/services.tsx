@@ -95,7 +95,7 @@ export default function Services() {
   const [openedSection, setOpenedSection] = useState<string>("popular");
 
   return (
-    <section className="mt-6 px-3 py-6 md:px-6 md:py-8 lg:px-8">
+    <section className="mt-6 px-3 py-6 md:px-6 md:py-8 lg:px-8" id="services">
       <h2 className="mb-8 text-center text-2xl font-bold text-[var(--services-title)] md:mb-10 md:text-3xl">
         {t("title")}
       </h2>

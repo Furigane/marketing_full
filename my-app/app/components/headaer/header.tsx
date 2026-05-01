@@ -48,8 +48,9 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
 
   const navLinks = [
     { label: t('team'), href: "/main-page#specialists" },
-    { label: t('services'), href: "/services" },
-    { label: t('projects'), href: "/projects" },
+    { label: t('services'), href: "/main-page#services" },
+    { label: t('projects'), href: "/main-page#portfolio" },
+    { label: t('blog'), href: "/blog" },
     { label: t('connect'), href: "/connect" },
   ];
 

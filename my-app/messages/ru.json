@@ -1,8 +1,9 @@
 {
   "header": {
     "connect": "Связаться",
-    "projects": "Проекты",
+    "projects": "Портфолио",
     "services": "Услуги",
+    "blog": "Блог",
     "team": "Команда"
   },
   "hero": {

@@ -1,8 +1,9 @@
 {
   "header": {
     "connect": "Contacter",
-    "projects": "Projets",
+    "projects": "Portefeuille",
     "services": "Services",
+    "blog": "Blogue",
     "team": "Équipe"
   },
   "hero": {

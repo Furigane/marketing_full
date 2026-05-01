@@ -1,8 +1,9 @@
 {
   "header": {
     "connect": "الاتصال",
-    "projects": "المشاريع",
+    "projects": "مَلَفّ",
     "services": "الخدمات",
+    "blog": "مدونة",
     "team": "فريق"
   },
   "hero": {
