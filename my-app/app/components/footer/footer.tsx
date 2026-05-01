@@ -78,9 +78,18 @@ export default function Footer() {
         <div className="mx-auto max-w-[1400px] px-4 py-6 md:px-8 md:py-8 lg:px-10">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-[2.2fr_1fr_1fr_1fr] md:gap-10">
             <div>
-              <h3 className="mb-3 text-xl font-semibold md:text-2xl lg:text-3xl">
-                {t("brandTitle")}
-              </h3>
+              <div className="mb-3 flex items-center gap-3">
+                <Image
+                  src="/svg/logo.svg"
+                  alt="Creative Group logo"
+                  width={42}
+                  height={42}
+                  className="h-10 w-10 shrink-0 md:h-11 md:w-11"
+                />
+                <h3 className="text-xl font-semibold md:text-2xl lg:text-3xl">
+                  {t("brandTitle")}
+                </h3>
+              </div>
               <p className="max-w-md text-sm leading-6 text-zinc-400 md:text-lg md:leading-8">
                 {t("about")}
               </p>

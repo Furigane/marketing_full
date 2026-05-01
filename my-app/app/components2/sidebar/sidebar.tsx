@@ -1,7 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, BookOpen, Trophy, GraduationCap, LogOut, Code2 } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Trophy, GraduationCap, LogOut } from 'lucide-react';
 // import { View } from '../types';
 import { twMerge } from 'tailwind-merge';
 
@@ -38,11 +39,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, closeMobile, onL
       )}>
         <div className="flex flex-col h-full p-4">
           <div className="mb-8 flex items-center gap-3 rounded-full bg-[var(--background)] px-3 py-2 shadow-sm">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--foreground)] text-[var(--background)]">
-              <Code2 size={20} />
-            </div>
+            <Image
+              src="/svg/logo.svg"
+              alt="Creative Group logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 shrink-0"
+            />
             <h1 className="text-sm font-extrabold tracking-tight text-[var(--foreground)] md:text-base">
-              Marketing Logo
+              CREATIVE GROUP
             </h1>
           </div>
 

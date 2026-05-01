@@ -177,10 +177,18 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   return (
     <>
       <header className="my-4 flex items-center justify-between rounded-full bg-[var(--header-bg)] px-3 py-2.5 sm:my-6 sm:px-4 sm:py-3 lg:px-6 lg:py-4">
-          <Link href="/main-page">
-        <h1 className="text-xl leading-tight font-semibold text-[var(--foreground)] sm:text-2xl lg:text-lg">
-          MARKETING LOGO
-        </h1>
+        <Link href="/main-page" className="flex items-center gap-3">
+          <Image
+            src="/svg/logo.svg"
+            alt="Creative Group logo"
+            width={38}
+            height={38}
+            className="h-9 w-9 shrink-0 sm:h-10 sm:w-10"
+            priority
+          />
+          <h1 className="text-base leading-tight font-semibold text-[var(--foreground)] sm:text-xl lg:text-lg">
+            CREATIVE GROUP
+          </h1>
         </Link>
 
         <button
