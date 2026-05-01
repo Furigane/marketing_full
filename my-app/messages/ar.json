@@ -333,6 +333,20 @@
       }
     }
   },
+  "connectPage": {
+    "title": "جهات الاتصال للتواصل",
+    "items": {
+      "email": {
+        "label": "Email"
+      },
+      "whatsapp": {
+        "label": "WhatsApp"
+      },
+      "telegram": {
+        "label": "Telegram"
+      }
+    }
+  },
   "footer": {
     "quoteBold": "نحن مستعدون للعمل من أجلك،",
     "quoteRest": "لتحصل على أفضل نتيجة بسعر عادل",

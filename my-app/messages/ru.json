@@ -333,6 +333,20 @@
       }
     }
   },
+  "connectPage": {
+    "title": "Контакты для связи",
+    "items": {
+      "email": {
+        "label": "Email"
+      },
+      "whatsapp": {
+        "label": "WhatsApp"
+      },
+      "telegram": {
+        "label": "Telegram"
+      }
+    }
+  },
   "footer": {
     "quoteBold": "Мы готовы работать на тебя,",
     "quoteRest": "чтобы ты получил лучший результат за справедливую цену",

@@ -51,7 +51,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     { label: t('services'), href: "/main-page#services" },
     { label: t('projects'), href: "/main-page#portfolio" },
     { label: t('blog'), href: "/blog" },
-    { label: t('connect'), href: "/connect" },
+    { label: t('connect'), href: "/contact" },
   ];
 
   function handleLocaleChange(nextLocale: (typeof languages)[number]) {

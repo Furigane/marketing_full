@@ -333,6 +333,20 @@
       }
     }
   },
+  "connectPage": {
+    "title": "Kontakte zur Verbindung",
+    "items": {
+      "email": {
+        "label": "E-Mail"
+      },
+      "whatsapp": {
+        "label": "WhatsApp"
+      },
+      "telegram": {
+        "label": "Telegram"
+      }
+    }
+  },
   "footer": {
     "quoteBold": "Wir sind bereit, für Sie zu arbeiten,",
     "quoteRest": "damit Sie das beste Ergebnis zu einem fairen Preis erhalten",

@@ -333,6 +333,20 @@
       }
     }
   },
+  "connectPage": {
+    "title": "Contacts for communication",
+    "items": {
+      "email": {
+        "label": "Email"
+      },
+      "whatsapp": {
+        "label": "WhatsApp"
+      },
+      "telegram": {
+        "label": "Telegram"
+      }
+    }
+  },
   "footer": {
     "quoteBold": "We're ready to work for you,",
     "quoteRest": "so you get the best outcome at a fair price",

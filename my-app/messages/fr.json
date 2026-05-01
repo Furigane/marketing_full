@@ -333,6 +333,20 @@
       }
     }
   },
+  "connectPage": {
+    "title": "Contacts pour échanger",
+    "items": {
+      "email": {
+        "label": "E-mail"
+      },
+      "whatsapp": {
+        "label": "WhatsApp"
+      },
+      "telegram": {
+        "label": "Telegram"
+      }
+    }
+  },
   "footer": {
     "quoteBold": "Nous sommes prêts à travailler pour vous,",
     "quoteRest": "pour que vous obteniez le meilleur résultat à un prix juste",
