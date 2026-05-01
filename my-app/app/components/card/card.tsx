@@ -112,13 +112,13 @@ export default function Card({ embedded = false }: CardProps) {
             </p>
 
             <div className="mt-8 rounded-2xl  p-4">
-              <div className="mb-4 grid h-[250px] place-items-center rounded-xl">
+              <div className="mb-4 grid h-[250px] place-items-center overflow-hidden rounded-xl">
                 <Image
                   src={isDarkTheme ? CARD_ILLUSTRATION_DARK : CARD_ILLUSTRATION_LIGHT}
                   alt={t("left.illustrationAlt")}
                   width={500}
                   height={380}
-                  className="mb-6 h-auto max-h-[500px] w-auto max-w-[500px] object-contain"
+                  className="h-full max-h-full w-full max-w-full object-contain"
                 />
               </div>
 
