@@ -1,0 +1,36 @@
+[
+  {
+    "id": "launch-content-system",
+    "slug": "content-system-launch",
+    "status": "published",
+    "publishedAt": "2026-05-01",
+    "updatedAt": "2026-05-01T00:00:00.000Z",
+    "translations": {
+      "ru": {
+        "title": "Как мы выстраиваем контент-систему для бизнеса",
+        "excerpt": "Коротко о том, как статьи, реклама и соцсети собираются в одну воронку.",
+        "content": "Мы начинаем не с публикаций, а с бизнес-цели: какие заявки нужны, какие возражения есть у клиента и что должно привести читателя к следующему шагу.\n\nЗатем строим контент-карту: экспертные статьи закрывают вопросы, кейсы показывают доказательства, а короткие форматы подогревают интерес между рекламными касаниями.\n\nВ результате блог работает не как архив текстов, а как часть маркетинговой системы: усиливает SEO, прогревает аудиторию и даёт менеджерам понятные материалы для коммуникации."
+      },
+      "en": {
+        "title": "How we build a content system for a business",
+        "excerpt": "A brief look at how articles, ads, and social content are assembled into one funnel.",
+        "content": "We do not start with publishing. We start with the business goal: what kind of leads are needed, what objections exist, and what should move the reader to the next step.\n\nThen we build a content map: expert articles answer questions, case studies provide proof, and short-form content keeps attention warm between paid touchpoints.\n\nThat turns a blog from a passive archive into an active marketing asset that supports SEO, educates the audience, and helps the sales team communicate more clearly."
+      },
+      "fr": {
+        "title": "Comment nous construisons un système de contenu pour une entreprise",
+        "excerpt": "Un aperçu de la façon dont articles, publicité et réseaux sociaux forment un seul tunnel.",
+        "content": "Nous ne commençons pas par publier. Nous commençons par l’objectif business : quelles demandes sont attendues, quelles objections existent et quelle action doit suivre la lecture.\n\nEnsuite, nous créons une carte de contenu : les articles experts répondent aux questions, les études de cas apportent la preuve et les formats courts entretiennent l’attention entre les campagnes payantes.\n\nAinsi, le blog ne devient pas une simple archive, mais un actif marketing qui soutient le SEO, prépare l’audience et aide l’équipe commerciale."
+      },
+      "de": {
+        "title": "Wie wir ein Content-System für ein Unternehmen aufbauen",
+        "excerpt": "Kurz erklärt, wie Artikel, Werbung und Social Content zu einem Funnel werden.",
+        "content": "Wir beginnen nicht mit dem Veröffentlichen, sondern mit dem Geschäftsziel: Welche Leads werden gebraucht, welche Einwände gibt es und was soll den Leser zum nächsten Schritt führen.\n\nDanach bauen wir eine Content-Map auf: Fachartikel beantworten Fragen, Cases liefern Belege und kurze Formate halten das Interesse zwischen bezahlten Kontakten warm.\n\nSo wird der Blog kein statisches Archiv, sondern ein Marketing-Instrument für SEO, Vertrauen und bessere Kommunikation im Vertrieb."
+      },
+      "ar": {
+        "title": "كيف نبني نظام محتوى متكاملًا للأعمال",
+        "excerpt": "نظرة سريعة على ربط المقالات والإعلانات والمحتوى الاجتماعي في مسار واحد.",
+        "content": "نحن لا نبدأ بالنشر نفسه، بل نبدأ بهدف العمل: ما نوع العملاء المحتملين المطلوب، وما الاعتراضات الموجودة، وما الخطوة التالية التي يجب أن يصل إليها القارئ.\n\nبعد ذلك نبني خريطة محتوى: المقالات المتخصصة تجيب عن الأسئلة، ودراسات الحالة تقدم الدليل، والمحتوى القصير يحافظ على الاهتمام بين نقاط الاتصال الإعلانية.\n\nبهذا الشكل يصبح المدونة أصلًا تسويقيًا فعليًا يدعم تحسين الظهور في البحث، ويهيئ الجمهور، ويساعد فريق المبيعات في التواصل بوضوح أكبر."
+      }
+    }
+  }
+]

@@ -1,10 +1,10 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { LayoutDashboard, BookOpen, Trophy, GraduationCap, LogOut } from 'lucide-react';
-// import { View } from '../types';
-import { twMerge } from 'tailwind-merge';
+import React from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { LayoutDashboard, LogOut, Newspaper } from "lucide-react";
+import { twMerge } from "tailwind-merge";
+
+import { Link } from "@/i18n/navigation";
 
 interface SidebarProps {
   isMobileOpen: boolean;
@@ -16,28 +16,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, closeMobile, onL
   const pathname = usePathname();
 
   const menuItems = [
-    { href: '/admin', label: 'Главная', icon: LayoutDashboard },
-    { href: '#', label: 'Practice', icon: BookOpen },
-   
+    { href: "/admin", label: "Заявки", icon: LayoutDashboard },
+    { href: "/admin/blog", label: "Блог", icon: Newspaper },
   ];
 
   return (
     <>
       {isMobileOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm lg:hidden"
           onClick={closeMobile}
         />
       )}
-      
-      <aside className={twMerge(
-        `fixed top-0 left-0 z-50 h-screen w-64
-         bg-[var(--team-surface)]
-         border-r border-black/10 dark:border-white/10
-         transition-transform duration-300 ease-out`,
-        isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      )}>
-        <div className="flex flex-col h-full p-4">
+
+      <aside
+        className={twMerge(
+          `fixed left-0 top-0 z-50 h-screen w-64
+           border-r border-black/10 bg-[var(--team-surface)]
+           transition-transform duration-300 ease-out dark:border-white/10`,
+          isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        )}
+      >
+        <div className="flex h-full flex-col p-4">
           <div className="mb-8 flex items-center gap-3 rounded-full bg-[var(--background)] px-3 py-2 shadow-sm">
             <Image
               src="/svg/logo.svg"
@@ -60,14 +60,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, closeMobile, onL
                   key={item.href}
                   href={item.href}
                   onClick={closeMobile}
-                  className={`
-                    flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium
-                    transition-colors
-                    ${isActive 
-                      ? 'bg-[var(--design-btn)] text-[var(--foreground)]' 
-                      : 'text-[var(--design-muted)] hover:bg-[var(--background)] hover:text-[var(--foreground)]'
-                    }
-                  `}
+                  className={twMerge(
+                    "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-[var(--design-btn)] text-[var(--foreground)]"
+                      : "text-[var(--design-muted)] hover:bg-[var(--background)] hover:text-[var(--foreground)]"
+                  )}
                 >
                   <Icon size={18} />
                   {item.label}
@@ -77,13 +75,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, closeMobile, onL
           </nav>
 
           <div className="border-t border-black/10 pt-4 dark:border-white/10">
-             <button 
-                onClick={onLogout}
-                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--design-muted)] transition-colors hover:bg-red-100/70 hover:text-red-600 dark:hover:bg-red-900/30"
-             >
-                <LogOut size={18} />
-                Sign Out
-             </button>
+            <button
+              onClick={onLogout}
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-[var(--design-muted)] transition-colors hover:bg-red-100/70 hover:text-red-600 dark:hover:bg-red-900/30"
+            >
+              <LogOut size={18} />
+              Sign Out
+            </button>
           </div>
         </div>
       </aside>

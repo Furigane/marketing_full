@@ -6,12 +6,10 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import { socialIconSrc, useIsDarkTheme } from "@/lib/social-icons";
-import { cursorTo } from "readline";
 
-const HERO_VIDEO_LIGHT_FILE = "Untitled design (2).mp4";
-
-const HERO_VIDEO_LIGHT_SRC = `/video/${encodeURIComponent(HERO_VIDEO_LIGHT_FILE)}`;
-/** Тёмная тема: MP4/WebM — в <video>; GIF — только в <img>/<Image> (в <video> не воспроизводится). */
+/** GIF нельзя рендерить через <video>, поэтому тип источника определяем по расширению. */
+const HERO_VIDEO_LIGHT_SRC = "/video/gif_not_lotte.gif";
+const HERO_LIGHT_IS_GIF = /\.gif$/i.test(HERO_VIDEO_LIGHT_SRC);
 const HERO_MEDIA_DARK_SRC = "/video/gif_not_lotte.gif";
 const HERO_DARK_IS_GIF = /\.gif$/i.test(HERO_MEDIA_DARK_SRC);
 
@@ -36,6 +34,7 @@ export default function Hero() {
     : `/img/${encodeURIComponent("Mask group.png")}`;
 
   const heroVideoSrc = isDarkTheme ? HERO_MEDIA_DARK_SRC : HERO_VIDEO_LIGHT_SRC;
+  const heroMediaIsGif = isDarkTheme ? HERO_DARK_IS_GIF : HERO_LIGHT_IS_GIF;
 
   
   const enableSound = useCallback(() => {
@@ -61,7 +60,7 @@ export default function Hero() {
   }, [needsSoundGesture, enableSound]);
 
   useEffect(() => {
-    if (videoBroken || (isDarkTheme && HERO_DARK_IS_GIF)) return;
+    if (videoBroken || heroMediaIsGif) return;
     const v = videoRef.current;
     if (!v) return;
     let cancelled = false;
@@ -85,11 +84,13 @@ export default function Hero() {
     return () => {
       cancelled = true;
     };
-  }, [videoBroken, isDarkTheme]);
+  }, [videoBroken, heroMediaIsGif]);
 
   /** Светлая тема снова показывает видео — сбрасываем ошибку после тёмной/падения. */
   useEffect(() => {
-    if (!isDarkTheme) setVideoBroken(false);
+    if (isDarkTheme) return;
+    const frameId = window.requestAnimationFrame(() => setVideoBroken(false));
+    return () => window.cancelAnimationFrame(frameId);
   }, [isDarkTheme]);
 
   return (
@@ -109,9 +110,9 @@ export default function Hero() {
                   className="object-contain"
                   priority
                 />
-              ) : isDarkTheme && HERO_DARK_IS_GIF ? (
+              ) : heroMediaIsGif ? (
                 <Image
-                  src={HERO_MEDIA_DARK_SRC}
+                  src={heroVideoSrc}
                   alt={t("videoAria")}
                   fill
                   sizes={HERO_IMAGE_SIZES}

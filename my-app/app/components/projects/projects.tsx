@@ -13,8 +13,11 @@ export default function Projects() {
 
   return (
     <section className="mt-8 min-w-0 px-4 py-6 lg:px-8 lg:py-8" id="portfolio">
-      <h2 className="text-3xl font-bold text-[var(--foreground)] lg:text-4xl">{t("title")}</h2>
-      <div className="mb-6 flex items-center justify-center lg:mb-8 lg:justify-end">
+      <div className="mb-6 flex items-center justify-between gap-4 lg:mb-8">
+        <h2 className="text-3xl font-bold text-[var(--foreground)] lg:text-4xl">
+          {t("title")}
+        </h2>
+
         <Link
           href="/projects"
           className="hidden items-center gap-2 rounded-full bg-[#f2d48c] px-5 py-2 text-sm font-semibold text-zinc-800 shadow-sm transition-colors hover:bg-[#ebc873] lg:inline-flex"
@@ -31,37 +34,46 @@ export default function Projects() {
               <Link
                 href={`/projects/${project.slug}`}
                 key={project.id}
-                className="min-w-[260px] snap-start rounded-3xl bg-[var(--workers-bg)] shadow transition-all duration-300 ease-out will-change-transform hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] lg:min-w-0"
+                className="flex min-w-[260px] snap-start flex-col overflow-hidden rounded-3xl bg-[var(--workers-bg)] shadow transition-all duration-300 ease-out will-change-transform hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] lg:min-w-0"
               >
-                <div className="relative h-44 w-full rounded-b-3xl rounded-t-3xl">
+                <div className="relative h-44 w-full overflow-hidden rounded-t-3xl">
                   <Image
                     src={project.image}
                     alt={project.content.card.title}
                     fill
-                    className="rounded-t-3xl object-cover"
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 260px, 25vw"
                   />
-                  <span className="absolute right-2 top-0 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1e1e1e] px-3 py-1.5 text-xs font-semibold text-[#FDE3AC] lg:right-3 lg:px-4 lg:py-2 lg:text-sm">
+
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
+
+                  <span className="absolute right-3 top-3 max-w-[calc(100%-24px)] truncate whitespace-nowrap rounded-full bg-[#1e1e1e] px-3 py-1.5 text-xs font-semibold text-[#FDE3AC] shadow-[0_4px_18px_rgba(0,0,0,0.25)] lg:px-4 lg:py-2 lg:text-sm">
                     {project.content.card.category}
                   </span>
                 </div>
 
-                <div className="p-4 lg:p-5">
-                  <h3 className="mb-2 text-xl font-bold text-[var(--foreground)] lg:text-2xl">
+                <div className="flex flex-1 flex-col p-4 lg:p-5">
+                  <h3 className="mb-2 text-xl font-bold leading-tight text-[var(--foreground)] lg:text-2xl">
                     {project.content.card.title}
                   </h3>
-                  <p className="mb-4 text-lg font-medium leading-9 text-zinc-500 lg:mb-5">
+
+                  <p className="mb-5 text-base font-medium leading-7 text-zinc-500 lg:text-lg lg:leading-8">
                     {project.content.card.description}
                   </p>
 
-                  <div className="flex items-end justify-between gap-2">
-                    <div className="flex items-center gap-2 rounded-2xl bg-[var(--projects-span-bg)] px-4 py-2">
-                      <p className="text-sm text-zinc-400 lg:text-sm">{t("priceLabel")}</p>
-                      <p className="text-xl font-medium text-[var(--foreground)] lg:text-2xl">
-                        {project.content.card.price}
+                  <div className="mt-auto flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-2xl bg-[var(--projects-span-bg)] px-3 py-3">
+                      <p className="shrink-0 text-xs leading-none text-zinc-400 lg:text-sm">
+                        {t("priceLabel")}
                       </p>
-                    </div>
+
+    <p className="min-w-0 whitespace-nowrap text-[20px] font-medium leading-none text-[var(--foreground)] lg:text-[22px]">
+      {project.content.card.price.replace(/\bEUR\b/g, "€")}
+    </p>
+  </div>
+
                     <span
-                      className="grid h-12 w-12 place-items-center rounded-full bg-[#9ab5f6] text-4xl text-zinc-800 lg:h-10 lg:w-10 lg:text-2xl"
+                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#9ab5f6] text-xl text-zinc-800"
                       aria-label={t("openProject")}
                     >
                       <span aria-hidden>{"\u2197"}</span>
@@ -80,6 +92,7 @@ export default function Projects() {
         >
           <span aria-hidden>{"\u2190"}</span>
         </button>
+
         <button
           type="button"
           aria-label={t("nextSlide")}

@@ -1,14 +1,14 @@
 "use client";
 
 import { AdminAuthGuard } from "@/app/components/admin/admin-auth-guard";
+import { BlogManager } from "@/app/components/admin/blog-manager";
 import { AdminShell } from "@/app/components/admin/admin-shell";
-import { Column } from "@/app/components2/column/column";
 
-export default function AdminPage() {
+export default function AdminBlogPage() {
   return (
     <AdminAuthGuard>
       <AdminShell>
-        <Column />
+        <BlogManager />
       </AdminShell>
     </AdminAuthGuard>
   );
