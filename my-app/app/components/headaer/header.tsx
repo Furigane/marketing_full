@@ -47,7 +47,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const localeBase = String(locale).split("-")[0].toLowerCase();
 
   const navLinks = [
-    { label: t('team'), href: "/team" },
+    { label: t('team'), href: "/main-page#specialists" },
     { label: t('services'), href: "/services" },
     { label: t('projects'), href: "/projects" },
     { label: t('connect'), href: "/connect" },

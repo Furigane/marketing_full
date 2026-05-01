@@ -213,7 +213,7 @@ export default function Workers() {
   const canNext = index < maxIndex;
 
   return (
-    <section className="mt-6 py-6 md:py-8">
+    <section className="mt-6 py-6 md:py-8" id="specialists">
       <h2 className="mb-6 px-3 text-center text-3xl font-extrabold text-[var(--workers-title)] md:mb-8 md:px-6 md:text-4xl lg:px-8">
         {t("title")}
       </h2>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import { socialIconSrc, useIsDarkTheme } from "@/lib/social-icons";
+import { cursorTo } from "readline";
 
 const HERO_VIDEO_LIGHT_FILE = "Untitled design (2).mp4";
 
@@ -181,22 +182,26 @@ export default function Hero() {
             </span>
           </h2>
           <p className="mb-3 text-sm leading-snug text-[var(--design-text)] sm:mb-4 sm:text-base">{t("text")}</p>
-          <button className="flex w-full items-center justify-center gap-2 rounded-full bg-[#acc2fd] px-4 py-2.5 text-base text-[var(--hero-button)] hover:bg-[#9fb8fc] sm:w-auto sm:px-5 sm:py-3 sm:text-lg lg:px-4 lg:text-base">
-            <Image
-              src="/svg/solar_calculator-broken.svg"
-              alt="calculator"
-              width={20}
-              height={20}
-            />
-            {t("button")}
-          </button>
+          <Link href="" style={{ display: "inline-block" }}>
+            <button style={{ cursor: "pointer" }} className="flex w-full items-center justify-center gap-2 rounded-full bg-[#acc2fd] px-4 py-2.5 text-base text-[var(--hero-button)] hover:bg-[#9fb8fc] sm:w-auto sm:px-5 sm:py-3 sm:text-lg lg:px-4 lg:text-base">
+              <Image
+                src="/svg/solar_calculator-broken.svg"
+                alt="calculator"
+                width={20}
+                height={20}
+              />
+              {t("button")}
+            </button>
+          </Link>
+          
         </div>
       </div>
 
       <div className="mt-4 flex justify-center sm:justify-end lg:absolute lg:bottom-4 lg:right-8 lg:mt-0">
         <div className="flex items-center gap-2">
           <Link
-            href="#"
+            href="https://www.instagram.com/ie.group.creative?igsh=Z29tYW0wMXN3dWxy"
+            target="_blank"
             aria-label="Instagram"
             className="grid place-items-center rounded-full text-[10px] text-white"
           >
@@ -208,7 +213,8 @@ export default function Hero() {
             />
           </Link>
           <Link
-            href="#"
+            href="https://t.me/lazzurr"
+            target="_blank"
             aria-label="Telegram"
             className="grid place-items-center rounded-full text-[10px] text-white"
           >
@@ -220,13 +226,14 @@ export default function Hero() {
             />
           </Link>
           <Link
-            href="#"
-            aria-label="Viber"
+            href="https://wa.me/352621751984"
+            target="_blank"
+            aria-label="Whatsapp"
             className="grid place-items-center rounded-full text-[10px] text-white"
           >
             <Image
               src={socialIconSrc(isDarkTheme, "viber")}
-              alt="Viber"
+              alt="Whatsapp"
               width={30}
               height={30}
             />
