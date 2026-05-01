@@ -13,7 +13,8 @@
       "blogPage": "Blog",
       "latestPosts": "Beiträge",
       "contactPage": "Kontakt",
-      "contactChannels": "Kontaktwege"
+      "contactChannels": "Kontaktwege",
+      "thankYouPage": "Danke"
     }
   },
   "hero": {
@@ -121,7 +122,7 @@
     "left": {
       "titleTop": "Sie wissen nicht,",
       "titleBottom": "wo Sie anfangen sollen?",
-      "description": "Wenn Sie noch nicht wissen, wen Sie ins Team holen möchten, hinterlassen Sie eine Anfrage für ein Gespräch mit einem Marketer.",
+      "description": "Fordern Sie eine kostenlose Überprüfung Ihrer Aufgabe durch unseren Marketingexperten an.",
       "free": "Es ist kostenlos.",
       "illustrationAlt": "Dienstleistungsillustration",
       "tags": {
@@ -356,6 +357,9 @@
         "label": "Telegram"
       }
     }
+  },
+  "thankYouPage": {
+    "message": "Vielen Dank für Ihre Anfrage, unser Manager wird Sie in Kürze kontaktieren."
   },
   "footer": {
     "quoteBold": "Wir sind bereit, für Sie zu arbeiten,",

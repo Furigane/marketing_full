@@ -13,7 +13,8 @@
       "blogPage": "Blog",
       "latestPosts": "Articles",
       "contactPage": "Contact",
-      "contactChannels": "Canaux de contact"
+      "contactChannels": "Canaux de contact",
+      "thankYouPage": "Merci"
     }
   },
   "hero": {
@@ -121,7 +122,7 @@
     "left": {
       "titleTop": "Vous ne savez pas",
       "titleBottom": "par où commencer ?",
-      "description": "Si vous ne savez pas encore qui engager dans votre équipe, laissez une demande pour parler avec un marketeur.",
+      "description": "Demandez un audit gratuit de votre tâche auprès de notre spécialiste marketing.",
       "free": "C'est gratuit.",
       "illustrationAlt": "Illustration des services",
       "tags": {
@@ -356,6 +357,9 @@
         "label": "Telegram"
       }
     }
+  },
+  "thankYouPage": {
+    "message": "Merci pour votre demande, notre responsable vous contactera bientôt."
   },
   "footer": {
     "quoteBold": "Nous sommes prêts à travailler pour vous,",

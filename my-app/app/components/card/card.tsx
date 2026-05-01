@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+import { useRouter } from "@/i18n/navigation";
 import { PUBLIC_LEADS_PROXY_BASE } from "@/lib/public-leads-proxy";
 import { socialIconSrc, useIsDarkTheme } from "@/lib/social-icons";
 
@@ -30,6 +31,7 @@ type CardProps = {
 
 export default function Card({ embedded = false }: CardProps) {
   const t = useTranslations("cardSection");
+  const router = useRouter();
   const isDarkTheme = useIsDarkTheme();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -37,12 +39,10 @@ export default function Card({ embedded = false }: CardProps) {
   const [contact, setContact] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [submitSuccess, setSubmitSuccess] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitError("");
-    setSubmitSuccess("");
 
     if (!name.trim() || !email.trim() || !contact.trim()) {
       setSubmitError(t("errors.requiredFields"));
@@ -71,11 +71,11 @@ export default function Card({ embedded = false }: CardProps) {
         throw new Error(detail);
       }
 
-      setSubmitSuccess(t("success.submitted"));
       setName("");
       setEmail("");
       setContact("");
       setContactType("telegram");
+      router.push("/thank-you");
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : t("errors.unknown"));
     } finally {
@@ -108,7 +108,7 @@ export default function Card({ embedded = false }: CardProps) {
             </h3>
             <p className="max-w-md text-lg font-medium leading-7 text-[var(--foreground)]">
               {t("left.description")}{" "}
-              <span className="font-semibold text-[var(--foreground)]">{t("left.free")}</span>
+              <span className="font-semibold rounded-full bg-[#f5c765] px-2 py-0.5 sm:py-0 lg:px-3 text-[var(--foreground)]">{t("left.free")}</span>
             </p>
 
             <div className="mt-8 rounded-2xl  p-4">
@@ -268,10 +268,6 @@ export default function Card({ embedded = false }: CardProps) {
                   : "border-[color:var(--foreground)]/20 focus:border-[var(--design-btn)]"
               }`}
             />
-
-            {submitSuccess ? (
-              <p className="mb-4 text-sm text-emerald-600">{submitSuccess}</p>
-            ) : null}
 
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:flex-wrap sm:gap-6">
               <button

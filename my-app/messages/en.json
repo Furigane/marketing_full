@@ -13,7 +13,8 @@
       "blogPage": "Blog",
       "latestPosts": "Latest Posts",
       "contactPage": "Contact",
-      "contactChannels": "Contact Channels"
+      "contactChannels": "Contact Channels",
+      "thankYouPage": "Thank You"
     }
   },
   "hero": {
@@ -121,7 +122,7 @@
     "left": {
       "titleTop": "Not sure",
       "titleBottom": "where to start?",
-      "description": "If you are not sure who you want to hire for your team yet, leave a request to talk with a marketer.",
+      "description": "Request a free audit of your task with our marketer.",
       "free": "It's free.",
       "illustrationAlt": "Services illustration",
       "tags": {
@@ -356,6 +357,9 @@
         "label": "Telegram"
       }
     }
+  },
+  "thankYouPage": {
+    "message": "Thank you for your request, our manager will contact you soon."
   },
   "footer": {
     "quoteBold": "We're ready to work for you,",

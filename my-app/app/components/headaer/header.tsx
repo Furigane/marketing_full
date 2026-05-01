@@ -103,6 +103,9 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     if (pathname === "/contact" || pathname === "/connect") {
       return `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.contactChannels")}`;
     }
+    if (pathname === "/thank-you") {
+      return `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.thankYouPage")}`;
+    }
 
     return t("breadcrumbs.mainPage");
   }
