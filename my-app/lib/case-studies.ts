@@ -1,9 +1,11 @@
 import type { ServiceId } from "@/lib/services";
+import { CASE_STUDY_RU_CARD_OVERRIDES } from "@/lib/case-study-ru-overrides";
 import { getDefaultContentLocale, normalizeSiteLocale } from "@/lib/site-locales";
 import {
   deepMergeTranslationValue,
   getTranslationOverrideStoreSync,
 } from "@/lib/site-translation-runtime";
+import { repairEncodedTree } from "@/lib/text-encoding";
 
 export type SupportedCaseStudyLocale = "en" | "ru";
 
@@ -364,13 +366,29 @@ export function getLocalizedCaseStudy(caseStudy: CaseStudyDefinition, locale: st
   const normalizedLocale = normalizeSiteLocale(locale);
   const baseLocale = getDefaultContentLocale(locale);
   const overrides = getTranslationOverrideStoreSync();
+  const repairedContent = repairEncodedTree(
+    deepMergeTranslationValue(
+      caseStudy.locale[baseLocale],
+      overrides.caseStudies[caseStudy.id]?.[normalizedLocale]
+    )
+  );
+
+  const cardOverride =
+    normalizedLocale === "ru"
+      ? CASE_STUDY_RU_CARD_OVERRIDES[caseStudy.id]
+      : null;
 
   return {
     ...caseStudy,
-    content: deepMergeTranslationValue(
-      caseStudy.locale[baseLocale],
-      overrides.caseStudies[caseStudy.id]?.[normalizedLocale]
-    ),
+    content: {
+      ...repairedContent,
+      card: cardOverride
+        ? {
+            ...repairedContent.card,
+            ...cardOverride,
+          }
+        : repairedContent.card,
+    },
   };
 }
 

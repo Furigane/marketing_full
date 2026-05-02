@@ -11,6 +11,8 @@ import {
   deepMergeTranslationValue,
   getTranslationOverrideStoreSync,
 } from "@/lib/site-translation-runtime";
+import { getServiceTitleOverride } from "@/lib/service-title-overrides";
+import { repairEncodedTree } from "@/lib/text-encoding";
 
 export function getLocalizedService(service: ServiceDefinition, locale: string) {
   const base = getBaseLocalizedService(service, locale);
@@ -19,10 +21,17 @@ export function getLocalizedService(service: ServiceDefinition, locale: string) 
 
   return {
     ...base,
-    content: deepMergeTranslationValue(
-      base.content,
-      overrides.services[service.id]?.[normalizedLocale]
-    ),
+    content: {
+      ...repairEncodedTree(
+        deepMergeTranslationValue(
+          base.content,
+          overrides.services[service.id]?.[normalizedLocale]
+        )
+      ),
+      title:
+        getServiceTitleOverride(locale, service.section, service.id) ??
+        base.content.title,
+    },
   };
 }
 

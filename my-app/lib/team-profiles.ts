@@ -3,6 +3,7 @@ import {
   deepMergeTranslationValue,
   getTranslationOverrideStoreSync,
 } from "@/lib/site-translation-runtime";
+import { repairEncodedTree } from "@/lib/text-encoding";
 import { type TeamRoleType } from "@/lib/team-members";
 
 type SupportedProfileLocale = "en" | "ru";
@@ -658,8 +659,10 @@ export function getTeamProfileContent(locale: string, roleType: TeamRoleType) {
   const baseLocale = getProfileLocale(locale);
   const overrides = getTranslationOverrideStoreSync();
 
-  return deepMergeTranslationValue(
-    TEAM_ROLE_CONTENT[baseLocale][roleType],
-    overrides.teamProfiles[roleType]?.[normalizedLocale]
+  return repairEncodedTree(
+    deepMergeTranslationValue(
+      TEAM_ROLE_CONTENT[baseLocale][roleType],
+      overrides.teamProfiles[roleType]?.[normalizedLocale]
+    )
   );
 }
