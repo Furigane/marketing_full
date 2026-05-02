@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, LogOut, Newspaper } from "lucide-react";
+import { Languages, LayoutDashboard, LogOut, Newspaper } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
 import { Link } from "@/i18n/navigation";
@@ -12,12 +12,17 @@ interface SidebarProps {
   onLogout: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, closeMobile, onLogout }) => {
+export const Sidebar: React.FC<SidebarProps> = ({
+  isMobileOpen,
+  closeMobile,
+  onLogout,
+}) => {
   const pathname = usePathname();
 
   const menuItems = [
     { href: "/admin", label: "Заявки", icon: LayoutDashboard },
     { href: "/admin/blog", label: "Блог", icon: Newspaper },
+    { href: "/admin/translations", label: "Переводы", icon: Languages },
   ];
 
   return (

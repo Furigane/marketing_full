@@ -1,47 +1,11 @@
-export const DEFAULT_TEAM_MEMBER_ID = "anastasia" as const;
-
-export const TEAM_MEMBERS = [
-  {
-    id: "anastasia",
-    image: "/img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
-    roleType: "designer",
-  },
-  {
-    id: "alexey",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
-    roleType: "targeting",
-  },
-  {
-    id: "maria",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
-    roleType: "smm",
-  },
-  {
-    id: "arina",
-    image: "/img/workers/dawda.jpg",
-    roleType: "seo",
-  },
-  {
-    id: "vyacheslav",
-    image: "/img/workers/beautifull-caucasiany-hair-smiles-isolated 1.jpg",
-    roleType: "targeting",
-  },
-  {
-    id: "ivan",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
-    roleType: "manager",
-  },
-  {
-    id: "elizaveta",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
-    roleType: "content",
-  },
-] as const;
+import { getDefaultContentLocale, normalizeSiteLocale } from "@/lib/site-locales";
+import {
+  deepMergeTranslationValue,
+  getTranslationOverrideStoreSync,
+} from "@/lib/site-translation-runtime";
+import { type TeamRoleType } from "@/lib/team-members";
 
 type SupportedProfileLocale = "en" | "ru";
-type TeamRoleType = (typeof TEAM_MEMBERS)[number]["roleType"];
-
-export type TeamMemberId = (typeof TEAM_MEMBERS)[number]["id"];
 
 export type TeamProfileFeature = {
   badge: string;
@@ -63,7 +27,7 @@ export type TeamProfileContent = {
   detailItems: TeamProfileDetail[];
 };
 
-const TEAM_ROLE_CONTENT: Record<
+export const TEAM_ROLE_CONTENT: Record<
   SupportedProfileLocale,
   Record<TeamRoleType, TeamProfileContent>
 > = {
@@ -685,14 +649,17 @@ const TEAM_ROLE_CONTENT: Record<
   },
 };
 
-export function getTeamMember(id: string) {
-  return TEAM_MEMBERS.find((member) => member.id === id);
-}
-
 export function getProfileLocale(locale: string): SupportedProfileLocale {
-  return locale.toLowerCase().startsWith("ru") ? "ru" : "en";
+  return getDefaultContentLocale(locale);
 }
 
 export function getTeamProfileContent(locale: string, roleType: TeamRoleType) {
-  return TEAM_ROLE_CONTENT[getProfileLocale(locale)][roleType];
+  const normalizedLocale = normalizeSiteLocale(locale);
+  const baseLocale = getProfileLocale(locale);
+  const overrides = getTranslationOverrideStoreSync();
+
+  return deepMergeTranslationValue(
+    TEAM_ROLE_CONTENT[baseLocale][roleType],
+    overrides.teamProfiles[roleType]?.[normalizedLocale]
+  );
 }

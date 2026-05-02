@@ -1,8 +1,4 @@
-import {
-  getLocalizedService,
-  getServiceById,
-  type ServiceId,
-} from "@/lib/services";
+import { getServiceById, type ServiceId } from "@/lib/services";
 
 export const BLOG_LOCALES = ["ru", "en", "fr", "de", "ar"] as const;
 
@@ -169,12 +165,11 @@ function parseParagraphParts(text: string): BlogContentPart[] {
     const serviceId = match[1] as ServiceId;
     const service = getServiceById(serviceId);
     if (service) {
-      const localized = getLocalizedService(service, "en");
       parts.push({
         type: "service-link",
         serviceId,
         slug: service.slug,
-        label: match[2]?.trim() || localized.content.title,
+        label: match[2]?.trim() || service.locale.en.title,
       });
     } else {
       parts.push({

@@ -4,7 +4,7 @@ import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import OptimizedImage from "@/app/components/shared/optimized-image";
-import { TEAM_MEMBERS } from "@/lib/team-profiles";
+import { TEAM_MEMBERS } from "@/lib/team-members";
 
 function countFullCards(rowWidthPx: number, cardW: number, gap: number): number {
   if (rowWidthPx <= 0 || cardW <= 0) return 1;

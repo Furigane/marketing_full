@@ -7,7 +7,8 @@ import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
-import { getLocalizedService, getServiceById, type ServiceId } from "@/lib/services";
+import { getServiceById, type ServiceId } from "@/lib/services";
+import { getLocalizedService } from "@/lib/services-localized";
 import type { TeamProfileContent } from "@/lib/team-profiles";
 
 type TeamProfilePageProps = {

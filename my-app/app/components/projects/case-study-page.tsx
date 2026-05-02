@@ -8,7 +8,7 @@ import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import { getLocalizedCaseStudy, type CaseStudyDefinition } from "@/lib/case-studies";
-import { TEAM_MEMBERS } from "@/lib/team-profiles";
+import { TEAM_MEMBERS } from "@/lib/team-members";
 
 type CaseStudyPageProps = {
   caseStudy: CaseStudyDefinition;

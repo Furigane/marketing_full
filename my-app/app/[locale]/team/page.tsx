@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
-import {
-  DEFAULT_TEAM_MEMBER_ID,
-  getTeamMember,
-  getTeamProfileContent,
-} from "@/lib/team-profiles";
+import { getTeamProfileContent } from "@/lib/team-profiles";
+import { DEFAULT_TEAM_MEMBER_ID, getTeamMember } from "@/lib/team-members";
 import type { ServiceId } from "@/lib/services";
 import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
 

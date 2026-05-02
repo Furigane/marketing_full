@@ -3,7 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
-import { TEAM_MEMBERS, getTeamMember, getTeamProfileContent } from "@/lib/team-profiles";
+import { getTeamProfileContent } from "@/lib/team-profiles";
+import { TEAM_MEMBERS, getTeamMember } from "@/lib/team-members";
 import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
 import type { ServiceId } from "@/lib/services";
 

@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
-import { getLocalizedService, getServiceById, getRelatedServices, type ServiceId } from "@/lib/services";
+import { getServiceById, type ServiceId } from "@/lib/services";
+import { getLocalizedService, getRelatedServices } from "@/lib/services-localized";
 
 type RelatedServicesSectionProps = {
   currentServiceId?: ServiceId;

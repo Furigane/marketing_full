@@ -1,4 +1,9 @@
 import type { ServiceId } from "@/lib/services";
+import { getDefaultContentLocale, normalizeSiteLocale } from "@/lib/site-locales";
+import {
+  deepMergeTranslationValue,
+  getTranslationOverrideStoreSync,
+} from "@/lib/site-translation-runtime";
 
 export type SupportedCaseStudyLocale = "en" | "ru";
 
@@ -347,10 +352,6 @@ const CASE_STUDIES: CaseStudyDefinition[] = [
   },
 ];
 
-function normalizeLocale(locale: string): SupportedCaseStudyLocale {
-  return locale.toLowerCase().startsWith("ru") ? "ru" : "en";
-}
-
 export function getCaseStudies() {
   return CASE_STUDIES;
 }
@@ -360,9 +361,16 @@ export function getCaseStudyBySlug(slug: string) {
 }
 
 export function getLocalizedCaseStudy(caseStudy: CaseStudyDefinition, locale: string) {
+  const normalizedLocale = normalizeSiteLocale(locale);
+  const baseLocale = getDefaultContentLocale(locale);
+  const overrides = getTranslationOverrideStoreSync();
+
   return {
     ...caseStudy,
-    content: caseStudy.locale[normalizeLocale(locale)],
+    content: deepMergeTranslationValue(
+      caseStudy.locale[baseLocale],
+      overrides.caseStudies[caseStudy.id]?.[normalizedLocale]
+    ),
   };
 }
 

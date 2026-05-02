@@ -1,7 +1,7 @@
 import { getPostTranslation, normalizeBlogLocale } from "@/lib/blog";
 import { getPublishedBlogPosts } from "@/lib/blog-store";
 import { getLocalizedCaseStudies } from "@/lib/case-studies";
-import { getLocalizedServices } from "@/lib/services";
+import { getLocalizedServices } from "@/lib/services-localized";
 
 export type SearchResultType = "service" | "project" | "blog";
 

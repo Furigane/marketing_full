@@ -1,3 +1,5 @@
+import { getDefaultContentLocale } from "@/lib/site-locales";
+
 export const SERVICE_SECTIONS = ["popular", "middle", "rare"] as const;
 
 export type ServiceSectionId = (typeof SERVICE_SECTIONS)[number];
@@ -863,10 +865,6 @@ const SERVICE_DEFINITIONS: ServiceDefinition[] = [
   },
 ];
 
-function normalizeLocale(locale: string): SupportedServiceLocale {
-  return locale.toLowerCase().startsWith("ru") ? "ru" : "en";
-}
-
 export function getServiceDefinitions() {
   return SERVICE_DEFINITIONS;
 }
@@ -880,9 +878,11 @@ export function getServiceBySlug(slug: string) {
 }
 
 export function getLocalizedService(service: ServiceDefinition, locale: string) {
+  const baseLocale = getDefaultContentLocale(locale);
+
   return {
     ...service,
-    content: service.locale[normalizeLocale(locale)],
+    content: service.locale[baseLocale],
   };
 }
 

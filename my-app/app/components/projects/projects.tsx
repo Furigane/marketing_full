@@ -1,6 +1,4 @@
-"use client";
-
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import { Link } from "@/i18n/navigation";
@@ -10,9 +8,11 @@ type ProjectsProps = {
   variant?: "featured" | "catalog";
 };
 
-export default function Projects({ variant = "featured" }: ProjectsProps) {
-  const t = useTranslations("portfolio");
-  const locale = useLocale();
+export default async function Projects({ variant = "featured" }: ProjectsProps) {
+  const [t, locale] = await Promise.all([
+    getTranslations("portfolio"),
+    getLocale(),
+  ]);
   const projects = getLocalizedCaseStudies(locale);
   const isCatalog = variant === "catalog";
 
