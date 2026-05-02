@@ -5,6 +5,7 @@ import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import { TEAM_MEMBERS } from "@/lib/team-profiles";
@@ -116,11 +117,13 @@ export default async function ServiceDetailPage({
                 className="rounded-[1.75rem] border border-zinc-200/70 bg-[var(--background)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
               >
                 <div className="relative mb-4 h-40 overflow-hidden rounded-[1.4rem]">
-                  <Image
+                  <OptimizedImage
                     src={specialist.image}
                     alt={specialist.name}
-                    fill
-                    className="object-cover object-top"
+                    width={500}
+                    height={500}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-[var(--foreground)]">

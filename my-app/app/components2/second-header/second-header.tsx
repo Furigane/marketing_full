@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bell, Menu, Moon, Search, Sun } from 'lucide-react';
+import OptimizedImage from "@/app/components/shared/optimized-image";
 // import { User } from '../types';
 
 export interface User {
@@ -68,9 +69,11 @@ export const SecondHeader: React.FC<HeaderProps> = ({ user, toggleTheme, isDark,
                 {user.role}
               </div>
             </div>
-            <img 
-              src={user.avatar} 
-              alt={user.name} 
+            <OptimizedImage
+              src={user.avatar}
+              alt={user.name}
+              width={36}
+              height={36}
               className="h-9 w-9 rounded-full border border-black/10 bg-[var(--background)] object-cover"
             />
           </div>

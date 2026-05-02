@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 
 /**
  * Ручная раскладка шагов — меняйте только здесь.
@@ -192,7 +192,7 @@ export default function Work() {
 
         {/* Центр: иллюстрация */}
         <div className="absolute left-1/2 top-1/2 z-10 w-[min(46%,210px)] -translate-x-1/2 -translate-y-1/2 md:w-[350px]">
-          <Image
+          <OptimizedImage
             src="/img/Group%2076%20(1)%201.png"
             alt={t("illustrationAlt")}
             width={512}

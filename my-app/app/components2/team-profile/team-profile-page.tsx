@@ -5,6 +5,7 @@ import Header from "@/app/components/headaer/header";
 import Footer from "@/app/components/footer/footer";
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { getLocalizedService, getServiceById, type ServiceId } from "@/lib/services";
 import type { TeamProfileContent } from "@/lib/team-profiles";
@@ -53,7 +54,7 @@ export default function TeamProfilePage({
           <section className="relative pb-12 pt-6 md:pb-16">
             <div className="flex flex-col-reverse gap-4 md:flex-row md:items-center md:gap-8">
               <div className="flex w-full justify-start md:w-[40%] md:flex-shrink-0">
-                <Image
+                <OptimizedImage
                   src={image}
                   alt={imageAlt}
                   width={600}

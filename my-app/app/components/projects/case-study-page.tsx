@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import { getLocalizedCaseStudy, type CaseStudyDefinition } from "@/lib/case-studies";
@@ -79,11 +79,14 @@ export default async function CaseStudyPage({
               </div>
 
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] md:h-[420px]">
-                <Image
+                <OptimizedImage
                   src={caseStudy.image}
                   alt={localizedCaseStudy.content.card.title}
-                  fill
-                  className="object-cover"
+                  width={1200}
+                  height={900}
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="h-full w-full object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -142,11 +145,13 @@ export default async function CaseStudyPage({
                 className="rounded-[1.75rem] border border-zinc-200/70 bg-[var(--background)] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
               >
                 <div className="relative mb-4 h-36 overflow-hidden rounded-[1.4rem]">
-                  <Image
+                  <OptimizedImage
                     src={specialist.image}
                     alt={specialist.name}
-                    fill
-                    className="object-cover object-top"
+                    width={500}
+                    height={500}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
                 <h3 className="text-lg font-semibold text-[var(--foreground)]">
@@ -172,11 +177,13 @@ export default async function CaseStudyPage({
                   index === 0 ? "col-span-2 row-span-2 min-h-[280px] md:min-h-[420px]" : "min-h-[180px] md:min-h-[200px]"
                 }`}
               >
-                <Image
+                <OptimizedImage
                   src={src}
                   alt={`${localizedCaseStudy.content.card.title} ${index + 1}`}
-                  fill
-                  className="object-cover"
+                  width={1200}
+                  height={900}
+                  sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
+                  className="h-full w-full object-cover"
                 />
               </article>
             ))}

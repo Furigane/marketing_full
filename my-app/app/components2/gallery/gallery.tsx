@@ -1,4 +1,4 @@
-import Image from "next/image";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 
 const images = [
   "/img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.png",
@@ -23,19 +23,19 @@ export default function Gallery() {
 
       <div className="hidden gap-4 md:grid md:grid-cols-[1.35fr_1fr_1fr] md:grid-rows-2">
         <article className="relative row-span-2 min-h-[520px] overflow-hidden rounded-3xl bg-zinc-200">
-          <Image src={images[0]} alt="gallery 1" fill className="object-cover" />
+          <OptimizedImage src={images[0]} alt="gallery 1" width={1200} height={900} sizes="(max-width: 768px) 100vw, 45vw" className="h-full w-full object-cover" />
         </article>
         <article className="relative min-h-[250px] overflow-hidden rounded-3xl bg-zinc-200">
-          <Image src={images[1]} alt="gallery 2" fill className="object-cover" />
+          <OptimizedImage src={images[1]} alt="gallery 2" width={1200} height={900} sizes="(max-width: 768px) 100vw, 27vw" className="h-full w-full object-cover" />
         </article>
         <article className="relative min-h-[250px] overflow-hidden rounded-3xl bg-zinc-200">
-          <Image src={images[2]} alt="gallery 3" fill className="object-cover" />
+          <OptimizedImage src={images[2]} alt="gallery 3" width={1200} height={900} sizes="(max-width: 768px) 100vw, 27vw" className="h-full w-full object-cover" />
         </article>
         <article className="relative min-h-[250px] overflow-hidden rounded-3xl bg-zinc-200">
-          <Image src={images[3]} alt="gallery 4" fill className="object-cover" />
+          <OptimizedImage src={images[3]} alt="gallery 4" width={1200} height={900} sizes="(max-width: 768px) 100vw, 27vw" className="h-full w-full object-cover" />
         </article>
         <article className="relative min-h-[250px] overflow-hidden rounded-3xl bg-zinc-200">
-          <Image src={images[4]} alt="gallery 5" fill className="object-cover" />
+          <OptimizedImage src={images[4]} alt="gallery 5" width={1200} height={900} sizes="(max-width: 768px) 100vw, 27vw" className="h-full w-full object-cover" />
         </article>
       </div>
 
@@ -45,7 +45,7 @@ export default function Gallery() {
             key={`${src}-${idx}`}
             className="relative min-h-[170px] overflow-hidden rounded-3xl bg-zinc-200"
           >
-            <Image src={src} alt={`gallery mobile ${idx + 1}`} fill className="object-cover" />
+            <OptimizedImage src={src} alt={`gallery mobile ${idx + 1}`} width={1200} height={900} sizes="50vw" className="h-full w-full object-cover" />
           </article>
         ))}
       </div>

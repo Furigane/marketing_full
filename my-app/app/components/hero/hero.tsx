@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { socialIconSrc, useIsDarkTheme } from "@/lib/social-icons";
 
 /** GIF нельзя рендерить через <video>, поэтому тип источника определяем по расширению. */
@@ -102,12 +103,13 @@ export default function Hero() {
           <div className={HERO_MEDIA_OUTER}>
             <div className={HERO_MEDIA_FRAME}>
               {videoBroken ? (
-                <Image
+                <OptimizedImage
                   src={posterSrc}
                   alt={t("videoAria")}
-                  fill
+                  width={900}
+                  height={900}
                   sizes={HERO_IMAGE_SIZES}
-                  className="object-contain"
+                  className="h-full w-full object-contain"
                   priority
                 />
               ) : heroMediaIsGif ? (

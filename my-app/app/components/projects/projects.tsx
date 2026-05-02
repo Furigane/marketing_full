@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { Link } from "@/i18n/navigation";
 import { getLocalizedCaseStudies } from "@/lib/case-studies";
 
@@ -94,11 +94,13 @@ export default function Projects({ variant = "featured" }: ProjectsProps) {
                 </div>
 
                 <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-[28px]">
-                  <Image
+                  <OptimizedImage
+                    assetId={`project-${project.id}`}
                     src={project.image}
                     alt={project.content.card.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.05]"
+                    width={1200}
+                    height={750}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent" />
@@ -171,11 +173,13 @@ export default function Projects({ variant = "featured" }: ProjectsProps) {
                 className="flex min-w-[260px] snap-start flex-col overflow-hidden rounded-3xl bg-[var(--workers-bg)] shadow transition-all duration-300 ease-out will-change-transform hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] lg:min-w-0"
               >
                 <div className="relative h-44 w-full overflow-hidden rounded-t-3xl">
-                  <Image
+                  <OptimizedImage
+                    assetId={`project-${project.id}`}
                     src={project.image}
                     alt={project.content.card.title}
-                    fill
-                    className="object-cover"
+                    width={1200}
+                    height={750}
+                    className="h-full w-full object-cover"
                     sizes="(max-width: 1024px) 260px, 25vw"
                   />
 

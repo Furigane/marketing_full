@@ -2,18 +2,20 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
- "scripts": { 
-  "dev": "next dev -p 4000 --webpack",
-  "build": "next build",
-  "start": "next start -p 4000",
-  "lint": "eslint"
-},  
+  "scripts": {
+    "dev": "next dev -p 4000 --webpack",
+    "optimize:images": "node scripts/optimize-images.js",
+    "build": "npm run optimize:images && next build --webpack",
+    "start": "next start -p 4000",
+    "lint": "eslint"
+  },
   "dependencies": {
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "next-intl": "^4.8.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {

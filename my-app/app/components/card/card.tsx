@@ -1,13 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { useRouter } from "@/i18n/navigation";
 import { PUBLIC_LEADS_PROXY_BASE } from "@/lib/public-leads-proxy";
 import { socialIconSrc, useIsDarkTheme } from "@/lib/social-icons";
+import Image from "next/image";
 
 const CARD_ILLUSTRATION_LIGHT = "/img/Frame189(1)1.png";
 const CARD_ILLUSTRATION_DARK = `/img/${encodeURIComponent("Frame 189 (1) 1 (1).png")}`;
@@ -113,7 +114,8 @@ export default function Card({ embedded = false }: CardProps) {
 
             <div className="mt-8 rounded-2xl  p-4">
               <div className="mb-4 grid h-[250px] place-items-center overflow-hidden rounded-xl">
-                <Image
+                <OptimizedImage
+                  assetId={isDarkTheme ? "card-illustration-dark" : "card-illustration-light"}
                   src={isDarkTheme ? CARD_ILLUSTRATION_DARK : CARD_ILLUSTRATION_LIGHT}
                   alt={t("left.illustrationAlt")}
                   width={500}

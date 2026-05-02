@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { TEAM_MEMBERS } from "@/lib/team-profiles";
 
 function countFullCards(rowWidthPx: number, cardW: number, gap: number): number {
@@ -47,12 +47,13 @@ function WorkerCard({
       aria-label={`${t("openProfile")}: ${worker.name}`}
     >
       <div className={photoShell}>
-        <Image
+        <OptimizedImage
           src={worker.image}
           alt={worker.name}
-          fill
+          width={500}
+          height={500}
           sizes={imageSizes}
-          className="object-cover object-top"
+          className="h-full w-full object-cover object-top"
         />
         <span
           className={

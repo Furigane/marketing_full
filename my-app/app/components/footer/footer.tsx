@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 
 const navLinks = [
   { key: "team" as const, href: "/team" },
@@ -54,11 +55,13 @@ export default function Footer() {
                   idx === 0 ? "" : "-ml-2 md:-ml-3"
                 }`}
               >
-                <Image
+                <OptimizedImage
                   src="/img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.png"
                   alt={t("memberAlt")}
-                  fill
-                  className="object-cover"
+                  width={240}
+                  height={240}
+                  sizes="56px"
+                  className="h-full w-full object-cover"
                 />
               </div>
             ))}

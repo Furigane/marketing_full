@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { useSocialIconSrc } from "@/lib/social-icons";
 
 export default function Design() {
@@ -13,7 +14,7 @@ export default function Design() {
     <section className="relative pb-12 pt-6 md:pb-16">
       <div className="flex flex-col-reverse gap-4 md:flex-row md:items-center md:gap-8">
         <div className="flex w-full justify-start md:w-[40%] md:flex-shrink-0">
-          <Image
+          <OptimizedImage
             src="/img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1 (2) 1.png"
             alt={t("imageAlt")}
             width={600}

@@ -4,6 +4,7 @@ import { type FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import OptimizedImage from "@/app/components/shared/optimized-image";
 import { socialIconSrc } from "@/lib/social-icons";
 import { Search } from "lucide-react";
 
@@ -430,7 +431,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
           </button>
 
           <div className="mt-10 flex justify-center opacity-[0.18] dark:opacity-25">
-            <Image
+            <OptimizedImage
               src={
                 isDark
                   ? `/img/${encodeURIComponent("Mask group (1).png")}`

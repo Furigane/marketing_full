@@ -1,0 +1,729 @@
+{
+  "card-illustration-dark": {
+    "id": "card-illustration-dark",
+    "originalFile": "card-illustration-dark.png",
+    "width": 501,
+    "height": 468,
+    "aspectRatio": 1.070513,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/card-illustration-dark-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/card-illustration-dark-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/card-illustration-dark-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/card-illustration-dark-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "card-illustration-light": {
+    "id": "card-illustration-light",
+    "originalFile": "card-illustration-light.png",
+    "width": 501,
+    "height": 428,
+    "aspectRatio": 1.170561,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/card-illustration-light-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/card-illustration-light-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/card-illustration-light-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/card-illustration-light-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1": {
+    "id": "img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1",
+    "originalFile": "img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1 (2) 1.png",
+    "width": 845,
+    "height": 557,
+    "aspectRatio": 1.517056,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-845.avif",
+          "width": 845
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-2-1-845.webp",
+          "width": 845
+        }
+      ]
+    }
+  },
+  "img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1": {
+    "id": "img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1",
+    "originalFile": "img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.png",
+    "width": 1303,
+    "height": 945,
+    "aspectRatio": 1.378836,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1303.avif",
+          "width": 1303
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1303.webp",
+          "width": 1303
+        }
+      ]
+    }
+  },
+  "img-frame-189-1-1-1": {
+    "id": "img-frame-189-1-1-1",
+    "originalFile": "img/Frame 189 (1) 1 (1).png",
+    "width": 501,
+    "height": 468,
+    "aspectRatio": 1.070513,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-frame-189-1-1-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame-189-1-1-1-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-frame-189-1-1-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame-189-1-1-1-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "img-frame-189-1-1": {
+    "id": "img-frame-189-1-1",
+    "originalFile": "img/Frame 189 (1) 1.jpg",
+    "width": 501,
+    "height": 461,
+    "aspectRatio": 1.086768,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-frame-189-1-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame-189-1-1-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-frame-189-1-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame-189-1-1-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "img-frame189-1-1": {
+    "id": "img-frame189-1-1",
+    "originalFile": "img/Frame189(1)1.png",
+    "width": 501,
+    "height": 428,
+    "aspectRatio": 1.170561,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-frame189-1-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame189-1-1-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-frame189-1-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-frame189-1-1-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "img-group-76-1-1": {
+    "id": "img-group-76-1-1",
+    "originalFile": "img/Group 76 (1) 1.png",
+    "width": 504,
+    "height": 712,
+    "aspectRatio": 0.707865,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-group-76-1-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-group-76-1-1-504.avif",
+          "width": 504
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-group-76-1-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-group-76-1-1-504.webp",
+          "width": 504
+        }
+      ]
+    }
+  },
+  "img-mask-group-1": {
+    "id": "img-mask-group-1",
+    "originalFile": "img/Mask group (1).png",
+    "width": 812,
+    "height": 677,
+    "aspectRatio": 1.199409,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-mask-group-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-mask-group-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-mask-group-1-812.avif",
+          "width": 812
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-mask-group-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-mask-group-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-mask-group-1-812.webp",
+          "width": 812
+        }
+      ]
+    }
+  },
+  "img-mask-group": {
+    "id": "img-mask-group",
+    "originalFile": "img/Mask group.png",
+    "width": 822,
+    "height": 685,
+    "aspectRatio": 1.2,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-mask-group-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-mask-group-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-mask-group-822.avif",
+          "width": 822
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-mask-group-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-mask-group-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-mask-group-822.webp",
+          "width": 822
+        }
+      ]
+    }
+  },
+  "img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1": {
+    "id": "img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1",
+    "originalFile": "img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
+    "width": 4096,
+    "height": 2731,
+    "aspectRatio": 1.499817,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-1600.avif",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-4096.avif",
+          "width": 4096
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-1600.webp",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifuan-woman-with-curly-hair-smiles-isolated-1-4096.webp",
+          "width": 4096
+        }
+      ]
+    }
+  },
+  "img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1": {
+    "id": "img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1",
+    "originalFile": "img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
+    "width": 4096,
+    "height": 2731,
+    "aspectRatio": 1.499817,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1600.avif",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-4096.avif",
+          "width": 4096
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-1600.webp",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasian-woman-with-curly-hair-smiles-isolated-1-4096.webp",
+          "width": 4096
+        }
+      ]
+    }
+  },
+  "img-workers-beautifull-caucasiany-hair-smiles-isolated-1": {
+    "id": "img-workers-beautifull-caucasiany-hair-smiles-isolated-1",
+    "originalFile": "img/workers/beautifull-caucasiany-hair-smiles-isolated 1.jpg",
+    "width": 4096,
+    "height": 2731,
+    "aspectRatio": 1.499817,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-1600.avif",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-4096.avif",
+          "width": 4096
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-1600.webp",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-beautifull-caucasiany-hair-smiles-isolated-1-4096.webp",
+          "width": 4096
+        }
+      ]
+    }
+  },
+  "img-workers-dawda": {
+    "id": "img-workers-dawda",
+    "originalFile": "img/workers/dawda.jpg",
+    "width": 4096,
+    "height": 2731,
+    "aspectRatio": 1.499817,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-workers-dawda-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-1600.avif",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-4096.avif",
+          "width": 4096
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-workers-dawda-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-1600.webp",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-dawda-4096.webp",
+          "width": 4096
+        }
+      ]
+    }
+  },
+  "img-workers-man-with-curly-hair-smiles-isolated-1": {
+    "id": "img-workers-man-with-curly-hair-smiles-isolated-1",
+    "originalFile": "img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
+    "width": 4096,
+    "height": 2731,
+    "aspectRatio": 1.499817,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-1600.avif",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-4096.avif",
+          "width": 4096
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-1600.webp",
+          "width": 1600
+        },
+        {
+          "src": "/images/optimized/img-workers-man-with-curly-hair-smiles-isolated-1-4096.webp",
+          "width": 4096
+        }
+      ]
+    }
+  },
+  "project-atelier-home": {
+    "id": "project-atelier-home",
+    "originalFile": "project-atelier-home.png",
+    "width": 501,
+    "height": 428,
+    "aspectRatio": 1.170561,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/project-atelier-home-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-atelier-home-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/project-atelier-home-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-atelier-home-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "project-luna-clinic": {
+    "id": "project-luna-clinic",
+    "originalFile": "project-luna-clinic.png",
+    "width": 504,
+    "height": 712,
+    "aspectRatio": 0.707865,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/project-luna-clinic-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-luna-clinic-504.avif",
+          "width": 504
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/project-luna-clinic-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-luna-clinic-504.webp",
+          "width": 504
+        }
+      ]
+    }
+  },
+  "project-nova-bistro": {
+    "id": "project-nova-bistro",
+    "originalFile": "project-nova-bistro.jpg",
+    "width": 501,
+    "height": 461,
+    "aspectRatio": 1.086768,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/project-nova-bistro-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-nova-bistro-501.avif",
+          "width": 501
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/project-nova-bistro-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-nova-bistro-501.webp",
+          "width": 501
+        }
+      ]
+    }
+  },
+  "project-silpo": {
+    "id": "project-silpo",
+    "originalFile": "project-silpo.png",
+    "width": 1303,
+    "height": 945,
+    "aspectRatio": 1.378836,
+    "formats": {
+      "avif": [
+        {
+          "src": "/images/optimized/project-silpo-480.avif",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-silpo-768.avif",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/project-silpo-1200.avif",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/project-silpo-1303.avif",
+          "width": 1303
+        }
+      ],
+      "webp": [
+        {
+          "src": "/images/optimized/project-silpo-480.webp",
+          "width": 480
+        },
+        {
+          "src": "/images/optimized/project-silpo-768.webp",
+          "width": 768
+        },
+        {
+          "src": "/images/optimized/project-silpo-1200.webp",
+          "width": 1200
+        },
+        {
+          "src": "/images/optimized/project-silpo-1303.webp",
+          "width": 1303
+        }
+      ]
+    }
+  }
+}
