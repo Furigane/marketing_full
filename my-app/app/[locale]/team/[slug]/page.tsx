@@ -11,10 +11,10 @@ import {
 } from "@/lib/specialist-profiles";
 import {
   TEAM_MEMBERS,
-  getLocalizedTeamMember,
   getTeamMember,
 } from "@/lib/team-members";
-import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
+import { getLocalizedTeamMember } from "@/lib/team-members-localized";
+import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
 import type { ServiceId } from "@/lib/services";
 
 const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
@@ -57,13 +57,10 @@ export async function generateMetadata({
   }
 
   const localizedMember = getLocalizedTeamMember(member, locale);
-  const isRussian = isRussianLocale(locale);
 
   return {
     title: buildMetaTitle(
-      isRussian
-        ? `${localizedMember.name} — ${localizedMember.role}`
-        : `${localizedMember.name} — ${localizedMember.role}`,
+      `${localizedMember.name} - ${localizedMember.role}`,
       "Creative Group"
     ),
     description: buildMetaDescription(localizedMember.metaDescription),
@@ -83,9 +80,11 @@ export default async function TeamMemberPage({
     notFound();
   }
 
-  const [tDesign, tFeatures] = await Promise.all([
+  const [tDesign, tFeatures, tMemberPage, tSpecialistPage] = await Promise.all([
     getTranslations({ locale, namespace: "design" }),
     getTranslations({ locale, namespace: "features" }),
+    getTranslations({ locale, namespace: "teamPages.memberProfile" }),
+    getTranslations({ locale, namespace: "teamPages.specialistProfile" }),
   ]);
 
   if (specialistProfile) {
@@ -134,6 +133,18 @@ export default async function TeamMemberPage({
 
         <SpecialistProfilePage
           contactButtonLabel={tDesign("contactButton")}
+          labels={{
+            ctaDescription: tSpecialistPage("ctaDescription"),
+            ctaTitle: tSpecialistPage("ctaTitle"),
+            expertise: tSpecialistPage("expertise"),
+            keyHighlights: tSpecialistPage("keyHighlights"),
+            otherSpecialists: tSpecialistPage("otherSpecialists"),
+            profileBadge: tSpecialistPage("profileBadge"),
+            servicesDescription: tSpecialistPage("servicesDescription"),
+            servicesTitle: tSpecialistPage("servicesTitle"),
+            skillsTitle: tSpecialistPage("skillsTitle"),
+            viewServices: tSpecialistPage("viewServices"),
+          }}
           locale={locale}
           otherSpecialists={otherSpecialists}
           profile={specialistProfile}
@@ -184,6 +195,25 @@ export default async function TeamMemberPage({
         image={member.image}
         imageAlt={localizedMember.imageAlt}
         intro={localizedMember.intro}
+        labels={{
+          approach: tMemberPage("approach"),
+          articlesAndBlog: tMemberPage("articlesAndBlog"),
+          casesAndPortfolio: tMemberPage("casesAndPortfolio"),
+          ctaDescription: tMemberPage("ctaDescription"),
+          ctaTitle: tMemberPage("ctaTitle"),
+          expertise: tMemberPage("expertise"),
+          focus: tMemberPage("focus"),
+          fullTeam: tMemberPage("fullTeam"),
+          internalLinking: tMemberPage("internalLinking"),
+          nextStep: tMemberPage("nextStep"),
+          otherSpecialists: tMemberPage("otherSpecialists"),
+          relatedSiteSections: tMemberPage("relatedSiteSections"),
+          servicesDescription: tMemberPage("servicesDescription"),
+          servicesLabel: tMemberPage("servicesLabel"),
+          servicesTitle: tMemberPage("servicesTitle"),
+          track: tMemberPage("track"),
+          viewServices: tMemberPage("viewServices"),
+        }}
         locale={locale}
         name={localizedMember.name}
         otherSpecialists={otherSpecialists}

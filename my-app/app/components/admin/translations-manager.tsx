@@ -29,6 +29,8 @@ const DOMAIN_LABELS: Record<TranslationDomain, string> = {
   services: "Услуги",
   caseStudies: "Кейсы",
   teamProfiles: "Профили команды",
+  teamMembers: "Карточки специалистов",
+  specialistProfiles: "Развернутые профили",
 };
 
 function authHeaders(): HeadersInit {

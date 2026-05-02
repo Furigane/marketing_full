@@ -5,6 +5,8 @@ export const TRANSLATION_DOMAINS = [
   "services",
   "caseStudies",
   "teamProfiles",
+  "teamMembers",
+  "specialistProfiles",
 ] as const;
 
 export type TranslationDomain = (typeof TRANSLATION_DOMAINS)[number];

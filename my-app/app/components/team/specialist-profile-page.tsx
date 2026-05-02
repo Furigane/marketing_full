@@ -24,6 +24,18 @@ type PeerSpecialist = {
 
 type SpecialistProfilePageProps = {
   contactButtonLabel: string;
+  labels: {
+    ctaDescription: string;
+    ctaTitle: string;
+    expertise: string;
+    keyHighlights: string;
+    otherSpecialists: string;
+    profileBadge: string;
+    servicesDescription: string;
+    servicesTitle: string;
+    skillsTitle: string;
+    viewServices: string;
+  };
   locale: string;
   otherSpecialists: PeerSpecialist[];
   profile: SpecialistProfile;
@@ -64,12 +76,11 @@ function renderLinkedText(text: string) {
 
 export default function SpecialistProfilePage({
   contactButtonLabel,
+  labels,
   locale,
   otherSpecialists,
   profile,
 }: SpecialistProfilePageProps) {
-  const isRussian = locale.toLowerCase().startsWith("ru");
-
   return (
     <>
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-8 px-3 sm:gap-10 sm:px-4 md:px-6 lg:max-w-[1400px]">
@@ -84,7 +95,7 @@ export default function SpecialistProfilePage({
               <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_420px] lg:items-center">
                 <div>
                   <span className="inline-flex rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)] backdrop-blur">
-                    {isRussian ? "Профиль специалиста" : "Specialist profile"}
+                    {labels.profileBadge}
                   </span>
 
                   <h1 className="mt-5 max-w-4xl text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
@@ -124,7 +135,7 @@ export default function SpecialistProfilePage({
                       href="/services"
                       className="inline-flex items-center gap-2 rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                     >
-                      {isRussian ? "Посмотреть услуги" : "See services"}
+                      {labels.viewServices}
                     </Link>
                   </div>
                 </div>
@@ -169,7 +180,7 @@ export default function SpecialistProfilePage({
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)]">
               <div>
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {isRussian ? "Экспертиза" : "Expertise"}
+                  {labels.expertise}
                 </p>
                 <p className="mt-4 text-base leading-8 text-[var(--foreground)] md:text-lg">
                   {profile.activitySummary}
@@ -178,7 +189,7 @@ export default function SpecialistProfilePage({
 
               <div className="rounded-[1.5rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {isRussian ? "Ключевые акценты" : "Key highlights"}
+                  {labels.keyHighlights}
                 </p>
                 <ul className="mt-4 space-y-3">
                   {profile.achievementHighlights.map((item) => (
@@ -217,7 +228,7 @@ export default function SpecialistProfilePage({
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Навыки специалиста" : "Specialist skills"}
+                {labels.skillsTitle}
               </h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {profile.skills.map((skill) => (
@@ -233,12 +244,10 @@ export default function SpecialistProfilePage({
 
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Услуги и внутренняя перелинковка" : "Services and internal links"}
+                {labels.servicesTitle}
               </h2>
               <p className="mt-4 text-sm leading-7 text-[var(--design-text)] md:text-base">
-                {isRussian
-                  ? "Все направления ниже сделаны как кликабельные внутренние ссылки и ведут на существующие разделы услуг сайта."
-                  : "Every topic below is rendered as an internal link to the relevant service section."}
+                {labels.servicesDescription}
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {profile.services.map((service) => (
@@ -254,17 +263,13 @@ export default function SpecialistProfilePage({
 
               <div className="mt-8 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(124,159,247,0.14),rgba(245,212,140,0.16))] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {isRussian ? "CTA" : "CTA"}
+                  CTA
                 </p>
                 <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)]">
-                  {isRussian
-                    ? "Нужен специалист под ваш продукт или маркетинг?"
-                    : "Need the right specialist for your project?"}
+                  {labels.ctaTitle}
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-[var(--foreground)] md:text-base">
-                  {isRussian
-                    ? "Оставьте заявку, и мы подключим специалиста с нужной экспертизой под задачи продукта, роста или редизайна."
-                    : "Send a request and we will match the project with the right product, marketing, or design specialist."}
+                  {labels.ctaDescription}
                 </p>
                 <Link
                   href="/connect"
@@ -280,7 +285,7 @@ export default function SpecialistProfilePage({
         <section className="px-3 md:px-6 lg:px-8">
           <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              {isRussian ? "Другие специалисты" : "Other specialists"}
+              {labels.otherSpecialists}
             </p>
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {otherSpecialists.map((specialist) => (

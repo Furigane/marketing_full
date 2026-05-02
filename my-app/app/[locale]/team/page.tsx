@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
@@ -10,8 +11,9 @@ import {
   SPECIALIST_PROFILES,
   getLocalizedSpecialistProfile,
 } from "@/lib/specialist-profiles";
-import { TEAM_MEMBERS, getLocalizedTeamMember } from "@/lib/team-members";
-import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
+import { TEAM_MEMBERS } from "@/lib/team-members";
+import { getLocalizedTeamMember } from "@/lib/team-members-localized";
+import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -19,18 +21,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isRussian = isRussianLocale(locale);
+  const t = await getTranslations({ locale, namespace: "teamPages.directory" });
 
   return {
-    title: buildMetaTitle(
-      isRussian ? "Специалисты агентства" : "Agency specialists",
-      "Creative Group"
-    ),
-    description: buildMetaDescription(
-      isRussian
-        ? "Список специалистов агентства с SEO-структурой: специализация, опыт, услуги и страницы с доказательством экспертности."
-        : "Agency specialist directory with SEO-focused profiles, services, experience, and proof-driven expertise pages."
-    ),
+    title: buildMetaTitle(t("metaTitle"), "Creative Group"),
+    description: buildMetaDescription(t("metaDescription")),
   };
 }
 
@@ -40,7 +35,7 @@ export default async function TeamPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const isRussian = isRussianLocale(locale);
+  const t = await getTranslations({ locale, namespace: "teamPages.directory" });
   const specialists = [
     ...SPECIALIST_PROFILES.map((profile) => {
       const localizedProfile = getLocalizedSpecialistProfile(profile, locale) ?? profile;
@@ -63,7 +58,7 @@ export default async function TeamPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: isRussian ? "Специалисты агентства" : "Agency specialists",
+    name: t("metaTitle"),
     hasPart: specialists.map((specialist) => ({
       "@type": "Person",
       name: specialist.name,
@@ -89,19 +84,15 @@ export default async function TeamPage({
 
               <div className="relative max-w-5xl">
                 <span className="inline-flex rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--design-muted)] backdrop-blur">
-                  {isRussian ? "Экспертная команда" : "Expert team"}
+                  {t("eyebrow")}
                 </span>
 
                 <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-5xl md:text-6xl">
-                  {isRussian
-                    ? "Специалисты агентства с понятной специализацией и реальной зоной ответственности"
-                    : "Agency specialists with clear expertise and real delivery ownership"}
+                  {t("title")}
                 </h1>
 
                 <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--design-text)] md:text-lg">
-                  {isRussian
-                    ? "На этой странице собраны профили специалистов: имя, ключевая специализация, опыт, услуги и короткое описание того, чем именно человек занимается в проектной команде."
-                    : "This page lists the agency specialists with their key specialization, experience, related services, and a concise explanation of what they actually do inside delivery."}
+                  {t("description")}
                 </p>
               </div>
             </div>
@@ -152,7 +143,7 @@ export default async function TeamPage({
                 </div>
 
                 <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#acc2fd] px-4 py-2 text-sm font-semibold text-zinc-900">
-                  <span>{isRussian ? "Открыть профиль" : "Open profile"}</span>
+                  <span>{t("openProfile")}</span>
                   <span aria-hidden>{"\u2197"}</span>
                 </span>
               </Link>

@@ -399,6 +399,47 @@
     "copyright": "© 2026 INFO. All rights reserved.",
     "tagline": "End-to-end business promotion"
   },
+  "teamPages": {
+    "directory": {
+      "metaTitle": "Agency specialists",
+      "metaDescription": "Agency specialist directory with SEO-focused profiles, services, experience, and proof-driven expertise pages.",
+      "eyebrow": "Expert team",
+      "title": "Agency specialists with clear expertise and real delivery ownership",
+      "description": "This page lists the agency specialists with their key specialization, experience, related services, and a concise explanation of what they actually do inside delivery.",
+      "openProfile": "Open profile"
+    },
+    "memberProfile": {
+      "viewServices": "See services",
+      "track": "Track",
+      "focus": "Focus",
+      "servicesLabel": "Services",
+      "expertise": "Expertise",
+      "approach": "Approach",
+      "servicesTitle": "Specialist services",
+      "servicesDescription": "These linked services show where this specialist contributes inside the project team.",
+      "nextStep": "Next step",
+      "ctaTitle": "Need the right specialist for your project?",
+      "ctaDescription": "Send a request and we will connect this specialist with the relevant services and supporting team.",
+      "internalLinking": "Internal linking",
+      "relatedSiteSections": "Related site sections",
+      "articlesAndBlog": "Articles and blog",
+      "casesAndPortfolio": "Case studies and portfolio",
+      "fullTeam": "Full team",
+      "otherSpecialists": "Other specialists"
+    },
+    "specialistProfile": {
+      "profileBadge": "Specialist profile",
+      "viewServices": "See services",
+      "expertise": "Expertise",
+      "keyHighlights": "Key highlights",
+      "skillsTitle": "Specialist skills",
+      "servicesTitle": "Services and internal links",
+      "servicesDescription": "Every topic below is rendered as an internal link to the relevant service section.",
+      "ctaTitle": "Need the right specialist for your project?",
+      "ctaDescription": "Send a request and we will match the project with the right product, marketing, or design specialist.",
+      "otherSpecialists": "Other specialists"
+    }
+  },
   "adminLogin": {
     "title": "Admin login",
     "subtitle": "Marketing dashboard access",

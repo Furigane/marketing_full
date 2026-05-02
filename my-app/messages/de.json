@@ -399,6 +399,47 @@
     "copyright": "© 2026 INFO. Alle Rechte vorbehalten.",
     "tagline": "Umfassende Geschäftsförderung"
   },
+  "teamPages": {
+    "directory": {
+      "metaTitle": "Spezialisten der Agentur",
+      "metaDescription": "Verzeichnis der Agenturspezialisten mit Profilen, Leistungen, Erfahrung und SEO-orientierten Kompetenzseiten.",
+      "eyebrow": "Expertenteam",
+      "title": "Agenturspezialisten mit klarer Expertise und echter Verantwortung in der Umsetzung",
+      "description": "Diese Seite bündelt die Profile der Spezialisten mit Name, Kernkompetenz, Erfahrung, Leistungen und einer kurzen Erklärung ihrer Rolle im Projektteam.",
+      "openProfile": "Profil öffnen"
+    },
+    "memberProfile": {
+      "viewServices": "Leistungen ansehen",
+      "track": "Bereich",
+      "focus": "Fokus",
+      "servicesLabel": "Leistungen",
+      "expertise": "Expertise",
+      "approach": "Ansatz",
+      "servicesTitle": "Leistungen des Spezialisten",
+      "servicesDescription": "Die verlinkten Leistungen unten zeigen, wo dieser Spezialist im Projektteam mitarbeitet.",
+      "nextStep": "Nächster Schritt",
+      "ctaTitle": "Brauchen Sie den richtigen Spezialisten für Ihr Projekt?",
+      "ctaDescription": "Senden Sie uns eine Anfrage und wir verbinden diesen Spezialisten mit den passenden Leistungen und dem relevanten Support-Team.",
+      "internalLinking": "Interne Verlinkung",
+      "relatedSiteSections": "Verwandte Seitenbereiche",
+      "articlesAndBlog": "Artikel und Blog",
+      "casesAndPortfolio": "Fallstudien und Portfolio",
+      "fullTeam": "Gesamtes Team",
+      "otherSpecialists": "Weitere Spezialisten"
+    },
+    "specialistProfile": {
+      "profileBadge": "Spezialistenprofil",
+      "viewServices": "Leistungen ansehen",
+      "expertise": "Expertise",
+      "keyHighlights": "Wichtige Schwerpunkte",
+      "skillsTitle": "Fähigkeiten des Spezialisten",
+      "servicesTitle": "Leistungen und interne Links",
+      "servicesDescription": "Jedes Thema unten wird als interner Link zum passenden Leistungsbereich dargestellt.",
+      "ctaTitle": "Brauchen Sie den richtigen Spezialisten für Ihr Projekt?",
+      "ctaDescription": "Senden Sie uns eine Anfrage und wir ordnen dem Projekt den passenden Spezialisten für Produkt, Marketing oder Design zu.",
+      "otherSpecialists": "Weitere Spezialisten"
+    }
+  },
   "adminLogin": {
     "title": "Admin-Anmeldung",
     "subtitle": "Zugang zum Marketing-Dashboard",

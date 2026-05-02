@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 4000 --webpack",
     "optimize:images": "node scripts/optimize-images.js",
+    "repair:translations": "node --experimental-strip-types scripts/repair-site-translations.ts",
     "build": "npm run optimize:images && next build --webpack",
     "start": "next start -p 4000",
     "lint": "eslint"

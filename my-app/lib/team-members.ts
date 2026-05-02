@@ -1,4 +1,5 @@
 import { getDefaultContentLocale } from "@/lib/site-locales";
+import { repairEncodedTree } from "@/lib/text-encoding";
 
 export type TeamMemberLocale = "en" | "ru";
 
@@ -440,15 +441,38 @@ export const TEAM_MEMBERS = [
 export type TeamRoleType = (typeof TEAM_MEMBERS)[number]["roleType"];
 export type TeamMemberId = (typeof TEAM_MEMBERS)[number]["id"];
 export type TeamMember = (typeof TEAM_MEMBERS)[number];
+export type TeamMemberContent = (typeof TEAM_MEMBERS)[number]["locale"][TeamMemberLocale];
+export type LocalizedTeamMember = TeamMember & TeamMemberContent;
 
 export function getTeamMember(id: string) {
   return TEAM_MEMBERS.find((member) => member.id === id);
 }
 
-export function getLocalizedTeamMember(member: TeamMember, locale: string) {
+export function getTeamMemberBaseContent(
+  input: string | TeamMember,
+  locale: string
+): TeamMemberContent | undefined {
+  const member = typeof input === "string" ? getTeamMember(input) : input;
+  if (!member) {
+    return undefined;
+  }
+
   const baseLocale = getDefaultContentLocale(locale) as TeamMemberLocale;
+  return repairEncodedTree(member.locale[baseLocale]);
+}
+
+export function getLocalizedTeamMember(
+  member: TeamMember,
+  locale: string
+): LocalizedTeamMember {
+  const baseContent = getTeamMemberBaseContent(member, locale);
+
+  if (!baseContent) {
+    return member as LocalizedTeamMember;
+  }
+
   return {
     ...member,
-    ...member.locale[baseLocale],
-  };
+    ...baseContent,
+  } as LocalizedTeamMember;
 }

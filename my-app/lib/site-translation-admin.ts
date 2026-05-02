@@ -7,6 +7,10 @@ import { getCaseStudies } from "@/lib/case-studies";
 import { SITE_LOCALES, type SiteLocale } from "@/lib/site-locales";
 import { getServiceDefinitions } from "@/lib/services";
 import {
+  SPECIALIST_PROFILES,
+  getSpecialistProfileBase,
+} from "@/lib/specialist-profiles";
+import {
   deepMergeTranslationValue,
   getTranslationOverrideStore,
   saveTranslationOverrideStore,
@@ -17,6 +21,10 @@ import {
   type TranslationDomain,
   type TranslationFieldMap,
 } from "@/lib/site-translation-types";
+import {
+  TEAM_MEMBERS,
+  getTeamMemberBaseContent,
+} from "@/lib/team-members";
 import { TEAM_ROLE_CONTENT } from "@/lib/team-profiles";
 
 const MESSAGES_DIR = path.join(process.cwd(), "messages");
@@ -226,6 +234,58 @@ export async function getTranslationCatalog() {
     });
   }
 
+  for (const member of TEAM_MEMBERS) {
+    const values = createEmptyLocaleFieldMap();
+    for (const locale of SITE_LOCALES) {
+      const baseTree = getTeamMemberBaseContent(member, locale);
+      if (!baseTree) {
+        continue;
+      }
+
+      const mergedTree = deepMergeTranslationValue(
+        baseTree,
+        overrides.teamMembers[member.id]?.[locale]
+      );
+      values[locale] = flattenTree(mergedTree);
+    }
+
+    entries.push({
+      domain: "teamMembers",
+      id: member.id,
+      title: member.locale.ru.name || member.locale.en.name,
+      description: `Профиль специалиста: ${member.id}`,
+      sourceLocale: "ru",
+      fields: buildFieldsFromValues(values),
+      values,
+    });
+  }
+
+  for (const profile of SPECIALIST_PROFILES) {
+    const values = createEmptyLocaleFieldMap();
+    for (const locale of SITE_LOCALES) {
+      const baseTree = getSpecialistProfileBase(profile, locale);
+      if (!baseTree) {
+        continue;
+      }
+
+      const mergedTree = deepMergeTranslationValue(
+        baseTree,
+        overrides.specialistProfiles[profile.slug]?.[locale]
+      );
+      values[locale] = flattenTree(mergedTree);
+    }
+
+    entries.push({
+      domain: "specialistProfiles",
+      id: profile.slug,
+      title: profile.name,
+      description: `Развернутый профиль специалиста: ${profile.slug}`,
+      sourceLocale: "ru",
+      fields: buildFieldsFromValues(values),
+      values,
+    });
+  }
+
   return entries.sort((left, right) => {
     const byDomain = left.domain.localeCompare(right.domain);
     return byDomain === 0 ? left.title.localeCompare(right.title) : byDomain;
@@ -312,6 +372,22 @@ function resolveDomainBaseValue(
       throw new Error("Case study translation source not found.");
     }
     return item.locale[baseLocale];
+  }
+
+  if (domain === "teamMembers") {
+    const item = getTeamMemberBaseContent(id, locale);
+    if (!item) {
+      throw new Error("Team member translation source not found.");
+    }
+    return item;
+  }
+
+  if (domain === "specialistProfiles") {
+    const item = getSpecialistProfileBase(id, locale);
+    if (!item) {
+      throw new Error("Specialist profile translation source not found.");
+    }
+    return item;
   }
 
   const item = TEAM_ROLE_CONTENT[baseLocale][id as keyof typeof TEAM_ROLE_CONTENT.en];

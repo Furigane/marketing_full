@@ -7,7 +7,8 @@ import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
-import { TEAM_MEMBERS, getLocalizedTeamMember } from "@/lib/team-members";
+import { TEAM_MEMBERS } from "@/lib/team-members";
+import { getLocalizedTeamMember } from "@/lib/team-members-localized";
 import type { ServiceDefinition } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
 

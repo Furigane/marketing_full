@@ -399,6 +399,47 @@
     "copyright": "© 2026 INFO. Tous droits réservés.",
     "tagline": "Promotion complète des entreprises"
   },
+  "teamPages": {
+    "directory": {
+      "metaTitle": "Spécialistes de l'agence",
+      "metaDescription": "Annuaire des spécialistes de l'agence avec profils, services, expérience et pages d'expertise orientées SEO.",
+      "eyebrow": "Équipe d'experts",
+      "title": "Des spécialistes avec une expertise claire et une vraie responsabilité d'exécution",
+      "description": "Cette page réunit les profils des spécialistes avec leur nom, leur spécialisation principale, leur expérience, leurs services et une brève explication de leur rôle dans la production.",
+      "openProfile": "Ouvrir le profil"
+    },
+    "memberProfile": {
+      "viewServices": "Voir les services",
+      "track": "Axe",
+      "focus": "Focus",
+      "servicesLabel": "Services",
+      "expertise": "Expertise",
+      "approach": "Approche",
+      "servicesTitle": "Services du spécialiste",
+      "servicesDescription": "Les liens ci-dessous montrent où ce spécialiste intervient dans l'équipe projet.",
+      "nextStep": "Étape suivante",
+      "ctaTitle": "Besoin du bon spécialiste pour votre projet ?",
+      "ctaDescription": "Envoyez une demande et nous connecterons ce spécialiste aux services et à l'équipe de support adaptés.",
+      "internalLinking": "Maillage interne",
+      "relatedSiteSections": "Sections liées du site",
+      "articlesAndBlog": "Articles et blog",
+      "casesAndPortfolio": "Études de cas et portfolio",
+      "fullTeam": "Toute l'équipe",
+      "otherSpecialists": "Autres spécialistes"
+    },
+    "specialistProfile": {
+      "profileBadge": "Profil du spécialiste",
+      "viewServices": "Voir les services",
+      "expertise": "Expertise",
+      "keyHighlights": "Points clés",
+      "skillsTitle": "Compétences du spécialiste",
+      "servicesTitle": "Services et liens internes",
+      "servicesDescription": "Chaque thème ci-dessous est affiché comme un lien interne vers la section de service correspondante.",
+      "ctaTitle": "Besoin du bon spécialiste pour votre projet ?",
+      "ctaDescription": "Envoyez une demande et nous associerons le projet au bon spécialiste produit, marketing ou design.",
+      "otherSpecialists": "Autres spécialistes"
+    }
+  },
   "adminLogin": {
     "title": "Connexion admin",
     "subtitle": "Accès au tableau Marketing",

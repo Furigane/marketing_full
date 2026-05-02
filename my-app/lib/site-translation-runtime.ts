@@ -17,6 +17,8 @@ export type TranslationOverrideStore = {
   services: Record<string, Partial<Record<SiteLocale, TranslationValueTree>>>;
   caseStudies: Record<string, Partial<Record<SiteLocale, TranslationValueTree>>>;
   teamProfiles: Record<string, Partial<Record<SiteLocale, TranslationValueTree>>>;
+  teamMembers: Record<string, Partial<Record<SiteLocale, TranslationValueTree>>>;
+  specialistProfiles: Record<string, Partial<Record<SiteLocale, TranslationValueTree>>>;
 };
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -27,6 +29,8 @@ const EMPTY_STORE: TranslationOverrideStore = {
   services: {},
   caseStudies: {},
   teamProfiles: {},
+  teamMembers: {},
+  specialistProfiles: {},
 };
 
 function cloneStore<T>(value: T): T {
@@ -86,6 +90,8 @@ function normalizeStore(raw: unknown): TranslationOverrideStore {
     services: normalizeEntryMap(input.services),
     caseStudies: normalizeEntryMap(input.caseStudies),
     teamProfiles: normalizeEntryMap(input.teamProfiles),
+    teamMembers: normalizeEntryMap(input.teamMembers),
+    specialistProfiles: normalizeEntryMap(input.specialistProfiles),
   };
 }
 

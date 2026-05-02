@@ -1,5 +1,9 @@
-import { getDefaultContentLocale } from "@/lib/site-locales";
+import { getDefaultContentLocale, normalizeSiteLocale } from "@/lib/site-locales";
 import type { ServiceId } from "@/lib/services";
+import {
+  deepMergeTranslationValue,
+  getTranslationOverrideStoreSync,
+} from "@/lib/site-translation-runtime";
 import { repairEncodedTree } from "@/lib/text-encoding";
 
 export type SpecialistSeoSection = {
@@ -631,7 +635,7 @@ export function getSpecialistProfile(slug: string) {
   return SPECIALIST_PROFILES.find((profile) => profile.slug === slug);
 }
 
-export function getLocalizedSpecialistProfile(
+export function getSpecialistProfileBase(
   input: string | SpecialistProfile,
   locale: string
 ) {
@@ -651,6 +655,31 @@ export function getLocalizedSpecialistProfile(
     ...baseProfile,
     ...EN_SPECIALIST_PROFILE_OVERRIDES[profile.slug],
   });
+}
+
+export function getLocalizedSpecialistProfile(
+  input: string | SpecialistProfile,
+  locale: string
+) {
+  const profile = typeof input === "string" ? getSpecialistProfile(input) : input;
+  if (!profile) {
+    return undefined;
+  }
+
+  const normalizedLocale = normalizeSiteLocale(locale);
+  const overrides = getTranslationOverrideStoreSync();
+  const baseProfile = getSpecialistProfileBase(profile, locale);
+
+  if (!baseProfile) {
+    return undefined;
+  }
+
+  return repairEncodedTree(
+    deepMergeTranslationValue(
+      baseProfile,
+      overrides.specialistProfiles[profile.slug]?.[normalizedLocale]
+    )
+  );
 }
 
 export function normalizeSpecialistLinkLabel(label: string) {

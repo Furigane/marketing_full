@@ -6,6 +6,10 @@ export type EncodedTree =
 const LATIN_MOJIBAKE_RE = /[\u00c2\u00c3\u00d0\u00d1][\u0080-\u00ff]?/gu;
 const CP1251_MOJIBAKE_RE = /[\u0420\u0421][\u0080-\u04ff]/gu;
 const SMART_PUNCT_MOJIBAKE_RE = /\u0432[\u0080-\u20ff]/gu;
+const READABLE_CYRILLIC_RE = /[А-Яа-яЁё]{2,}/u;
+const READABLE_ARABIC_RE = /[\u0600-\u06ff]{2,}/u;
+const READABLE_LATIN_RE = /\b[A-Za-z]{4,}\b/g;
+const ASCII_GIBBERISH_RE = /[#;@=<>^~`|\\]{2,}|[#;@=<>^~`|\\]/;
 
 const CP1251_CODEPOINTS = [
   0x0402, 0x0403, 0x201a, 0x0453, 0x201e, 0x2026, 0x2020, 0x2021,
@@ -52,6 +56,26 @@ function scoreReadableText(value: string) {
   return cyrillic * 3 + latin + digits + spaces - noisyPunctuation * 4 - replacementChars * 3;
 }
 
+function hasReadableNativeScript(value: string) {
+  if (countMojibakeMarkers(value) > 0) {
+    return false;
+  }
+
+  return READABLE_CYRILLIC_RE.test(value) || READABLE_ARABIC_RE.test(value);
+}
+
+function looksReadableText(value: string) {
+  if (hasReadableNativeScript(value)) {
+    return true;
+  }
+
+  return (value.match(READABLE_LATIN_RE) ?? []).length > 0;
+}
+
+function looksSuspiciousAsciiCandidate(value: string) {
+  return !looksReadableText(value) && ASCII_GIBBERISH_RE.test(value);
+}
+
 function decodeLatin1Utf8(value: string) {
   return Buffer.from(value, "latin1").toString("utf8");
 }
@@ -93,6 +117,10 @@ function decodeCp1251Utf8(value: string) {
 export function repairMojibakeText(value: string) {
   let current = value;
 
+  if (countMojibakeMarkers(current) === 0 && looksReadableText(current)) {
+    return current;
+  }
+
   for (let pass = 0; pass < 2; pass += 1) {
     const currentMarkers = countMojibakeMarkers(current);
     if (currentMarkers === 0) {
@@ -123,6 +151,23 @@ export function repairMojibakeText(value: string) {
 
     const decodedMarkers = countMojibakeMarkers(decoded);
     if (decodedMarkers >= currentMarkers) {
+      break;
+    }
+
+    const currentReadable = looksReadableText(current);
+    const decodedReadable = looksReadableText(decoded);
+    const currentScore = scoreReadableText(current);
+    const decodedScore = scoreReadableText(decoded);
+
+    if (looksSuspiciousAsciiCandidate(decoded)) {
+      break;
+    }
+
+    if (currentReadable && !decodedReadable) {
+      break;
+    }
+
+    if (!decodedReadable && decodedScore <= currentScore + 3) {
       break;
     }
 

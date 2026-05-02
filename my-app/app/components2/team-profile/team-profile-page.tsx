@@ -29,6 +29,25 @@ type TeamProfilePageProps = {
   image: string;
   imageAlt: string;
   intro: string;
+  labels: {
+    approach: string;
+    articlesAndBlog: string;
+    casesAndPortfolio: string;
+    ctaDescription: string;
+    ctaTitle: string;
+    expertise: string;
+    focus: string;
+    fullTeam: string;
+    internalLinking: string;
+    nextStep: string;
+    otherSpecialists: string;
+    relatedSiteSections: string;
+    servicesDescription: string;
+    servicesLabel: string;
+    servicesTitle: string;
+    track: string;
+    viewServices: string;
+  };
   locale: string;
   name: string;
   otherSpecialists: PeerSpecialist[];
@@ -52,6 +71,7 @@ export default function TeamProfilePage({
   image,
   imageAlt,
   intro,
+  labels,
   locale,
   name,
   otherSpecialists,
@@ -60,7 +80,6 @@ export default function TeamProfilePage({
   role,
   socialLabels,
 }: TeamProfilePageProps) {
-  const isRussian = locale.toLowerCase().startsWith("ru");
   const relatedServices = relatedServiceIds
     .map((serviceId) => getServiceById(serviceId))
     .filter((service): service is NonNullable<typeof service> => Boolean(service))
@@ -129,7 +148,7 @@ export default function TeamProfilePage({
                       href="/services"
                       className="inline-flex items-center gap-2 rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                     >
-                      {isRussian ? "Посмотреть услуги" : "See services"}
+                      {labels.viewServices}
                     </Link>
                   </div>
 
@@ -192,7 +211,7 @@ export default function TeamProfilePage({
                     <div className="mt-4 grid grid-cols-3 gap-3">
                       <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
                         <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
-                          {isRussian ? "Направление" : "Track"}
+                          {labels.track}
                         </p>
                         <p className="mt-2 text-sm font-bold text-[var(--foreground)]">
                           {profile.titleHighlight}
@@ -200,7 +219,7 @@ export default function TeamProfilePage({
                       </div>
                       <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
                         <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
-                          {isRussian ? "Фокус" : "Focus"}
+                          {labels.focus}
                         </p>
                         <p className="mt-2 text-sm font-bold text-[var(--foreground)]">
                           {profile.titleSecondLine}
@@ -208,7 +227,7 @@ export default function TeamProfilePage({
                       </div>
                       <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
                         <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
-                          {isRussian ? "Услуги" : "Services"}
+                          {labels.servicesLabel}
                         </p>
                         <p className="mt-2 text-lg font-bold text-[var(--foreground)]">
                           {relatedServices.length}
@@ -227,7 +246,7 @@ export default function TeamProfilePage({
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)]">
               <div>
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {isRussian ? "Экспертиза" : "Expertise"}
+                  {labels.expertise}
                 </p>
                 <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
                   {profile.detailTitle}
@@ -239,7 +258,7 @@ export default function TeamProfilePage({
 
               <div className="rounded-[1.5rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {isRussian ? "Подход" : "Approach"}
+                  {labels.approach}
                 </p>
                 <p className="mt-4 text-sm leading-7 text-[var(--foreground)] md:text-base">
                   {profile.description}
@@ -301,12 +320,10 @@ export default function TeamProfilePage({
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Услуги специалиста" : "Specialist services"}
+                {labels.servicesTitle}
               </h2>
               <p className="mt-4 text-sm leading-7 text-[var(--design-text)] md:text-base">
-                {isRussian
-                  ? "Ниже собраны направления, в которых этот специалист участвует внутри проектной команды."
-                  : "These linked services show where this specialist contributes inside the project team."}
+                {labels.servicesDescription}
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {relatedServices.map((service) => (
@@ -323,21 +340,17 @@ export default function TeamProfilePage({
 
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Следующий шаг" : "Next step"}
+                {labels.nextStep}
               </h2>
               <div className="mt-5 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(124,159,247,0.14),rgba(245,212,140,0.16))] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
                   CTA
                 </p>
                 <h3 className="mt-3 text-2xl font-bold text-[var(--foreground)]">
-                  {isRussian
-                    ? "Нужен специалист под ваш проект?"
-                    : "Need the right specialist for your project?"}
+                  {labels.ctaTitle}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-[var(--foreground)] md:text-base">
-                  {isRussian
-                    ? "Оставьте заявку, и мы подключим этого специалиста к задаче вместе с нужными услугами и смежной командой."
-                    : "Send a request and we will connect this specialist with the relevant services and supporting team."}
+                  {labels.ctaDescription}
                 </p>
                 <Link
                   href="/connect"
@@ -354,36 +367,36 @@ export default function TeamProfilePage({
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Внутренняя перелинковка" : "Internal linking"}
+                {labels.internalLinking}
               </p>
               <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Смежные материалы" : "Related site sections"}
+                {labels.relatedSiteSections}
               </h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link
                   href="/blog"
                   className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
-                  {isRussian ? "Статьи и блог" : "Articles and blog"}
+                  {labels.articlesAndBlog}
                 </Link>
                 <Link
                   href="/projects"
                   className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
-                  {isRussian ? "Кейсы и портфолио" : "Case studies and portfolio"}
+                  {labels.casesAndPortfolio}
                 </Link>
                 <Link
                   href="/team"
                   className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
-                  {isRussian ? "Вся команда" : "Full team"}
+                  {labels.fullTeam}
                 </Link>
               </div>
             </div>
 
             <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Другие специалисты" : "Other specialists"}
+                {labels.otherSpecialists}
               </p>
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {otherSpecialists.map((specialist) => (
