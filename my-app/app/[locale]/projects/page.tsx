@@ -1,8 +1,32 @@
+import type { Metadata } from "next";
+
 import Footer from "../../components/footer/footer";
 import Header from "../../components/headaer/header";
 import Projects from "../../components/projects/projects";
 import PageBottomSections from "../../components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = isRussianLocale(locale);
+
+  return {
+    title: buildMetaTitle(
+      isRussian ? "Кейсы и портфолио" : "Case studies and portfolio",
+      "Creative Group"
+    ),
+    description: buildMetaDescription(
+      isRussian
+        ? "Портфолио с реальными результатами: было, что сделали, стало, цифры роста, специалисты и связанные услуги."
+        : "Portfolio with real results: before, what we did, after, growth metrics, responsible specialists, and related services."
+    ),
+  };
+}
 
 export default async function ProjectsPage({
   params,

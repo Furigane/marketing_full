@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
 
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
@@ -8,7 +7,7 @@ import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
-import { TEAM_MEMBERS } from "@/lib/team-members";
+import { TEAM_MEMBERS, getLocalizedTeamMember } from "@/lib/team-members";
 import type { ServiceDefinition } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
 
@@ -23,16 +22,11 @@ export default async function ServiceDetailPage({
 }: ServiceDetailPageProps) {
   const isRussian = locale.toLowerCase().startsWith("ru");
   const localizedService = getLocalizedService(service, locale);
-  const tWorkers = await getTranslations({ locale, namespace: "workers" });
 
   const specialists = service.specialistIds
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
     .filter((member): member is (typeof TEAM_MEMBERS)[number] => Boolean(member))
-    .map((member) => ({
-      ...member,
-      name: tWorkers(`items.${member.id}.name`),
-      role: tWorkers(`items.${member.id}.role`),
-    }));
+    .map((member) => getLocalizedTeamMember(member, locale));
 
   return (
     <>
@@ -120,7 +114,7 @@ export default async function ServiceDetailPage({
                 <div className="relative mb-4 h-40 overflow-hidden rounded-[1.4rem]">
                   <OptimizedImage
                     src={specialist.image}
-                    alt={specialist.name}
+                    alt={specialist.imageAlt}
                     width={500}
                     height={500}
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"

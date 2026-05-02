@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import OptimizedImage from "@/app/components/shared/optimized-image";
-import { TEAM_MEMBERS } from "@/lib/team-members";
+import { TEAM_MEMBERS, getLocalizedTeamMember } from "@/lib/team-members";
 
 function countFullCards(rowWidthPx: number, cardW: number, gap: number): number {
   if (rowWidthPx <= 0 || cardW <= 0) return 1;
@@ -123,16 +123,12 @@ const CARD_DESKTOP =
   "flex aspect-square w-[clamp(200px,min(72vw,260px),260px)] max-w-[260px] shrink-0 flex-col overflow-hidden rounded-[1.25rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]";
 
 export default function Workers() {
+  const locale = useLocale();
   const t = useTranslations("workers");
   const workers = useMemo(
     () =>
-      TEAM_MEMBERS.map((worker) => ({
-        ...worker,
-        name: t(`items.${worker.id}.name`),
-        role: t(`items.${worker.id}.role`),
-        experience: t(`items.${worker.id}.experience`),
-      })),
-    [t]
+      TEAM_MEMBERS.map((worker) => getLocalizedTeamMember(worker, locale)),
+    [locale]
   );
 
   const viewportRef = useRef<HTMLDivElement>(null);

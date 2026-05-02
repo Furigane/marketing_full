@@ -11,15 +11,27 @@ import { getServiceById, type ServiceId } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
 import type { TeamProfileContent } from "@/lib/team-profiles";
 
+type PeerSpecialist = {
+  id: string;
+  image: string;
+  imageAlt: string;
+  name: string;
+  role: string;
+};
+
 type TeamProfilePageProps = {
+  activitySummary: string;
+  achievementHighlights: readonly string[];
   breadcrumbTeam: string;
   calculatorAlt: string;
   contactButtonLabel: string;
   featureIconAlt: string;
   image: string;
   imageAlt: string;
+  intro: string;
   locale: string;
   name: string;
+  otherSpecialists: PeerSpecialist[];
   profile: TeamProfileContent;
   relatedServiceIds: ServiceId[];
   role: string;
@@ -31,14 +43,18 @@ type TeamProfilePageProps = {
 };
 
 export default function TeamProfilePage({
+  activitySummary,
+  achievementHighlights,
   breadcrumbTeam,
   calculatorAlt,
   contactButtonLabel,
   featureIconAlt,
   image,
   imageAlt,
+  intro,
   locale,
   name,
+  otherSpecialists,
   profile,
   relatedServiceIds,
   role,
@@ -83,9 +99,20 @@ export default function TeamProfilePage({
                   </span>
                 </h1>
 
-                <p className="mb-5 max-w-[520px] text-sm leading-6 text-[var(--design-text)] md:text-base">
-                  {profile.description}
+                <p className="mb-5 max-w-[620px] text-sm leading-7 text-[var(--design-text)] md:text-base">
+                  {intro}
                 </p>
+
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {achievementHighlights.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-[color:var(--foreground)]/10 bg-[var(--background)] px-3 py-2 text-xs font-semibold text-[var(--foreground)]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
                 <Link
                   href="/connect"
@@ -149,7 +176,21 @@ export default function TeamProfilePage({
           </section>
         </TeamSurfaceHeaderSection>
 
-        <section className="mt-8 p-4 [--card-radius:1.25rem] [--card-pad:1rem] [--title-size:1.5rem] [--title-lh:2rem] [--text-size:1.0625rem] [--text-lh:1.65rem] [--icon-size:1.5rem] md:p-6 md:[--card-pad:1.125rem] md:[--title-size:1.375rem] md:[--title-lh:1.85rem] md:[--text-size:0.9375rem] md:[--text-lh:1.55rem] md:[--icon-size:1.75rem]">
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="rounded-[2rem] bg-[var(--services-bg)] p-6 md:p-8">
+            <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+              {isRussian ? "Кратко о роли" : "Role summary"}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
+              {isRussian ? "Чем занимается этот специалист" : "What this specialist does"}
+            </h2>
+            <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
+              {activitySummary}
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-2 p-4 [--card-radius:1.25rem] [--card-pad:1rem] [--title-size:1.5rem] [--title-lh:2rem] [--text-size:1.0625rem] [--text-lh:1.65rem] [--icon-size:1.5rem] md:p-6 md:[--card-pad:1.125rem] md:[--title-size:1.375rem] md:[--title-lh:1.85rem] md:[--text-size:0.9375rem] md:[--text-lh:1.55rem] md:[--icon-size:1.75rem]">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
             {profile.featureItems.map((item) => (
               <article
@@ -203,12 +244,12 @@ export default function TeamProfilePage({
         <section className="mt-2 p-4 md:p-6">
           <div className="rounded-[2rem] bg-[var(--services-bg)] p-6">
             <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-              {isRussian ? "Услуги этого специалиста" : "Services provided by this specialist"}
+              {isRussian ? "Навыки и услуги специалиста" : "Skills and services"}
             </h2>
             <p className="mt-3 max-w-3xl text-base leading-7 text-[var(--design-text)]">
               {isRussian
-                ? "Ниже собраны смежные услуги, по которым этот специалист работает в проектной команде."
-                : "These are the related services this specialist supports inside the project team."}
+                ? "Ниже собраны направления, в которых этот специалист участвует внутри проектной команды. Это помогает поисковым системам и пользователю понять зону ответственности и экспертность."
+                : "These linked services show where this specialist contributes inside the project team. They clarify expertise both for users and for search engines."}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {relatedServiceIds.map((serviceId) => {
@@ -228,6 +269,73 @@ export default function TeamProfilePage({
                   </Link>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
+              <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                {isRussian ? "Внутренняя перелинковка" : "Internal linking"}
+              </p>
+              <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+                {isRussian ? "Материалы, которые усиливают профиль" : "Links that strengthen this profile"}
+              </h2>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/blog"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                >
+                  {isRussian ? "Статьи и блог" : "Articles and blog"}
+                </Link>
+                <Link
+                  href="/projects"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                >
+                  {isRussian ? "Кейсы и портфолио" : "Case studies and portfolio"}
+                </Link>
+                <Link
+                  href="/team"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                >
+                  {isRussian ? "Вся команда" : "Full team"}
+                </Link>
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
+              <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                {isRussian ? "Другие специалисты" : "Other specialists"}
+              </p>
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {otherSpecialists.map((specialist) => (
+                  <Link
+                    key={specialist.id}
+                    href={`/team/${specialist.id}`}
+                    className="flex items-center gap-3 rounded-[1.25rem] bg-[var(--services-bg)] p-3 transition hover:-translate-y-0.5"
+                  >
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                      <OptimizedImage
+                        src={specialist.image}
+                        alt={specialist.imageAlt}
+                        width={200}
+                        height={200}
+                        sizes="56px"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-[var(--foreground)]">
+                        {specialist.name}
+                      </p>
+                      <p className="truncate text-xs text-[var(--design-text)]">
+                        {specialist.role}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </section>
