@@ -6,10 +6,13 @@ export type EncodedTree =
 const LATIN_MOJIBAKE_RE = /[\u00c2\u00c3\u00d0\u00d1][\u0080-\u00ff]?/gu;
 const CP1251_MOJIBAKE_RE = /[\u0420\u0421][\u0080-\u04ff]/gu;
 const SMART_PUNCT_MOJIBAKE_RE = /\u0432[\u0080-\u20ff]/gu;
+const CYRILLIC_MOJIBAKE_SIGNAL_RE = /(?:[\u0420\u0421][\u0080-\u04ff]|[\u00d0\u00d1][\u0080-\u00ff])/u;
 const READABLE_CYRILLIC_RE = /[А-Яа-яЁё]{2,}/u;
 const READABLE_ARABIC_RE = /[\u0600-\u06ff]{2,}/u;
 const READABLE_LATIN_RE = /\b[A-Za-z]{4,}\b/g;
 const ASCII_GIBBERISH_RE = /[#;@=<>^~`|\\]{2,}|[#;@=<>^~`|\\]/;
+const BROKEN_ASCII_WORD_RE =
+  /\b[A-Za-z0-9]*[;:<>@][A-Za-z0-9;:<>@?]*\b|\b[A-Za-z][A-Za-z0-9?]*\d[A-Za-z0-9?;:<>@]*\b/;
 
 const CP1251_CODEPOINTS = [
   0x0402, 0x0403, 0x201a, 0x0453, 0x201e, 0x2026, 0x2020, 0x2021,
@@ -73,7 +76,18 @@ function looksReadableText(value: string) {
 }
 
 function looksSuspiciousAsciiCandidate(value: string) {
-  return !looksReadableText(value) && ASCII_GIBBERISH_RE.test(value);
+  return (
+    (!looksReadableText(value) && ASCII_GIBBERISH_RE.test(value)) ||
+    BROKEN_ASCII_WORD_RE.test(value)
+  );
+}
+
+function containsReadableNativeScript(value: string) {
+  return READABLE_CYRILLIC_RE.test(value) || READABLE_ARABIC_RE.test(value);
+}
+
+function hasCyrillicMojibakeSignals(value: string) {
+  return CYRILLIC_MOJIBAKE_SIGNAL_RE.test(value);
 }
 
 function decodeLatin1Utf8(value: string) {
@@ -158,8 +172,13 @@ export function repairMojibakeText(value: string) {
     const decodedReadable = looksReadableText(decoded);
     const currentScore = scoreReadableText(current);
     const decodedScore = scoreReadableText(decoded);
+    const sourceLooksLikeBrokenCyrillic = hasCyrillicMojibakeSignals(current);
 
     if (looksSuspiciousAsciiCandidate(decoded)) {
+      break;
+    }
+
+    if (sourceLooksLikeBrokenCyrillic && !containsReadableNativeScript(decoded)) {
       break;
     }
 
