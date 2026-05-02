@@ -3,7 +3,12 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
+import SpecialistProfilePage from "@/app/components/team/specialist-profile-page";
 import { getTeamProfileContent } from "@/lib/team-profiles";
+import {
+  SPECIALIST_PROFILES,
+  getLocalizedSpecialistProfile,
+} from "@/lib/specialist-profiles";
 import {
   TEAM_MEMBERS,
   getLocalizedTeamMember,
@@ -22,7 +27,12 @@ const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
 };
 
 export function generateStaticParams() {
-  return TEAM_MEMBERS.map((member) => ({ slug: member.id }));
+  const slugs = new Set([
+    ...TEAM_MEMBERS.map((member) => member.id),
+    ...SPECIALIST_PROFILES.map((profile) => profile.slug),
+  ]);
+
+  return Array.from(slugs).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -31,6 +41,15 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const specialistProfile = getLocalizedSpecialistProfile(slug, locale);
+
+  if (specialistProfile) {
+    return {
+      title: specialistProfile.metaTitle,
+      description: buildMetaDescription(specialistProfile.metaDescription),
+    };
+  }
+
   const member = getTeamMember(slug);
 
   if (!member) {
@@ -57,9 +76,10 @@ export default async function TeamMemberPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  const specialistProfile = getLocalizedSpecialistProfile(slug, locale);
   const member = getTeamMember(slug);
 
-  if (!member) {
+  if (!member && !specialistProfile) {
     notFound();
   }
 
@@ -67,6 +87,64 @@ export default async function TeamMemberPage({
     getTranslations({ locale, namespace: "design" }),
     getTranslations({ locale, namespace: "features" }),
   ]);
+
+  if (specialistProfile) {
+    const mergedSpecialists = [
+      ...SPECIALIST_PROFILES.map((profile) => ({
+        ...(getLocalizedSpecialistProfile(profile, locale) ?? profile),
+        id: profile.slug,
+      })),
+      ...TEAM_MEMBERS.filter(
+        (item) => !SPECIALIST_PROFILES.some((profile) => profile.slug === item.id)
+      ).map((item) => {
+        const localized = getLocalizedTeamMember(item, locale);
+        return {
+          id: item.id,
+          image: item.image,
+          imageAlt: localized.imageAlt,
+          name: localized.name,
+          role: localized.role,
+        };
+      }),
+    ];
+
+    const otherSpecialists = mergedSpecialists
+      .filter((item) => item.id !== slug)
+      .slice(0, 4);
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: specialistProfile.name,
+      jobTitle: specialistProfile.role,
+      description: specialistProfile.metaDescription,
+      image: specialistProfile.image,
+      worksFor: {
+        "@type": "Organization",
+        name: "Creative Group",
+      },
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        <SpecialistProfilePage
+          contactButtonLabel={tDesign("contactButton")}
+          locale={locale}
+          otherSpecialists={otherSpecialists}
+          profile={specialistProfile}
+        />
+      </>
+    );
+  }
+
+  if (!member) {
+    notFound();
+  }
 
   const localizedMember = getLocalizedTeamMember(member, locale);
   const relatedServiceIds =

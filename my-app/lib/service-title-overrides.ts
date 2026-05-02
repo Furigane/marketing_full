@@ -21,6 +21,7 @@ export function getServiceTitleOverride(
   id: ServiceId
 ) {
   const normalizedLocale = normalizeSiteLocale(locale);
-  const sectionItems = SERVICE_SECTION_MESSAGES[normalizedLocale][section].items;
+  const sectionItems = SERVICE_SECTION_MESSAGES[normalizedLocale][section]
+    .items as Partial<Record<ServiceId, string>>;
   return sectionItems[id] ?? null;
 }

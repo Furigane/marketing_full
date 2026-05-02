@@ -61,6 +61,10 @@ export default function TeamProfilePage({
   socialLabels,
 }: TeamProfilePageProps) {
   const isRussian = locale.toLowerCase().startsWith("ru");
+  const relatedServices = relatedServiceIds
+    .map((serviceId) => getServiceById(serviceId))
+    .filter((service): service is NonNullable<typeof service> => Boolean(service))
+    .map((service) => getLocalizedService(service, locale));
 
   return (
     <>
@@ -68,109 +72,151 @@ export default function TeamProfilePage({
         <TeamSurfaceHeaderSection className="mt-6">
           <Header />
 
-          <section className="relative pb-12 pt-6 md:pb-16">
-            <div className="flex flex-col-reverse gap-4 md:flex-row md:items-center md:gap-8">
-              <div className="flex w-full justify-start md:w-[40%] md:flex-shrink-0">
-                <OptimizedImage
-                  src={image}
-                  alt={imageAlt}
-                  width={600}
-                  height={600}
-                  className="h-auto w-full max-w-[360px] rounded-[2rem] object-cover md:max-w-[500px]"
-                />
-              </div>
+          <section className="pb-12 pt-6 md:pb-16">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[linear-gradient(135deg,rgba(245,212,140,0.18),transparent_35%),linear-gradient(220deg,rgba(124,159,247,0.18),transparent_48%),var(--workers-bg)] p-6 shadow-[0_24px_80px_rgba(15,23,42,0.14)] md:p-8 lg:p-10">
+              <div className="absolute -right-16 top-0 h-52 w-52 rounded-full bg-[#acc2fd]/20 blur-3xl" />
+              <div className="absolute -left-10 bottom-0 h-52 w-52 rounded-full bg-[#f5d48c]/20 blur-3xl" />
 
-              <div className="w-full min-w-0 md:w-[46%] md:max-w-[800px]">
-                <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-[var(--design-muted)]">
-                  <span aria-hidden>{"\u2302"}</span>
-                  <span aria-hidden>{"\u203A"}</span>
-                  <span>{breadcrumbTeam}</span>
-                  <span aria-hidden>{"\u203A"}</span>
-                  <span className="font-semibold text-[var(--foreground)]">
+              <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_420px] lg:items-center">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--design-muted)]">
+                    <span aria-hidden>{"\u2302"}</span>
+                    <span aria-hidden>{"\u203A"}</span>
+                    <span>{breadcrumbTeam}</span>
+                    <span aria-hidden>{"\u203A"}</span>
+                    <span className="font-semibold text-[var(--foreground)]">{name}</span>
+                  </div>
+
+                  <span className="mt-4 inline-flex rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)] backdrop-blur">
+                    {profile.titleHighlight}
+                  </span>
+
+                  <h1 className="mt-5 max-w-4xl text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
                     {name}
-                  </span>
-                </div>
+                    <span className="mt-2 block text-[#7c9ff7]">{role}</span>
+                  </h1>
 
-                <h1 className="mb-3 text-3xl font-extrabold leading-[1.15] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
-                  {name}
-                  <br />
-                  <span className="inline-block rounded-full bg-[var(--hero-span)] py-1 pl-3 pr-4 text-[var(--design-title)] sm:pl-4 sm:pr-4">
-                    {role}
-                  </span>
-                </h1>
+                  <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--design-text)] md:text-lg">
+                    {intro}
+                  </p>
 
-                <p className="mb-5 max-w-[620px] text-sm leading-7 text-[var(--design-text)] md:text-base">
-                  {intro}
-                </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {achievementHighlights.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/90 px-4 py-2 text-sm font-semibold text-[var(--foreground)]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
 
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {achievementHighlights.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-[color:var(--foreground)]/10 bg-[var(--background)] px-3 py-2 text-xs font-semibold text-[var(--foreground)]"
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href="/connect"
+                      className="inline-flex items-center gap-2 rounded-full bg-[var(--design-btn)] px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-[var(--design-btn-hover)] dark:text-zinc-100"
                     >
-                      {item}
-                    </span>
-                  ))}
+                      <Image
+                        src="/svg/solar_calculator-broken.svg"
+                        alt={calculatorAlt}
+                        width={18}
+                        height={18}
+                        className="dark:invert"
+                      />
+                      {contactButtonLabel}
+                    </Link>
+                    <Link
+                      href="/services"
+                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
+                    >
+                      {isRussian ? "Посмотреть услуги" : "See services"}
+                    </Link>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Link
+                      href="#"
+                      aria-label={socialLabels.instagram}
+                      className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 transition hover:border-[#7c9ff7]"
+                    >
+                      <Image
+                        src="/svg/Instagram_black.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="dark:invert"
+                      />
+                    </Link>
+                    <Link
+                      href="#"
+                      aria-label={socialLabels.telegram}
+                      className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 transition hover:border-[#7c9ff7]"
+                    >
+                      <Image
+                        src="/svg/Telegram_black.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="dark:invert"
+                      />
+                    </Link>
+                    <Link
+                      href="#"
+                      aria-label={socialLabels.viber}
+                      className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 transition hover:border-[#7c9ff7]"
+                    >
+                      <Image
+                        src="/svg/Viber_black.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="dark:invert"
+                      />
+                    </Link>
+                  </div>
                 </div>
 
-                <Link
-                  href="/connect"
-                  className="inline-flex items-center gap-2 rounded-full bg-[var(--design-btn)] px-6 py-3 text-base text-zinc-900 transition-colors duration-300 hover:bg-[var(--design-btn-hover)] dark:text-zinc-100"
-                >
-                  <Image
-                    src="/svg/solar_calculator-broken.svg"
-                    alt={calculatorAlt}
-                    width={20}
-                    height={20}
-                    className="dark:invert"
-                  />
-                  {contactButtonLabel}
-                </Link>
-              </div>
-            </div>
+                <div className="relative">
+                  <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)]/92 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.16)] backdrop-blur">
+                    <div className="overflow-hidden rounded-[1.5rem]">
+                      <OptimizedImage
+                        src={image}
+                        alt={imageAlt}
+                        width={840}
+                        height={980}
+                        sizes="(max-width: 1024px) 100vw, 420px"
+                        className="h-auto w-full object-cover object-top"
+                      />
+                    </div>
 
-            <div className="mt-4 flex justify-end md:absolute md:bottom-4 md:right-0 md:mt-0">
-              <div className="flex items-center gap-2">
-                <Link
-                  href="#"
-                  aria-label={socialLabels.instagram}
-                  className="grid place-items-center rounded-full text-[10px] text-white"
-                >
-                  <Image
-                    src="/svg/Instagram_black.svg"
-                    alt=""
-                    width={30}
-                    height={30}
-                    className="dark:invert"
-                  />
-                </Link>
-                <Link
-                  href="#"
-                  aria-label={socialLabels.telegram}
-                  className="grid place-items-center rounded-full text-[10px] text-white"
-                >
-                  <Image
-                    src="/svg/Telegram_black.svg"
-                    alt=""
-                    width={30}
-                    height={30}
-                    className="dark:invert"
-                  />
-                </Link>
-                <Link
-                  href="#"
-                  aria-label={socialLabels.viber}
-                  className="grid place-items-center rounded-full text-[10px] text-white"
-                >
-                  <Image
-                    src="/svg/Viber_black.svg"
-                    alt=""
-                    width={30}
-                    height={30}
-                    className="dark:invert"
-                  />
-                </Link>
+                    <div className="mt-4 grid grid-cols-3 gap-3">
+                      <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
+                        <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
+                          {isRussian ? "Направление" : "Track"}
+                        </p>
+                        <p className="mt-2 text-sm font-bold text-[var(--foreground)]">
+                          {profile.titleHighlight}
+                        </p>
+                      </div>
+                      <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
+                        <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
+                          {isRussian ? "Фокус" : "Focus"}
+                        </p>
+                        <p className="mt-2 text-sm font-bold text-[var(--foreground)]">
+                          {profile.titleSecondLine}
+                        </p>
+                      </div>
+                      <div className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center">
+                        <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
+                          {isRussian ? "Услуги" : "Services"}
+                        </p>
+                        <p className="mt-2 text-lg font-bold text-[var(--foreground)]">
+                          {relatedServices.length}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -178,43 +224,54 @@ export default function TeamProfilePage({
 
         <section className="px-3 md:px-6 lg:px-8">
           <div className="rounded-[2rem] bg-[var(--services-bg)] p-6 md:p-8">
-            <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              {isRussian ? "Кратко о роли" : "Role summary"}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-              {isRussian ? "Чем занимается этот специалист" : "What this specialist does"}
-            </h2>
-            <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
-              {activitySummary}
-            </p>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)]">
+              <div>
+                <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                  {isRussian ? "Экспертиза" : "Expertise"}
+                </p>
+                <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
+                  {profile.detailTitle}
+                </h2>
+                <p className="mt-4 text-base leading-8 text-[var(--foreground)] md:text-lg">
+                  {activitySummary}
+                </p>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5">
+                <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                  {isRussian ? "Подход" : "Approach"}
+                </p>
+                <p className="mt-4 text-sm leading-7 text-[var(--foreground)] md:text-base">
+                  {profile.description}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="mt-2 p-4 [--card-radius:1.25rem] [--card-pad:1rem] [--title-size:1.5rem] [--title-lh:2rem] [--text-size:1.0625rem] [--text-lh:1.65rem] [--icon-size:1.5rem] md:p-6 md:[--card-pad:1.125rem] md:[--title-size:1.375rem] md:[--title-lh:1.85rem] md:[--text-size:0.9375rem] md:[--text-lh:1.55rem] md:[--icon-size:1.75rem]">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {profile.featureItems.map((item) => (
               <article
                 key={item.title}
-                className="relative rounded-[var(--card-radius)] border border-[var(--design-text)] bg-[var(--background)] p-[var(--card-pad)] shadow-[0_8px_20px_rgba(0,0,0,0.08)]"
+                className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.12)]"
               >
-                <span className="absolute right-3 top-0 -translate-y-1/2 rounded-full bg-zinc-900 px-3 py-1 text-sm font-semibold text-[#f5d58d] dark:bg-zinc-100 dark:text-zinc-900">
+                <span className="inline-flex rounded-full bg-[var(--services-bg)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#7c9ff7]">
                   {item.badge}
                 </span>
-
-                <div className="mb-4">
+                <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--services-bg)]">
                   <Image
                     src="/svg/graph.svg"
                     alt={featureIconAlt}
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain dark:invert"
+                    width={24}
+                    height={24}
+                    className="dark:invert"
                   />
                 </div>
-
-                <h2 className="font-['Manrope'] text-[length:var(--title-size)] font-bold leading-[var(--title-lh)] text-[var(--design-title)]">
+                <h2 className="mt-5 text-2xl font-bold text-[var(--foreground)]">
                   {item.title}
                 </h2>
-                <p className="text-[length:var(--text-size)] leading-[var(--text-lh)] text-[var(--design-title)]">
+                <p className="mt-3 text-sm leading-7 text-[var(--design-text)] md:text-base">
                   {item.description}
                 </p>
               </article>
@@ -222,18 +279,17 @@ export default function TeamProfilePage({
           </div>
         </section>
 
-        <section className="mt-8 p-4 md:p-6">
-          <h2 className="mb-6 text-center text-3xl font-bold text-[var(--design-title)] md:mb-10 md:text-4xl">
-            {profile.detailTitle}
-          </h2>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="grid gap-5 xl:grid-cols-2">
             {profile.detailItems.map((item) => (
-              <article key={item.title} className="border-l border-zinc-500 pl-3 md:pl-4">
-                <h3 className="mb-3 text-xl font-bold text-[var(--design-title)] md:text-2xl">
+              <article
+                key={item.title}
+                className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+              >
+                <h2 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
                   {item.title}
-                </h3>
-                <p className="text-base leading-7 text-[var(--design-title)] md:text-lg md:leading-8">
+                </h2>
+                <p className="mt-4 text-sm leading-8 text-[var(--design-text)] md:text-base">
                   {item.body}
                 </p>
               </article>
@@ -241,34 +297,55 @@ export default function TeamProfilePage({
           </div>
         </section>
 
-        <section className="mt-2 p-4 md:p-6">
-          <div className="rounded-[2rem] bg-[var(--services-bg)] p-6">
-            <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-              {isRussian ? "Навыки и услуги специалиста" : "Skills and services"}
-            </h2>
-            <p className="mt-3 max-w-3xl text-base leading-7 text-[var(--design-text)]">
-              {isRussian
-                ? "Ниже собраны направления, в которых этот специалист участвует внутри проектной команды. Это помогает поисковым системам и пользователю понять зону ответственности и экспертность."
-                : "These linked services show where this specialist contributes inside the project team. They clarify expertise both for users and for search engines."}
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {relatedServiceIds.map((serviceId) => {
-                const serviceDefinition = getServiceById(serviceId);
-                if (!serviceDefinition) {
-                  return null;
-                }
-                const service = getLocalizedService(serviceDefinition, locale);
-
-                return (
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
+              <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+                {isRussian ? "Услуги специалиста" : "Specialist services"}
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[var(--design-text)] md:text-base">
+                {isRussian
+                  ? "Ниже собраны направления, в которых этот специалист участвует внутри проектной команды."
+                  : "These linked services show where this specialist contributes inside the project team."}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {relatedServices.map((service) => (
                   <Link
                     key={service.id}
                     href={`/services/${service.slug}`}
-                    className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6] hover:text-[#7c9ff7]"
+                    className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7] hover:text-[#5f84ea]"
                   >
                     {service.content.title}
                   </Link>
-                );
-              })}
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6">
+              <h2 className="text-2xl font-bold text-[var(--foreground)] md:text-3xl">
+                {isRussian ? "Следующий шаг" : "Next step"}
+              </h2>
+              <div className="mt-5 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(124,159,247,0.14),rgba(245,212,140,0.16))] p-5">
+                <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                  CTA
+                </p>
+                <h3 className="mt-3 text-2xl font-bold text-[var(--foreground)]">
+                  {isRussian
+                    ? "Нужен специалист под ваш проект?"
+                    : "Need the right specialist for your project?"}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--foreground)] md:text-base">
+                  {isRussian
+                    ? "Оставьте заявку, и мы подключим этого специалиста к задаче вместе с нужными услугами и смежной командой."
+                    : "Send a request and we will connect this specialist with the relevant services and supporting team."}
+                </p>
+                <Link
+                  href="/connect"
+                  className="mt-5 inline-flex rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold text-[var(--background)] transition hover:opacity-90"
+                >
+                  {contactButtonLabel}
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -280,24 +357,24 @@ export default function TeamProfilePage({
                 {isRussian ? "Внутренняя перелинковка" : "Internal linking"}
               </p>
               <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)] md:text-3xl">
-                {isRussian ? "Материалы, которые усиливают профиль" : "Links that strengthen this profile"}
+                {isRussian ? "Смежные материалы" : "Related site sections"}
               </h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link
                   href="/blog"
-                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
                   {isRussian ? "Статьи и блог" : "Articles and blog"}
                 </Link>
                 <Link
                   href="/projects"
-                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
                   {isRussian ? "Кейсы и портфолио" : "Case studies and portfolio"}
                 </Link>
                 <Link
                   href="/team"
-                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#9ab5f6]"
+                  className="rounded-full border border-[color:var(--foreground)]/12 bg-[var(--services-bg)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] transition hover:border-[#7c9ff7]"
                 >
                   {isRussian ? "Вся команда" : "Full team"}
                 </Link>

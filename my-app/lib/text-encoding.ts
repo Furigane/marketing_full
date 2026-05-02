@@ -41,6 +41,17 @@ function countMojibakeMarkers(value: string) {
   );
 }
 
+function scoreReadableText(value: string) {
+  const cyrillic = (value.match(/[А-Яа-яЁё]/g) ?? []).length;
+  const latin = (value.match(/[A-Za-z]/g) ?? []).length;
+  const digits = (value.match(/\d/g) ?? []).length;
+  const spaces = (value.match(/\s/g) ?? []).length;
+  const noisyPunctuation = (value.match(/[#$@<>^~`|\\]/g) ?? []).length;
+  const replacementChars = (value.match(/\?/g) ?? []).length;
+
+  return cyrillic * 3 + latin + digits + spaces - noisyPunctuation * 4 - replacementChars * 3;
+}
+
 function decodeLatin1Utf8(value: string) {
   return Buffer.from(value, "latin1").toString("utf8");
 }
@@ -88,16 +99,24 @@ export function repairMojibakeText(value: string) {
       break;
     }
 
-    const decodedCandidates = [decodeCp1251Utf8(current), decodeLatin1Utf8(current)].filter(
-      (item): item is string => Boolean(item) && !item.includes("\ufffd")
-    );
+    const decodedCandidates = [
+      decodeCp1251Utf8(current),
+      decodeLatin1Utf8(current),
+    ].filter((item): item is string => item !== null && !item.includes("\ufffd"));
 
     if (decodedCandidates.length === 0) {
       break;
     }
 
     const decoded = decodedCandidates.reduce((best, candidate) => {
-      return countMojibakeMarkers(candidate) < countMojibakeMarkers(best)
+      const candidateMarkers = countMojibakeMarkers(candidate);
+      const bestMarkers = countMojibakeMarkers(best);
+
+      if (candidateMarkers !== bestMarkers) {
+        return candidateMarkers < bestMarkers ? candidate : best;
+      }
+
+      return scoreReadableText(candidate) > scoreReadableText(best)
         ? candidate
         : best;
     });

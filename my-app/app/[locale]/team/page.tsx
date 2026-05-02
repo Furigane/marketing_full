@@ -6,6 +6,10 @@ import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import { Link } from "@/i18n/navigation";
+import {
+  SPECIALIST_PROFILES,
+  getLocalizedSpecialistProfile,
+} from "@/lib/specialist-profiles";
 import { TEAM_MEMBERS, getLocalizedTeamMember } from "@/lib/team-members";
 import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
 
@@ -37,7 +41,24 @@ export default async function TeamPage({
 }) {
   const { locale } = await params;
   const isRussian = isRussianLocale(locale);
-  const specialists = TEAM_MEMBERS.map((member) => getLocalizedTeamMember(member, locale));
+  const specialists = [
+    ...SPECIALIST_PROFILES.map((profile) => {
+      const localizedProfile = getLocalizedSpecialistProfile(profile, locale) ?? profile;
+      return {
+        id: localizedProfile.slug,
+        image: localizedProfile.image,
+        imageAlt: localizedProfile.imageAlt,
+        name: localizedProfile.name,
+        role: localizedProfile.role,
+        experience: localizedProfile.experience,
+        intro: localizedProfile.intro,
+        achievementHighlights: localizedProfile.achievementHighlights,
+      };
+    }),
+    ...TEAM_MEMBERS.filter(
+      (member) => !SPECIALIST_PROFILES.some((profile) => profile.slug === member.id)
+    ).map((member) => getLocalizedTeamMember(member, locale)),
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
