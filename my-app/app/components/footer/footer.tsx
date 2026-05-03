@@ -35,24 +35,41 @@ export default function Footer() {
 
   return (
     <footer className="mt-8 w-full rounded-t-[28px] bg-[var(--footer-bg-top)] px-3 pb-0 pt-3 md:px-6 md:pb-0 md:pt-6 lg:px-8">
-      <div className="rounded-[28px] px-4 py-5 md:px-8 md:py-8 lg:px-10">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-start gap-3 md:max-w-[520px] lg:max-w-[580px]">
-            <span className="text-3xl leading-none text-zinc-300 md:text-4xl">“</span>
-            <p className="text-sm leading-relaxed text-zinc-500 md:text-base md:leading-relaxed lg:text-lg">
-              <span className="font-semibold text-zinc-700">
-                {t("quoteBold")}
-              </span>{" "}
-              {t("quoteRest")}
-            </p>
+      <div className="relative overflow-hidden rounded-[28px] border border-white/8 bg-[#202020] px-4 py-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] md:px-8 md:py-8 lg:px-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_left,_rgba(154,181,246,0.18),_transparent_38%),radial-gradient(circle_at_right,_rgba(255,255,255,0.08),_transparent_28%)]"
+        />
+
+        <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_auto_auto] lg:items-center lg:gap-6">
+          <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4 backdrop-blur-sm md:p-5">
+            <div className="flex items-start gap-3 md:max-w-[620px]">
+              <span className="text-3xl leading-none text-[#9ab5f6] md:text-5xl">
+                &ldquo;
+              </span>
+              <p className="text-sm leading-relaxed text-zinc-300 md:text-base md:leading-relaxed lg:text-lg">
+                <span className="font-semibold text-white">
+                  {t("quoteBold")}
+                </span>{" "}
+                {t("quoteRest")}
+              </p>
+            </div>
           </div>
 
-          <div className="order-2 flex items-center md:order-3">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-12 w-fit items-center justify-center gap-2 self-start rounded-full border border-[#b7caff]/30 bg-[#9ab5f6] px-5 py-3 text-sm font-medium text-zinc-950 shadow-[0_12px_30px_rgba(154,181,246,0.32)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#abc1f8] md:self-center md:px-8 md:text-base"
+          >
+            <span aria-hidden>&rarr;</span>
+            {t("contactButton")}
+          </Link>
+
+          <div className="flex w-fit items-center self-start rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 backdrop-blur-sm md:self-center">
             {[1, 2, 3, 4].map((item, idx) => (
               <div
                 key={item}
-                className={`relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#f5f5f5] md:h-14 md:w-14 ${
-                  idx === 0 ? "" : "-ml-2 md:-ml-3"
+                className={`relative h-11 w-11 overflow-hidden rounded-full border-2 border-[#202020] ring-1 ring-white/16 md:h-14 md:w-14 ${
+                  idx === 0 ? "" : "-ml-2.5 md:-ml-3"
                 }`}
               >
                 <OptimizedImage
@@ -66,14 +83,6 @@ export default function Footer() {
               </div>
             ))}
           </div>
-
-          <Link
-            href="/contact"
-            className="order-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#9ab5f6] px-5 py-2.5 text-sm font-medium text-zinc-900 shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#89a9f5] md:order-2 md:px-8 md:py-3.5 md:text-base"
-          >
-            <span aria-hidden>→</span>
-            {t("contactButton")}
-          </Link>
         </div>
       </div>
 
