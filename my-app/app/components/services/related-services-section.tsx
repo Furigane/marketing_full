@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 import { getServiceById, type ServiceId } from "@/lib/services";
@@ -12,13 +13,13 @@ type RelatedServicesSectionProps = {
   title?: string;
 };
 
-export default function RelatedServicesSection({
+export default async function RelatedServicesSection({
   currentServiceId,
   locale,
   serviceIds,
   title,
 }: RelatedServicesSectionProps) {
-  const isRussian = locale.toLowerCase().startsWith("ru");
+  const t = await getTranslations({ locale, namespace: "serviceDetailPage.relatedServices" });
   const related = serviceIds
     ? serviceIds
         .map((id) => getServiceById(id))
@@ -40,10 +41,10 @@ export default function RelatedServicesSection({
       <div className="mb-6 flex items-end justify-between gap-4">
         <div>
           <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-            {isRussian ? "Услуги" : "Services"}
+            {t("eyebrow")}
           </p>
           <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-            {title ?? (isRussian ? "Похожие услуги" : "Related services")}
+            {title ?? t("title")}
           </h2>
         </div>
       </div>
@@ -75,7 +76,7 @@ export default function RelatedServicesSection({
                 {serviceSummary}
               </p>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#7c9ff7]">
-                {isRussian ? "Открыть услугу" : "View service"} <span aria-hidden>{"\u2197"}</span>
+                {t("open")} <span aria-hidden>{"\u2197"}</span>
               </span>
             </Link>
           );

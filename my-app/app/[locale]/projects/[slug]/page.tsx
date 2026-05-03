@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import CaseStudyPage from "@/app/components/projects/case-study-page";
@@ -7,7 +8,7 @@ import {
   getCaseStudyBySlug,
   getLocalizedCaseStudy,
 } from "@/lib/case-studies";
-import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getCaseStudies().map((caseStudy) => ({ slug: caseStudy.slug }));
@@ -26,20 +27,21 @@ export async function generateMetadata({
   }
 
   const localizedCaseStudy = getLocalizedCaseStudy(caseStudy, locale);
-  const isRussian = isRussianLocale(locale);
-  const title = isRussian
-    ? `${localizedCaseStudy.content.card.title} - кейс по росту ${localizedCaseStudy.content.heroHighlight.toLowerCase()}`
-    : `${localizedCaseStudy.content.card.title} case study - ${localizedCaseStudy.content.heroHighlight}`;
+  const t = await getTranslations({ locale, namespace: "caseStudyPage.meta" });
+  const title = t("title", {
+    title: localizedCaseStudy.content.card.title,
+    highlight: localizedCaseStudy.content.heroHighlight,
+  });
+  const description = t("description", {
+    title: localizedCaseStudy.content.card.title,
+    heroDescription: localizedCaseStudy.content.heroDescription,
+  });
 
   return buildPageMetadata({
     locale,
     path: `/projects/${slug}`,
     title: buildMetaTitle(title, "Creative Group"),
-    description: buildMetaDescription(
-      isRussian
-        ? `${localizedCaseStudy.content.card.title}: было, что сделали и что получили в цифрах. ${localizedCaseStudy.content.heroDescription}`
-        : `${localizedCaseStudy.content.card.title}: before, what we did, and the measurable result. ${localizedCaseStudy.content.heroDescription}`
-    ),
+    description: buildMetaDescription(description),
   });
 }
 

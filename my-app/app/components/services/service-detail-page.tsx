@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import Footer from "@/app/components/footer/footer";
@@ -24,7 +25,7 @@ export default async function ServiceDetailPage({
   locale,
   service,
 }: ServiceDetailPageProps) {
-  const isRussian = locale.toLowerCase().startsWith("ru");
+  const t = await getTranslations({ locale, namespace: "serviceDetailPage" });
   const localizedService = getLocalizedService(service, locale);
   const title = repairMojibakeText(localizedService.content.title);
   const description = repairMojibakeText(localizedService.content.description);
@@ -88,7 +89,7 @@ export default async function ServiceDetailPage({
                   />
                 </div>
                 <p className="text-sm uppercase tracking-[0.16em] text-[var(--design-muted)]">
-                  {isRussian ? "Р§С‚Рѕ РІС…РѕРґРёС‚ РІ СѓСЃР»СѓРіСѓ" : "Included in the service"}
+                  {t("included")}
                 </p>
                 <ul className="mt-4 space-y-3">
                   {deliverables.map((item) => (
@@ -106,7 +107,7 @@ export default async function ServiceDetailPage({
         <section className="px-3 md:px-6 lg:px-8">
           <div className="rounded-[2rem] bg-[var(--services-bg)] p-5 md:p-8">
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              {isRussian ? "РћР±Р·РѕСЂ" : "Overview"}
+              {t("overview")}
             </p>
             <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
               {summary}
@@ -178,10 +179,10 @@ export default async function ServiceDetailPage({
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "РљРѕРјР°РЅРґР°" : "Team"}
+                {t("team")}
               </p>
               <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-                {isRussian ? "РЎРїРµС†РёР°Р»РёСЃС‚С‹ РїРѕ СѓСЃР»СѓРіРµ" : "Specialists for this service"}
+                {t("specialists")}
               </h2>
             </div>
           </div>
@@ -217,7 +218,7 @@ export default async function ServiceDetailPage({
         <section className="px-3 md:px-6 lg:px-8">
           <div className="rounded-[2rem] bg-[var(--services-bg)] p-6 md:p-8">
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              FAQ
+              {t("faqEyebrow")}
             </p>
             <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
               {seoContent.faqHeading}

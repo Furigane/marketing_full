@@ -167,7 +167,7 @@ function revalidateTranslationPaths() {
   revalidatePath("/");
 
   for (const locale of SITE_LOCALES) {
-    const prefix = locale === "ru" ? "" : `/${locale}`;
+    const prefix = `/${locale}`;
     revalidatePath(`${prefix}/`);
     revalidatePath(`${prefix}/services`);
     revalidatePath(`${prefix}/projects`);

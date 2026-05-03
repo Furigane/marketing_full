@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import PageBottomSections from "../../components/common/page-bottom-sections";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/headaer/header";
 import Projects from "../../components/projects/projects";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
-import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,20 +14,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isRussian = isRussianLocale(locale);
+  const t = await getTranslations({ locale, namespace: "projectsPage" });
 
   return buildPageMetadata({
     locale,
     path: "/projects",
-    title: buildMetaTitle(
-      isRussian ? "Кейсы и портфолио" : "Case studies and portfolio",
-      "Creative Group"
-    ),
-    description: buildMetaDescription(
-      isRussian
-        ? "Портфолио с реальными результатами: было, что сделали, стало, цифры роста, специалисты и связанные услуги."
-        : "Portfolio with real results: before, what we did, after, growth metrics, responsible specialists, and related services."
-    ),
+    title: buildMetaTitle(t("metaTitle"), "Creative Group"),
+    description: buildMetaDescription(t("metaDescription")),
   });
 }
 
@@ -36,7 +30,7 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const isRussian = locale.toLowerCase().startsWith("ru");
+  const t = await getTranslations({ locale, namespace: "projectsPage" });
 
   return (
     <>
@@ -51,17 +45,15 @@ export default async function ProjectsPage({
               <div className="relative">
                 <div className="max-w-5xl">
                   <span className="inline-flex rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--design-muted)] backdrop-blur">
-                    {isRussian ? "Каталог кейсов" : "Case study catalog"}
+                    {t("eyebrow")}
                   </span>
 
                   <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-5xl md:text-6xl">
-                    {isRussian ? "Все компании в одном сильном портфолио" : "All companies in one strong portfolio"}
+                    {t("title")}
                   </h1>
 
                   <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--design-text)] md:text-lg">
-                    {isRussian
-                      ? "Полный список проектов в визуально чистом каталоге: быстро просматривайте компании, ниши и стоимость, затем переходите в детальный кейс."
-                      : "A visually cleaner catalog view of the full project list: scan companies, niches, and pricing fast, then open the detailed case study."}
+                    {t("description")}
                   </p>
                 </div>
               </div>

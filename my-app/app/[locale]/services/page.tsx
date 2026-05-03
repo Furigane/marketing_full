@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import Card from "../../components/card/card";
 import Footer from "../../components/footer/footer";
@@ -7,7 +8,7 @@ import Services from "../../components/services/services";
 import Faq from "../../components2/faq/faq";
 import Smm from "../../components2/smm/smm";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
-import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,20 +16,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isRussian = isRussianLocale(locale);
+  const t = await getTranslations({ locale, namespace: "servicesPage" });
 
   return buildPageMetadata({
     locale,
     path: "/services",
-    title: buildMetaTitle(
-      isRussian ? "Услуги маркетинга и digital" : "Marketing and digital services",
-      "Creative Group"
-    ),
-    description: buildMetaDescription(
-      isRussian
-        ? "Каталог услуг: SEO, реклама, сайты, аналитика, дизайн, CRM и смежные направления с внутренней перелинковкой."
-        : "Service catalog: SEO, ads, websites, analytics, design, CRM, and related offers with internal linking."
-    ),
+    title: buildMetaTitle(t("metaTitle"), "Creative Group"),
+    description: buildMetaDescription(t("metaDescription")),
   });
 }
 

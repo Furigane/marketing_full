@@ -35,7 +35,7 @@ export type SpecialistProfile = {
   relatedServiceIds: ServiceId[];
 };
 
-type SupportedSpecialistLocale = "en" | "ru";
+type SupportedSpecialistLocale = string;
 
 const SPECIALIST_SERVICE_LINKS: Record<string, string> = {
   "product discovery": "/services/marketing-research",
@@ -631,6 +631,764 @@ const EN_SPECIALIST_PROFILE_OVERRIDES: Record<string, Partial<SpecialistProfile>
   },
 };
 
+const SPECIALIST_PROFILE_LOCALE_OVERRIDES: Record<
+  string,
+  Record<string, Partial<SpecialistProfile>>
+> = {
+  en: EN_SPECIALIST_PROFILE_OVERRIDES,
+
+  de: {
+    "leo-carter-performance-marketing": {
+      role: "Produktmanager",
+      h1: "Leo Carter – Produktmanager | SaaS & digitale Produktentwicklung",
+      intro:
+        "Leo Carter ist ein erfahrener Produktmanager mit Schwerpunkt auf digitales Produktwachstum, MVP-Launches und messbare Verbesserungen der Nutzererfahrung. Er arbeitet mit SaaS- und E-Commerce-Produkten und verbindet Produktstrategie, Research und Conversion-Denken mit Geschäftswachstum.",
+      imageAlt:
+        "Leo Carter, Produktmanager mit Fokus auf SaaS-Wachstum, MVP-Launches und UX-Verbesserung",
+      metaTitle: "Leo Carter – Produktmanager | SaaS, MVP, UX, CRO",
+      metaDescription:
+        "Leo Carter arbeitet an MVP-Launches, Product Discovery, UX-Verbesserungen und Conversion-Wachstum für SaaS- und digitale Produkte.",
+      experience: "8+ Jahre",
+      focusChips: ["SaaS & E-Commerce", "MVP & Wachstum", "UX, CRO, Analytics"],
+      highlightStats: [
+        { label: "Erfahrung", value: "8+ Jahre" },
+        { label: "SaaS-Zielgruppenwachstum", value: "+180%" },
+        { label: "Fokus", value: "MVP, UX, CRO" },
+      ],
+      activitySummary:
+        "Hilft beim Start, Strukturierung und Skalierung digitaler Produkte durch Product Discovery, Roadmap-Planung, Nutzerforschung und Conversion-Analyse.",
+      achievementHighlights: [
+        "Verantwortet den gesamten Produktzyklus von Discovery bis Launch und Iteration",
+        "Arbeitet mit SaaS-, E-Commerce- und wachstumsorientierten digitalen Produkten",
+        "Verbindet Produkt, UX, Analytics und Wachstumsprioritäten in einem System",
+      ],
+      skills: [
+        "Produktmanagement und Lifecycle-Verantwortung",
+        "Product Discovery und Hypothesenentwicklung",
+        "Datenanalyse zu CAC, LTV, Retention und Conversion-Metriken",
+        "UX-orientiertes Produktdenken",
+        "Nutzerinterviews und Research-Synthese",
+        "Agile-, Scrum- und Kanban-Workflows",
+        "Koordination funktionsübergreifender Teams",
+        "Backlog-Priorisierung und Roadmap-Planung",
+        "MVP-Launch und Produktskalierung",
+        "A/B-Testing und datengetriebene Entscheidungsfindung",
+        "SaaS- und E-Commerce-Produktlieferung",
+        "Conversion Rate Optimization (CRO)",
+        "Zusammenarbeit mit Wachstum und Marketing",
+        "Stakeholder-Kommunikation und Abstimmung",
+        "Internationale Produktarbeit",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "MVP development",
+        "SaaS product development",
+        "A/B testing",
+        "Conversion optimization and CRO",
+        "Technical SEO and on-page optimization",
+        "Conversion analysis and CRO",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+      ],
+      seoSections: [
+        {
+          heading: "Produktmanager für MVP-Launches und digitales Produktwachstum",
+          paragraphs: [
+            "Leo Carter arbeitet mit digitalen Produkten, die eine klare Struktur, schnelle Validierung und einen Weg von der Idee zu wiederkehrendem Wachstum benötigen. Seine Rolle beginnt oft dort, wo Produktannahmen noch vage sind und das Team fundiertere Entscheidungen zu Zielgruppe, Wert und Prioritäten benötigt.",
+            "Er kombiniert <u>Product Discovery</u>, Research und Produktstrategie, um Teams dabei zu helfen, zu definieren, was zuerst gebaut, was getestet und welche Nutzerprobleme am wichtigsten sind. Das verkürzt den Weg zwischen Planung und messbarem Produktfortschritt.",
+          ],
+        },
+        {
+          heading: "SaaS-Produktmanager mit Fokus auf Conversion und Retention",
+          paragraphs: [
+            "Bei SaaS- und Abonnementprodukten achtet Leo besonders auf Aktivierung, Retention und Conversion-Punkte entlang der Customer Journey. Er arbeitet mit <u>Conversion Optimization, CRO</u>, <u>A/B-Testing</u> und Verhaltensanalysen, um Produktentscheidungen mit echten Belegen zu verbessern.",
+            "Das macht ihn nicht nur in der Launch-Phase wertvoll, sondern auch wenn ein bestehendes Produkt besseres Onboarding, klarere Prioritäten oder ein stärkeres Wachstumsmodell benötigt, das an das tatsächliche Nutzerverhalten geknüpft ist.",
+          ],
+        },
+        {
+          heading: "Produktstrategie verbunden mit Research, Analytics und Wachstum",
+          paragraphs: [
+            "Leo arbeitet häufig funktionsübergreifend in Produkt, Design, Analytics und Marketing. Das umfasst <u>UX Research und Nutzerstudien</u>, Roadmap-Planung und <u>Web-Analytics-Setup (GA4)</u>, damit Produktentscheidungen sowohl mit Nutzer-Insights als auch mit Geschäftszielen verbunden bleiben.",
+            "Das Ergebnis ist ein disziplinierterer Produktprozess: weniger Annahmen, klarere Verantwortlichkeiten und eine stärkere Verbindung zwischen Features, Nutzererfahrung und Wachstumsergebnissen.",
+          ],
+        },
+      ],
+    },
+    "alex-morgan-digital-marketing-specialist": {
+      role: "Digital-Marketing-Spezialist",
+      h1: "Alex Morgan – Digital-Marketing-Spezialist | Performance Marketing & SEO",
+      intro:
+        "Alex Morgan ist ein Digital-Marketing-Spezialist mit Fokus auf Wachstumssysteme, Lead-Generierung und skalierbare Kundengewinnung. Er kombiniert Strategie, bezahlten Traffic, SEO, Analytics und Funnel-Optimierung, um Unternehmen kontrollierter wachsen zu lassen.",
+      imageAlt:
+        "Alex Morgan, Digital-Marketing-Spezialist mit Fokus auf Performance Marketing, SEO und Lead-Generierung",
+      metaTitle:
+        "Alex Morgan – Digital-Marketing-Spezialist | Performance Marketing, SEO, Analytics",
+      metaDescription:
+        "Alex Morgan ist ein Digital-Marketing-Spezialist für Performance Marketing, SEO, Analytics, Lead-Generierung und Conversion-Wachstum.",
+      experience: "9+ Jahre",
+      focusChips: ["Performance & SEO", "Lead-Generierung", "Analytics & Wachstum"],
+      highlightStats: [
+        { label: "Erfahrung", value: "9+ Jahre" },
+        { label: "Fokus", value: "Traffic, Leads, ROI" },
+        { label: "Kanäle", value: "Bezahlt + Organisch" },
+      ],
+      activitySummary:
+        "Entwickelt Akquise-Systeme, die Strategie, Traffic, Analytics und Conversion verbinden, damit Wachstum messbar und skalierbar bleibt.",
+      achievementHighlights: [
+        "Kombiniert bezahlten Traffic, SEO, Analytics und Funnel-Logik in einem System",
+        "Arbeitet mit B2B-, SaaS-, E-Commerce- und Dienstleistungsunternehmen",
+        "Verbessert Lead-Qualität, Berichtsklarheit und Kanaleffizienz",
+      ],
+      skills: [
+        "Digital-Marketing-Strategie",
+        "Performance Marketing und Kampagnenoptimierung",
+        "SEO-Strategie und organisches Wachstum",
+        "Google Ads und bezahlte Suche",
+        "Management von Paid-Social-Kampagnen",
+        "Zielgruppensegmentierung und Funnel-Planung",
+        "Lead-Generierungssysteme",
+        "Conversion Rate Optimization",
+        "Web-Analytics und Reporting",
+        "Dashboard-Design und KPI-Tracking",
+        "Content-Marketing-Koordination",
+        "E-Mail-Marketing und Automatisierung",
+        "Wettbewerber- und Marktanalyse",
+        "B2B- und E-Commerce-Wachstumsunterstützung",
+        "Cross-Channel-Performance-Analyse",
+      ],
+      services: [
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "Google Ads",
+        "Paid social advertising",
+        "Remarketing and retargeting",
+        "Technical SEO and on-page optimization",
+        "Content marketing",
+        "Email marketing and automation",
+        "Lead generation and B2B marketing",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+        "Conversion optimization and CRO",
+      ],
+      seoSections: [
+        {
+          heading: "Digital-Marketing-Spezialist für skalierbare Lead-Generierung",
+          paragraphs: [
+            "Alex Morgan arbeitet mit Unternehmen, die mehr als isolierte Kampagnen benötigen. Er entwickelt Wachstumssysteme, bei denen Strategie, bezahlte Akquise, SEO und Analytics dasselbe Umsatzziel unterstützen, anstatt um Budget und Aufmerksamkeit zu konkurrieren.",
+            "Seine Arbeit beginnt oft mit <u>Marketing Strategy Development</u>, Funnel-Analyse und Kanal-Priorisierung, damit das Team versteht, woher die Nachfrage kommen soll und wie diese Nachfrage in qualifizierte Leads umgewandelt werden soll.",
+            "Alex startete seine Karriere mit Analytics und der Verwaltung von Werbekampagnen, wo er sich intensiv mit dem <u>Marketing-Audit und der Analyse der aktuellen Situation</u> sowie der Arbeit mit Daten beschäftigte. Er analysierte Akquisekanäle, optimierte Werbebudgets und baute ein System zur Messung der Marketingeffektivität auf. Bereits in dieser Phase wendete er aktiv die <u>Wettbewerber- und Marktanalyse</u> an, um Wachstumspotenziale zu identifizieren und die Marktposition der Marken zu stärken.",
+          ],
+        },
+        {
+          heading: "Performance Marketing, SEO und Analytics in einem Betriebsmodell",
+          paragraphs: [
+            "Alex kombiniert bezahlten Traffic und organische Suche, um Kanalabhängigkeit zu reduzieren und die Effizienz im Laufe der Zeit zu verbessern. Dazu gehören <u>Google Ads</u>, <u>Paid Social Advertising</u> und <u>Technical SEO und On-Page-Optimierung</u>, unterstützt durch konsistente Messung.",
+            "Er arbeitet auch mit <u>Web-Analytics-Setup (GA4)</u> und Reporting, damit Entscheidungen auf Lead-Qualität, Conversion und Umsatzsignalen basieren und nicht auf oberflächlichen Traffic-Metriken.",
+            "Im Rahmen seiner Projekte arbeitet Alex intensiv mit der <u>Zielgruppensegmentierung und der Erstellung von Kundenprofilen</u>, was eine präzisere Kommunikation und eine höhere Effektivität der Werbekampagnen ermöglicht. Er versteht das Nutzerverhalten tiefgehend und entwickelt <u>Marketingtrichter</u>, die Traffic in Kunden umwandeln. Außerdem setzt er konsequent <u>A/B-Testing</u> und <u>Conversion Optimization, CRO</u> ein, um die effektivsten Lösungen zu finden und die Conversion an allen Stellen des Funnels zu steigern.",
+          ],
+        },
+        {
+          heading: "Wachstumsunterstützung für B2B-, SaaS- und E-Commerce-Teams",
+          paragraphs: [
+            "Für wachstumsorientierte Teams hilft Alex dabei, Akquise mit Content, Automatisierung und Follow-up zu verbinden. Das kann <u>Content Marketing</u>, <u>E-Mail-Marketing und Automatisierung</u> sowie Angebots-Testing rund um echte Kundennachfrage umfassen.",
+            "Das Ergebnis ist ein Marketing-System, das einfacher zu skalieren, leichter zu diagnostizieren und besser darauf ausgerichtet ist, wie das Unternehmen tatsächlich verkauft.",
+            "Heute ist Alex Morgan ein Marketingspezialist, der strategisches Denken, tiefgehende Expertise im digitalen Marketing und praktische Erfahrung mit Akquisekanälen vereint. Seine Hauptaufgabe ist es, nicht nur Traffic zu generieren, sondern ein nachhaltiges System für Unternehmenswachstum und Umsatzsteigerung aufzubauen.",
+          ],
+        },
+      ],
+    },
+    "emma-collins-ux-ui-designer": {
+      role: "UX/UI-Designerin",
+      h1: "Emma Collins – UX/UI-Designerin | Produktdesign & Conversion UX",
+      intro:
+        "Emma Collins ist eine UX/UI-Designerin mit Fokus auf Produktoberflächen, Landingpages und konversionsorientierte Designsysteme. Sie verbindet Research, Usability und visuelle Klarheit, damit digitale Produkte einfacher zu bedienen und einfacher zu wachsen sind.",
+      imageAlt:
+        "Emma Collins, UX/UI-Designerin mit Fokus auf Produktdesign, Interface-Systeme und CRO",
+      metaTitle: "Emma Collins – UX/UI-Designerin | Produktdesign, UX, UI, CRO",
+      metaDescription:
+        "Emma Collins ist eine UX/UI-Designerin für Produktdesign, Nutzerforschung, Prototyping und konversionsorientierte Interface-Verbesserung.",
+      experience: "8+ Jahre",
+      focusChips: ["Produktdesign", "Web & Mobile", "UX, UI, CRO"],
+      highlightStats: [
+        { label: "Erfahrung", value: "8+ Jahre" },
+        { label: "Fokus", value: "UX + UI + CRO" },
+        { label: "Formate", value: "Web / Mobile" },
+      ],
+      activitySummary:
+        "Gestaltet User Journeys, Interfaces und visuelle Systeme, die Klarheit, Usability und Conversion in digitalen Produkten verbessern.",
+      achievementHighlights: [
+        "Arbeitet an der Schnittstelle von Produktdesign, Research und Conversion-Verbesserung",
+        "Gestaltet für SaaS, E-Commerce und Business-Websites",
+        "Verbindet Usability-Entscheidungen mit messbaren Geschäftsergebnissen",
+      ],
+      skills: [
+        "UX/UI-Design und Produktdesign",
+        "Nutzerforschung und Insight-Synthese",
+        "User Journey- und Flow-Design",
+        "Wireframing und Prototyping",
+        "UI-Systeme für Web und Mobile",
+        "Designsysteme und Komponentendenken",
+        "Usability-Optimierung",
+        "Konversionsorientiertes Design",
+        "A/B-Testing-Unterstützung",
+        "Interaction Design",
+        "Markenkonformes Interface-Design",
+        "Funktionsübergreifende Zusammenarbeit",
+        "Datengestützte Designentscheidungen",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "User personas and journey mapping",
+        "Information architecture",
+        "UX wireframes",
+        "User flows and interaction scenarios",
+        "Clickable prototypes",
+        "UI design for web and mobile",
+        "Design systems",
+        "Usability optimization",
+        "Conversion optimization and CRO",
+        "A/B testing",
+        "Brand strategy and positioning",
+        "Visual direction and art direction",
+      ],
+      seoSections: [
+        {
+          heading:
+            "UX/UI-Designerin für digitale Produkte und konversionsorientierte Interfaces",
+          paragraphs: [
+            "Emma Collins arbeitet mit digitalen Produkten und Websites, die eine klarere Struktur, stärkere Usability und ein bewussteres visuelles System benötigen. Ihr Prozess beginnt damit, das Nutzerverhalten zu verstehen, bevor dieses Wissen in Interface-Entscheidungen umgesetzt wird.",
+            "Sie nutzt <u>UX Research und Nutzerstudien</u>, Architekturarbeit und Prototyping, um Teams dabei zu helfen, Journeys zu vereinfachen, Reibung zu reduzieren und wichtige Aktionen leichter abschließbar zu machen.",
+          ],
+        },
+        {
+          heading: "Produktdesign für SaaS, E-Commerce und Business-Websites",
+          paragraphs: [
+            "Emma unterstützt sowohl neue Produkte als auch Redesigns. Das umfasst <u>Product Discovery</u>, Interface-Planung, <u>UX Wireframes</u> und <u>Klickbare Prototypen</u>, damit Teams Ideen testen können, bevor sie sich vollständig der Entwicklung verschreiben.",
+            "Ihre Arbeit ist besonders wertvoll, wenn ein Produkt ein besseres Onboarding, stärkere visuelle Konsistenz oder eine klarere Struktur über Web- und Mobile-Screens hinweg benötigt.",
+          ],
+        },
+        {
+          heading: "Designsysteme, Usability und CRO gemeinsam denken",
+          paragraphs: [
+            "Über die Visuals hinaus konzentriert sich Emma darauf, wie Design die Performance beeinflusst. Sie arbeitet mit <u>Usability-Optimierung</u>, <u>Conversion Optimization, CRO</u> und Experiment-Unterstützung, damit Interface-Änderungen zu klareren Geschäftsergebnissen führen.",
+            "Diese Kombination hilft Teams, von isolierten Screens zu einem kohärenteren Produkterlebnis zu gelangen, das einfacher zu pflegen und einfacher im Laufe der Zeit zu verbessern ist.",
+          ],
+        },
+      ],
+    },
+  },
+
+  fr: {
+    "leo-carter-performance-marketing": {
+      role: "Chef de produit",
+      h1: "Leo Carter – Chef de produit | SaaS & gestion de produits numériques",
+      intro:
+        "Leo Carter est un chef de produit expérimenté spécialisé dans la croissance des produits numériques, le lancement de MVP et l'amélioration mesurable de l'expérience utilisateur. Il travaille sur des produits SaaS et e-commerce en combinant stratégie produit, recherche et optimisation de la conversion au service de la croissance.",
+      imageAlt:
+        "Leo Carter, chef de produit spécialisé dans la croissance SaaS, les lancements MVP et l'amélioration UX",
+      metaTitle: "Leo Carter – Chef de produit | SaaS, MVP, UX, CRO",
+      metaDescription:
+        "Leo Carter travaille sur les lancements MVP, la découverte produit, l'amélioration UX et la croissance de conversion pour les produits SaaS et numériques.",
+      experience: "8+ ans",
+      focusChips: ["SaaS & e-commerce", "MVP & croissance", "UX, CRO, analytics"],
+      highlightStats: [
+        { label: "Expérience", value: "8+ ans" },
+        { label: "Croissance audience SaaS", value: "+180%" },
+        { label: "Focus", value: "MVP, UX, CRO" },
+      ],
+      activitySummary:
+        "Aide à lancer, structurer et faire évoluer des produits numériques en combinant découverte produit, planification de roadmap, recherche utilisateur et analyse de conversion.",
+      achievementHighlights: [
+        "Pilote le cycle produit complet de la découverte au lancement et à l'itération",
+        "Travaille sur des produits SaaS, e-commerce et en phase de croissance",
+        "Connecte produit, UX, analytics et priorités de croissance en un seul système",
+      ],
+      skills: [
+        "Gestion de produit et responsabilité du cycle de vie",
+        "Découverte produit et développement d'hypothèses",
+        "Analyse des données CAC, LTV, rétention et conversion",
+        "Réflexion produit orientée UX",
+        "Entretiens utilisateurs et synthèse de recherche",
+        "Workflows Agile, Scrum et Kanban",
+        "Coordination d'équipes transverses",
+        "Priorisation du backlog et planification de roadmap",
+        "Lancement MVP et mise à l'échelle produit",
+        "A/B testing et prise de décision basée sur les données",
+        "Livraison de produits SaaS et e-commerce",
+        "Optimisation du taux de conversion (CRO)",
+        "Collaboration croissance et marketing",
+        "Communication et alignement des parties prenantes",
+        "Travail produit à l'international",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "MVP development",
+        "SaaS product development",
+        "A/B testing",
+        "Conversion optimization and CRO",
+        "Technical SEO and on-page optimization",
+        "Conversion analysis and CRO",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+      ],
+      seoSections: [
+        {
+          heading: "Chef de produit pour les lancements MVP et la croissance produit numérique",
+          paragraphs: [
+            "Leo Carter travaille avec des produits numériques qui ont besoin d'une structure claire, d'une validation rapide et d'un chemin de l'idée à une croissance reproductible. Son rôle commence souvent là où les hypothèses produit sont encore floues et où l'équipe a besoin de décisions plus solides sur l'audience, la valeur et les priorités.",
+            "Il combine <u>Product Discovery</u>, recherche et stratégie produit pour aider les équipes à définir ce qui doit être construit en premier, ce qui doit être testé et quels problèmes utilisateurs sont les plus importants. Cela raccourcit la distance entre la planification et les progrès produit mesurables.",
+            "En tant que Product Manager, Leo a été responsable du cycle complet de développement produit — de la phase de <u>Product Discovery</u> et de la définition de la stratégie jusqu'au lancement et à la mise à l'échelle. Il a participé activement à l'<u>élaboration de la stratégie marketing</u>, en travaillant étroitement avec les équipes marketing et produit pour créer des synergies entre le produit et les canaux d'acquisition. Son expérience inclut la gestion d'équipes transverses (développement, design, marketing), la mise en place de processus transparents et l'adoption des méthodologies Agile.",
+          ],
+        },
+        {
+          heading: "Chef de produit SaaS avec focus sur la conversion et la rétention",
+          paragraphs: [
+            "Sur les produits SaaS et d'abonnement, Leo accorde une attention particulière aux points d'activation, de rétention et de conversion tout au long du parcours client. Il travaille avec <u>Optimisation de la conversion, CRO</u>, <u>A/B testing</u> et analyses comportementales pour améliorer les décisions produit avec des preuves réelles.",
+            "Cela le rend précieux non seulement en phase de lancement, mais aussi quand un produit existant a besoin d'un meilleur onboarding, de priorités plus claires ou d'un modèle de croissance plus solide lié au comportement réel des utilisateurs.",
+            "Leo est particulièrement reconnu pour sa capacité à lancer des produits de zéro. Il a dirigé à plusieurs reprises des processus de <u>MVP development</u>, aidant les entreprises à valider rapidement leurs hypothèses et à trouver le product-market fit. Dans un projet SaaS d'automatisation marketing, il a contribué à augmenter l'audience active de 180% au cours de la première année, tout en améliorant significativement les indicateurs de rétention.",
+          ],
+        },
+        {
+          heading: "Stratégie produit connectée à la recherche, l'analytics et la croissance",
+          paragraphs: [
+            "Leo travaille souvent en transverse sur le produit, le design, l'analytics et le marketing. Cela inclut la <u>Recherche UX et études utilisateurs</u>, la planification de roadmap et la <u>Configuration web analytics (GA4)</u> pour que les décisions produit restent connectées aux insights utilisateurs et aux objectifs business.",
+            "Le résultat est un processus produit plus discipliné : moins d'hypothèses, des responsabilités plus claires et un lien plus fort entre les fonctionnalités, l'expérience utilisateur et les résultats de croissance.",
+            "Aujourd'hui, Leo Carter est un Product Manager qui allie réflexion stratégique et approche pragmatique de l'exécution. Sa mission principale est de créer des produits qui non seulement résolvent les vrais problèmes des utilisateurs, mais génèrent également une valeur commerciale mesurable, assurant une croissance durable à l'entreprise.",
+          ],
+        },
+      ],
+    },
+    "alex-morgan-digital-marketing-specialist": {
+      role: "Spécialiste en marketing digital",
+      h1: "Alex Morgan – Spécialiste en marketing digital | Performance Marketing & SEO",
+      intro:
+        "Alex Morgan est un spécialiste en marketing digital spécialisé dans les systèmes de croissance, la génération de leads et l'acquisition scalable. Il combine stratégie, trafic payant, SEO, analytics et optimisation de tunnel pour aider les entreprises à croître avec plus de contrôle.",
+      imageAlt:
+        "Alex Morgan, spécialiste en marketing digital spécialisé dans le performance marketing, le SEO et la génération de leads",
+      metaTitle:
+        "Alex Morgan – Spécialiste marketing digital | Performance Marketing, SEO, Analytics",
+      metaDescription:
+        "Alex Morgan est un spécialiste marketing digital travaillant sur le performance marketing, le SEO, l'analytics, la génération de leads et la croissance de conversion.",
+      experience: "9+ ans",
+      focusChips: ["Performance & SEO", "Génération de leads", "Analytics & croissance"],
+      highlightStats: [
+        { label: "Expérience", value: "9+ ans" },
+        { label: "Focus", value: "Trafic, leads, ROI" },
+        { label: "Canaux", value: "Payant + organique" },
+      ],
+      activitySummary:
+        "Construit des systèmes d'acquisition qui connectent stratégie, trafic, analytics et conversion pour que la croissance reste mesurable et scalable.",
+      achievementHighlights: [
+        "Combine trafic payant, SEO, analytics et logique de tunnel en un seul système",
+        "Travaille avec des entreprises B2B, SaaS, e-commerce et de services",
+        "Améliore la qualité des leads, la clarté du reporting et l'efficacité des canaux",
+      ],
+      skills: [
+        "Stratégie marketing digital",
+        "Performance marketing et optimisation de campagnes",
+        "Stratégie SEO et croissance organique",
+        "Google Ads et référencement payant",
+        "Gestion de campagnes social payant",
+        "Segmentation d'audience et planification de tunnel",
+        "Systèmes de génération de leads",
+        "Optimisation du taux de conversion",
+        "Web analytics et reporting",
+        "Design de dashboards et suivi des KPI",
+        "Coordination de content marketing",
+        "Email marketing et automatisation",
+        "Analyse concurrentielle et de marché",
+        "Soutien à la croissance B2B et e-commerce",
+        "Analyse de performance cross-canal",
+      ],
+      services: [
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "Google Ads",
+        "Paid social advertising",
+        "Remarketing and retargeting",
+        "Technical SEO and on-page optimization",
+        "Content marketing",
+        "Email marketing and automation",
+        "Lead generation and B2B marketing",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+        "Conversion optimization and CRO",
+      ],
+      seoSections: [
+        {
+          heading: "Spécialiste marketing digital pour la génération de leads scalable",
+          paragraphs: [
+            "Alex Morgan travaille avec des entreprises qui ont besoin de plus que des campagnes isolées. Il construit des systèmes de croissance où stratégie, acquisition payante, SEO et analytics soutiennent le même objectif de revenus au lieu de se concurrencer pour le budget et l'attention.",
+            "Son travail commence souvent par le <u>Développement de stratégie marketing</u>, l'analyse du tunnel et la priorisation des canaux pour que l'équipe comprenne d'où doit venir la demande et comment cette demande doit se transformer en leads qualifiés.",
+          ],
+        },
+        {
+          heading: "Performance marketing, SEO et analytics dans un seul modèle opérationnel",
+          paragraphs: [
+            "Alex combine trafic payant et recherche organique pour réduire la dépendance aux canaux et améliorer l'efficacité dans le temps. Cela inclut <u>Google Ads</u>, <u>Publicité social payante</u> et <u>SEO technique et optimisation on-page</u> soutenus par une mesure cohérente.",
+            "Il travaille aussi avec la <u>Configuration web analytics (GA4)</u> et le reporting pour que les décisions soient basées sur la qualité des leads, la conversion et les signaux de revenus plutôt que sur des métriques de trafic superficielles.",
+          ],
+        },
+        {
+          heading: "Soutien à la croissance pour les équipes B2B, SaaS et e-commerce",
+          paragraphs: [
+            "Pour les équipes en phase de croissance, Alex aide à connecter l'acquisition avec le contenu, l'automatisation et le suivi. Cela peut inclure le <u>Content marketing</u>, l'<u>Email marketing et automatisation</u> et le test d'offres autour de la demande réelle des clients.",
+            "Le résultat est un système marketing plus facile à scaler, plus facile à diagnostiquer et mieux aligné sur la façon dont l'entreprise vend réellement.",
+          ],
+        },
+      ],
+    },
+    "emma-collins-ux-ui-designer": {
+      role: "Designer UX/UI",
+      h1: "Emma Collins – Designer UX/UI | Design produit & UX orientée conversion",
+      intro:
+        "Emma Collins est une designer UX/UI spécialisée dans les interfaces produit, les landing pages et les systèmes de design orientés conversion. Elle connecte recherche, utilisabilité et clarté visuelle pour que les produits numériques soient plus faciles à utiliser et à faire croître.",
+      imageAlt:
+        "Emma Collins, designer UX/UI spécialisée dans le design produit, les systèmes d'interface et le CRO",
+      metaTitle: "Emma Collins – Designer UX/UI | Design produit, UX, UI, CRO",
+      metaDescription:
+        "Emma Collins est une designer UX/UI travaillant sur le design produit, la recherche utilisateur, le prototypage et l'amélioration d'interface orientée conversion.",
+      experience: "8+ ans",
+      focusChips: ["Design produit", "Web & mobile", "UX, UI, CRO"],
+      highlightStats: [
+        { label: "Expérience", value: "8+ ans" },
+        { label: "Focus", value: "UX + UI + CRO" },
+        { label: "Formats", value: "Web / Mobile" },
+      ],
+      activitySummary:
+        "Conçoit des parcours utilisateurs, des interfaces et des systèmes visuels qui améliorent la clarté, l'utilisabilité et la conversion des produits numériques.",
+      achievementHighlights: [
+        "Travaille à l'intersection du design produit, de la recherche et de l'amélioration de conversion",
+        "Conçoit pour le SaaS, l'e-commerce et les sites business",
+        "Connecte les décisions d'utilisabilité aux résultats business mesurables",
+      ],
+      skills: [
+        "Design UX/UI et design produit",
+        "Recherche utilisateur et synthèse d'insights",
+        "Design de parcours utilisateur et de flux",
+        "Wireframing et prototypage",
+        "Systèmes UI pour web et mobile",
+        "Systèmes de design et pensée composant",
+        "Optimisation de l'utilisabilité",
+        "Design orienté conversion",
+        "Support A/B testing",
+        "Design d'interaction",
+        "Design d'interface aligné à la marque",
+        "Collaboration transverse",
+        "Décisions de design basées sur les données",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "User personas and journey mapping",
+        "Information architecture",
+        "UX wireframes",
+        "User flows and interaction scenarios",
+        "Clickable prototypes",
+        "UI design for web and mobile",
+        "Design systems",
+        "Usability optimization",
+        "Conversion optimization and CRO",
+        "A/B testing",
+        "Brand strategy and positioning",
+        "Visual direction and art direction",
+      ],
+      seoSections: [
+        {
+          heading:
+            "Designer UX/UI pour produits numériques et interfaces orientées conversion",
+          paragraphs: [
+            "Emma Collins travaille sur des produits numériques et des sites web qui ont besoin d'une structure plus claire, d'une meilleure utilisabilité et d'un système visuel plus intentionnel. Son processus commence par la compréhension du comportement utilisateur avant de transformer ces insights en décisions d'interface.",
+            "Elle utilise la <u>Recherche UX et études utilisateurs</u>, le travail d'architecture et le prototypage pour aider les équipes à simplifier les parcours, réduire les frictions et faciliter la réalisation des actions clés.",
+          ],
+        },
+        {
+          heading: "Design produit pour SaaS, e-commerce et sites business",
+          paragraphs: [
+            "Emma accompagne aussi bien les nouveaux produits que les redesigns. Cela inclut la <u>Product Discovery</u>, la planification d'interface, les <u>Wireframes UX</u> et les <u>Prototypes cliquables</u> pour que les équipes puissent tester des idées avant de s'engager pleinement dans le développement.",
+            "Son travail est particulièrement utile quand un produit a besoin d'un meilleur onboarding, d'une cohérence visuelle plus forte ou d'une structure plus claire sur les écrans web et mobile.",
+          ],
+        },
+        {
+          heading: "Systèmes de design, utilisabilité et CRO travaillant ensemble",
+          paragraphs: [
+            "Au-delà du visuel, Emma se concentre sur la façon dont le design affecte la performance. Elle travaille avec l'<u>Optimisation de l'utilisabilité</u>, l'<u>Optimisation de la conversion, CRO</u> et le support expérimental pour que les changements d'interface conduisent à des résultats business plus clairs.",
+            "Cette combinaison aide les équipes à passer d'écrans isolés à une expérience produit plus cohérente, plus facile à maintenir et à améliorer dans le temps.",
+          ],
+        },
+      ],
+    },
+  },
+
+  ar: {
+    "leo-carter-performance-marketing": {
+      role: "مدير المنتج",
+      h1: "ليو كارتر – مدير المنتج | SaaS وإدارة المنتجات الرقمية",
+      intro:
+        "ليو كارتر مدير منتج متمرس يركّز على نمو المنتجات الرقمية وإطلاق النماذج الأولية (MVP) وتحسين تجربة المستخدم بشكل قابل للقياس. يعمل على منتجات SaaS والتجارة الإلكترونية، ويربط بين استراتيجية المنتج والبحث وتفكير التحويل لخدمة نمو الأعمال.",
+      imageAlt:
+        "ليو كارتر، مدير منتج متخصص في نمو SaaS وإطلاق MVP وتحسين تجربة المستخدم",
+      metaTitle: "ليو كارتر – مدير المنتج | SaaS، MVP، UX، CRO",
+      metaDescription:
+        "ليو كارتر يعمل على إطلاق MVP واكتشاف المنتج وتحسين تجربة المستخدم ونمو التحويل لمنتجات SaaS والمنتجات الرقمية.",
+      experience: "+8 سنوات",
+      focusChips: ["SaaS والتجارة الإلكترونية", "MVP والنمو", "UX وCRO والتحليلات"],
+      highlightStats: [
+        { label: "الخبرة", value: "+8 سنوات" },
+        { label: "نمو جمهور SaaS", value: "+180%" },
+        { label: "التركيز", value: "MVP, UX, CRO" },
+      ],
+      activitySummary:
+        "يساعد في إطلاق المنتجات الرقمية وهيكلتها وتوسيع نطاقها من خلال اكتشاف المنتج وتخطيط خارطة الطريق وبحث المستخدم وتحليل التحويل.",
+      achievementHighlights: [
+        "يتولى دورة المنتج الكاملة من الاكتشاف إلى الإطلاق والتكرار",
+        "يعمل مع منتجات SaaS والتجارة الإلكترونية والمنتجات الرقمية في مرحلة النمو",
+        "يربط المنتج وUX والتحليلات وأولويات النمو في منظومة واحدة",
+      ],
+      skills: [
+        "إدارة المنتج والمسؤولية عن دورة الحياة",
+        "اكتشاف المنتج وتطوير الفرضيات",
+        "تحليل البيانات عبر مقاييس CAC وLTV والاحتفاظ والتحويل",
+        "التفكير المنتجي الموجه نحو تجربة المستخدم",
+        "مقابلات المستخدمين وتوليف نتائج البحث",
+        "سير عمل Agile وScrum وKanban",
+        "تنسيق الفرق متعددة الوظائف",
+        "تحديد أولويات Backlog وتخطيط خارطة الطريق",
+        "إطلاق MVP وتوسيع نطاق المنتج",
+        "اختبار A/B واتخاذ القرار المبني على البيانات",
+        "تسليم منتجات SaaS والتجارة الإلكترونية",
+        "تحسين معدل التحويل (CRO)",
+        "التعاون مع فرق النمو والتسويق",
+        "التواصل مع أصحاب المصلحة ومواءمتهم",
+        "العمل على المنتجات الدولية",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "MVP development",
+        "SaaS product development",
+        "A/B testing",
+        "Conversion optimization and CRO",
+        "Technical SEO and on-page optimization",
+        "Conversion analysis and CRO",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+      ],
+      seoSections: [
+        {
+          heading: "مدير منتج لإطلاق MVP ونمو المنتجات الرقمية",
+          paragraphs: [
+            "يعمل ليو كارتر مع المنتجات الرقمية التي تحتاج إلى هيكل واضح وتحقق سريع ومسار من الفكرة إلى نمو قابل للتكرار. يبدأ دوره في الغالب حيث تكون افتراضات المنتج لا تزال غامضة وتحتاج الفريق إلى قرارات أقوى حول الجمهور والقيمة والأولويات.",
+            "يجمع بين <u>اكتشاف المنتج</u> والبحث واستراتيجية المنتج لمساعدة الفرق على تحديد ما يجب بناؤه أولاً وما يجب اختباره وأي مشكلات المستخدمين أكثر أهمية. يُقصّر هذا المسافة بين التخطيط والتقدم المنتجي القابل للقياس.",
+            "في دور مدير المنتج، تولّى ليو المسؤولية عن الدورة الكاملة لتطوير المنتج — من مرحلة <u>اكتشاف المنتج</u> وصياغة الاستراتيجية وصولاً إلى الإطلاق والتوسع. شارك بفاعلية في <u>تطوير استراتيجية التسويق</u>، وعمل عن كثب مع فرق التسويق والمنتج لتحقيق التكامل بين المنتج وقنوات الاستحواذ. تشمل خبرته إدارة الفرق متعددة الوظائف (التطوير والتصميم والتسويق)، وبناء عمليات شفافة وتطبيق منهجيات Agile.",
+          ],
+        },
+        {
+          heading: "مدير منتج SaaS مع تركيز على التحويل والاحتفاظ",
+          paragraphs: [
+            "في منتجات SaaS والاشتراكات، يولي ليو اهتماماً خاصاً بنقاط التفعيل والاحتفاظ والتحويل عبر رحلة العميل. يعمل مع <u>تحسين التحويل، CRO</u> و<u>اختبار A/B</u> والتحليلات السلوكية لتحسين قرارات المنتج بأدلة حقيقية.",
+            "يجعله هذا ذا قيمة ليس فقط في مرحلة الإطلاق، ولكن أيضاً عندما يحتاج المنتج الموجود إلى تأهيل أفضل أو أولويات أوضح أو نموذج نمو أقوى مرتبط بالسلوك الفعلي للمستخدمين.",
+          ],
+        },
+        {
+          heading: "استراتيجية منتج مرتبطة بالبحث والتحليلات والنمو",
+          paragraphs: [
+            "يعمل ليو في أغلب الأحيان عبر وظائف المنتج والتصميم والتحليلات والتسويق. يشمل ذلك <u>بحث UX ودراسات المستخدمين</u> وتخطيط خارطة الطريق و<u>إعداد تحليلات الويب (GA4)</u> لتبقى قرارات المنتج مرتبطة بكل من رؤى المستخدم والأهداف التجارية.",
+            "النتيجة عملية منتج أكثر انضباطاً: افتراضات أقل، ومسؤوليات أوضح، وارتباط أقوى بين الميزات وتجربة المستخدم ونتائج النمو.",
+            "اليوم، يُمثّل ليو كارتر مدير منتج يجمع بين التفكير الاستراتيجي والنهج العملي في التنفيذ. مهمته الأساسية هي بناء منتجات لا تحل مشكلات المستخدمين الحقيقية فحسب، بل تُحقق قيمة تجارية قابلة للقياس وتضمن نمواً مستداماً للشركة.",
+          ],
+        },
+      ],
+    },
+    "alex-morgan-digital-marketing-specialist": {
+      role: "متخصص تسويق رقمي",
+      h1: "أليكس مورغان – متخصص تسويق رقمي | التسويق بالأداء وتحسين محركات البحث",
+      intro:
+        "أليكس مورغان متخصص تسويق رقمي يركّز على أنظمة النمو وتوليد العملاء المحتملين والاستحواذ القابل للتوسع. يجمع بين الاستراتيجية والإعلانات المدفوعة وتحسين محركات البحث والتحليلات وتحسين مسار التحويل لمساعدة الشركات على النمو بشكل أكثر تحكماً.",
+      imageAlt:
+        "أليكس مورغان، متخصص تسويق رقمي يركز على التسويق بالأداء وSEO وتوليد العملاء المحتملين",
+      metaTitle:
+        "أليكس مورغان – متخصص تسويق رقمي | التسويق بالأداء، SEO، التحليلات",
+      metaDescription:
+        "أليكس مورغان متخصص تسويق رقمي يعمل على التسويق بالأداء وSEO والتحليلات وتوليد العملاء المحتملين ونمو التحويل.",
+      experience: "+9 سنوات",
+      focusChips: ["الأداء وSEO", "توليد العملاء المحتملين", "التحليلات والنمو"],
+      highlightStats: [
+        { label: "الخبرة", value: "+9 سنوات" },
+        { label: "التركيز", value: "الزيارات، العملاء، العائد" },
+        { label: "القنوات", value: "مدفوعة + عضوية" },
+      ],
+      activitySummary:
+        "يبني أنظمة استحواذ تربط الاستراتيجية والزيارات والتحليلات والتحويل لتبقى عملية النمو قابلة للقياس والتوسع.",
+      achievementHighlights: [
+        "يجمع الزيارات المدفوعة وSEO والتحليلات ومنطق مسار التحويل في منظومة واحدة",
+        "يعمل مع شركات B2B وSaaS والتجارة الإلكترونية وشركات الخدمات",
+        "يحسّن جودة العملاء المحتملين ووضوح التقارير وكفاءة القنوات",
+      ],
+      skills: [
+        "استراتيجية التسويق الرقمي",
+        "التسويق بالأداء وتحسين الحملات",
+        "استراتيجية SEO والنمو العضوي",
+        "Google Ads والبحث المدفوع",
+        "إدارة حملات التواصل الاجتماعي المدفوعة",
+        "تجزئة الجمهور وتخطيط مسار التحويل",
+        "أنظمة توليد العملاء المحتملين",
+        "تحسين معدل التحويل",
+        "تحليلات الويب والتقارير",
+        "تصميم لوحات المعلومات وتتبع مؤشرات الأداء الرئيسية",
+        "تنسيق التسويق بالمحتوى",
+        "التسويق عبر البريد الإلكتروني والأتمتة",
+        "تحليل المنافسين والسوق",
+        "دعم نمو B2B والتجارة الإلكترونية",
+        "تحليل الأداء متعدد القنوات",
+      ],
+      services: [
+        "Marketing strategy development",
+        "Competitor research and market analysis",
+        "Audience segmentation and customer personas",
+        "Marketing funnel development",
+        "Google Ads",
+        "Paid social advertising",
+        "Remarketing and retargeting",
+        "Technical SEO and on-page optimization",
+        "Content marketing",
+        "Email marketing and automation",
+        "Lead generation and B2B marketing",
+        "Web analytics setup (GA4)",
+        "Dashboards and automated reporting",
+        "Conversion optimization and CRO",
+      ],
+      seoSections: [
+        {
+          heading: "متخصص تسويق رقمي لتوليد عملاء محتملين قابل للتوسع",
+          paragraphs: [
+            "يعمل أليكس مورغان مع الشركات التي تحتاج إلى أكثر من حملات معزولة. يبني أنظمة نمو تدعم فيها الاستراتيجية والاستحواذ المدفوع وSEO والتحليلات هدف الإيرادات نفسه بدلاً من التنافس على الميزانية والاهتمام.",
+            "يبدأ عمله في الغالب بـ<u>تطوير استراتيجية التسويق</u> وتحليل مسار التحويل وترتيب أولويات القنوات لكي يفهم الفريق من أين يجب أن تأتي الطلبات وكيف يجب أن تتحول هذه الطلبات إلى عملاء محتملين مؤهلين.",
+          ],
+        },
+        {
+          heading: "التسويق بالأداء وSEO والتحليلات في نموذج تشغيلي واحد",
+          paragraphs: [
+            "يجمع أليكس بين الزيارات المدفوعة والبحث العضوي لتقليل الاعتماد على القنوات وتحسين الكفاءة بمرور الوقت. يشمل ذلك <u>Google Ads</u> و<u>إعلانات التواصل الاجتماعي المدفوعة</u> و<u>SEO التقني وتحسين الصفحة</u> مدعومة بقياس متسق.",
+            "يعمل أيضاً مع <u>إعداد تحليلات الويب (GA4)</u> والتقارير لتكون القرارات مبنية على جودة العملاء المحتملين والتحويل وإشارات الإيرادات بدلاً من مقاييس الزيارات السطحية.",
+          ],
+        },
+        {
+          heading: "دعم النمو لفرق B2B وSaaS والتجارة الإلكترونية",
+          paragraphs: [
+            "بالنسبة لفرق مرحلة النمو، يساعد أليكس في ربط الاستحواذ بالمحتوى والأتمتة والمتابعة. قد يشمل ذلك <u>التسويق بالمحتوى</u> و<u>التسويق عبر البريد الإلكتروني والأتمتة</u> واختبار العروض حول الطلب الفعلي للعملاء.",
+            "النتيجة منظومة تسويقية أسهل في التوسع وأسهل في التشخيص وأكثر توافقاً مع طريقة بيع الشركة فعلياً.",
+          ],
+        },
+      ],
+    },
+    "emma-collins-ux-ui-designer": {
+      role: "مصممة UX/UI",
+      h1: "إيما كولينز – مصممة UX/UI | تصميم المنتجات وتجربة المستخدم الموجهة للتحويل",
+      intro:
+        "إيما كولينز مصممة UX/UI تركّز على واجهات المنتجات وصفحات الهبوط وأنظمة التصميم الموجهة للتحويل. تربط بين البحث وسهولة الاستخدام والوضوح البصري لجعل المنتجات الرقمية أسهل في الاستخدام والنمو.",
+      imageAlt:
+        "إيما كولينز، مصممة UX/UI متخصصة في تصميم المنتجات وأنظمة الواجهة وCRO",
+      metaTitle: "إيما كولينز – مصممة UX/UI | تصميم المنتجات، UX، UI، CRO",
+      metaDescription:
+        "إيما كولينز مصممة UX/UI تعمل على تصميم المنتجات وبحث المستخدمين والنمذجة الأولية وتحسين الواجهة الموجهة للتحويل.",
+      experience: "+8 سنوات",
+      focusChips: ["تصميم المنتجات", "الويب والموبايل", "UX وUI وCRO"],
+      highlightStats: [
+        { label: "الخبرة", value: "+8 سنوات" },
+        { label: "التركيز", value: "UX + UI + CRO" },
+        { label: "الأشكال", value: "ويب / موبايل" },
+      ],
+      activitySummary:
+        "تصمم رحلات المستخدمين والواجهات والأنظمة البصرية التي تحسّن الوضوح وسهولة الاستخدام والتحويل عبر المنتجات الرقمية.",
+      achievementHighlights: [
+        "تعمل على تقاطع تصميم المنتجات والبحث وتحسين التحويل",
+        "تصمم لمنتجات SaaS والتجارة الإلكترونية ومواقع الأعمال",
+        "تربط قرارات سهولة الاستخدام بالنتائج التجارية القابلة للقياس",
+      ],
+      skills: [
+        "تصميم UX/UI وتصميم المنتجات",
+        "بحث المستخدمين وتوليف الرؤى",
+        "تصميم رحلة المستخدم والتدفق",
+        "الإطارات السلكية والنمذجة الأولية",
+        "أنظمة واجهة المستخدم للويب والموبايل",
+        "أنظمة التصميم والتفكير المكوني",
+        "تحسين سهولة الاستخدام",
+        "التصميم الموجه للتحويل",
+        "دعم اختبار A/B",
+        "تصميم التفاعل",
+        "تصميم الواجهة المتوافق مع العلامة التجارية",
+        "التعاون متعدد الوظائف",
+        "قرارات التصميم المبنية على البيانات",
+      ],
+      services: [
+        "Product Discovery",
+        "UX Research and user studies",
+        "Product strategy and feature definition",
+        "User personas and journey mapping",
+        "Information architecture",
+        "UX wireframes",
+        "User flows and interaction scenarios",
+        "Clickable prototypes",
+        "UI design for web and mobile",
+        "Design systems",
+        "Usability optimization",
+        "Conversion optimization and CRO",
+        "A/B testing",
+        "Brand strategy and positioning",
+        "Visual direction and art direction",
+      ],
+      seoSections: [
+        {
+          heading: "مصممة UX/UI للمنتجات الرقمية والواجهات الموجهة للتحويل",
+          paragraphs: [
+            "تعمل إيما كولينز مع المنتجات الرقمية والمواقع الإلكترونية التي تحتاج إلى هيكل أوضح وسهولة استخدام أقوى ونظام بصري أكثر تعمداً. تبدأ عمليتها بفهم سلوك المستخدمين قبل تحويل هذه الرؤى إلى قرارات الواجهة.",
+            "تستخدم <u>بحث UX ودراسات المستخدمين</u> والعمل المعماري والنمذجة الأولية لمساعدة الفرق على تبسيط الرحلات وتقليل الاحتكاك وتسهيل إتمام الإجراءات الرئيسية.",
+          ],
+        },
+        {
+          heading: "تصميم منتجات لـSaaS والتجارة الإلكترونية ومواقع الأعمال",
+          paragraphs: [
+            "تدعم إيما المنتجات الجديدة وإعادة التصميم على حد سواء. يشمل ذلك <u>اكتشاف المنتج</u> وتخطيط الواجهة و<u>الإطارات السلكية لتجربة المستخدم</u> و<u>النماذج الأولية القابلة للنقر</u> لكي تتمكن الفرق من اختبار الأفكار قبل الالتزام الكامل بالتطوير.",
+            "عملها مفيد بشكل خاص عندما يحتاج المنتج إلى تأهيل أفضل أو اتساق بصري أقوى أو هيكل أوضح عبر شاشات الويب والموبايل.",
+          ],
+        },
+        {
+          heading: "أنظمة التصميم وسهولة الاستخدام وCRO تعمل معاً",
+          paragraphs: [
+            "ما وراء الجانب البصري، تركّز إيما على كيفية تأثير التصميم على الأداء. تعمل مع <u>تحسين سهولة الاستخدام</u> و<u>تحسين التحويل، CRO</u> ودعم التجارب لكي تؤدي تغييرات الواجهة إلى نتائج تجارية أوضح.",
+            "يساعد هذا المزيج الفرق على الانتقال من شاشات معزولة إلى تجربة منتج أكثر تماسكاً وأسهل في الصيانة والتحسين بمرور الوقت.",
+          ],
+        },
+      ],
+    },
+  },
+};
+
 export function getSpecialistProfile(slug: string) {
   return SPECIALIST_PROFILES.find((profile) => profile.slug === slug);
 }
@@ -640,21 +1398,24 @@ export function getSpecialistProfileBase(
   locale: string
 ) {
   const profile = typeof input === "string" ? getSpecialistProfile(input) : input;
+
   if (!profile) {
     return undefined;
   }
 
-  const contentLocale = getDefaultContentLocale(locale) as SupportedSpecialistLocale;
+  const normalizedLocale = normalizeSiteLocale(locale);
   const baseProfile = repairEncodedTree(profile);
 
-  if (contentLocale === "ru") {
+  const localeOverride =
+    SPECIALIST_PROFILE_LOCALE_OVERRIDES[normalizedLocale]?.[profile.slug];
+
+  if (!localeOverride) {
     return baseProfile;
   }
 
-  return repairEncodedTree({
-    ...baseProfile,
-    ...EN_SPECIALIST_PROFILE_OVERRIDES[profile.slug],
-  });
+  return repairEncodedTree(
+    deepMergeTranslationValue(baseProfile, localeOverride)
+  );
 }
 
 export function getLocalizedSpecialistProfile(
@@ -662,23 +1423,27 @@ export function getLocalizedSpecialistProfile(
   locale: string
 ) {
   const profile = typeof input === "string" ? getSpecialistProfile(input) : input;
+
   if (!profile) {
     return undefined;
   }
 
   const normalizedLocale = normalizeSiteLocale(locale);
   const overrides = getTranslationOverrideStoreSync();
+
   const baseProfile = getSpecialistProfileBase(profile, locale);
 
   if (!baseProfile) {
     return undefined;
   }
 
+  const localeOverride =
+    overrides.specialistProfiles[profile.slug]?.[normalizedLocale];
+
   return repairEncodedTree(
-    deepMergeTranslationValue(
-      baseProfile,
-      overrides.specialistProfiles[profile.slug]?.[normalizedLocale]
-    )
+    localeOverride
+      ? deepMergeTranslationValue(baseProfile, localeOverride)
+      : baseProfile
   );
 }
 

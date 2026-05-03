@@ -32,6 +32,7 @@ type TeamProfilePageProps = {
     approach: string;
     articlesAndBlog: string;
     casesAndPortfolio: string;
+    ctaBadge: string;
     ctaDescription: string;
     ctaTitle: string;
     expertise: string;
@@ -334,7 +335,7 @@ export default function TeamProfilePage({
               </h2>
               <div className="mt-5 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(124,159,247,0.14),rgba(245,212,140,0.16))] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  CTA
+                  {labels.ctaBadge}
                 </p>
                 <h3 className="mt-3 text-2xl font-bold text-[var(--foreground)]">
                   {labels.ctaTitle}

@@ -25,6 +25,7 @@ type PeerSpecialist = {
 type SpecialistProfilePageProps = {
   contactButtonLabel: string;
   labels: {
+    ctaBadge: string;
     ctaDescription: string;
     ctaTitle: string;
     expertise: string;
@@ -206,10 +207,12 @@ export default function SpecialistProfilePage({
 
         <section className="px-3 md:px-6 lg:px-8">
           <div className="grid gap-5 xl:grid-cols-2">
-            {profile.seoSections.map((section) => (
+            {profile.seoSections.map((section, index) => (
               <article
                 key={section.heading}
-                className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+                className={`rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] ${
+                  index === 2 ? "xl:col-span-2" : ""
+                }`}
               >
                 <h2 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
                   {section.heading}
@@ -263,7 +266,7 @@ export default function SpecialistProfilePage({
 
               <div className="mt-8 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(124,159,247,0.14),rgba(245,212,140,0.16))] p-5">
                 <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  CTA
+                  {labels.ctaBadge}
                 </p>
                 <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)]">
                   {labels.ctaTitle}

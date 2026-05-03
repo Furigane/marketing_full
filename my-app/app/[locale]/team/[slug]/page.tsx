@@ -130,6 +130,7 @@ export default async function TeamMemberPage({
         <SpecialistProfilePage
           contactButtonLabel={tDesign("contactButton")}
           labels={{
+            ctaBadge: tSpecialistPage("ctaBadge"),
             ctaDescription: tSpecialistPage("ctaDescription"),
             ctaTitle: tSpecialistPage("ctaTitle"),
             expertise: tSpecialistPage("expertise"),
@@ -194,6 +195,7 @@ export default async function TeamMemberPage({
           approach: tMemberPage("approach"),
           articlesAndBlog: tMemberPage("articlesAndBlog"),
           casesAndPortfolio: tMemberPage("casesAndPortfolio"),
+          ctaBadge: tMemberPage("ctaBadge"),
           ctaDescription: tMemberPage("ctaDescription"),
           ctaTitle: tMemberPage("ctaTitle"),
           expertise: tMemberPage("expertise"),

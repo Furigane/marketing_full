@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
@@ -14,100 +16,17 @@ type CaseStudyPageProps = {
   locale: string;
 };
 
-const CASE_STUDY_PROOF = {
-  silpo: {
-    analytics: {
-      en: [
-        "Weekly dashboard with CPL, traffic quality, and revenue contribution by campaign group.",
-        "Creative performance snapshots used to stop weak combinations early.",
-        "Growth checkpoints comparing baseline demand with current lead flow and repeat sales dynamics.",
-      ],
-      ru: [
-        "Еженедельный дашборд с CPL, качеством трафика и вкладом кампаний в выручку.",
-        "Срезы по креативам, которые помогали быстро отключать слабые связки.",
-        "Контрольные точки роста: база спроса, текущий поток лидов и динамика повторных продаж.",
-      ],
-    },
-    review: {
-      author: "Retail marketing lead",
-      quote: {
-        en: "The team did not just launch ads. They built a reporting rhythm where we could see what changed, why it changed, and which actions moved sales.",
-        ru: "Команда не просто запустила рекламу. Они выстроили ритм отчетности, где было видно, что изменилось, почему и какие действия реально повлияли на продажи.",
-      },
-    },
-  },
-  "nova-bistro": {
-    analytics: {
-      en: [
-        "Launch report with audience growth, creator performance, and reservation-related traffic.",
-        "Short-form video view and retention breakdown by concept and publishing window.",
-        "Weekly local reach snapshots tied to opening events and offline demand peaks.",
-      ],
-      ru: [
-        "Стартовый отчет с ростом аудитории, результатами интеграций и трафиком на бронирования.",
-        "Разбивка просмотров и удержания short-form видео по концептам и времени публикаций.",
-        "Еженедельные срезы локального охвата, привязанные к открытиям и пикам офлайн-спроса.",
-      ],
-    },
-    review: {
-      author: "Restaurant co-founder",
-      quote: {
-        en: "We needed attention before the opening, but also real guests after the hype. The campaign mix helped us get both.",
-        ru: "Нам нужно было внимание до открытия, но и реальные гости после хайпа. Комбинация каналов помогла получить и то, и другое.",
-      },
-    },
-  },
-  "luna-clinic": {
-    analytics: {
-      en: [
-        "Qualified lead split by service category before and after search restructuring.",
-        "Landing page conversion snapshots after content and routing updates.",
-        "Search query and call-tracking reports used to separate weak demand from real consultations.",
-      ],
-      ru: [
-        "Разделение квалифицированных лидов по услугам до и после пересборки поискового спроса.",
-        "Снимки конверсии посадочных страниц после обновления контента и маршрутизации.",
-        "Отчеты по поисковым запросам и call-tracking, которые отделяли слабый спрос от реальных консультаций.",
-      ],
-    },
-    review: {
-      author: "Clinic growth manager",
-      quote: {
-        en: "The biggest win was not traffic volume. It was getting fewer empty requests and more patients who already understood the service.",
-        ru: "Главная победа была не в объеме трафика. Мы получили меньше пустых заявок и больше пациентов, которые уже понимали услугу.",
-      },
-    },
-  },
-  "atelier-home": {
-    analytics: {
-      en: [
-        "Commercial presentation audit showing where premium positioning was being lost online.",
-        "Website structure comparison before and after service-led repositioning.",
-        "Client feedback snapshots from proposal and presentation use in new sales conversations.",
-      ],
-      ru: [
-        "Аудит коммерческой подачи, показывающий, где онлайн терялось премиальное позиционирование.",
-        "Сравнение структуры сайта до и после перехода к сервисной подаче.",
-        "Снимки клиентской обратной связи по презентациям и коммерческим материалам в новых продажах.",
-      ],
-    },
-    review: {
-      author: "Studio founder",
-      quote: {
-        en: "After the update, the brand finally looked as expensive as the work itself. That changed how the first conversation started.",
-        ru: "После обновления бренд наконец стал выглядеть так же дорого, как и сами проекты. Это изменило качество первого разговора с клиентом.",
-      },
-    },
-  },
-} as const;
-
 export default async function CaseStudyPage({
   caseStudy,
   locale,
 }: CaseStudyPageProps) {
-  const isRussian = locale.toLowerCase().startsWith("ru");
+  const t = await getTranslations({ locale, namespace: "caseStudyPage" });
   const localizedCaseStudy = getLocalizedCaseStudy(caseStudy, locale);
-  const proof = CASE_STUDY_PROOF[caseStudy.id];
+
+  const proofAnalytics = t.raw(`proof.${caseStudy.id}.analytics`);
+  const proofItems = Array.isArray(proofAnalytics) ? proofAnalytics.map(String) : [];
+  const reviewAuthor = t(`proof.${caseStudy.id}.author`);
+  const reviewQuote = t(`proof.${caseStudy.id}.quote`);
 
   const specialists = caseStudy.specialistIds
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
@@ -116,19 +35,19 @@ export default async function CaseStudyPage({
 
   const storyBlocks = [
     {
-      badge: isRussian ? "Было" : "Before",
+      badge: t("story.before"),
       title:
         localizedCaseStudy.content.detailItems[0]?.title ??
-        (isRussian ? "Исходная ситуация" : "Initial state"),
+        t("fallbacks.initialState"),
       body:
         localizedCaseStudy.content.detailItems[0]?.body ??
         localizedCaseStudy.content.heroDescription,
     },
     {
-      badge: isRussian ? "Что сделали" : "What we did",
+      badge: t("story.whatWeDid"),
       title:
         localizedCaseStudy.content.detailItems[1]?.title ??
-        (isRussian ? "Подход" : "Approach"),
+        t("fallbacks.approach"),
       body: [
         localizedCaseStudy.content.detailItems[1]?.body,
         localizedCaseStudy.content.detailItems[2]?.body,
@@ -137,10 +56,10 @@ export default async function CaseStudyPage({
         .join(" "),
     },
     {
-      badge: isRussian ? "Стало" : "After",
+      badge: t("story.after"),
       title:
         localizedCaseStudy.content.detailItems[3]?.title ??
-        (isRussian ? "Результат" : "Result"),
+        t("fallbacks.result"),
       body:
         localizedCaseStudy.content.detailItems[3]?.body ??
         localizedCaseStudy.content.heroDescription,
@@ -149,35 +68,27 @@ export default async function CaseStudyPage({
 
   const eeatItems = [
     {
-      title: "Experience",
-      body: isRussian
-        ? "Показываем реальный контекст проекта: задача, ограничения, этапы запуска и конкретные изменения в воронке."
-        : "Shows the real delivery context: business goal, launch constraints, execution stages, and concrete funnel changes.",
+      title: t("eeat.experience.title"),
+      body: t("eeat.experience.body"),
     },
     {
-      title: "Expertise",
-      body: isRussian
-        ? "Результат разбит на решения по аналитике, контенту, рекламе и структуре, а не описан общими словами."
-        : "Breaks the result into analytics, content, media, and structure decisions instead of generic marketing claims.",
+      title: t("eeat.expertise.title"),
+      body: t("eeat.expertise.body"),
     },
     {
-      title: "Authoritativeness",
-      body: isRussian
-        ? "Страница связана с профильными услугами и специалистами, которые отвечали за результат."
-        : "Connects the case study to the relevant services and specialists who were responsible for the outcome.",
+      title: t("eeat.authoritativeness.title"),
+      body: t("eeat.authoritativeness.body"),
     },
     {
-      title: "Trust",
-      body: isRussian
-        ? "Есть измеримые цифры, описание отчетности и клиентская обратная связь без расплывчатых обещаний."
-        : "Adds measurable numbers, reporting evidence, and client feedback instead of vague promises.",
+      title: t("eeat.trust.title"),
+      body: t("eeat.trust.body"),
     },
   ];
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${localizedCaseStudy.content.card.title} — ${localizedCaseStudy.content.heroHighlight} ${localizedCaseStudy.content.heroMetric}`,
+    headline: `${localizedCaseStudy.content.card.title} - ${localizedCaseStudy.content.heroHighlight} ${localizedCaseStudy.content.heroMetric}`,
     description: localizedCaseStudy.content.heroDescription,
     inLanguage: locale,
     author: {
@@ -188,9 +99,9 @@ export default async function CaseStudyPage({
       "@type": "Review",
       author: {
         "@type": "Person",
-        name: proof.review.author,
+        name: reviewAuthor,
       },
-      reviewBody: proof.review.quote[isRussian ? "ru" : "en"],
+      reviewBody: reviewQuote,
     },
   };
 
@@ -210,7 +121,7 @@ export default async function CaseStudyPage({
               <div className="hidden items-center gap-2 text-sm text-[var(--design-muted)]">
                 <span aria-hidden>{"\u2302"}</span>
                 <span aria-hidden>{"\u203A"}</span>
-                <span>{isRussian ? "Проекты" : "Projects"}</span>
+                <span>{t("breadcrumbProjects")}</span>
                 <span aria-hidden>{"\u203A"}</span>
                 <span className="font-semibold text-[var(--foreground)]">
                   {localizedCaseStudy.content.card.title}
@@ -240,7 +151,7 @@ export default async function CaseStudyPage({
                 </p>
                 <div className="mt-6 rounded-[1.5rem] bg-[var(--background)] px-5 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
                   <span className="text-sm text-[var(--design-muted)]">
-                    {isRussian ? "Бюджет" : "Budget"}
+                    {t("budget")}
                   </span>
                   <p className="mt-1 text-2xl font-bold text-[var(--foreground)]">
                     {localizedCaseStudy.content.card.price}
@@ -251,7 +162,7 @@ export default async function CaseStudyPage({
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] md:h-[420px]">
                 <OptimizedImage
                   src={caseStudy.image}
-                  alt={`${localizedCaseStudy.content.card.title} ${isRussian ? "кейс Creative Group" : "case study by Creative Group"}`}
+                  alt={t("imageAlt", { title: localizedCaseStudy.content.card.title })}
                   width={1200}
                   height={900}
                   sizes="(max-width: 768px) 100vw, 45vw"
@@ -266,10 +177,10 @@ export default async function CaseStudyPage({
         <section className="px-3 md:px-6 lg:px-8">
           <div className="mb-5">
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              {isRussian ? "Структура кейса" : "Case structure"}
+              {t("structureLabel")}
             </p>
             <h2 className="mt-2 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-              {isRussian ? "Было → Что сделали → Стало" : "Before -> What we did -> After"}
+              {t("structureTitle")}
             </h2>
           </div>
 
@@ -337,13 +248,13 @@ export default async function CaseStudyPage({
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
             <div className="rounded-[2rem] bg-[var(--services-bg)] p-6 md:p-8">
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Доказательства результата" : "Proof of result"}
+                {t("proofLabel")}
               </p>
               <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-                {isRussian ? "Аналитика, рост и клиентская обратная связь" : "Analytics, growth, and client feedback"}
+                {t("proofTitle")}
               </h2>
               <ul className="mt-5 space-y-3">
-                {proof.analytics[isRussian ? "ru" : "en"].map((item) => (
+                {proofItems.map((item) => (
                   <li key={item} className="flex gap-3 text-base leading-7 text-[var(--design-text)]">
                     <span className="mt-2 h-2 w-2 rounded-full bg-[#9ab5f6]" />
                     <span>{item}</span>
@@ -351,21 +262,21 @@ export default async function CaseStudyPage({
                 ))}
               </ul>
               <p className="mt-5 text-sm leading-6 text-[var(--design-muted)]">
-                {isRussian
-                  ? "Видео-отзыв можно добавить отдельным блоком, когда у клиента будет готовый материал."
-                  : "A video testimonial can be added as a dedicated block once the client provides the final asset."}
+                {t("proofNote")}
               </p>
             </div>
 
             <aside className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Отзыв клиента" : "Client review"}
+                {t("clientReview")}
               </p>
               <blockquote className="mt-4 text-lg leading-8 text-[var(--foreground)]">
-                “{proof.review.quote[isRussian ? "ru" : "en"]}”
+                {"\u201c"}
+                {reviewQuote}
+                {"\u201d"}
               </blockquote>
               <p className="mt-4 text-sm font-semibold text-[var(--design-text)]">
-                {proof.review.author}
+                {reviewAuthor}
               </p>
             </aside>
           </div>
@@ -377,7 +288,7 @@ export default async function CaseStudyPage({
               E-E-A-T
             </p>
             <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-              {isRussian ? "Почему этот кейс выглядит достоверно для поисковых систем" : "Why this case study is credible for search engines"}
+              {t("eeatTitle")}
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {eeatItems.map((item) => (
@@ -399,7 +310,7 @@ export default async function CaseStudyPage({
 
         <section className="px-3 md:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-            {isRussian ? "Специалисты проекта" : "Specialists on this project"}
+            {t("specialistsTitle")}
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {specialists.map((specialist) => (
@@ -431,7 +342,7 @@ export default async function CaseStudyPage({
 
         <section className="px-3 md:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-            {isRussian ? "Скриншоты аналитики и графики роста" : "Analytics snapshots and growth visuals"}
+            {t("analyticsTitle")}
           </h2>
           <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
             {caseStudy.galleryImages.map((src, index) => (
@@ -443,7 +354,10 @@ export default async function CaseStudyPage({
               >
                 <OptimizedImage
                   src={src}
-                  alt={`${localizedCaseStudy.content.card.title} ${isRussian ? "график" : "growth visual"} ${index + 1}`}
+                  alt={t("growthVisualAlt", {
+                    title: localizedCaseStudy.content.card.title,
+                    index: index + 1,
+                  })}
                   width={1200}
                   height={900}
                   sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
@@ -457,7 +371,7 @@ export default async function CaseStudyPage({
         <RelatedServicesSection
           locale={locale}
           serviceIds={caseStudy.relatedServiceIds}
-          title={isRussian ? "Похожие услуги" : "Related services"}
+          title={t("relatedServicesTitle")}
         />
         <PageBottomSections />
       </main>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import ServiceDetailPage from "@/app/components/services/service-detail-page";
@@ -22,15 +23,15 @@ export async function generateMetadata({
     return {};
   }
 
-  const seoContent = buildServiceSeoContent(service, locale);
+  const [seoContent, t] = await Promise.all([
+    Promise.resolve(buildServiceSeoContent(service, locale)),
+    getTranslations({ locale, namespace: "serviceDetailPage" }),
+  ]);
 
   return buildPageMetadata({
     locale,
     path: `/services/${slug}`,
-    title: buildMetaTitle(
-      seoContent.metaTitle,
-      locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"
-    ),
+    title: buildMetaTitle(seoContent.metaTitle, t("metaBrandSuffix")),
     description: buildMetaDescription(seoContent.metaDescription),
   });
 }

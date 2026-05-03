@@ -9,8 +9,9 @@ type ProjectsProps = {
 };
 
 export default async function Projects({ variant = "featured" }: ProjectsProps) {
-  const [t, locale] = await Promise.all([
+  const [portfolioT, catalogT, locale] = await Promise.all([
     getTranslations("portfolio"),
+    getTranslations("projectsPage.catalogSection"),
     getLocale(),
   ]);
   const projects = getLocalizedCaseStudies(locale);
@@ -25,19 +26,15 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
 
           <div className="relative space-y-4">
             <span className="inline-flex w-fit items-center rounded-full border border-[color:var(--foreground)]/10 bg-[var(--background)]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--design-muted)] backdrop-blur">
-              Portfolio
+              {catalogT("eyebrow")}
             </span>
 
             <div className="space-y-3">
               <h2 className="max-w-3xl text-2xl font-extrabold leading-tight tracking-[-0.03em] text-[var(--foreground)] sm:text-3xl lg:text-[42px]">
-                {locale.toLowerCase().startsWith("ru")
-                  ? "Подборка компаний, с которыми уже есть измеримый результат"
-                  : "A curated company list built around measurable results"}
+                {catalogT("title")}
               </h2>
               <p className="max-w-3xl text-sm leading-7 text-[var(--design-text)] sm:text-base">
-                {locale.toLowerCase().startsWith("ru")
-                  ? "Каждая карточка ведёт в полноценный кейс: что делали, какие специалисты участвовали и за счёт каких услуг проект дал результат."
-                  : "Each card opens a full case study showing what was done, which specialists were involved, and which services moved the outcome."}
+                {catalogT("description")}
               </p>
             </div>
           </div>
@@ -47,25 +44,23 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
               <div className="rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/85 px-4 py-4 text-center backdrop-blur">
                 <p className="text-3xl font-extrabold tracking-tight text-[var(--foreground)]">{projects.length}</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {locale.toLowerCase().startsWith("ru") ? "Компании" : "Companies"}
+                  {catalogT("stats.companies")}
                 </p>
               </div>
               <div className="rounded-[28px] bg-[#f2d48c] px-4 py-4 text-center text-zinc-900">
                 <p className="text-3xl font-extrabold tracking-tight">2</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-700">
-                  {locale.toLowerCase().startsWith("ru") ? "В ряд" : "Per row"}
+                  {catalogT("stats.perRow")}
                 </p>
               </div>
             </div>
 
             <div className="col-span-2 rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/70 px-4 py-4 backdrop-blur lg:col-span-1">
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {locale.toLowerCase().startsWith("ru") ? "Формат каталога" : "Catalog format"}
+                {catalogT("format.label")}
               </p>
               <p className="mt-2 text-sm leading-7 text-[var(--design-text)]">
-                {locale.toLowerCase().startsWith("ru")
-                  ? "Быстрый просмотр портфолио без перегруза: сначала компания и ниша, потом цена и переход в детальный разбор."
-                  : "Fast portfolio scanning without clutter: company and niche first, then price and a clear path into the full breakdown."}
+                {catalogT("format.description")}
               </p>
             </div>
           </div>
@@ -89,7 +84,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   </div>
 
                   <span className="inline-flex rounded-full border border-[#0f62fe]/20 bg-[#0f62fe]/8 px-3 py-1.5 text-xs font-semibold text-[#87aaf8] dark:border-[#9ab5f6]/30 dark:bg-[#9ab5f6]/10 dark:text-[#c7d6ff]">
-                    {locale.toLowerCase().startsWith("ru") ? "Открыть кейс" : "Open case"}
+                    {catalogT("openCase")}
                   </span>
                 </div>
 
@@ -107,7 +102,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
                     <div>
                       <p className="text-[11px] uppercase tracking-[0.22em] text-white/70">
-                        {locale.toLowerCase().startsWith("ru") ? "Компания" : "Company"}
+                        {catalogT("company")}
                       </p>
                       <p className="mt-1 text-2xl font-extrabold tracking-tight text-white">
                         {project.content.card.title}
@@ -126,15 +121,15 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   <div className="flex items-center justify-between gap-3 rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/88 px-4 py-3.5 backdrop-blur">
                     <div className="min-w-0">
                       <p className="text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                        {t("priceLabel")}
+                        {portfolioT("priceLabel")}
                       </p>
                       <p className="mt-1 truncate text-lg font-bold text-[var(--foreground)] sm:text-xl">
-                        {project.content.card.price.replace(/\bEUR\b/g, "€")}
+                        {project.content.card.price.replace(/\bEUR\b/g, "в‚¬")}
                       </p>
                     </div>
 
                     <span className="inline-flex items-center gap-2 rounded-full bg-[#acc2fd] px-4 py-2.5 text-sm font-semibold text-zinc-900 transition duration-300 group-hover:translate-x-1 group-hover:bg-[#9fb8fc]">
-                      <span>{locale.toLowerCase().startsWith("ru") ? "Смотреть" : "View"}</span>
+                      <span>{catalogT("view")}</span>
                       <span aria-hidden>{"\u2197"}</span>
                     </span>
                   </div>
@@ -151,7 +146,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
     <section className="mt-8 min-w-0 px-4 py-6 lg:px-8 lg:py-8" id="portfolio">
       <div className="mb-6 flex items-center justify-between gap-4 lg:mb-8">
         <h2 className="text-3xl font-bold text-[var(--foreground)] lg:text-4xl">
-          {t("title")}
+          {portfolioT("title")}
         </h2>
 
         <Link
@@ -159,7 +154,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
           className="hidden items-center gap-2 rounded-full bg-[#f2d48c] px-5 py-2 text-sm font-semibold text-zinc-800 shadow-sm transition-colors hover:bg-[#ebc873] lg:inline-flex"
         >
           <span aria-hidden>{"\u2197"}</span>
-          {t("allProjects")}
+          {portfolioT("allProjects")}
         </Link>
       </div>
 
@@ -202,17 +197,17 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   <div className="mt-auto flex items-center justify-between gap-2">
                     <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-2xl bg-[var(--projects-span-bg)] px-3 py-3">
                       <p className="shrink-0 text-xs leading-none text-zinc-400 lg:text-sm">
-                        {t("priceLabel")}
+                        {portfolioT("priceLabel")}
                       </p>
 
                       <p className="min-w-0 whitespace-nowrap text-[20px] font-medium leading-none text-[var(--foreground)] lg:text-[22px]">
-                        {project.content.card.price.replace(/\bEUR\b/g, "€")}
+                        {project.content.card.price.replace(/\bEUR\b/g, "в‚¬")}
                       </p>
                     </div>
 
                     <span
                       className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#9ab5f6] text-xl text-zinc-800"
-                      aria-label={t("openProject")}
+                      aria-label={portfolioT("openProject")}
                     >
                       <span aria-hidden>{"\u2197"}</span>
                     </span>
@@ -225,7 +220,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
 
         <button
           type="button"
-          aria-label={t("prevSlide")}
+          aria-label={portfolioT("prevSlide")}
           className="absolute -left-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
         >
           <span aria-hidden>{"\u2190"}</span>
@@ -233,7 +228,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
 
         <button
           type="button"
-          aria-label={t("nextSlide")}
+          aria-label={portfolioT("nextSlide")}
           className="absolute -right-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
         >
           <span aria-hidden>{"\u2192"}</span>
