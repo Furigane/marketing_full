@@ -5,6 +5,7 @@ import ServiceDetailPage from "@/app/components/services/service-detail-page";
 import { getServiceBySlug, getServiceDefinitions } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
 import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
+import { repairMojibakeText } from "@/lib/text-encoding";
 
 export function generateStaticParams() {
   return getServiceDefinitions().map((service) => ({ slug: service.slug }));
@@ -23,9 +24,12 @@ export async function generateMetadata({
   }
 
   const content = getLocalizedService(service, locale).content;
+  const title = repairMojibakeText(content.title);
+  const summary = repairMojibakeText(content.summary);
+
   return {
-    title: buildMetaTitle(content.title, locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"),
-    description: buildMetaDescription(content.summary),
+    title: buildMetaTitle(title, locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"),
+    description: buildMetaDescription(summary),
   };
 }
 

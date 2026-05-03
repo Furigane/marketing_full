@@ -1,9 +1,9 @@
 import Image from "next/image";
 
+import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
-import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
@@ -11,6 +11,7 @@ import { TEAM_MEMBERS } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
 import type { ServiceDefinition } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
+import { repairMojibakeText } from "@/lib/text-encoding";
 
 type ServiceDetailPageProps = {
   locale: string;
@@ -23,6 +24,12 @@ export default async function ServiceDetailPage({
 }: ServiceDetailPageProps) {
   const isRussian = locale.toLowerCase().startsWith("ru");
   const localizedService = getLocalizedService(service, locale);
+  const title = repairMojibakeText(localizedService.content.title);
+  const description = repairMojibakeText(localizedService.content.description);
+  const summary = repairMojibakeText(localizedService.content.summary);
+  const deliverables = localizedService.content.deliverables.map((item) =>
+    repairMojibakeText(item)
+  );
 
   const specialists = service.specialistIds
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
@@ -37,22 +44,22 @@ export default async function ServiceDetailPage({
 
           <section className="pb-10 pt-6 md:pb-14">
             <div className="mb-4 flex items-center gap-2 text-sm text-[var(--design-muted)]">
-                <span aria-hidden>{"\u2302"}</span>
-                <span aria-hidden>{"\u203A"}</span>
-                <span>{isRussian ? "Услуги" : "Services"}</span>
-                <span aria-hidden>{"\u203A"}</span>
+              <span aria-hidden>{"\u2302"}</span>
+              <span aria-hidden>{"\u203A"}</span>
+              <span>{isRussian ? "Услуги" : "Services"}</span>
+              <span aria-hidden>{"\u203A"}</span>
               <span className="font-semibold text-[var(--foreground)]">
-                {localizedService.content.title}
+                {title}
               </span>
             </div>
 
             <div className="grid gap-8 md:grid-cols-[minmax(0,1.25fr)_minmax(260px,0.75fr)] md:items-start">
               <div>
                 <h1 className="max-w-4xl text-3xl font-extrabold leading-[1.1] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
-                  {localizedService.content.title}
+                  {title}
                 </h1>
                 <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--design-text)] md:text-lg">
-                  {localizedService.content.description}
+                  {description}
                 </p>
               </div>
 
@@ -60,7 +67,7 @@ export default async function ServiceDetailPage({
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--services-bg)]">
                   <Image
                     src={localizedService.icon}
-                    alt={localizedService.content.title}
+                    alt={title}
                     width={24}
                     height={24}
                     className="h-6 w-6"
@@ -70,7 +77,7 @@ export default async function ServiceDetailPage({
                   {isRussian ? "Что входит в услугу" : "Included in the service"}
                 </p>
                 <ul className="mt-4 space-y-3">
-                  {localizedService.content.deliverables.map((item) => (
+                  {deliverables.map((item) => (
                     <li key={item} className="flex gap-3 text-sm leading-6 text-[var(--design-text)] md:text-base">
                       <span className="mt-2 h-2 w-2 rounded-full bg-[#9ab5f6]" />
                       <span>{item}</span>
@@ -88,7 +95,7 @@ export default async function ServiceDetailPage({
               {isRussian ? "Обзор" : "Overview"}
             </p>
             <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
-              {localizedService.content.summary}
+              {summary}
             </p>
           </div>
         </section>

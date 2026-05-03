@@ -6,16 +6,36 @@ import {
   getRelatedServices as getBaseRelatedServices,
   type ServiceDefinition,
 } from "@/lib/services";
-import { normalizeSiteLocale } from "@/lib/site-locales";
-import {
-  deepMergeTranslationValue,
-  getTranslationOverrideStoreSync,
-} from "@/lib/site-translation-runtime";
 import { getServiceTitleOverride } from "@/lib/service-title-overrides";
+import { normalizeSiteLocale } from "@/lib/site-locales";
+import { getTranslationOverrideStoreSync, deepMergeTranslationValue } from "@/lib/site-translation-runtime";
 import { repairEncodedTree } from "@/lib/text-encoding";
 
 const SERVICE_CONTENT_REPAIRS = {
   ru: {
+    localSeo: {
+      title: "Локальное SEO (карты, Google Business Profile)",
+      summary:
+        "Повышаем видимость компании в картах и локальной выдаче для спроса рядом с точкой продаж.",
+      description:
+        "Мы работаем с бизнес-профилями, локальными посадочными страницами, отзывами и геосигналами, чтобы компанию было проще находить в картах и локальных поисковых запросах.",
+      deliverables: [
+        "Оптимизация бизнес-профиля и обновление контента",
+        "Рекомендации по локальным посадочным страницам",
+        "Чек-лист по отзывам и росту локальной видимости",
+      ],
+    },
+    seoPromotion: {
+      summary:
+        "Техническая, семантическая и контентная работа, которая даёт устойчивый органический рост.",
+      description:
+        "SEO включает технический аудит, распределение поискового спроса по страницам, требования к контенту и внутренней перелинковке. Мы работаем не ради формального роста позиций, а ради спроса, который влияет на продажи, и собираем понятный backlog задач для разработки и контента.",
+      deliverables: [
+        "Технический аудит с приоритизацией правок по влиянию",
+        "Карта семантики и рекомендации по посадочным страницам",
+        "On-page задачи и перелинковка с отчётностью по видимости",
+      ],
+    },
     influencerAds: {
       title: "Influencer-реклама (подбор блогеров)",
       summary:

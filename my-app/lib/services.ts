@@ -1,4 +1,5 @@
 import { getDefaultContentLocale } from "@/lib/site-locales";
+import { repairEncodedTree } from "@/lib/text-encoding";
 
 export const SERVICE_SECTIONS = ["popular", "middle", "rare"] as const;
 
@@ -882,7 +883,7 @@ export function getLocalizedService(service: ServiceDefinition, locale: string) 
 
   return {
     ...service,
-    content: service.locale[baseLocale],
+    content: repairEncodedTree(service.locale[baseLocale]),
   };
 }
 
