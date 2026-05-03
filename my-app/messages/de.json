@@ -346,7 +346,15 @@
     }
   },
   "connectPage": {
+    "eyebrow": "Kontaktkanäle",
     "title": "Kontakte zur Verbindung",
+    "description": "Wählen Sie den bequemsten Kanal oder senden Sie eine Anfrage über das Formular unten, und wir melden uns mit dem passenden Spezialisten zurück.",
+    "availability": "Antwort innerhalb eines Werktags",
+    "formCta": "Anfrage senden",
+    "directCta": "In Telegram schreiben",
+    "panelLabel": "Schneller Start",
+    "panelTitle": "Besprechen Sie die Aufgabe in dem Format, das für Sie passt",
+    "panelDescription": "Wenn die Aufgabe bereits klar ist, schreiben Sie direkt in Telegram oder WhatsApp. Wenn Sie Hilfe bei der Formulierung brauchen, nutzen Sie das Formular unten.",
     "items": {
       "email": {
         "label": "E-Mail"
@@ -388,7 +396,7 @@
       "phone": "+9 999 99 99 99",
       "instagram": "Inst: @Info",
       "telegram": "Telegram: @Info",
-      "viber": "Viber: @Info"
+      "viber": "WhatsApp: @Info"
     },
     "docsTitle": "Dokumente",
     "docs": {

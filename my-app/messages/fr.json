@@ -346,7 +346,15 @@
     }
   },
   "connectPage": {
+    "eyebrow": "Canaux de contact",
     "title": "Contacts pour échanger",
+    "description": "Choisissez le canal le plus pratique ou laissez une demande dans le formulaire ci-dessous et nous reviendrons vers vous avec le bon spécialiste.",
+    "availability": "Réponse sous un jour ouvré",
+    "formCta": "Laisser une demande",
+    "directCta": "Écrire sur Telegram",
+    "panelLabel": "Démarrage rapide",
+    "panelTitle": "Parlez de votre besoin dans le format qui vous convient",
+    "panelDescription": "Si la tâche est déjà claire, écrivez directement sur Telegram ou WhatsApp. Si vous avez besoin d'aide pour cadrer la demande, utilisez le formulaire ci-dessous.",
     "items": {
       "email": {
         "label": "E-mail"

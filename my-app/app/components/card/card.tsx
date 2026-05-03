@@ -28,9 +28,10 @@ const tagIds = [
 type CardProps = {
   /** Внутри уже окрашенной секции (connect): без второго слоя team-surface и тени */
   embedded?: boolean;
+  sectionId?: string;
 };
 
-export default function Card({ embedded = false }: CardProps) {
+export default function Card({ embedded = false, sectionId }: CardProps) {
   const t = useTranslations("cardSection");
   const router = useRouter();
   const isDarkTheme = useIsDarkTheme();
@@ -86,6 +87,7 @@ export default function Card({ embedded = false }: CardProps) {
 
   return (
     <section
+      id={sectionId}
       className={
         embedded
           ? "mt-4 w-full sm:mt-6"

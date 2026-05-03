@@ -346,7 +346,15 @@
     }
   },
   "connectPage": {
+    "eyebrow": "Communication channels",
     "title": "Contacts for communication",
+    "description": "Choose the channel that is convenient for you, or leave a request in the form and we will get back with the right specialist.",
+    "availability": "We reply within one business day",
+    "formCta": "Leave a request",
+    "directCta": "Write in Telegram",
+    "panelLabel": "Quick start",
+    "panelTitle": "Discuss the task in the format that suits you",
+    "panelDescription": "If you already know the task, send a brief message in Telegram or WhatsApp. If you need help shaping the request, use the form below and we will structure the next step with you.",
     "items": {
       "email": {
         "label": "Email"
@@ -388,7 +396,7 @@
       "phone": "+9 999 99 99 99",
       "instagram": "Inst: @Info",
       "telegram": "Telegram: @Info",
-      "viber": "Viber: @Info"
+      "viber": "WhatsApp: @Info"
     },
     "docsTitle": "Documents",
     "docs": {
