@@ -29,6 +29,18 @@
   --projects-span-bg: #EFEFEF;
 
   --footer-bg-top: #F3F3F3;
+  --footer-cta-surface: linear-gradient(180deg, #fcfcfc 0%, #f4f1ea 100%);
+  --footer-cta-border: rgb(0 0 0 / 0.08);
+  --footer-cta-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  --footer-cta-overlay: radial-gradient(circle at left, rgba(154, 181, 246, 0.24), transparent 38%),
+    radial-gradient(circle at right, rgba(245, 213, 141, 0.18), transparent 30%);
+  --footer-cta-card-bg: rgb(255 255 255 / 0.7);
+  --footer-cta-card-border: rgb(0 0 0 / 0.08);
+  --footer-cta-text: #52525b;
+  --footer-cta-text-strong: #18181b;
+  --footer-cta-avatar-bg: rgb(255 255 255 / 0.7);
+  --footer-cta-avatar-border: rgb(0 0 0 / 0.08);
+  --footer-cta-avatar-ring: rgb(0 0 0 / 0.1);
   --card-bg: #F1F0EE;
 
   --card-spawn-bg:#FFFFFF;
@@ -78,6 +90,18 @@ html.dark {
   --projects-span-bg: #464646;
    
   --footer-bg-top: #1C1C1C;
+  --footer-cta-surface: #202020;
+  --footer-cta-border: rgb(255 255 255 / 0.08);
+  --footer-cta-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  --footer-cta-overlay: radial-gradient(circle at left, rgba(154, 181, 246, 0.18), transparent 38%),
+    radial-gradient(circle at right, rgba(255, 255, 255, 0.08), transparent 28%);
+  --footer-cta-card-bg: rgb(255 255 255 / 0.03);
+  --footer-cta-card-border: rgb(255 255 255 / 0.08);
+  --footer-cta-text: #d4d4d8;
+  --footer-cta-text-strong: #ffffff;
+  --footer-cta-avatar-bg: rgb(255 255 255 / 0.04);
+  --footer-cta-avatar-border: rgb(255 255 255 / 0.1);
+  --footer-cta-avatar-ring: rgb(255 255 255 / 0.16);
 
   --card-spawn-bg:#323232;
   --card-spawn-text:#F9F9F9;

@@ -35,20 +35,20 @@ export default function Footer() {
 
   return (
     <footer className="mt-8 w-full rounded-t-[28px] bg-[var(--footer-bg-top)] px-3 pb-0 pt-3 md:px-6 md:pb-0 md:pt-6 lg:px-8">
-      <div className="relative overflow-hidden rounded-[28px] border border-white/8 bg-[#202020] px-4 py-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] md:px-8 md:py-8 lg:px-10">
+      <div className="relative overflow-hidden rounded-[28px] border px-4 py-5 md:px-8 md:py-8 lg:px-10 [background:var(--footer-cta-surface)] [border-color:var(--footer-cta-border)] [box-shadow:var(--footer-cta-shadow)]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_left,_rgba(154,181,246,0.18),_transparent_38%),radial-gradient(circle_at_right,_rgba(255,255,255,0.08),_transparent_28%)]"
+          className="pointer-events-none absolute inset-0 [background:var(--footer-cta-overlay)]"
         />
 
         <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_auto_auto] lg:items-center lg:gap-6">
-          <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4 backdrop-blur-sm md:p-5">
+          <div className="rounded-[24px] border p-4 backdrop-blur-sm md:p-5 [background:var(--footer-cta-card-bg)] [border-color:var(--footer-cta-card-border)]">
             <div className="flex items-start gap-3 md:max-w-[620px]">
               <span className="text-3xl leading-none text-[#9ab5f6] md:text-5xl">
                 &ldquo;
               </span>
-              <p className="text-sm leading-relaxed text-zinc-300 md:text-base md:leading-relaxed lg:text-lg">
-                <span className="font-semibold text-white">
+              <p className="text-sm leading-relaxed md:text-base md:leading-relaxed lg:text-lg [color:var(--footer-cta-text)]">
+                <span className="font-semibold [color:var(--footer-cta-text-strong)]">
                   {t("quoteBold")}
                 </span>{" "}
                 {t("quoteRest")}
@@ -58,19 +58,19 @@ export default function Footer() {
 
           <Link
             href="/contact"
-            className="inline-flex min-h-12 w-fit items-center justify-center gap-2 self-start rounded-full border border-[#b7caff]/30 bg-[#9ab5f6] px-5 py-3 text-sm font-medium text-zinc-950 shadow-[0_12px_30px_rgba(154,181,246,0.32)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#abc1f8] md:self-center md:px-8 md:text-base"
+            className="inline-flex min-h-12 w-fit items-center justify-center gap-2 self-start rounded-full border border-[#b7caff]/60 bg-[#acc2fd] px-5 py-3 text-sm font-medium text-zinc-950 shadow-[0_12px_30px_rgba(154,181,246,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9fb8fc] dark:border-[#b7caff]/30 dark:bg-[#9ab5f6] dark:shadow-[0_12px_30px_rgba(154,181,246,0.32)] dark:hover:bg-[#abc1f8] md:self-center md:px-8 md:text-base"
           >
             <span aria-hidden>&rarr;</span>
             {t("contactButton")}
           </Link>
 
-          <div className="flex w-fit items-center self-start rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 backdrop-blur-sm md:self-center">
+          <div className="flex w-fit items-center self-start rounded-full border px-3 py-2 backdrop-blur-sm md:self-center [background:var(--footer-cta-avatar-bg)] [border-color:var(--footer-cta-avatar-border)]">
             {[1, 2, 3, 4].map((item, idx) => (
               <div
                 key={item}
-                className={`relative h-11 w-11 overflow-hidden rounded-full border-2 border-[#202020] ring-1 ring-white/16 md:h-14 md:w-14 ${
+                className={`relative h-11 w-11 overflow-hidden rounded-full border-2 border-white md:h-14 md:w-14 ${
                   idx === 0 ? "" : "-ml-2.5 md:-ml-3"
-                }`}
+                } [box-shadow:0_0_0_1px_var(--footer-cta-avatar-ring)]`}
               >
                 <OptimizedImage
                   src="/img/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.png"
