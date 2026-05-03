@@ -179,6 +179,7 @@ export default async function CaseStudyPage({
     "@type": "Article",
     headline: `${localizedCaseStudy.content.card.title} — ${localizedCaseStudy.content.heroHighlight} ${localizedCaseStudy.content.heroMetric}`,
     description: localizedCaseStudy.content.heroDescription,
+    inLanguage: locale,
     author: {
       "@type": "Organization",
       name: "Creative Group",
@@ -250,7 +251,7 @@ export default async function CaseStudyPage({
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] md:h-[420px]">
                 <OptimizedImage
                   src={caseStudy.image}
-                  alt={localizedCaseStudy.content.card.title}
+                  alt={`${localizedCaseStudy.content.card.title} ${isRussian ? "кейс Creative Group" : "case study by Creative Group"}`}
                   width={1200}
                   height={900}
                   sizes="(max-width: 768px) 100vw, 45vw"

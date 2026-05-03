@@ -203,3 +203,4 @@
  GET /en/services/google-ads-yandex-direct 200 in 89ms (compile: 14ms, proxy.ts: 7ms, render: 68ms)
  GET /en/services/google-ads-yandex-direct 200 in 131ms (compile: 17ms, proxy.ts: 7ms, render: 107ms)
  GET /en/services/google-ads-yandex-direct 200 in 277ms (compile: 88ms, proxy.ts: 15ms, render: 174ms)
+ GET /en/services 200 in 2.1s (compile: 2.0s, proxy.ts: 12ms, render: 95ms)

@@ -67,18 +67,16 @@ export function createEmptyTranslations(): BlogPostTranslations {
 export function getPostTranslation(post: BlogPost, locale: string): BlogPostTranslation {
   const normalized = normalizeBlogLocale(locale);
   const current = post.translations[normalized];
-  if (current.title.trim() || current.excerpt.trim() || current.content.trim()) {
-    return current;
-  }
+  const fallback =
+    BLOG_LOCALES.map((fallbackLocale) => post.translations[fallbackLocale]).find(
+      (item) => item.title.trim() || item.excerpt.trim() || item.content.trim()
+    ) ?? current;
 
-  for (const fallbackLocale of BLOG_LOCALES) {
-    const fallback = post.translations[fallbackLocale];
-    if (fallback.title.trim() || fallback.excerpt.trim() || fallback.content.trim()) {
-      return fallback;
-    }
-  }
-
-  return current;
+  return {
+    title: current.title.trim() || fallback.title,
+    excerpt: current.excerpt.trim() || fallback.excerpt,
+    content: current.content.trim() || fallback.content,
+  };
 }
 
 export function normalizeBlogLocale(locale: string): BlogLocale {

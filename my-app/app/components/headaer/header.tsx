@@ -63,8 +63,6 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isThemeReady, setIsThemeReady] = useState(false);
-  const [hoveredBreadcrumb, setHoveredBreadcrumb] = useState<string | null>(null);
-  const [currentHash, setCurrentHash] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const languageRef = useRef<HTMLDivElement>(null);
 
@@ -80,76 +78,24 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     {
       label: t('team'),
       href: "/#specialists",
-      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.specialists")}`,
     },
     {
       label: t('services'),
       href: "/#services",
-      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.servicesSection")}`,
     },
     {
       label: t('projects'),
       href: "/#portfolio",
-      breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.portfolioSection")}`,
     },
     {
       label: t('blog'),
       href: "/blog",
-      breadcrumb: `${t("breadcrumbs.blogPage")} / ${t("breadcrumbs.latestPosts")}`,
     },
     {
       label: t('connect'),
       href: "/contact",
-      breadcrumb: `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.contactChannels")}`,
     },
   ];
-
-  function resolveCurrentBreadcrumb() {
-    const linkFromHash = navLinks.find((link) => {
-      const [linkPath, linkHash = ""] = link.href.split("#");
-      return linkHash && pathname === linkPath && currentHash === `#${linkHash}`;
-    });
-
-    if (linkFromHash) return linkFromHash.breadcrumb;
-
-    const linkFromPath = navLinks.find((link) => link.href === pathname);
-    if (linkFromPath) return linkFromPath.breadcrumb;
-
-    if (pathname === "/" || pathname === "/main-page") return t("breadcrumbs.mainPage");
-    if (pathname === "/team" || pathname.startsWith("/team/")) {
-      return `${t("breadcrumbs.mainPage")} / ${t("team")}`;
-    }
-    if (pathname === "/services" || pathname.startsWith("/services/")) {
-      return `${t("breadcrumbs.mainPage")} / ${t("services")}`;
-    }
-    if (pathname === "/projects" || pathname.startsWith("/projects/")) {
-      return `${t("breadcrumbs.mainPage")} / ${t("projects")}`;
-    }
-    if (pathname === "/blog") {
-      return `${t("breadcrumbs.blogPage")} / ${t("breadcrumbs.latestPosts")}`;
-    }
-    if (pathname === "/contact" || pathname === "/connect") {
-      return `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.contactChannels")}`;
-    }
-    if (pathname === "/thank-you") {
-      return `${t("breadcrumbs.contactPage")} / ${t("breadcrumbs.thankYouPage")}`;
-    }
-
-    return t("breadcrumbs.mainPage");
-  }
-
-  const activeBreadcrumb = hoveredBreadcrumb ?? resolveCurrentBreadcrumb();
-
-  function handleLocaleChange(nextLocale: (typeof languages)[number]) {
-    router.replace(pathname, { locale: nextLocale });
-    setIsLanguageOpen(false);
-  }
-
-  function switchToNextLocale() {
-    const currentIndex = languages.indexOf(localeBase as (typeof languages)[number]);
-    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % languages.length;
-    handleLocaleChange(languages[nextIndex]);
-  }
 
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -184,14 +130,6 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
       document.body.style.overflow = overflow;
     };
   }, [isMobileMenuOpen]);
-
-  useEffect(() => {
-    const updateHash = () => setCurrentHash(window.location.hash);
-
-    updateHash();
-    window.addEventListener("hashchange", updateHash);
-    return () => window.removeEventListener("hashchange", updateHash);
-  }, []);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
@@ -239,16 +177,13 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
         </button>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <nav onMouseLeave={() => setHoveredBreadcrumb(null)}>
+          <nav>
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--foreground)] transition-opacity duration-200 hover:opacity-80"
-                    onMouseEnter={() => setHoveredBreadcrumb(link.breadcrumb)}
-                    onFocus={() => setHoveredBreadcrumb(link.breadcrumb)}
-                    onBlur={() => setHoveredBreadcrumb(null)}
                   >
                     {link.label}
                   </Link>
@@ -315,13 +250,12 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
                       const active = lang === localeBase;
                       return (
                         <li key={lang}>
-                          <button
-                            type="button"
+                          <Link
+                            href={pathname}
+                            locale={lang}
                             role="option"
                             aria-selected={active}
-                            onClick={() =>
-                              active ? setIsLanguageOpen(false) : handleLocaleChange(lang)
-                            }
+                            onClick={() => setIsLanguageOpen(false)}
                             className={
                               active
                                 ? "flex w-full items-center justify-center rounded-full border border-[var(--foreground)] px-2 py-1.5 text-xs font-medium text-[var(--foreground)] transition-all duration-200"
@@ -329,7 +263,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
                             }
                           >
                             {localeShortLabel(lang)}
-                          </button>
+                          </Link>
                         </li>
                       );
                     })}
@@ -455,20 +389,22 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
               </span>
             </button>
 
-            <button
-              type="button"
-              className="flex items-center gap-2 text-2xl hover:opacity-80"
-              onClick={switchToNextLocale}
-            >
-              {localeShortLabel(localeBase)}
-              <Image
-                src="/svg/chevron-right.svg"
-                alt=""
-                width={12}
-                height={12}
-                className="dark:invert"
-              />
-            </button>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              {languages.map((lang) => (
+                <Link
+                  key={lang}
+                  href={pathname}
+                  locale={lang}
+                  className={
+                    lang === localeBase
+                      ? "rounded-full border border-[var(--foreground)] px-3 py-1.5 font-semibold"
+                      : "rounded-full border border-[color:var(--foreground)]/10 px-3 py-1.5 text-[var(--design-muted)]"
+                  }
+                >
+                  {localeShortLabel(lang)}
+                </Link>
+              ))}
+            </div>
 
             <div className="flex items-center gap-2">
               <Image

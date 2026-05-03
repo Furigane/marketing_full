@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 
 import ServiceDetailPage from "@/app/components/services/service-detail-page";
 import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
+import { buildServiceSeoContent } from "@/lib/service-seo";
 import { getServiceBySlug, getServiceDefinitions } from "@/lib/services";
-import { getLocalizedService } from "@/lib/services-localized";
-import { repairMojibakeText } from "@/lib/text-encoding";
 
 export function generateStaticParams() {
   return getServiceDefinitions().map((service) => ({ slug: service.slug }));
@@ -23,15 +22,16 @@ export async function generateMetadata({
     return {};
   }
 
-  const content = getLocalizedService(service, locale).content;
-  const title = repairMojibakeText(content.title);
-  const summary = repairMojibakeText(content.summary);
+  const seoContent = buildServiceSeoContent(service, locale);
 
   return buildPageMetadata({
     locale,
     path: `/services/${slug}`,
-    title: buildMetaTitle(title, locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"),
-    description: buildMetaDescription(summary),
+    title: buildMetaTitle(
+      seoContent.metaTitle,
+      locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"
+    ),
+    description: buildMetaDescription(seoContent.metaDescription),
   });
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { getPostTranslation, type BlogPost } from "@/lib/blog";
+import { getAnnualContentPlan, getBlogSeoCopy, getTopicClusters } from "@/lib/blog-seo";
 import { Link } from "@/i18n/navigation";
 
 const LOCALE_COPY = {
@@ -38,6 +39,9 @@ const LOCALE_COPY = {
 
 export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: string }) {
   const copy = LOCALE_COPY[(locale in LOCALE_COPY ? locale : "ru") as keyof typeof LOCALE_COPY];
+  const seoCopy = getBlogSeoCopy(locale);
+  const clusters = getTopicClusters(locale);
+  const annualPlan = getAnnualContentPlan(locale);
 
   return (
     <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-3 pb-12 pt-3 sm:gap-8 sm:px-4 md:px-6 lg:max-w-[1400px]">
@@ -88,6 +92,64 @@ export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: st
             {copy.empty}
           </div>
         ) : null}
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)]">
+        <div className="rounded-[28px] bg-[var(--header-bg)] px-5 py-6 shadow-sm sm:px-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--design-muted)]">
+            {seoCopy.section}
+          </p>
+          <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)] sm:text-3xl">
+            {seoCopy.section}
+          </h2>
+          <div className="mt-5 grid gap-4">
+            {clusters.map((cluster) => (
+              <article
+                key={cluster.title}
+                className="rounded-[24px] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5"
+              >
+                <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                  {cluster.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--design-muted)] sm:text-base">
+                  {cluster.description}
+                </p>
+                <ul className="mt-4 space-y-2 text-sm leading-6 text-[var(--foreground)]">
+                  {cluster.articleIdeas.map((idea) => (
+                    <li key={idea} className="flex gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-[#7c9ff7]" />
+                      <span>{idea}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] bg-[var(--team-surface)] px-5 py-6 shadow-sm sm:px-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--design-muted)]">
+            {seoCopy.plan}
+          </p>
+          <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)] sm:text-3xl">
+            {seoCopy.plan}
+          </h2>
+          <div className="mt-5 space-y-3">
+            {annualPlan.map((item) => (
+              <article
+                key={`${item.month}-${item.title}`}
+                className="rounded-[20px] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-4"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--design-muted)]">
+                  {item.quarter} • {item.month} • {item.intent}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground)] sm:text-base">
+                  {item.title}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

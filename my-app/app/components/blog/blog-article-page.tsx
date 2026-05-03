@@ -4,6 +4,7 @@ import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
+import { getEnhancedBlogContent } from "@/lib/blog-seo";
 import {
   getPostTranslation,
   getRelatedServiceIdsFromPost,
@@ -25,7 +26,8 @@ export default function BlogArticlePage({
 }: BlogArticlePageProps) {
   const isRussian = isRussianLocale(locale);
   const translation = getPostTranslation(post, locale);
-  const blocks = parseBlogContent(translation.content);
+  const enhancedContent = getEnhancedBlogContent(post, locale) ?? translation.content;
+  const blocks = parseBlogContent(enhancedContent);
   const relatedServiceIds = getRelatedServiceIdsFromPost(post, locale);
   const relatedArticles = relatedPosts.map((item) => ({
     slug: item.slug,
@@ -40,6 +42,7 @@ export default function BlogArticlePage({
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     mainEntityOfPage: buildAbsoluteUrl(locale, `/blog/${post.slug}`),
+    inLanguage: locale,
     author: {
       "@type": "Organization",
       name: "Creative Group",

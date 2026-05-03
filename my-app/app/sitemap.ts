@@ -24,7 +24,10 @@ const STATIC_PATHS = [
 function buildAlternates(path: string) {
   return {
     languages: Object.fromEntries(
-      SITE_LOCALES.map((locale) => [locale, `${getSiteOrigin()}${getLocalizedPath(locale, path)}`])
+      [
+        ...SITE_LOCALES.map((locale) => [locale, `${getSiteOrigin()}${getLocalizedPath(locale, path)}`]),
+        ["x-default", `${getSiteOrigin()}${getLocalizedPath("ru", path)}`],
+      ]
     ),
   };
 }

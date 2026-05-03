@@ -8,6 +8,7 @@ import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import { buildAbsoluteUrl } from "@/lib/seo";
+import { buildServiceFaqSchema, buildServiceSeoContent } from "@/lib/service-seo";
 import type { ServiceDefinition } from "@/lib/services";
 import { TEAM_MEMBERS } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
@@ -31,6 +32,7 @@ export default async function ServiceDetailPage({
   const deliverables = localizedService.content.deliverables.map((item) =>
     repairMojibakeText(item)
   );
+  const seoContent = buildServiceSeoContent(service, locale);
 
   const specialists = service.specialistIds
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
@@ -48,12 +50,17 @@ export default async function ServiceDetailPage({
     },
     url: buildAbsoluteUrl(locale, `/services/${service.slug}`),
   };
+  const faqJsonLd = buildServiceFaqSchema(service, locale);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-8 px-3 sm:gap-10 sm:px-4 md:px-6 lg:max-w-[1400px]">
         <TeamSurfaceHeaderSection className="mt-6">
@@ -74,7 +81,7 @@ export default async function ServiceDetailPage({
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--services-bg)]">
                   <Image
                     src={localizedService.icon}
-                    alt={title}
+                    alt={seoContent.imageAlt}
                     width={24}
                     height={24}
                     className="h-6 w-6"
@@ -104,6 +111,66 @@ export default async function ServiceDetailPage({
             <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
               {summary}
             </p>
+          </div>
+        </section>
+
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="rounded-[2rem] border border-zinc-200/70 bg-[var(--background)] p-6 shadow-[0_16px_40px_rgba(0,0,0,0.06)] dark:border-zinc-700/70 md:p-8">
+            <div className="max-w-5xl space-y-5 text-base leading-8 text-[var(--foreground)] md:text-lg">
+              {seoContent.blocks.map((block, index) => {
+                if (block.type === "heading") {
+                  if (block.level === 2) {
+                    return (
+                      <h2
+                        key={`${block.text}-${index}`}
+                        className="pt-3 text-3xl font-bold leading-tight text-[var(--foreground)] md:text-4xl"
+                      >
+                        {block.text}
+                      </h2>
+                    );
+                  }
+
+                  if (block.level === 3) {
+                    return (
+                      <h3
+                        key={`${block.text}-${index}`}
+                        className="pt-2 text-2xl font-semibold leading-tight text-[var(--foreground)] md:text-3xl"
+                      >
+                        {block.text}
+                      </h3>
+                    );
+                  }
+
+                  return (
+                    <h4
+                      key={`${block.text}-${index}`}
+                      className="text-xl font-semibold leading-tight text-[var(--foreground)]"
+                    >
+                      {block.text}
+                    </h4>
+                  );
+                }
+
+                if (block.type === "list") {
+                  return (
+                    <ul key={`list-${index}`} className="space-y-3">
+                      {block.items.map((item) => (
+                        <li key={item} className="flex gap-3 text-base leading-7 text-[var(--design-text)]">
+                          <span className="mt-2 h-2 w-2 rounded-full bg-[#9ab5f6]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+
+                return (
+                  <p key={`${block.text}-${index}`} className="text-[var(--design-text)]">
+                    {block.text}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </section>
 
@@ -147,7 +214,37 @@ export default async function ServiceDetailPage({
           </div>
         </section>
 
-        <RelatedServicesSection currentServiceId={service.id} locale={locale} />
+        <section className="px-3 md:px-6 lg:px-8">
+          <div className="rounded-[2rem] bg-[var(--services-bg)] p-6 md:p-8">
+            <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+              FAQ
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-[var(--foreground)] md:text-4xl">
+              {seoContent.faqHeading}
+            </h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {seoContent.faq.map((item) => (
+                <article
+                  key={item.question}
+                  className="rounded-[1.5rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5"
+                >
+                  <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--design-text)] md:text-base">
+                    {item.answer}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <RelatedServicesSection
+          currentServiceId={service.id}
+          locale={locale}
+          title={seoContent.similarHeading}
+        />
         <PageBottomSections />
       </main>
 
