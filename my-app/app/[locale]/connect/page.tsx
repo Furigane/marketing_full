@@ -1,8 +1,31 @@
+import type { Metadata } from "next";
+
 import Header from "../../components/headaer/header";
 import Card from "../../components/card/card";
 import Footer from "../../components/footer/footer";
 import Faq from "../../components2/faq/faq";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = isRussianLocale(locale);
+
+  return buildPageMetadata({
+    locale,
+    path: "/connect",
+    title: buildMetaTitle(isRussian ? "Карта сайта и разделы" : "Site map and sections", "Creative Group"),
+    description: buildMetaDescription(
+      isRussian
+        ? "Навигация по основным разделам сайта, услугам и вспомогательным страницам."
+        : "Navigation across the main site sections, services, and supporting pages."
+    ),
+  });
+}
 
 export default function SiteMapPage() {
   return (

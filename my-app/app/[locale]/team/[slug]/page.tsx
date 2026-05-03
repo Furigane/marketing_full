@@ -4,18 +4,15 @@ import { notFound } from "next/navigation";
 
 import TeamProfilePage from "@/app/components2/team-profile/team-profile-page";
 import SpecialistProfilePage from "@/app/components/team/specialist-profile-page";
-import { getTeamProfileContent } from "@/lib/team-profiles";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
+import type { ServiceId } from "@/lib/services";
 import {
   SPECIALIST_PROFILES,
   getLocalizedSpecialistProfile,
 } from "@/lib/specialist-profiles";
-import {
-  TEAM_MEMBERS,
-  getTeamMember,
-} from "@/lib/team-members";
+import { getTeamProfileContent } from "@/lib/team-profiles";
+import { TEAM_MEMBERS, getTeamMember } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
-import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
-import type { ServiceId } from "@/lib/services";
 
 const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
   designer: ["adCreatives", "uxUiDesign", "brandIdentity"],
@@ -44,10 +41,12 @@ export async function generateMetadata({
   const specialistProfile = getLocalizedSpecialistProfile(slug, locale);
 
   if (specialistProfile) {
-    return {
+    return buildPageMetadata({
+      locale,
+      path: `/team/${slug}`,
       title: specialistProfile.metaTitle,
       description: buildMetaDescription(specialistProfile.metaDescription),
-    };
+    });
   }
 
   const member = getTeamMember(slug);
@@ -58,13 +57,12 @@ export async function generateMetadata({
 
   const localizedMember = getLocalizedTeamMember(member, locale);
 
-  return {
-    title: buildMetaTitle(
-      `${localizedMember.name} - ${localizedMember.role}`,
-      "Creative Group"
-    ),
+  return buildPageMetadata({
+    locale,
+    path: `/team/${slug}`,
+    title: buildMetaTitle(`${localizedMember.name} - ${localizedMember.role}`, "Creative Group"),
     description: buildMetaDescription(localizedMember.metaDescription),
-  };
+  });
 }
 
 export default async function TeamMemberPage({
@@ -107,9 +105,7 @@ export default async function TeamMemberPage({
       }),
     ];
 
-    const otherSpecialists = mergedSpecialists
-      .filter((item) => item.id !== slug)
-      .slice(0, 4);
+    const otherSpecialists = mergedSpecialists.filter((item) => item.id !== slug).slice(0, 4);
 
     const jsonLd = {
       "@context": "https://schema.org",

@@ -22,11 +22,6 @@ function normalizeText(value: string) {
     .trim();
 }
 
-function getLocalizedPath(locale: string, path: string) {
-  const localeBase = locale.toLowerCase().split("-")[0];
-  return localeBase === "ru" ? path : `/${localeBase}${path}`;
-}
-
 function getTypeWeight(type: SearchResultType) {
   switch (type) {
     case "service":
@@ -52,7 +47,7 @@ export async function searchSite(locale: string, rawQuery: string) {
     type: "service",
     title: service.content.title,
     description: service.content.summary,
-    href: getLocalizedPath(locale, `/services/${service.slug}`),
+    href: getInternalPath(`/services/${service.slug}`),
     matchText: normalizeText(
       [service.content.title, service.content.summary, service.content.description].join(" ")
     ),
@@ -63,7 +58,7 @@ export async function searchSite(locale: string, rawQuery: string) {
     type: "project",
     title: project.content.card.title,
     description: project.content.card.description,
-    href: getLocalizedPath(locale, `/projects/${project.slug}`),
+    href: getInternalPath(`/projects/${project.slug}`),
     matchText: normalizeText(
       [
         project.content.card.title,
@@ -83,7 +78,7 @@ export async function searchSite(locale: string, rawQuery: string) {
       type: "blog",
       title: translation.title,
       description: translation.excerpt,
-      href: getLocalizedPath(locale, `/blog/${post.slug}`),
+      href: getInternalPath(`/blog/${post.slug}`),
       matchText: normalizeText(
         [translation.title, translation.excerpt, translation.content].join(" ")
       ),
@@ -109,4 +104,7 @@ export async function searchSite(locale: string, rawQuery: string) {
 
       return left.title.localeCompare(right.title);
     });
+}
+function getInternalPath(path: string) {
+  return path.startsWith("/") ? path : `/${path}`;
 }

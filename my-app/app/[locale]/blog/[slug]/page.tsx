@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import BlogArticlePage from "@/app/components/blog/blog-article-page";
 import { getPostTranslation } from "@/lib/blog";
 import { getBlogPostBySlug, getPublishedBlogPosts } from "@/lib/blog-store";
-import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const posts = await getPublishedBlogPosts();
@@ -24,10 +24,12 @@ export async function generateMetadata({
   }
 
   const translation = getPostTranslation(post, locale);
-  return {
+  return buildPageMetadata({
+    locale,
+    path: `/blog/${slug}`,
     title: buildMetaTitle(translation.title, isRussianLocale(locale) ? "Блог" : "Blog"),
     description: buildMetaDescription(translation.excerpt),
-  };
+  });
 }
 
 export default async function BlogArticleRoute({
@@ -36,11 +38,20 @@ export default async function BlogArticleRoute({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = await getBlogPostBySlug(slug);
+  const [post, allPosts] = await Promise.all([
+    getBlogPostBySlug(slug),
+    getPublishedBlogPosts(),
+  ]);
 
   if (!post) {
     notFound();
   }
 
-  return <BlogArticlePage locale={locale} post={post} />;
+  return (
+    <BlogArticlePage
+      locale={locale}
+      post={post}
+      relatedPosts={allPosts.filter((item) => item.slug !== slug).slice(0, 3)}
+    />
+  );
 }

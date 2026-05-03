@@ -33,7 +33,7 @@ export default function Smm() {
         </p>
 
         <Link
-          href="/connect"
+          href="/contact"
           className="inline-flex items-center gap-2 rounded-full bg-[#acc2fd] px-5 py-3 text-sm transition-colors duration-300 hover:bg-[#9fb8fc] sm:px-6 sm:text-base"
         >
           <Image

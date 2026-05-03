@@ -47,7 +47,7 @@ export default function Design() {
           </p>
 
           <Link
-            href="/connect"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-[var(--design-btn)] px-6 py-3 text-base text-zinc-900 transition-colors duration-300 hover:bg-[var(--design-btn-hover)] dark:text-zinc-100"
           >
             <Image

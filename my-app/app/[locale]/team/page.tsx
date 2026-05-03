@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
-import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import { Link } from "@/i18n/navigation";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
 import {
   SPECIALIST_PROFILES,
   getLocalizedSpecialistProfile,
 } from "@/lib/specialist-profiles";
 import { TEAM_MEMBERS } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
-import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -23,10 +23,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "teamPages.directory" });
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/team",
     title: buildMetaTitle(t("metaTitle"), "Creative Group"),
     description: buildMetaDescription(t("metaDescription")),
-  };
+  });
 }
 
 export default async function TeamPage({

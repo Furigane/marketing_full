@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 import Header from "../../components/headaer/header";
 import Hero from "../../components/hero/hero";
 import Workers from "../../components/workers/workers";
@@ -10,7 +12,16 @@ import Comment from "../../components/comment/comment";
 import Footer from "../../components/footer/footer";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 
-export default function MainPage() {
+export default async function MainPage({
+  params,
+}: {
+  params?: Promise<{ locale: string }>;
+}) {
+  if (params) {
+    const { locale } = await params;
+    redirect(`/${locale}`);
+  }
+
   return (
     <>  
     

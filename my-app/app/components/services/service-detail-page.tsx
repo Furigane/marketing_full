@@ -7,6 +7,7 @@ import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-h
 import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
+import { buildAbsoluteUrl } from "@/lib/seo";
 import { TEAM_MEMBERS } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
 import type { ServiceDefinition } from "@/lib/services";
@@ -35,9 +36,24 @@ export default async function ServiceDetailPage({
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
     .filter((member): member is (typeof TEAM_MEMBERS)[number] => Boolean(member))
     .map((member) => getLocalizedTeamMember(member, locale));
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: title,
+    description: summary,
+    provider: {
+      "@type": "Organization",
+      name: "Creative Group",
+    },
+    url: buildAbsoluteUrl(locale, `/services/${service.slug}`),
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-8 px-3 sm:gap-10 sm:px-4 md:px-6 lg:max-w-[1400px]">
         <TeamSurfaceHeaderSection className="mt-6">
           <Header />

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import OptimizedImage from "@/app/components/shared/optimized-image";
+import SiteBreadcrumbs from "@/app/components/seo/site-breadcrumbs";
 import { socialIconSrc } from "@/lib/social-icons";
 import { Search } from "lucide-react";
 
@@ -52,10 +53,6 @@ const SEARCH_COPY = {
   },
 } as const;
 
-function getLocalizedPath(locale: string, path: string) {
-  return locale === "ru" ? path : `/${locale}${path}`;
-}
-
 type HeaderProps = {
   /** Фон как у секции team-surface (connect). Не подменяем --header-bg на родителе — так ломается тёмная тема. */
   matchTeamSurface?: boolean;
@@ -82,17 +79,17 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const navLinks = [
     {
       label: t('team'),
-      href: "/main-page#specialists",
+      href: "/#specialists",
       breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.specialists")}`,
     },
     {
       label: t('services'),
-      href: "/main-page#services",
+      href: "/#services",
       breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.servicesSection")}`,
     },
     {
       label: t('projects'),
-      href: "/main-page#portfolio",
+      href: "/#portfolio",
       breadcrumb: `${t("breadcrumbs.mainPage")} / ${t("breadcrumbs.portfolioSection")}`,
     },
     {
@@ -118,7 +115,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
     const linkFromPath = navLinks.find((link) => link.href === pathname);
     if (linkFromPath) return linkFromPath.breadcrumb;
 
-    if (pathname === "/main-page") return t("breadcrumbs.mainPage");
+    if (pathname === "/" || pathname === "/main-page") return t("breadcrumbs.mainPage");
     if (pathname === "/team" || pathname.startsWith("/team/")) {
       return `${t("breadcrumbs.mainPage")} / ${t("team")}`;
     }
@@ -157,7 +154,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmed = searchQuery.trim();
-    const targetPath = getLocalizedPath(localeBase, "/search");
+    const targetPath = "/search";
     const href = trimmed ? `${targetPath}?q=${encodeURIComponent(trimmed)}` : targetPath;
 
     router.push(href);
@@ -218,7 +215,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   return (
     <>
       <header className="my-4 flex items-center justify-between rounded-full bg-[var(--header-bg)] px-3 py-2.5 sm:my-6 sm:px-4 sm:py-3 lg:px-6 lg:py-4">
-        <Link href="/main-page" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/svg/logo.svg"
             alt="Creative Group logo"
@@ -363,12 +360,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
           </div>
         </div>
       </header>
-
-      <div className="mt-1 px-4 sm:px-5 lg:px-6">
-        <p className="text-[10px] font-normal tracking-[0.16em] text-[var(--foreground)] opacity-35 sm:text-[11px]">
-          {activeBreadcrumb}
-        </p>
-      </div>
+      <SiteBreadcrumbs />
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[color:var(--background)]/95 px-4 pb-6 pt-8 text-[var(--foreground)] shadow-[0_0_40px_rgba(0,0,0,0.12)] backdrop-blur-md dark:shadow-[0_0_48px_rgba(0,0,0,0.45)] sm:px-6 lg:hidden">

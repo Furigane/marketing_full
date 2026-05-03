@@ -1,9 +1,27 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import Header from "../../components/headaer/header";
 import Footer from "../../components/footer/footer";
 import PageBottomSections from "../../components/common/page-bottom-sections";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "thankYouPage" });
+
+  return buildPageMetadata({
+    locale,
+    path: "/thank-you",
+    title: buildMetaTitle(t("message"), "Creative Group"),
+    description: buildMetaDescription(t("message")),
+  });
+}
 
 export default async function ThankYouPage() {
   const t = await getTranslations("thankYouPage");

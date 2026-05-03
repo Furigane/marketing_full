@@ -119,7 +119,7 @@ export default function SpecialistProfilePage({
 
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link
-                      href="/connect"
+                      href="/contact"
                       className="inline-flex items-center gap-2 rounded-full bg-[var(--design-btn)] px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-[var(--design-btn-hover)] dark:text-zinc-100"
                     >
                       <Image
@@ -272,7 +272,7 @@ export default function SpecialistProfilePage({
                   {labels.ctaDescription}
                 </p>
                 <Link
-                  href="/connect"
+                  href="/contact"
                   className="mt-5 inline-flex rounded-full bg-[var(--foreground)] px-5 py-3 text-sm font-semibold text-[var(--background)] transition hover:opacity-90"
                 >
                   {contactButtonLabel}

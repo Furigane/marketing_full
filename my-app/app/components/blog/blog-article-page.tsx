@@ -1,7 +1,7 @@
+import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
-import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import {
@@ -10,21 +10,53 @@ import {
   parseBlogContent,
   type BlogPost,
 } from "@/lib/blog";
-import { isRussianLocale } from "@/lib/seo";
+import { buildAbsoluteUrl, isRussianLocale } from "@/lib/seo";
 
 type BlogArticlePageProps = {
   locale: string;
   post: BlogPost;
+  relatedPosts: BlogPost[];
 };
 
-export default function BlogArticlePage({ locale, post }: BlogArticlePageProps) {
+export default function BlogArticlePage({
+  locale,
+  post,
+  relatedPosts,
+}: BlogArticlePageProps) {
   const isRussian = isRussianLocale(locale);
   const translation = getPostTranslation(post, locale);
   const blocks = parseBlogContent(translation.content);
   const relatedServiceIds = getRelatedServiceIdsFromPost(post, locale);
+  const relatedArticles = relatedPosts.map((item) => ({
+    slug: item.slug,
+    translation: getPostTranslation(item, locale),
+  }));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: translation.title,
+    description: translation.excerpt,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    mainEntityOfPage: buildAbsoluteUrl(locale, `/blog/${post.slug}`),
+    author: {
+      "@type": "Organization",
+      name: "Creative Group",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Creative Group",
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-6 px-3 sm:gap-8 sm:px-4 md:px-6 lg:max-w-[1400px]">
         <TeamSurfaceHeaderSection className="mt-4">
           <Header />
@@ -115,6 +147,35 @@ export default function BlogArticlePage({ locale, post }: BlogArticlePageProps) 
             </div>
           </div>
         </article>
+
+        {relatedArticles.length > 0 ? (
+          <section className="px-3 py-4 md:px-6 lg:px-8">
+            <div className="mb-6">
+              <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                {isRussian ? "Статьи" : "Articles"}
+              </p>
+              <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
+                {isRussian ? "Читайте также" : "Read next"}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {relatedArticles.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/blog/${item.slug}`}
+                  className="rounded-[1.75rem] border border-zinc-200/70 bg-[var(--header-bg)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
+                >
+                  <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                    {item.translation.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--design-text)]">
+                    {item.translation.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <RelatedServicesSection locale={locale} serviceIds={relatedServiceIds} />
         <PageBottomSections />

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import Footer from "@/app/components/footer/footer";
-import Header from "@/app/components/headaer/header";
 import { BlogAccordion } from "@/app/components/blog/blog-accordion";
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
+import Footer from "@/app/components/footer/footer";
+import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import { getPublishedBlogPosts } from "@/lib/blog-store";
-import { buildMetaDescription, buildMetaTitle, isRussianLocale } from "@/lib/seo";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,14 +16,16 @@ export async function generateMetadata({
   const { locale } = await params;
   const isRussian = isRussianLocale(locale);
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: "/blog",
     title: buildMetaTitle(isRussian ? "Блог о маркетинге и SEO" : "Marketing and SEO blog"),
     description: buildMetaDescription(
       isRussian
         ? "Статьи о SEO, контенте, рекламе и услугах агентства с переходами на смежные услуги."
         : "Articles about SEO, content, ads, and agency services with links to related services."
     ),
-  };
+  });
 }
 
 export default async function BlogPage({

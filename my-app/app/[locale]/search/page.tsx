@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
+
 import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import PageBottomSections from "@/app/components/common/page-bottom-sections";
 import { Link } from "@/i18n/navigation";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata, isRussianLocale } from "@/lib/seo";
 import { searchSite, type SearchResultType } from "@/lib/site-search";
 
 const SEARCH_COPY = {
@@ -78,6 +81,26 @@ function getTypeLabel(
   type: SearchResultType
 ) {
   return types[type];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = isRussianLocale(locale);
+
+  return buildPageMetadata({
+    locale,
+    path: "/search",
+    title: buildMetaTitle(isRussian ? "Поиск по сайту" : "Site search", "Creative Group"),
+    description: buildMetaDescription(
+      isRussian
+        ? "Поиск услуг, кейсов и статей по сайту."
+        : "Search services, case studies, and articles across the site."
+    ),
+  });
 }
 
 export default async function SearchPage({

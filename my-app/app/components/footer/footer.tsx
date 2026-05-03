@@ -7,14 +7,14 @@ import OptimizedImage from "@/app/components/shared/optimized-image";
 
 const navLinks = [
   { key: "team" as const, href: "/team" },
-  { key: "process" as const, href: "/main-page#work" },
+  { key: "process" as const, href: "/#work" },
   { key: "services" as const, href: "/services" },
   { key: "projects" as const, href: "/projects" },
   { key: "sitemap" as const, href: "/connect" },
 ];
 
 const contacts = [
-  { key: "writeUs" as const, href: "/connect" },
+  { key: "writeUs" as const, href: "/contact" },
   { key: "phone" as const, href: "tel:+99999999999" },
   { key: "instagram" as const, href: "https://instagram.com", external: true },
   { key: "telegram" as const, href: "https://t.me", external: true },
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
 
           <Link
-            href="/connect"
+            href="/contact"
             className="order-3 inline-flex w-fit items-center gap-2 rounded-full bg-[#9ab5f6] px-5 py-2.5 text-sm font-medium text-zinc-900 shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#89a9f5] md:order-2 md:px-8 md:py-3.5 md:text-base"
           >
             <span aria-hidden>→</span>

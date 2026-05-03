@@ -1,10 +1,13 @@
 import type { LucideIcon } from "lucide-react";
+import type { Metadata } from "next";
 import { Mail, MessageCircleMore, Send } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import Header from "../../components/headaer/header";
-import Footer from "../../components/footer/footer";
+
 import PageBottomSections from "../../components/common/page-bottom-sections";
+import Footer from "../../components/footer/footer";
+import Header from "../../components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
+import { buildMetaDescription, buildMetaTitle, buildPageMetadata } from "@/lib/seo";
 
 type ContactKey = "email" | "whatsapp" | "telegram";
 
@@ -42,6 +45,22 @@ const contactItems: ContactItem[] = [
     external: true,
   },
 ];
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "connectPage" });
+
+  return buildPageMetadata({
+    locale,
+    path: "/contact",
+    title: buildMetaTitle(t("title"), "Creative Group"),
+    description: buildMetaDescription(t("title")),
+  });
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("connectPage");

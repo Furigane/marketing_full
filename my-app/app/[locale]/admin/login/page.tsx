@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
       <div className="relative mx-auto flex min-h-screen max-w-lg flex-col px-4 py-8 sm:px-6 sm:py-12">
         <header className="mb-8 flex items-center justify-between">
           <Link
-            href="/main-page"
+            href="/"
             className="text-sm font-medium text-[var(--design-muted)] transition-colors hover:text-[var(--foreground)]"
           >
             ← {t("backToSite")}

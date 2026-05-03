@@ -1,9 +1,6 @@
 import { headers } from "next/headers";
 
-function getLocalizedPath(locale: string, path: string) {
-  const localeBase = locale.toLowerCase().split("-")[0];
-  return localeBase === "ru" ? path : `/${localeBase}${path}`;
-}
+import { getLocalizedPath } from "@/lib/seo";
 
 function getSiteOrigin(headerList: Headers) {
   const forwardedProto = headerList.get("x-forwarded-proto");
