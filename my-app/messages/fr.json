@@ -425,7 +425,8 @@
       "articlesAndBlog": "Articles et blog",
       "casesAndPortfolio": "Études de cas et portfolio",
       "fullTeam": "Toute l'équipe",
-      "otherSpecialists": "Autres spécialistes"
+      "otherSpecialists": "Autres spécialistes",
+      "ctaBadge": "Travaillons ensemble"
     },
     "specialistProfile": {
       "profileBadge": "Profil du spécialiste",
@@ -435,9 +436,120 @@
       "skillsTitle": "Compétences du spécialiste",
       "servicesTitle": "Services et liens internes",
       "servicesDescription": "Chaque thème ci-dessous est affiché comme un lien interne vers la section de service correspondante.",
+      "ctaBadge": "Travaillons ensemble",
       "ctaTitle": "Besoin du bon spécialiste pour votre projet ?",
       "ctaDescription": "Envoyez une demande et nous associerons le projet au bon spécialiste produit, marketing ou design.",
       "otherSpecialists": "Autres spécialistes"
+    }
+  },
+  "serviceSeo": {
+    "marketNotes": {
+      "ru": {
+        "market": "marché russe",
+        "nuance": "Public russophone"
+      },
+      "en": {
+        "market": "Marchés anglophones",
+        "nuance": "Public anglophone"
+      },
+      "fr": {
+        "market": "Marché français",
+        "nuance": "Public francophone"
+      },
+      "de": {
+        "market": "Marché allemand",
+        "nuance": "Public germanophone"
+      },
+      "ar": {
+        "market": "Marché arabe",
+        "nuance": "Public arabophone"
+      }
+    },
+    "fallbacks": {
+      "related0": "service connexe",
+      "related1": "un autre service",
+      "related2": "service populaire",
+      "related3": "service recommandé"
+    },
+    "metaTitle": "{title} - service professionnel",
+    "metaDescription": "Service professionnel {title}. {summary}",
+    "imageAlt": "{title} illustration du service",
+    "blocks": {
+      "introHeading": "Qu'est-ce que {title} ?",
+      "introParagraph1": "{title} aide les entreprises à atteindre le bon public dans le {market}. Nous combinons stratégie, exécution et reporting afin que le service prenne en charge une croissance mesurable plutôt qu'une activité isolée.",
+      "introParagraph2": "Le service est adapté à votre offre, à l'étape de votre entonnoir et à vos objectifs. Cela permet au même cadre de fonctionner pour les équipes locales, les entreprises internationales et les entreprises de produits.",
+      "includedHeading": "Ce qui est inclus dans {title}",
+      "includedParagraph1": "Une portée {title} typique comprend ces livrables et blocs opérationnels :",
+      "includedParagraph2": "Chaque livrable est adapté au projet actuel, au public et à l’étape de croissance.",
+      "seoHeading": "Pourquoi {title} est important pour la visibilité et la conversion dans les recherches",
+      "seoParagraph1": "{title} affecte la visibilité, la clarté de l'offre et la qualité de la conversion. Même lorsque le service n'est pas purement axé sur le référencement, il détermine toujours la façon dont les utilisateurs trouvent, font confiance et agissent sur vos pages.",
+      "seoParagraph2": "Nous connectons {title} au système plus large de contenu, de page de destination et d'analyse afin d'améliorer à la fois l'expérience utilisateur et les performances commerciales.",
+      "linkingHeading": "Comment {title} se connecte aux services associés",
+      "linkingParagraph": "{title} fonctionne mieux lorsqu'il est coordonné avec {related0}, {related1} et {related2}. Nous construisons ces liens intentionnellement afin que les canaux, les pages et les rapports se soutiennent mutuellement.",
+      "whenHeading": "Quand investir dans {title}",
+      "whenParagraph1": "Si vous avez besoin d'un positionnement plus fort dans le {market}, d'une demande plus qualifiée ou d'une meilleure efficacité de conversion, {title} est généralement l'une des prochaines étapes à plus fort impact.",
+      "whenParagraph2": "Nous pouvons examiner la configuration actuelle, identifier les goulots d'étranglement et montrer si {title} devrait être une priorité maintenant ou plus tard dans la feuille de route."
+    },
+    "faq": [
+      {
+        "question": "Combien de temps faut-il à {title} pour afficher les résultats ?",
+        "answer": "Le calendrier dépend de votre point de départ, du niveau de demande et de la portée de l'exécution. Dans la plupart des cas, vous pouvez observer des signes précoces au bout de 4 à 8 semaines, avec des résultats plus stables au cours des mois suivants."
+      },
+      {
+        "question": "Quel budget est généralement nécessaire pour {title} ?",
+        "answer": "Le budget dépend de la portée, du marché et de la complexité de la livraison. Nous définissons généralement le budget après audit, les priorités et le rythme requis sont clairs."
+      },
+      {
+        "question": "{title} peut-il travailler pour une petite entreprise ?",
+        "answer": "Oui. Nous adaptons le service au stade de l'entreprise, aux ressources internes et à la demande actuelle afin qu'il reste également pratique pour les petites équipes."
+      },
+      {
+        "question": "Comment mesurez-vous le succès de {title} ?",
+        "answer": "Nous lions le service à des indicateurs clairs tels que la demande qualifiée, la qualité de la conversion, la contribution aux revenus, la visibilité et la vitesse opérationnelle, en fonction du type de service."
+      }
+    ],
+    "faqHeading": "Questions fréquemment posées",
+    "similarHeading": "Services associés"
+  },
+  "serviceDetailPage": {
+    "metaBrandSuffix": "Groupe créatif",
+    "included": "Ce qui est inclus",
+    "relatedServices": {
+      "eyebrow": "Services associés",
+      "title": "Services associés",
+      "open": "Service ouvert"
+    },
+    "specialists": "Des spécialistes impliqués",
+    "faq": "Questions fréquemment posées",
+    "overview": "Aperçu",
+    "team": "Équipe",
+    "faqEyebrow": "FAQ"
+  },
+  "servicesPage": {
+    "metaTitle": "Tous les services - solutions marketing professionnelles",
+    "metaDescription": "Explorez la liste complète des services de marketing, de conception, de contenu et Web avec des descriptions, des livrables et des pages de détails localisés."
+  },
+  "projectsPage": {
+    "metaTitle": "Portfolio - études de cas et projets",
+    "metaDescription": "Explorez des études de cas localisées, des pages de détails de projet et des fiches de portfolio dans la langue adaptée à chaque région prise en charge.",
+    "eyebrow": "Œuvre sélectionnée",
+    "title": "Études de cas et projets avec preuves localisées, contexte et détails de livraison",
+    "description": "Ce catalogue présente les travaux récents avec des cartes localisées, des histoires de projets, des spécialistes, des blocs d'épreuves et des services associés.",
+    "catalogSection": {
+      "eyebrow": "Catalogue de projets",
+      "title": "Études de cas détaillées dans les services et les industries",
+      "description": "Chaque carte mène à une page de détails localisée avec le contexte commercial, les notes d'exécution, la preuve de performance et les liens internes vers les services pertinents.",
+      "stats": {
+        "companies": "études de cas",
+        "perRow": "cartes par rangée"
+      },
+      "format": {
+        "label": "Formater",
+        "description": "Cartes de prévisualisation ainsi que des pages de cas complètes avec des mesures localisées, des preuves, des spécialistes et des services associés."
+      },
+      "openCase": "Étude de cas ouverte",
+      "company": "Marque",
+      "view": "Voir le projet"
     }
   },
   "adminLogin": {
@@ -451,5 +563,91 @@
     "backToSite": "Retour au site",
     "error": "Saisissez l’e-mail et le mot de passe.",
     "hint": "Démo : n’importe quel e-mail et mot de passe."
+  },
+  "caseStudyPage": {
+    "meta": {
+      "title": "{title} - {highlight}",
+      "description": "{title} : {heroDescription}"
+    },
+    "breadcrumbProjects": "Projets",
+    "budget": "Budget du projet",
+    "imageAlt": "{title} image de couverture de l'étude de cas",
+    "structureLabel": "Structure du cas",
+    "structureTitle": "De la situation initiale au résultat commercial",
+    "story": {
+      "before": "Avant",
+      "whatWeDid": "Ce que nous avons fait",
+      "after": "Après"
+    },
+    "fallbacks": {
+      "initialState": "Situation initiale",
+      "approach": "Approche",
+      "result": "Résultat"
+    },
+    "proofLabel": "Preuve",
+    "proofTitle": "Ce que le processus et les mesures ont montré",
+    "proofNote": "Ce bloc résume les principaux signaux opérationnels, métriques et preuves de livraison pour le projet en cours.",
+    "clientReview": "Avis clients",
+    "eeatTitle": "Pourquoi cette affaire soutient l'expérience, l'expertise, l'autorité et la confiance",
+    "eeat": {
+      "experience": {
+        "title": "Expérience",
+        "body": "Le cas montre comment l'équipe a géré un contexte de livraison réel, et non un modèle abstrait. Les décisions étaient liées aux contraintes du projet, au comportement des canaux et aux priorités commerciales."
+      },
+      "expertise": {
+        "title": "Expertise",
+        "body": "Le travail combinait stratégie, exécution, reporting et coordination interne. Cela rend la page utile comme preuve d’expertise pratique, et pas seulement comme promotion."
+      },
+      "authoritativeness": {
+        "title": "Autorité",
+        "body": "Les résultats sont liés aux rôles des spécialistes, à la structure des services et à la logique opérationnelle concrète. Cela crée un signal d’autorité plus fort que les affirmations génériques du portefeuille."
+      },
+      "trust": {
+        "title": "Confiance",
+        "body": "L'affaire explique ce qui a changé, comment cela a été exécuté et quel résultat a suivi. Une explication claire du processus améliore la confiance des utilisateurs et des systèmes de recherche."
+      }
+    },
+    "specialistsTitle": "Des spécialistes impliqués",
+    "analyticsTitle": "Visuels de croissance",
+    "growthVisualAlt": "{title} visuel de croissance {index}",
+    "relatedServicesTitle": "Services associés",
+    "proof": {
+      "silpo": {
+        "analytics": [
+          "Le contenu, le trafic payant et les rapports ont été alignés sur un seul rythme de fonctionnement.",
+          "Les examens hebdomadaires des KPI ont réduit les décisions budgétaires inutiles et rendu les priorités visibles.",
+          "La marque a fait évoluer la demande sans perdre le contrôle du coût par prospect et de l'orientation de la campagne."
+        ],
+        "author": "Responsable marketing de détail",
+        "quote": "L'équipe a créé un système que nous pourrions faire évoluer, et pas seulement un ensemble de campagnes isolées. Cela a modifié à la fois la visibilité et la qualité de la prise de décision interne."
+      },
+      "nova-bistro": {
+        "analytics": [
+          "Le contenu de lancement et les placements des créateurs ont été coordonnés autour de véritables moments d'ouverture.",
+          "Le travail auprès du public local a transformé l’attention en visites plutôt qu’en portée abstraite.",
+          "La marque est entrée sur le marché avec une notoriété plus forte et une preuve sociale plus claire."
+        ],
+        "author": "Propriétaire du restaurant",
+        "quote": "Nous ne nous sommes pas lancés dans le silence. Le public a déjà compris le lieu, le ton et pourquoi cela valait la peine d’être visité."
+      },
+      "luna-clinic": {
+        "analytics": [
+          "La demande de recherche, la pertinence de la page de destination et les analyses ont été reconstruites ensemble.",
+          "La qualité des leads s'est améliorée car l'entonnoir a été adapté à l'intention commerciale, et pas seulement au volume de trafic.",
+          "Les rapports sont devenus plus clairs, ce qui a rendu les décisions budgétaires ultérieures plus fiables."
+        ],
+        "author": "Responsable des opérations de la clinique",
+        "quote": "Le projet a amélioré non seulement la visibilité, mais aussi la qualité de la demande entrante et notre confiance dans les chiffres qui la sous-tendent."
+      },
+      "atelier-home": {
+        "analytics": [
+          "Le langage de la marque, la structure du site et les supports de présentation ont été regroupés dans un seul système premium.",
+          "Le projet a amélioré le positionnement avant de s’étendre activement à un segment à plus forte valeur ajoutée.",
+          "La nouvelle couche de présentation a rendu l'offre plus claire sur les points de contact numériques et commerciaux."
+        ],
+        "author": "Fondateur d'atelier",
+        "quote": "Le système mis à jour a permis à la marque de se sentir cohérente et premium partout où le client la rencontre, pas seulement sur le site Web."
+      }
+    }
   }
 }

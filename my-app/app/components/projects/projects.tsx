@@ -124,7 +124,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                         {portfolioT("priceLabel")}
                       </p>
                       <p className="mt-1 truncate text-lg font-bold text-[var(--foreground)] sm:text-xl">
-                        {project.content.card.price.replace(/\bEUR\b/g, "в‚¬")}
+                        {project.content.card.price.replace(/\bEUR\b/g, "EUR")}
                       </p>
                     </div>
 
@@ -201,7 +201,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                       </p>
 
                       <p className="min-w-0 whitespace-nowrap text-[20px] font-medium leading-none text-[var(--foreground)] lg:text-[22px]">
-                        {project.content.card.price.replace(/\bEUR\b/g, "в‚¬")}
+                        {project.content.card.price.replace(/\bEUR\b/g, "EUR")}
                       </p>
                     </div>
 

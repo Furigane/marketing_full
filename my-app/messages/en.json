@@ -425,7 +425,8 @@
       "articlesAndBlog": "Articles and blog",
       "casesAndPortfolio": "Case studies and portfolio",
       "fullTeam": "Full team",
-      "otherSpecialists": "Other specialists"
+      "otherSpecialists": "Other specialists",
+      "ctaBadge": "Let's work together"
     },
     "specialistProfile": {
       "profileBadge": "Specialist profile",
@@ -435,9 +436,120 @@
       "skillsTitle": "Specialist skills",
       "servicesTitle": "Services and internal links",
       "servicesDescription": "Every topic below is rendered as an internal link to the relevant service section.",
+      "ctaBadge": "Let's work together",
       "ctaTitle": "Need the right specialist for your project?",
       "ctaDescription": "Send a request and we will match the project with the right product, marketing, or design specialist.",
       "otherSpecialists": "Other specialists"
+    }
+  },
+  "serviceSeo": {
+    "marketNotes": {
+      "ru": {
+        "market": "Russian market",
+        "nuance": "Russian-speaking audience"
+      },
+      "en": {
+        "market": "English-speaking markets",
+        "nuance": "English-speaking audience"
+      },
+      "fr": {
+        "market": "French market",
+        "nuance": "French-speaking audience"
+      },
+      "de": {
+        "market": "German market",
+        "nuance": "German-speaking audience"
+      },
+      "ar": {
+        "market": "Arabic market",
+        "nuance": "Arabic-speaking audience"
+      }
+    },
+    "fallbacks": {
+      "related0": "related service",
+      "related1": "another service",
+      "related2": "popular service",
+      "related3": "recommended service"
+    },
+    "metaTitle": "{title} - professional service",
+    "metaDescription": "Professional {title} service. {summary}",
+    "imageAlt": "{title} service illustration",
+    "blocks": {
+      "introHeading": "What is {title}?",
+      "introParagraph1": "{title} helps businesses reach the right audience in the {market}. We combine strategy, execution, and reporting so the service supports measurable growth instead of isolated activity.",
+      "introParagraph2": "The service is adapted to your offer, funnel stage, and goals. That lets the same framework work for local teams, international companies, and product businesses.",
+      "includedHeading": "What is included in {title}",
+      "includedParagraph1": "A typical {title} scope includes these deliverables and operational blocks:",
+      "includedParagraph2": "Every deliverable is adapted to the current project, audience, and growth stage.",
+      "seoHeading": "Why {title} matters for search visibility and conversion",
+      "seoParagraph1": "{title} affects discoverability, offer clarity, and conversion quality. Even when the service is not purely SEO-focused, it still shapes how users find, trust, and act on your pages.",
+      "seoParagraph2": "We connect {title} to the broader content, landing-page, and analytics system so it improves both user experience and commercial performance.",
+      "linkingHeading": "How {title} connects to related services",
+      "linkingParagraph": "{title} performs better when it is coordinated with {related0}, {related1}, and {related2}. We build these links intentionally so channels, pages, and reporting support each other.",
+      "whenHeading": "When to invest in {title}",
+      "whenParagraph1": "If you need stronger positioning in the {market}, more qualified demand, or better conversion efficiency, {title} is usually one of the highest-impact next steps.",
+      "whenParagraph2": "We can review the current setup, identify bottlenecks, and show whether {title} should be a priority now or later in the roadmap."
+    },
+    "faq": [
+      {
+        "question": "How long does {title} take to show results?",
+        "answer": "The timeline depends on your starting point, demand level, and execution scope. In most cases you can see early signals in 4 to 8 weeks, with more stable results over the following months."
+      },
+      {
+        "question": "What budget is usually needed for {title}?",
+        "answer": "Budget depends on scope, market, and delivery complexity. We usually define the budget after audit, priorities, and the required pace are clear."
+      },
+      {
+        "question": "Can {title} work for a small business?",
+        "answer": "Yes. We scale the service to the business stage, internal resources, and current demand so it stays practical for smaller teams as well."
+      },
+      {
+        "question": "How do you measure success for {title}?",
+        "answer": "We tie the service to clear indicators such as qualified demand, conversion quality, revenue contribution, visibility, and operational speed, depending on the service type."
+      }
+    ],
+    "faqHeading": "Frequently asked questions",
+    "similarHeading": "Related services"
+  },
+  "serviceDetailPage": {
+    "metaBrandSuffix": "Creative Group",
+    "included": "What is included",
+    "relatedServices": {
+      "eyebrow": "Related services",
+      "title": "Related services",
+      "open": "Open service"
+    },
+    "specialists": "Specialists involved",
+    "faq": "Frequently asked questions",
+    "overview": "Overview",
+    "team": "Team",
+    "faqEyebrow": "FAQ"
+  },
+  "servicesPage": {
+    "metaTitle": "All services - professional marketing solutions",
+    "metaDescription": "Explore the full list of marketing, design, content, and web services with localized descriptions, deliverables, and detail pages."
+  },
+  "projectsPage": {
+    "metaTitle": "Portfolio - case studies and projects",
+    "metaDescription": "Explore localized case studies, project detail pages, and portfolio cards with the right language for every supported locale.",
+    "eyebrow": "Selected work",
+    "title": "Case studies and projects with localized proof, context, and delivery details",
+    "description": "This catalog shows recent work with localized cards, project stories, specialists, proof blocks, and related services.",
+    "catalogSection": {
+      "eyebrow": "Project catalog",
+      "title": "Detailed case studies across services and industries",
+      "description": "Each card leads to a localized detail page with business context, execution notes, performance proof, and internal linking to relevant services.",
+      "stats": {
+        "companies": "case studies",
+        "perRow": "cards per row"
+      },
+      "format": {
+        "label": "Format",
+        "description": "Preview cards plus full case pages with localized metrics, proof, specialists, and related services."
+      },
+      "openCase": "Open case study",
+      "company": "Brand",
+      "view": "View project"
     }
   },
   "adminLogin": {
@@ -451,5 +563,91 @@
     "backToSite": "Back to site",
     "error": "Enter email and password.",
     "hint": "Demo: any email and password will sign you in."
+  },
+  "caseStudyPage": {
+    "meta": {
+      "title": "{title} - {highlight}",
+      "description": "{title}: {heroDescription}"
+    },
+    "breadcrumbProjects": "Projects",
+    "budget": "Project budget",
+    "imageAlt": "{title} case study cover image",
+    "structureLabel": "Case structure",
+    "structureTitle": "From initial situation to business result",
+    "story": {
+      "before": "Before",
+      "whatWeDid": "What we did",
+      "after": "After"
+    },
+    "fallbacks": {
+      "initialState": "Initial situation",
+      "approach": "Approach",
+      "result": "Result"
+    },
+    "proofLabel": "Proof",
+    "proofTitle": "What the process and metrics showed",
+    "proofNote": "This block summarizes the main operational signals, metrics, and delivery proof for the current project.",
+    "clientReview": "Client review",
+    "eeatTitle": "Why this case supports experience, expertise, authority, and trust",
+    "eeat": {
+      "experience": {
+        "title": "Experience",
+        "body": "The case shows how the team handled a real delivery context, not an abstract template. Decisions were tied to project constraints, channel behavior, and business priorities."
+      },
+      "expertise": {
+        "title": "Expertise",
+        "body": "The work combined strategy, execution, reporting, and internal coordination. That makes the page useful as proof of practical expertise, not just promotion."
+      },
+      "authoritativeness": {
+        "title": "Authority",
+        "body": "Results are connected to specialist roles, service structure, and concrete operating logic. That creates a stronger authority signal than generic portfolio claims."
+      },
+      "trust": {
+        "title": "Trust",
+        "body": "The case explains what changed, how it was executed, and what outcome followed. Clear process explanation improves trust for both users and search systems."
+      }
+    },
+    "specialistsTitle": "Specialists involved",
+    "analyticsTitle": "Growth visuals",
+    "growthVisualAlt": "{title} growth visual {index}",
+    "relatedServicesTitle": "Related services",
+    "proof": {
+      "silpo": {
+        "analytics": [
+          "Content, paid traffic, and reporting were aligned into one operating rhythm.",
+          "Weekly KPI reviews reduced wasted budget decisions and made priorities visible.",
+          "The brand scaled demand without losing control of cost per lead and campaign focus."
+        ],
+        "author": "Retail marketing lead",
+        "quote": "The team created a system we could scale, not just a set of isolated campaigns. That changed both visibility and the quality of internal decision-making."
+      },
+      "nova-bistro": {
+        "analytics": [
+          "Launch content and creator placements were coordinated around real opening moments.",
+          "Local audience work turned attention into visits instead of abstract reach.",
+          "The brand entered the market with stronger awareness and clearer social proof."
+        ],
+        "author": "Restaurant owner",
+        "quote": "We did not launch into silence. The audience already understood the place, the tone, and why it was worth visiting."
+      },
+      "luna-clinic": {
+        "analytics": [
+          "Search demand, landing-page relevance, and analytics were rebuilt together.",
+          "Lead quality improved because the funnel was tuned to commercial intent, not just traffic volume.",
+          "Reporting became clearer, which made further budget decisions more reliable."
+        ],
+        "author": "Clinic operations manager",
+        "quote": "The project improved not only visibility, but the quality of incoming demand and our confidence in the numbers behind it."
+      },
+      "atelier-home": {
+        "analytics": [
+          "Brand language, site structure, and presentation materials moved into one premium system.",
+          "The project improved positioning before active scaling into a higher-value segment.",
+          "The new presentation layer made the offer clearer across digital and sales touchpoints."
+        ],
+        "author": "Studio founder",
+        "quote": "The updated system made the brand feel coherent and premium everywhere the client encountered it, not only on the website."
+      }
+    }
   }
 }

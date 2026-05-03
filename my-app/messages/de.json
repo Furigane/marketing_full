@@ -425,7 +425,8 @@
       "articlesAndBlog": "Artikel und Blog",
       "casesAndPortfolio": "Fallstudien und Portfolio",
       "fullTeam": "Gesamtes Team",
-      "otherSpecialists": "Weitere Spezialisten"
+      "otherSpecialists": "Weitere Spezialisten",
+      "ctaBadge": "Lassen Sie uns zusammenarbeiten"
     },
     "specialistProfile": {
       "profileBadge": "Spezialistenprofil",
@@ -437,7 +438,118 @@
       "servicesDescription": "Jedes Thema unten wird als interner Link zum passenden Leistungsbereich dargestellt.",
       "ctaTitle": "Brauchen Sie den richtigen Spezialisten für Ihr Projekt?",
       "ctaDescription": "Senden Sie uns eine Anfrage und wir ordnen dem Projekt den passenden Spezialisten für Produkt, Marketing oder Design zu.",
-      "otherSpecialists": "Weitere Spezialisten"
+      "otherSpecialists": "Weitere Spezialisten",
+      "ctaBadge": "Lassen Sie uns zusammenarbeiten"
+    }
+  },
+  "serviceSeo": {
+    "marketNotes": {
+      "ru": {
+        "market": "Russischer Markt",
+        "nuance": "Russischsprachiges Publikum"
+      },
+      "en": {
+        "market": "Englischsprachige Märkte",
+        "nuance": "Englischsprachiges Publikum"
+      },
+      "fr": {
+        "market": "Französischer Markt",
+        "nuance": "Französischsprachiges Publikum"
+      },
+      "de": {
+        "market": "Deutscher Markt",
+        "nuance": "Deutschsprachiges Publikum"
+      },
+      "ar": {
+        "market": "Arabischer Markt",
+        "nuance": "Arabischsprachiges Publikum"
+      }
+    },
+    "fallbacks": {
+      "related0": "damit verbundene Dienstleistung",
+      "related1": "ein weiterer Dienst",
+      "related2": "beliebter Dienst",
+      "related3": "empfohlener Service"
+    },
+    "metaTitle": "{title} - professioneller Service",
+    "metaDescription": "Professioneller {title} Service. {summary}",
+    "imageAlt": "{title} Serviceillustration",
+    "blocks": {
+      "introHeading": "Was ist {title}?",
+      "introParagraph1": "{title} hilft Unternehmen, die richtige Zielgruppe im {market} zu erreichen. Wir kombinieren Strategie, Umsetzung und Berichterstattung, sodass der Service messbares Wachstum statt isolierter Aktivitäten unterstützt.",
+      "introParagraph2": "Der Service wird an Ihr Angebot, Ihre Funnel-Stufe und Ihre Ziele angepasst. Dadurch funktioniert das gleiche Framework für lokale Teams, internationale Unternehmen und Produktunternehmen.",
+      "includedHeading": "Was ist in {title} enthalten",
+      "includedParagraph1": "Ein typischer {title}-Umfang umfasst die folgenden Leistungen und Betriebsblöcke:",
+      "includedParagraph2": "Jedes Ergebnis wird an das aktuelle Projekt, die Zielgruppe und die Wachstumsphase angepasst.",
+      "seoHeading": "Warum {title} für die Sichtbarkeit und Konvertierung in der Suche wichtig ist",
+      "seoParagraph1": "{title} wirkt sich auf die Auffindbarkeit, die Klarheit des Angebots und die Konvertierungsqualität aus. Auch wenn der Dienst nicht ausschließlich auf SEO ausgerichtet ist, prägt er dennoch die Art und Weise, wie Benutzer Ihre Seiten finden, ihnen vertrauen und darauf reagieren.",
+      "seoParagraph2": "Wir verbinden {title} mit dem umfassenderen Inhalts-, Zielseiten- und Analysesystem, um sowohl das Benutzererlebnis als auch die kommerzielle Leistung zu verbessern.",
+      "linkingHeading": "Wie {title} eine Verbindung zu verwandten Diensten herstellt",
+      "linkingParagraph": "{title} erzielt eine bessere Leistung, wenn es mit {related0}, {related1} und {related2} koordiniert wird. Wir bauen diese Links absichtlich auf, damit sich Kanäle, Seiten und Berichte gegenseitig unterstützen.",
+      "whenHeading": "Wann sollte man in {title} investieren?",
+      "whenParagraph1": "Wenn Sie eine stärkere Positionierung im {market}, eine höhere qualifizierte Nachfrage oder eine bessere Conversion-Effizienz benötigen, ist {title} normalerweise einer der nächsten Schritte mit der größten Wirkung.",
+      "whenParagraph2": "Wir können das aktuelle Setup überprüfen, Engpässe identifizieren und zeigen, ob {title} jetzt oder später in der Roadmap Priorität haben sollte."
+    },
+    "faq": [
+      {
+        "question": "Wie lange dauert es, bis {title} Ergebnisse anzeigt?",
+        "answer": "Der Zeitplan hängt von Ihrem Ausgangspunkt, Ihrem Bedarfsniveau und Ihrem Ausführungsumfang ab. In den meisten Fällen können Sie innerhalb von 4 bis 8 Wochen erste Anzeichen erkennen, mit stabileren Ergebnissen in den folgenden Monaten."
+      },
+      {
+        "question": "Welches Budget wird normalerweise für {title} benötigt?",
+        "answer": "Das Budget hängt vom Umfang, dem Markt und der Komplexität der Lieferung ab. Normalerweise legen wir das Budget nach der Prüfung fest, Prioritäten und das erforderliche Tempo sind klar."
+      },
+      {
+        "question": "Kann {title} für ein kleines Unternehmen funktionieren?",
+        "answer": "Ja. Wir skalieren den Service auf die Geschäftsphase, interne Ressourcen und den aktuellen Bedarf, sodass er auch für kleinere Teams praktisch bleibt."
+      },
+      {
+        "question": "Wie messen Sie den Erfolg von {title}?",
+        "answer": "Wir verknüpfen den Service je nach Servicetyp mit klaren Indikatoren wie qualifizierter Nachfrage, Conversion-Qualität, Umsatzbeitrag, Sichtbarkeit und Betriebsgeschwindigkeit."
+      }
+    ],
+    "faqHeading": "Häufig gestellte Fragen",
+    "similarHeading": "Verwandte Dienstleistungen"
+  },
+  "serviceDetailPage": {
+    "metaBrandSuffix": "Kreativgruppe",
+    "included": "Was ist enthalten",
+    "relatedServices": {
+      "eyebrow": "Verwandte Dienstleistungen",
+      "title": "Verwandte Dienstleistungen",
+      "open": "Offener Gottesdienst"
+    },
+    "specialists": "Spezialisten beteiligt",
+    "faq": "Häufig gestellte Fragen",
+    "overview": "Übersicht",
+    "team": "Team",
+    "faqEyebrow": "FAQ"
+  },
+  "servicesPage": {
+    "metaTitle": "Alle Leistungen – professionelle Marketinglösungen",
+    "metaDescription": "Entdecken Sie die vollständige Liste der Marketing-, Design-, Inhalts- und Webdienste mit lokalisierten Beschreibungen, Leistungen und Detailseiten."
+  },
+  "projectsPage": {
+    "metaTitle": "Portfolio – Fallstudien und Projekte",
+    "metaDescription": "Entdecken Sie lokalisierte Fallstudien, Projektdetailseiten und Portfoliokarten mit der richtigen Sprache für jedes unterstützte Gebietsschema.",
+    "eyebrow": "Ausgewählte Arbeit",
+    "title": "Fallstudien und Projekte mit lokalisierten Beweisen, Kontext und Lieferdetails",
+    "description": "Dieser Katalog zeigt aktuelle Arbeiten mit lokalisierten Karten, Projektgeschichten, Spezialisten, Proofblöcken und zugehörigen Dienstleistungen.",
+    "catalogSection": {
+      "eyebrow": "Projektkatalog",
+      "title": "Detaillierte Fallstudien über Dienstleistungen und Branchen hinweg",
+      "description": "Jede Karte führt zu einer lokalisierten Detailseite mit Geschäftskontext, Ausführungshinweisen, Leistungsnachweisen und internen Links zu relevanten Diensten.",
+      "stats": {
+        "companies": "Fallstudien",
+        "perRow": "Karten pro Reihe"
+      },
+      "format": {
+        "label": "Formatieren",
+        "description": "Vorschaukarten sowie vollständige Fallseiten mit lokalisierten Metriken, Nachweisen, Spezialisten und zugehörigen Diensten."
+      },
+      "openCase": "Offene Fallstudie",
+      "company": "Marke",
+      "view": "Projekt ansehen"
     }
   },
   "adminLogin": {
@@ -451,5 +563,91 @@
     "backToSite": "Zur Website",
     "error": "E-Mail und Passwort eingeben.",
     "hint": "Demo: beliebige E-Mail und Passwort."
+  },
+  "caseStudyPage": {
+    "meta": {
+      "title": "{title} - {highlight}",
+      "description": "{title}: {heroDescription}"
+    },
+    "breadcrumbProjects": "Projekte",
+    "budget": "Projektbudget",
+    "imageAlt": "{title} Titelbild der Fallstudie",
+    "structureLabel": "Fallstruktur",
+    "structureTitle": "Von der Ausgangssituation bis zum Geschäftsergebnis",
+    "story": {
+      "before": "Vorher",
+      "whatWeDid": "Was wir getan haben",
+      "after": "Nachher"
+    },
+    "fallbacks": {
+      "initialState": "Ausgangssituation",
+      "approach": "Ansatz",
+      "result": "Ergebnis"
+    },
+    "proofLabel": "Beweis",
+    "proofTitle": "Was der Prozess und die Kennzahlen zeigten",
+    "proofNote": "Dieser Block fasst die wichtigsten Betriebssignale, Metriken und Liefernachweise für das aktuelle Projekt zusammen.",
+    "clientReview": "Kundenbewertung",
+    "eeatTitle": "Warum dieser Fall Erfahrung, Fachwissen, Autorität und Vertrauen unterstützt",
+    "eeat": {
+      "experience": {
+        "title": "Erfahrung",
+        "body": "Der Fall zeigt, wie das Team mit einem echten Lieferkontext und nicht mit einer abstrakten Vorlage umgegangen ist. Entscheidungen waren an Projektbeschränkungen, Kanalverhalten und Geschäftsprioritäten gebunden."
+      },
+      "expertise": {
+        "title": "Fachwissen",
+        "body": "Die Arbeit kombinierte Strategie, Ausführung, Berichterstattung und interne Koordination. Dadurch eignet sich die Seite nicht nur als Werbenachweis, sondern auch als Nachweis praktischer Fachkenntnisse."
+      },
+      "authoritativeness": {
+        "title": "Autorität",
+        "body": "Ergebnisse werden mit Fachrollen, Servicestruktur und konkreter Betriebslogik verknüpft. Dadurch entsteht ein stärkeres Autoritätssignal als bei generischen Portfolioansprüchen."
+      },
+      "trust": {
+        "title": "Vertrauen",
+        "body": "Der Fall erklärt, was sich geändert hat, wie es ausgeführt wurde und welches Ergebnis daraus resultierte. Eine klare Prozesserklärung erhöht das Vertrauen sowohl bei Benutzern als auch bei Suchsystemen."
+      }
+    },
+    "specialistsTitle": "Spezialisten beteiligt",
+    "analyticsTitle": "Wachstumsvisualisierungen",
+    "growthVisualAlt": "{title} Wachstumsvisual {index}",
+    "relatedServicesTitle": "Verwandte Dienstleistungen",
+    "proof": {
+      "silpo": {
+        "analytics": [
+          "Inhalte, bezahlter Traffic und Reporting wurden in einem Arbeitsrhythmus zusammengefasst.",
+          "Wöchentliche KPI-Überprüfungen reduzierten unnötige Budgetentscheidungen und machten Prioritäten sichtbar.",
+          "Die Marke steigerte die Nachfrage, ohne die Kontrolle über die Kosten pro Lead und den Fokus der Kampagne zu verlieren."
+        ],
+        "author": "Leiter des Einzelhandelsmarketings",
+        "quote": "Das Team hat ein System erstellt, das wir skalieren konnten, und nicht nur eine Reihe isolierter Kampagnen. Das veränderte sowohl die Sichtbarkeit als auch die Qualität der internen Entscheidungsfindung."
+      },
+      "nova-bistro": {
+        "analytics": [
+          "Startinhalte und Platzierungen der Ersteller wurden rund um echte Eröffnungsmomente koordiniert.",
+          "Durch die lokale Zielgruppenarbeit wurde Aufmerksamkeit in Besuche statt in abstrakte Reichweite umgewandelt.",
+          "Die Marke trat mit einem stärkeren Bekanntheitsgrad und einem klareren Social Proof auf den Markt."
+        ],
+        "author": "Restaurantbesitzer",
+        "quote": "Wir sind nicht ins Schweigen verfallen. Das Publikum verstand bereits den Ort, den Ton und warum es einen Besuch wert war."
+      },
+      "luna-clinic": {
+        "analytics": [
+          "Suchnachfrage, Zielseitenrelevanz und Analysen wurden gemeinsam neu erstellt.",
+          "Die Lead-Qualität verbesserte sich, da der Trichter auf kommerzielle Absichten und nicht nur auf das Verkehrsaufkommen abgestimmt war.",
+          "Die Berichterstattung wurde übersichtlicher, was weitere Budgetentscheidungen verlässlicher machte."
+        ],
+        "author": "Klinikbetriebsleiter",
+        "quote": "Das Projekt verbesserte nicht nur die Sichtbarkeit, sondern auch die Qualität der eingehenden Nachfrage und unser Vertrauen in die dahinter stehenden Zahlen."
+      },
+      "atelier-home": {
+        "analytics": [
+          "Markensprache, Seitenstruktur und Präsentationsmaterialien wurden in ein Premium-System integriert.",
+          "Das Projekt verbesserte die Positionierung vor der aktiven Skalierung in ein höherwertiges Segment.",
+          "Durch die neue Präsentationsebene wurde das Angebot über digitale und vertriebliche Touchpoints hinweg übersichtlicher."
+        ],
+        "author": "Studiogründer",
+        "quote": "Das aktualisierte System sorgte dafür, dass sich die Marke überall dort, wo der Kunde sie sah, kohärent und hochwertig anfühlte, nicht nur auf der Website."
+      }
+    }
   }
 }
