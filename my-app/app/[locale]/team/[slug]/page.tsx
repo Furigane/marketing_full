@@ -184,7 +184,6 @@ export default async function TeamMemberPage({
       <TeamProfilePage
         activitySummary={localizedMember.activitySummary}
         achievementHighlights={localizedMember.achievementHighlights}
-        breadcrumbTeam={tDesign("breadcrumbTeam")}
         calculatorAlt={tDesign("calculatorAlt")}
         contactButtonLabel={tDesign("contactButton")}
         featureIconAlt={tFeatures("iconAlt")}

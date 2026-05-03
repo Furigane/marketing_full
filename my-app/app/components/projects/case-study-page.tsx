@@ -206,7 +206,7 @@ export default async function CaseStudyPage({
 
           <section className="relative pb-10 pt-6 md:pb-14">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2 text-sm text-[var(--design-muted)]">
+              <div className="hidden items-center gap-2 text-sm text-[var(--design-muted)]">
                 <span aria-hidden>{"\u2302"}</span>
                 <span aria-hidden>{"\u203A"}</span>
                 <span>{isRussian ? "Проекты" : "Projects"}</span>

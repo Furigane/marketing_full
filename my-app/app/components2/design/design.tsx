@@ -24,7 +24,7 @@ export default function Design() {
         </div>
 
         <div className="w-full min-w-0 md:w-[46%] md:max-w-[800px]">
-          <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-[var(--design-muted)]">
+          <div className="hidden mb-4 flex-wrap items-center gap-2 text-sm text-[var(--design-muted)]">
             <span aria-hidden>⌂</span>
             <span aria-hidden>›</span>
             <span>{t("breadcrumbTeam")}</span>

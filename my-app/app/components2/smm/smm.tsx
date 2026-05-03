@@ -12,7 +12,7 @@ export default function Smm() {
   return (
     <section className="relative pb-12 pt-6 md:pb-16 md:pt-8">
       <div className="w-full md:max-w-[880px]">
-        <div className="mb-4 flex items-center gap-2 text-sm text-zinc-500">
+        <div className="hidden mb-4 items-center gap-2 text-sm text-zinc-500">
           <span aria-hidden>⌂</span>
           <span aria-hidden>›</span>
           <span>{t("breadcrumbServices")}</span>

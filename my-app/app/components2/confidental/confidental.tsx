@@ -10,7 +10,7 @@ export default function Confidentel() {
   return (
     <section className="relative mt-6 pb-12 pt-2 md:pb-16 md:pt-4">
       <div className="w-full pt-6 md:max-w-[980px] md:pt-8">
-        <div className="mb-4 flex items-center gap-2 text-sm text-zinc-500">
+        <div className="hidden mb-4 items-center gap-2 text-sm text-zinc-500">
           <span>⌂</span>
           <span>›</span>
           <span>Политика конфиденциальности</span>

@@ -22,7 +22,6 @@ type PeerSpecialist = {
 type TeamProfilePageProps = {
   activitySummary: string;
   achievementHighlights: readonly string[];
-  breadcrumbTeam: string;
   calculatorAlt: string;
   contactButtonLabel: string;
   featureIconAlt: string;
@@ -64,7 +63,6 @@ type TeamProfilePageProps = {
 export default function TeamProfilePage({
   activitySummary,
   achievementHighlights,
-  breadcrumbTeam,
   calculatorAlt,
   contactButtonLabel,
   featureIconAlt,
@@ -98,14 +96,6 @@ export default function TeamProfilePage({
 
               <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_420px] lg:items-center">
                 <div>
-                  <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--design-muted)]">
-                    <span aria-hidden>{"\u2302"}</span>
-                    <span aria-hidden>{"\u203A"}</span>
-                    <span>{breadcrumbTeam}</span>
-                    <span aria-hidden>{"\u203A"}</span>
-                    <span className="font-semibold text-[var(--foreground)]">{name}</span>
-                  </div>
-
                   <span className="mt-4 inline-flex rounded-full border border-[color:var(--foreground)]/12 bg-[var(--background)]/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)] backdrop-blur">
                     {profile.titleHighlight}
                   </span>

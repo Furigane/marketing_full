@@ -8,9 +8,9 @@ import OptimizedImage from "@/app/components/shared/optimized-image";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
 import { buildAbsoluteUrl } from "@/lib/seo";
+import type { ServiceDefinition } from "@/lib/services";
 import { TEAM_MEMBERS } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
-import type { ServiceDefinition } from "@/lib/services";
 import { getLocalizedService } from "@/lib/services-localized";
 import { repairMojibakeText } from "@/lib/text-encoding";
 
@@ -36,6 +36,7 @@ export default async function ServiceDetailPage({
     .map((id) => TEAM_MEMBERS.find((member) => member.id === id))
     .filter((member): member is (typeof TEAM_MEMBERS)[number] => Boolean(member))
     .map((member) => getLocalizedTeamMember(member, locale));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -59,16 +60,6 @@ export default async function ServiceDetailPage({
           <Header />
 
           <section className="pb-10 pt-6 md:pb-14">
-            <div className="mb-4 flex items-center gap-2 text-sm text-[var(--design-muted)]">
-              <span aria-hidden>{"\u2302"}</span>
-              <span aria-hidden>{"\u203A"}</span>
-              <span>{isRussian ? "Услуги" : "Services"}</span>
-              <span aria-hidden>{"\u203A"}</span>
-              <span className="font-semibold text-[var(--foreground)]">
-                {title}
-              </span>
-            </div>
-
             <div className="grid gap-8 md:grid-cols-[minmax(0,1.25fr)_minmax(260px,0.75fr)] md:items-start">
               <div>
                 <h1 className="max-w-4xl text-3xl font-extrabold leading-[1.1] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
@@ -90,7 +81,7 @@ export default async function ServiceDetailPage({
                   />
                 </div>
                 <p className="text-sm uppercase tracking-[0.16em] text-[var(--design-muted)]">
-                  {isRussian ? "Что входит в услугу" : "Included in the service"}
+                  {isRussian ? "Р§С‚Рѕ РІС…РѕРґРёС‚ РІ СѓСЃР»СѓРіСѓ" : "Included in the service"}
                 </p>
                 <ul className="mt-4 space-y-3">
                   {deliverables.map((item) => (
@@ -108,7 +99,7 @@ export default async function ServiceDetailPage({
         <section className="px-3 md:px-6 lg:px-8">
           <div className="rounded-[2rem] bg-[var(--services-bg)] p-5 md:p-8">
             <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-              {isRussian ? "Обзор" : "Overview"}
+              {isRussian ? "РћР±Р·РѕСЂ" : "Overview"}
             </p>
             <p className="mt-4 max-w-4xl text-base leading-8 text-[var(--foreground)] md:text-lg">
               {summary}
@@ -120,10 +111,10 @@ export default async function ServiceDetailPage({
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Команда" : "Team"}
+                {isRussian ? "РљРѕРјР°РЅРґР°" : "Team"}
               </p>
               <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-                {isRussian ? "Специалисты по услуге" : "Specialists for this service"}
+                {isRussian ? "РЎРїРµС†РёР°Р»РёСЃС‚С‹ РїРѕ СѓСЃР»СѓРіРµ" : "Specialists for this service"}
               </h2>
             </div>
           </div>

@@ -61,16 +61,6 @@ export default function BlogArticlePage({
         <TeamSurfaceHeaderSection className="mt-4">
           <Header />
           <section className="pb-10 pt-6 md:pt-8">
-            <div className="flex items-center gap-2 text-sm text-[var(--design-muted)]">
-              <span aria-hidden>{"\u2302"}</span>
-              <span aria-hidden>{"\u203A"}</span>
-              <Link href="/blog" className="transition-colors hover:text-[var(--foreground)]">
-                {isRussian ? "Блог" : "Blog"}
-              </Link>
-              <span aria-hidden>{"\u203A"}</span>
-              <span className="font-semibold text-[var(--foreground)]">{translation.title}</span>
-            </div>
-
             <div className="mt-5 max-w-4xl">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)]">
                 {new Intl.DateTimeFormat(isRussian ? "ru-RU" : "en-US", {

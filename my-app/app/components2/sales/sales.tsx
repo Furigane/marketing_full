@@ -25,7 +25,7 @@ export default function Sales() {
 
         <div className="w-full min-w-0 md:w-1/2 md:max-w-[660px]">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-sm text-zinc-500">
+            <div className="hidden items-center gap-2 text-sm text-zinc-500">
               <span aria-hidden>⌂</span>
               <span aria-hidden>›</span>
               <span>{t("breadcrumbProjects")}</span>
