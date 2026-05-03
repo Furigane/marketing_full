@@ -1,5 +1,5 @@
-const RTL_LOCALES = new Set(["ar", "he", "fa", "ur"]);
-const LTR_ONLY_LOCALE_ALIASES = new Set(["hy", "am", "armenian", "arm"]);
+const RTL_LOCALES = new Set(["he", "fa", "ur"]);
+const LTR_ONLY_LOCALE_ALIASES = new Set(["hy", "am", "armenian", "arm", "ar"]);
 
 function normalizeDirectionLocale(locale: string) {
   return locale.trim().toLowerCase().split("-")[0];
