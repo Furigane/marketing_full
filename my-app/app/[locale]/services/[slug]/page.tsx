@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import ServiceDetailPage from "@/app/components/services/service-detail-page";
 import { getServiceBySlug, getServiceDefinitions } from "@/lib/services";
+import { getLocalizedService } from "@/lib/services-localized";
 import { buildMetaDescription, buildMetaTitle } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -21,7 +22,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const content = service.locale[locale.toLowerCase().startsWith("ru") ? "ru" : "en"];
+  const content = getLocalizedService(service, locale).content;
   return {
     title: buildMetaTitle(content.title, locale.toLowerCase().startsWith("ru") ? "Услуги" : "Services"),
     description: buildMetaDescription(content.summary),

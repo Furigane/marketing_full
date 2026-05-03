@@ -1,0 +1,86 @@
+
+> my-app@0.1.0 dev
+> next dev -p 4000 --webpack
+
+▲ Next.js 16.1.6 (webpack)
+- Local:         http://localhost:4000
+- Network:       http://26.171.5.15:4000
+- Environments: .env
+
+✓ Starting...
+✓ Ready in 2.7s
+ GET /team/mia-nolan-social-media 200 in 4.7s (compile: 3.8s, proxy.ts: 172ms, render: 723ms)
+ GET /team/leo-carter-performance-marketing 200 in 278ms (compile: 19ms, proxy.ts: 19ms, render: 240ms)
+ GET /team/leo-carter-performance-marketing 200 in 187ms (compile: 14ms, proxy.ts: 8ms, render: 165ms)
+ GET /team/leo-carter-performance-marketing 200 in 254ms (compile: 16ms, proxy.ts: 6ms, render: 231ms)
+ GET /team/mia-nolan-social-media 200 in 511ms (compile: 52ms, proxy.ts: 49ms, render: 410ms)
+ GET /team/mia-nolan-social-media 200 in 250ms (compile: 16ms, proxy.ts: 12ms, render: 221ms)
+ GET /services/influencer-marketing 200 in 2.9s (compile: 2.7s, proxy.ts: 11ms, render: 198ms)
+ GET /services/influencer-marketing 200 in 520ms (compile: 24ms, proxy.ts: 31ms, render: 465ms)
+ GET /services/influencer-marketing 200 in 411ms (compile: 52ms, proxy.ts: 156ms, render: 203ms)
+ GET /services/influencer-marketing 200 in 318ms (compile: 16ms, proxy.ts: 10ms, render: 292ms)
+[service-detail-debug] {
+  slug: 'influencer-marketing',
+  locale: 'ru',
+  serviceId: 'influencerAds',
+  title: 'Influencer-реклама (подбор блогеров)',
+  heroDescription: 'РњС‹ РїРѕРґР±РёСЂР°РµРј СЂРµР»РµРІР°РЅС‚РЅС‹С… Р±Р»РѕРіРµСЂРѕРІ, РїСЂРѕРІРµСЂСЏРµРј Р°СѓРґРёС‚РѕСЂРёСЋ, СЃРѕРіР»Р°СЃРѕРІС‹РІР°РµРј С„РѕСЂРјР°С‚ СЂР°Р·РјРµС‰РµРЅРёСЏ Рё РіРѕС‚РѕРІРёРј РїРѕРЅСЏС‚РЅС‹Р№ Р±СЂРёС„. Р¦РµР»СЊ вЂ” РїСЂРµРІСЂР°С‚РёС‚СЊ РёРЅС‚РµРіСЂР°С†РёРё РІ СѓРїСЂР°РІР»СЏРµРјС‹Р№ РєР°РЅР°Р» РґРёСЃС‚СЂРёР±СѓС†РёРё, Р° РЅРµ РІ СЂР°Р·РѕРІСѓСЋ РёСЃС‚РѕСЂРёСЋ РЅР° РґРѕРІРµСЂРёРё.',
+  summary: 'РџРѕРґР±РёСЂР°РµРј Р±Р»РѕРіРµСЂРѕРІ Рё РІС‹СЃС‚СЂР°РёРІР°РµРј РёРЅС‚РµРіСЂР°С†РёРё РїРѕРґ Р°СѓРґРёС‚РѕСЂРёСЋ, С„РѕСЂРјР°С‚ Рё Р·Р°РґР°С‡Сѓ РєР°РјРїР°РЅРёРё.',
+  deliverables: [
+    'Подбор блогеров по аудитории и тематике',
+    'Брифинг и координация интеграций',
+    'Р Р°Р·Р±РѕСЂ СЂРµР·СѓР»СЊС‚Р°С‚Р° РїРѕ РѕС…РІР°С‚Сѓ, РѕС‚РєР»РёРєСѓ Рё РєР°С‡РµСЃС‚РІСѓ С‚СЂР°С„РёРєР°'
+  ]
+}
+ GET /services/influencer-marketing 200 in 287ms (compile: 111ms, proxy.ts: 12ms, render: 165ms)
+[service-detail-debug] {
+  slug: 'influencer-marketing',
+  locale: 'ru',
+  serviceId: 'influencerAds',
+  title: 'Influencer-реклама (подбор блогеров)',
+  heroDescription: 'РњС‹ РїРѕРґР±РёСЂР°РµРј СЂРµР»РµРІР°РЅС‚РЅС‹С… Р±Р»РѕРіРµСЂРѕРІ, РїСЂРѕРІРµСЂСЏРµРј Р°СѓРґРёС‚РѕСЂРёСЋ, СЃРѕРіР»Р°СЃРѕРІС‹РІР°РµРј С„РѕСЂРјР°С‚ СЂР°Р·РјРµС‰РµРЅРёСЏ Рё РіРѕС‚РѕРІРёРј РїРѕРЅСЏС‚РЅС‹Р№ Р±СЂРёС„. Р¦РµР»СЊ вЂ” РїСЂРµРІСЂР°С‚РёС‚СЊ РёРЅС‚РµРіСЂР°С†РёРё РІ СѓРїСЂР°РІР»СЏРµРјС‹Р№ РєР°РЅР°Р» РґРёСЃС‚СЂРёР±СѓС†РёРё, Р° РЅРµ РІ СЂР°Р·РѕРІСѓСЋ РёСЃС‚РѕСЂРёСЋ РЅР° РґРѕРІРµСЂРёРё.',
+  summary: 'РџРѕРґР±РёСЂР°РµРј Р±Р»РѕРіРµСЂРѕРІ Рё РІС‹СЃС‚СЂР°РёРІР°РµРј РёРЅС‚РµРіСЂР°С†РёРё РїРѕРґ Р°СѓРґРёС‚РѕСЂРёСЋ, С„РѕСЂРјР°С‚ Рё Р·Р°РґР°С‡Сѓ РєР°РјРїР°РЅРёРё.',
+  deliverables: [
+    'Подбор блогеров по аудитории и тематике',
+    'Брифинг и координация интеграций',
+    'Р Р°Р·Р±РѕСЂ СЂРµР·СѓР»СЊС‚Р°С‚Р° РїРѕ РѕС…РІР°С‚Сѓ, РѕС‚РєР»РёРєСѓ Рё РєР°С‡РµСЃС‚РІСѓ С‚СЂР°С„РёРєР°'
+  ]
+}
+ GET /services/influencer-marketing 200 in 245ms (compile: 22ms, proxy.ts: 8ms, render: 215ms)
+[service-detail-debug] {
+  slug: 'influencer-marketing',
+  locale: 'ru',
+  serviceId: 'influencerAds',
+  title: 'Influencer-реклама (подбор блогеров)',
+  heroDescription: 'Мы подбираем релевантных блогеров, проверяем аудиторию, согласовываем формат размещения и готовим понятный бриф. Цель — превратить интеграции в управляемый канал дистрибуции, а не в разовую историю на доверии.',
+  summary: 'Подбираем блогеров и выстраиваем интеграции под аудиторию, формат и задачу кампании.',
+  deliverables: [
+    'Подбор блогеров по аудитории и тематике',
+    'Брифинг и координация интеграций',
+    'Разбор результата по охвату, отклику и качеству трафика'
+  ]
+}
+ GET /services/influencer-marketing 200 in 547ms (compile: 219ms, proxy.ts: 39ms, render: 289ms)
+[service-detail-debug] {
+  slug: 'influencer-marketing',
+  locale: 'ru',
+  serviceId: 'influencerAds',
+  title: 'Influencer-реклама (подбор блогеров)',
+  heroDescription: 'Мы подбираем релевантных блогеров, проверяем аудиторию, согласовываем формат размещения и готовим понятный бриф. Цель — превратить интеграции в управляемый канал дистрибуции, а не в разовую историю на доверии.',
+  summary: 'Подбираем блогеров и выстраиваем интеграции под аудиторию, формат и задачу кампании.',
+  deliverables: [
+    'Подбор блогеров по аудитории и тематике',
+    'Брифинг и координация интеграций',
+    'Разбор результата по охвату, отклику и качеству трафика'
+  ]
+}
+ GET /services/influencer-marketing 200 in 252ms (compile: 106ms, proxy.ts: 29ms, render: 117ms)
+ GET /services/influencer-marketing 200 in 132ms (compile: 46ms, proxy.ts: 4ms, render: 82ms)
+ GET /services/influencer-marketing 200 in 399ms (compile: 37ms, proxy.ts: 18ms, render: 343ms)
+ GET /services/influencer-marketing 200 in 412ms (compile: 38ms, proxy.ts: 18ms, render: 357ms)
+ GET /services/influencer-marketing 200 in 232ms (compile: 17ms, proxy.ts: 7ms, render: 209ms)
+ GET /services/influencer-marketing 200 in 246ms (compile: 17ms, proxy.ts: 7ms, render: 222ms)
+ GET /services/influencer-marketing 200 in 387ms (compile: 165ms, proxy.ts: 27ms, render: 195ms)
+ GET /services/influencer-marketing 200 in 238ms (compile: 13ms, proxy.ts: 7ms, render: 219ms)
+ GET /services/influencer-marketing 200 in 177ms (compile: 17ms, proxy.ts: 7ms, render: 153ms)
+ GET /services/influencer-marketing 200 in 237ms (compile: 69ms, proxy.ts: 5ms, render: 163ms)
