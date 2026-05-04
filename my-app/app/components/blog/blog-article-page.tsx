@@ -110,9 +110,9 @@ export default function BlogArticlePage({
           </section>
         </TeamSurfaceHeaderSection>
 
-        <article className="mx-auto w-full max-w-[980px] px-1 pb-2 md:px-2">
+        <article className="w-full px-1 pb-2 md:px-2">
           <div className="rounded-[2rem] bg-[var(--header-bg)] px-5 py-6 shadow-sm sm:px-8 sm:py-8">
-            <div className="max-w-4xl space-y-5 text-base leading-8 text-[var(--foreground)] md:text-lg">
+            <div className="space-y-5 text-base leading-8 text-[var(--foreground)] md:text-lg">
               {blocks.map((block, index) => {
                 if (block.type === "heading") {
                   if (block.level === 2) {
