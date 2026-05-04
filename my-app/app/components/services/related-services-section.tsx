@@ -66,9 +66,7 @@ export default async function RelatedServicesSection({
                   alt={serviceTitle}
                   width={18}
                   height={18}
-                  className={`h-[18px] w-[18px] ${
-                    service.id === "analyticsSetup" ? "dark:invert" : ""
-                  }`}
+                  className="h-[18px] w-[18px] dark:invert"
                 />
               </div>
               <h3 className="text-xl font-semibold text-[var(--foreground)]">
