@@ -360,56 +360,58 @@ export default function Comment() {
         </h2>
       </div>
 
-      <div ref={viewportRef} className="relative overflow-hidden">
-        <div className="lg:hidden">
-          <div
-            ref={mobileTrackRef}
-            className="flex items-stretch gap-3 will-change-transform"
-            style={{
-              ...mobileTrackStyle,
-              opacity: isReady ? 1 : 0,
-            }}
-            onTransitionEnd={handleTrackTransitionEnd}
-          >
-            {carouselItems.map((item, index) => (
-              <div
-                key={`mobile-${item.key}`}
-                data-mobile-card="true"
-                className="w-[92vw] min-w-[92vw] max-w-[92vw] shrink-0"
-              >
-                <ReviewCard
-                  review={item.review}
-                  badge={copy.badge}
-                  active={index === position}
-                />
-              </div>
-            ))}
+      <div className="relative">
+        <div ref={viewportRef} className="overflow-hidden">
+          <div className="lg:hidden">
+            <div
+              ref={mobileTrackRef}
+              className="flex items-stretch gap-3 will-change-transform"
+              style={{
+                ...mobileTrackStyle,
+                opacity: isReady ? 1 : 0,
+              }}
+              onTransitionEnd={handleTrackTransitionEnd}
+            >
+              {carouselItems.map((item, index) => (
+                <div
+                  key={`mobile-${item.key}`}
+                  data-mobile-card="true"
+                  className="w-[92vw] min-w-[92vw] max-w-[92vw] shrink-0"
+                >
+                  <ReviewCard
+                    review={item.review}
+                    badge={copy.badge}
+                    active={index === position}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="hidden lg:block">
-          <div
-            ref={desktopTrackRef}
-            className="flex items-stretch gap-4 will-change-transform"
-            style={{
-              ...desktopTrackStyle,
-              opacity: isReady ? 1 : 0,
-            }}
-            onTransitionEnd={handleTrackTransitionEnd}
-          >
-            {carouselItems.map((item, index) => (
-              <div
-                key={`desktop-${item.key}`}
-                data-desktop-card="true"
-                className="w-[80vw] min-w-[820px] max-w-[1060px] shrink-0"
-              >
-                <ReviewCard
-                  review={item.review}
-                  badge={copy.badge}
-                  active={index === position}
-                />
-              </div>
-            ))}
+          <div className="hidden lg:block">
+            <div
+              ref={desktopTrackRef}
+              className="flex items-stretch gap-4 will-change-transform"
+              style={{
+                ...desktopTrackStyle,
+                opacity: isReady ? 1 : 0,
+              }}
+              onTransitionEnd={handleTrackTransitionEnd}
+            >
+              {carouselItems.map((item, index) => (
+                <div
+                  key={`desktop-${item.key}`}
+                  data-desktop-card="true"
+                  className="w-[80vw] min-w-[820px] max-w-[1060px] shrink-0"
+                >
+                  <ReviewCard
+                    review={item.review}
+                    badge={copy.badge}
+                    active={index === position}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
