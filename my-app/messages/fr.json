@@ -545,8 +545,8 @@
     "description": "Ce catalogue présente les travaux récents avec des cartes localisées, des histoires de projets, des spécialistes, des blocs d'épreuves et des services associés.",
     "catalogSection": {
       "eyebrow": "Catalogue de projets",
-      "title": "Études de cas détaillées dans les services et les industries",
-      "description": "Chaque carte mène à une page de détails localisée avec le contexte commercial, les notes d'exécution, la preuve de performance et les liens internes vers les services pertinents.",
+      "title": "Choisissez un cas selon votre objectif et voyez comment il a été réalisé",
+      "description": "Parcourez les projets par service et par secteur, puis ouvrez l'histoire complète avec les visuels, le processus, les résultats et les détails d'exécution.",
       "stats": {
         "companies": "études de cas",
         "perRow": "cartes par rangée"

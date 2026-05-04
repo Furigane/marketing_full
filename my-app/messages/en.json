@@ -545,8 +545,8 @@
     "description": "This catalog shows recent work with localized cards, project stories, specialists, proof blocks, and related services.",
     "catalogSection": {
       "eyebrow": "Project catalog",
-      "title": "Detailed case studies across services and industries",
-      "description": "Each card leads to a localized detail page with business context, execution notes, performance proof, and internal linking to relevant services.",
+      "title": "Choose a case that matches your goal and see how it was delivered",
+      "description": "Browse projects by service and industry, then open the full story with visuals, process, outcomes, and the details that show the level of execution.",
       "stats": {
         "companies": "case studies",
         "perRow": "cards per row"

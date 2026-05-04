@@ -20,7 +20,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
   if (isCatalog) {
     return (
       <section className="min-w-0 pb-4 px-4 pt-6 lg:px-8 lg:pt-8" id="projects">
-        <div className="relative mb-8 overflow-hidden rounded-[36px] border border-[color:var(--foreground)]/10 bg-[linear-gradient(135deg,rgba(245,212,140,0.14),transparent_34%),linear-gradient(220deg,rgba(172,194,253,0.16),transparent_42%),var(--workers-bg)] p-5 shadow-[0_24px_80px_rgba(15,23,42,0.12)] sm:p-6 lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:items-stretch lg:gap-8 lg:p-7">
+        <div className="relative mb-8 overflow-hidden rounded-[36px] border border-[color:var(--foreground)]/10 bg-[linear-gradient(135deg,rgba(245,212,140,0.14),transparent_34%),linear-gradient(220deg,rgba(172,194,253,0.16),transparent_42%),var(--workers-bg)] p-5 shadow-[0_24px_80px_rgba(15,23,42,0.12)] sm:p-6 lg:p-7">
           <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#acc2fd]/20 blur-3xl" />
           <div className="absolute -bottom-16 left-10 h-40 w-40 rounded-full bg-[#f2d48c]/15 blur-3xl" />
 
@@ -35,32 +35,6 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
               </h2>
               <p className="max-w-3xl text-sm leading-7 text-[var(--design-text)] sm:text-base">
                 {catalogT("description")}
-              </p>
-            </div>
-          </div>
-
-          <div className="relative mt-5 grid grid-cols-2 gap-3 lg:mt-0 lg:grid-cols-1">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/85 px-4 py-4 text-center backdrop-blur">
-                <p className="text-3xl font-extrabold tracking-tight text-[var(--foreground)]">{projects.length}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                  {catalogT("stats.companies")}
-                </p>
-              </div>
-              <div className="rounded-[28px] bg-[#f2d48c] px-4 py-4 text-center text-zinc-900">
-                <p className="text-3xl font-extrabold tracking-tight">2</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-700">
-                  {catalogT("stats.perRow")}
-                </p>
-              </div>
-            </div>
-
-            <div className="col-span-2 rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/70 px-4 py-4 backdrop-blur lg:col-span-1">
-              <p className="text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {catalogT("format.label")}
-              </p>
-              <p className="mt-2 text-sm leading-7 text-[var(--design-text)]">
-                {catalogT("format.description")}
               </p>
             </div>
           </div>

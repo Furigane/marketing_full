@@ -545,8 +545,8 @@
     "description": "Dieser Katalog zeigt aktuelle Arbeiten mit lokalisierten Karten, Projektgeschichten, Spezialisten, Proofblöcken und zugehörigen Dienstleistungen.",
     "catalogSection": {
       "eyebrow": "Projektkatalog",
-      "title": "Detaillierte Fallstudien über Dienstleistungen und Branchen hinweg",
-      "description": "Jede Karte führt zu einer lokalisierten Detailseite mit Geschäftskontext, Ausführungshinweisen, Leistungsnachweisen und internen Links zu relevanten Diensten.",
+      "title": "Wählen Sie einen Fall passend zu Ihrem Ziel und sehen Sie, wie er umgesetzt wurde",
+      "description": "Durchsuchen Sie Projekte nach Leistung und Branche und öffnen Sie die vollständige Geschichte mit Visuals, Ablauf, Ergebnissen und den Details zur Ausführung.",
       "stats": {
         "companies": "Fallstudien",
         "perRow": "Karten pro Reihe"
