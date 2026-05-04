@@ -44,7 +44,7 @@ export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: st
   const annualPlan = getAnnualContentPlan(locale);
 
   return (
-    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-3 pb-12 pt-3 sm:gap-8 sm:px-4 md:px-6 lg:max-w-[1400px]">
+    <div className="flex w-full flex-col gap-6 px-3 pb-12 pt-3 sm:gap-8 sm:px-4 md:px-6">
       <section className="rounded-[32px] bg-[var(--team-surface)] px-5 py-8 sm:px-8">
         <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)]">
@@ -106,7 +106,7 @@ export function BlogAccordion({ posts, locale }: { posts: BlogPost[]; locale: st
             {clusters.map((cluster) => (
               <article
                 key={cluster.title}
-                className="rounded-[24px] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5"
+                className="rounded-[24px] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5 sm:px-7 sm:py-6"
               >
                 <h3 className="text-xl font-semibold text-[var(--foreground)]">
                   {cluster.title}
