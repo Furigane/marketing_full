@@ -4,14 +4,14 @@ import Header from "@/app/components/headaer/header";
 import { TeamSurfaceHeaderSection } from "@/app/components/layout/team-surface-header";
 import RelatedServicesSection from "@/app/components/services/related-services-section";
 import { Link } from "@/i18n/navigation";
-import { getEnhancedBlogContent } from "@/lib/blog-seo";
 import {
   getPostTranslation,
   getRelatedServiceIdsFromPost,
   parseBlogContent,
   type BlogPost,
 } from "@/lib/blog";
-import { buildAbsoluteUrl, isRussianLocale } from "@/lib/seo";
+import { buildAbsoluteUrl } from "@/lib/seo";
+import { normalizeSiteLocale } from "@/lib/site-locales";
 
 type BlogArticlePageProps = {
   locale: string;
@@ -19,15 +19,43 @@ type BlogArticlePageProps = {
   relatedPosts: BlogPost[];
 };
 
+const ARTICLE_COPY = {
+  ru: {
+    relatedLabel: "Статьи",
+    readNext: "Читайте также",
+    dateLocale: "ru-RU",
+  },
+  en: {
+    relatedLabel: "Articles",
+    readNext: "Read next",
+    dateLocale: "en-US",
+  },
+  fr: {
+    relatedLabel: "Articles",
+    readNext: "Lire aussi",
+    dateLocale: "fr-FR",
+  },
+  de: {
+    relatedLabel: "Artikel",
+    readNext: "Weiterlesen",
+    dateLocale: "de-DE",
+  },
+  ar: {
+    relatedLabel: "مقالات",
+    readNext: "اقرأ أيضاً",
+    dateLocale: "ar",
+  },
+} as const;
+
 export default function BlogArticlePage({
   locale,
   post,
   relatedPosts,
 }: BlogArticlePageProps) {
-  const isRussian = isRussianLocale(locale);
+  const normalizedLocale = normalizeSiteLocale(locale);
+  const copy = ARTICLE_COPY[normalizedLocale];
   const translation = getPostTranslation(post, locale);
-  const enhancedContent = getEnhancedBlogContent(post, locale) ?? translation.content;
-  const blocks = parseBlogContent(enhancedContent);
+  const blocks = parseBlogContent(translation.content);
   const relatedServiceIds = getRelatedServiceIdsFromPost(post, locale);
   const relatedArticles = relatedPosts.map((item) => ({
     slug: item.slug,
@@ -66,7 +94,7 @@ export default function BlogArticlePage({
           <section className="pb-10 pt-6 md:pt-8">
             <div className="mt-5 max-w-4xl">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--design-muted)]">
-                {new Intl.DateTimeFormat(isRussian ? "ru-RU" : "en-US", {
+                {new Intl.DateTimeFormat(copy.dateLocale, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -145,10 +173,10 @@ export default function BlogArticlePage({
           <section className="px-3 py-4 md:px-6 lg:px-8">
             <div className="mb-6">
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                {isRussian ? "Статьи" : "Articles"}
+                {copy.relatedLabel}
               </p>
               <h2 className="text-3xl font-bold text-[var(--foreground)] md:text-4xl">
-                {isRussian ? "Читайте также" : "Read next"}
+                {copy.readNext}
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
