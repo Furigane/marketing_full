@@ -82,6 +82,8 @@ export default function SpecialistProfilePage({
   otherSpecialists,
   profile,
 }: SpecialistProfilePageProps) {
+  const hasOddSeoSections = profile.seoSections.length % 2 === 1;
+
   return (
     <>
       <main className="mx-auto flex w-full min-w-0 max-w-[1280px] flex-col gap-8 px-3 sm:gap-10 sm:px-4 md:px-6 lg:max-w-[1400px]">
@@ -143,14 +145,14 @@ export default function SpecialistProfilePage({
 
                 <div className="relative">
                   <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)]/92 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.16)] backdrop-blur">
-                    <div className="overflow-hidden rounded-[1.5rem]">
+                    <div className="aspect-[4/4.65] overflow-hidden rounded-[1.5rem]">
                       <OptimizedImage
                         src={profile.image}
                         alt={profile.imageAlt}
                         width={840}
                         height={980}
                         sizes="(max-width: 1024px) 100vw, 420px"
-                        className="h-auto w-full object-cover object-top"
+                        className="h-full w-full object-cover object-top"
                       />
                     </div>
 
@@ -221,7 +223,9 @@ export default function SpecialistProfilePage({
               <article
                 key={section.heading}
                 className={`rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] ${
-                  index === 2 ? "xl:col-span-2" : ""
+                  hasOddSeoSections && index === profile.seoSections.length - 1
+                    ? "xl:col-span-2"
+                    : ""
                 }`}
               >
                 <h2 className="text-2xl font-bold leading-tight text-[var(--foreground)] md:text-3xl">
