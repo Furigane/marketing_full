@@ -8,7 +8,7 @@ export const DEFAULT_TEAM_MEMBER_ID = "leo-carter-performance-marketing" as cons
 export const TEAM_MEMBERS = [
   {
     id: "leo-carter-performance-marketing",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist1m.webp",
     roleType: "targeting",
     locale: {
       en: {
@@ -51,7 +51,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "mia-nolan-social-media",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist2g.webp",
     roleType: "smm",
     locale: {
       en: {
@@ -94,7 +94,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "evan-brooks-seo-strategist",
-    image: "/img/workers/dawda.jpg",
+    image: "/img/workers/specialist3m.webp",
     roleType: "seo",
     locale: {
       en: {
@@ -137,7 +137,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "lina-hayes-visual-designer",
-    image: "/img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist4g.webp",
     roleType: "designer",
     locale: {
       en: {
@@ -180,7 +180,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "noah-reed-project-manager",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist5m.webp",
     roleType: "manager",
     locale: {
       en: {
@@ -223,7 +223,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "ella-stone-content-strategist",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist6g.webp",
     roleType: "content",
     locale: {
       en: {
@@ -266,7 +266,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "max-turner-paid-media",
-    image: "/img/workers/beautifull-caucasiany-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist7m.webp",
     roleType: "targeting",
     locale: {
       en: {
@@ -309,7 +309,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "nina-cole-ux-ui-designer",
-    image: "/img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist8g.webp",
     roleType: "designer",
     locale: {
       en: {
@@ -352,7 +352,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "ryan-blake-local-seo-expert",
-    image: "/img/workers/dawda.jpg",
+    image: "/img/workers/specialist9m.webp",
     roleType: "seo",
     locale: {
       en: {
@@ -395,7 +395,7 @@ export const TEAM_MEMBERS = [
   },
   {
     id: "sara-quinn-brand-content-lead",
-    image: "/img/workers/beautifuan-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist10g.webp",
     roleType: "content",
     locale: {
       en: {

@@ -45,12 +45,12 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
             <Link
               href={`/projects/${project.slug}`}
               key={project.id}
-              className="group relative overflow-hidden rounded-[34px] border border-[color:var(--foreground)]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%),var(--workers-bg)] p-4 shadow-[0_20px_60px_rgba(15,23,42,0.12)] transition duration-300 hover:-translate-y-1.5 hover:border-[#acc2fd]/30 hover:shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:p-5"
+              className="group relative overflow-hidden rounded-[34px] border border-[color:var(--foreground)]/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_28%),var(--workers-bg)] p-4 shadow-[0_20px_60px_rgba(15,23,42,0.12)] transition duration-300 hover:-translate-y-1.5 hover:border-[#acc2fd]/30 hover:shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:p-4"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(172,194,253,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(245,213,141,0.2),transparent_32%)] opacity-80 transition duration-300 group-hover:opacity-100" />
 
               <div className="relative">
-                <div className="mb-5 flex items-start justify-between gap-3">
+                <div className="mb-4 flex items-start justify-between gap-3">
                   <div className="inline-flex items-center gap-2 rounded-full bg-[var(--background)]/92 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--design-muted)] backdrop-blur">
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <span className="h-1 w-1 rounded-full bg-[var(--design-btn)]" />
@@ -62,7 +62,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   </span>
                 </div>
 
-                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-[28px]">
+                <div className="relative mb-4 aspect-[16/9] overflow-hidden rounded-[28px]">
                   <OptimizedImage
                     assetId={`project-${project.id}`}
                     src={project.image}
@@ -73,7 +73,7 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-3.5">
                     <div>
                       <p className="text-[11px] uppercase tracking-[0.22em] text-white/70">
                         {catalogT("company")}
@@ -85,14 +85,14 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
                   </div>
                 </div>
 
-                <div className="space-y-4 px-1 pb-1">
-                  <div className="space-y-2">
-                    <p className="text-sm leading-7 text-[var(--design-text)] sm:text-base">
+                <div className="space-y-3 px-1 pb-1">
+                  <div className="space-y-1.5">
+                    <p className="text-sm leading-6 text-[var(--design-text)] sm:text-base">
                       {project.content.card.description}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between gap-3 rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/88 px-4 py-3.5 backdrop-blur">
+                  <div className="flex items-center justify-between gap-3 rounded-[28px] border border-[color:var(--foreground)]/8 bg-[var(--background)]/88 px-4 py-3 backdrop-blur">
                     <div className="min-w-0">
                       <p className="text-xs uppercase tracking-[0.18em] text-[var(--design-muted)]">
                         {portfolioT("priceLabel")}

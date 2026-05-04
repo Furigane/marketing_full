@@ -107,7 +107,7 @@ export const SPECIALIST_PROFILES: SpecialistProfile[] = [
     h1: "Leo Carter — Product Manager | SaaS и Digital Product Manager",
     intro:
       "Leo Carter — опытный Product Manager с фокусом на развитие цифровых продуктов и рост пользовательских метрик. Как Product Manager, он специализируется на управлении продуктом, запуске MVP и оптимизации пользовательского опыта (UX). Его подход к product management помогает компаниям увеличивать конверсию, масштабировать продукты и достигать устойчивого роста бизнеса.",
-    image: "/img/workers/man-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist1m.webp",
     imageAlt:
       "Product Manager Leo Carter — управление цифровыми продуктами, MVP и UX-оптимизация",
     metaTitle: "Product Manager Leo Carter — MVP, SaaS, UX, CRO",
@@ -195,7 +195,7 @@ export const SPECIALIST_PROFILES: SpecialistProfile[] = [
     h1: "Alex Morgan — Digital Marketing Specialist | Performance Marketing and Growth Marketing",
     intro:
       "Alex Morgan — опытный digital-маркетолог с фокусом на рост бизнеса, лидогенерацию и масштабирование онлайн-проектов. Как marketing specialist, он специализируется на разработке маркетинговой стратегии, performance marketing, SEO-продвижении и оптимизации конверсии (CRO). Его подход к digital marketing помогает компаниям системно увеличивать трафик, повышать конверсию и выстраивать устойчивый поток клиентов.",
-    image: "/img/workers/dawda.jpg",
+    image: "/img/workers/specialist3m.webp",
     imageAlt:
       "Digital marketing specialist Alex Morgan — performance marketing и SEO эксперт",
     metaTitle:
@@ -298,7 +298,7 @@ export const SPECIALIST_PROFILES: SpecialistProfile[] = [
     h1: "Emma Collins — UX/UI Designer | Product Design и Digital Design",
     intro:
       "Emma Collins — опытный UX/UI дизайнер с фокусом на создании удобных, конверсионных и визуально сильных digital-продуктов. Как UX/UI designer, она специализируется на проектировании пользовательского опыта, интерфейсов и оптимизации конверсии (CRO). Ее подход к product design помогает компаниям улучшать пользовательский путь, повышать вовлеченность и увеличивать бизнес-результаты.",
-    image: "/img/workers/beautifull-caucasian-woman-with-curly-hair-smiles-isolated 1.jpg",
+    image: "/img/workers/specialist11g.webp",
     imageAlt:
       "UX/UI designer Emma Collins — product design и интерфейсы для web и mobile",
     metaTitle: "UX/UI Designer Emma Collins — Product Design, UX, UI, CRO | Company X",
