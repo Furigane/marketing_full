@@ -1,5 +1,8 @@
-import { getDefaultContentLocale, normalizeSiteLocale } from "@/lib/site-locales";
-import type { ServiceId } from "@/lib/services";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+import { normalizeSiteLocale } from "@/lib/site-locales";
+import { getServiceById, type ServiceId } from "@/lib/services";
 import {
   deepMergeTranslationValue,
   getTranslationOverrideStoreSync,
@@ -35,7 +38,7 @@ export type SpecialistProfile = {
   relatedServiceIds: ServiceId[];
 };
 
-type SupportedSpecialistLocale = string;
+const PUBLIC_DIR = path.join(process.cwd(), "public");
 
 const SPECIALIST_SERVICE_LINKS: Record<string, string> = {
   "product discovery": "/services/marketing-research",
@@ -1418,6 +1421,37 @@ export function getSpecialistProfileBase(
   );
 }
 
+function isValidPublicAssetPath(assetPath: string) {
+  if (!assetPath.startsWith("/")) {
+    return false;
+  }
+
+  return existsSync(path.join(PUBLIC_DIR, assetPath.replace(/^\/+/, "")));
+}
+
+function sanitizeRelatedServiceIds(
+  relatedServiceIds: ServiceId[],
+  fallbackIds: ServiceId[]
+) {
+  const validIds = relatedServiceIds.filter((id) => Boolean(getServiceById(id)));
+  return validIds.length === fallbackIds.length ? validIds : fallbackIds;
+}
+
+function sanitizeSpecialistProfile(
+  profile: SpecialistProfile,
+  fallbackProfile: SpecialistProfile
+) {
+  return {
+    ...profile,
+    slug: fallbackProfile.slug,
+    image: isValidPublicAssetPath(profile.image) ? profile.image : fallbackProfile.image,
+    relatedServiceIds: sanitizeRelatedServiceIds(
+      profile.relatedServiceIds,
+      fallbackProfile.relatedServiceIds
+    ),
+  };
+}
+
 export function getLocalizedSpecialistProfile(
   input: string | SpecialistProfile,
   locale: string
@@ -1440,11 +1474,13 @@ export function getLocalizedSpecialistProfile(
   const localeOverride =
     overrides.specialistProfiles[profile.slug]?.[normalizedLocale];
 
-  return repairEncodedTree(
+  const mergedProfile = repairEncodedTree(
     localeOverride
       ? deepMergeTranslationValue(baseProfile, localeOverride)
       : baseProfile
   );
+
+  return sanitizeSpecialistProfile(mergedProfile, baseProfile);
 }
 
 export function normalizeSpecialistLinkLabel(label: string) {
