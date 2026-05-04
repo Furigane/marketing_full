@@ -135,34 +135,36 @@ export default async function SearchPage({
           </section>
         </TeamSurfaceHeaderSection>
 
-        <section className="pb-8">
-          {!query ? (
-            <div className="rounded-[28px] border border-dashed border-[color:var(--foreground)]/15 bg-[var(--header-bg)] px-5 py-8 text-center text-sm text-[var(--design-muted)]">
-              {copy.emptyQuery}
-            </div>
-          ) : results.length === 0 ? (
-            <div className="rounded-[28px] border border-dashed border-[color:var(--foreground)]/15 bg-[var(--header-bg)] px-5 py-8 text-center text-sm text-[var(--design-muted)]">
-              {copy.noResults}
-            </div>
-          ) : (
-            <div className="grid gap-4">
-              {results.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="block rounded-[28px] border border-black/5 bg-[var(--header-bg)] px-5 py-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 dark:border-white/10"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--design-muted)]">
-                    {getTypeLabel(copy.types, item.type)}
-                  </p>
-                  <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)]">{item.title}</h2>
-                  <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--design-muted)] sm:text-base">
-                    {item.description}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          )}
+        <section className="rounded-[28px] pt-0 pb-0 sm:p-5 sm:pt-0 sm:pb-0 lg:p-8 lg:py-12 lg:pt-0 lg:pb-0">
+          <div className="w-full">
+            {!query ? (
+              <div className="rounded-[28px] border border-dashed border-[color:var(--foreground)]/15 bg-[var(--header-bg)] px-5 py-8 text-center text-sm text-[var(--design-muted)]">
+                {copy.emptyQuery}
+              </div>
+            ) : results.length === 0 ? (
+              <div className="rounded-[28px] border border-dashed border-[color:var(--foreground)]/15 bg-[var(--header-bg)] px-5 py-8 text-center text-sm text-[var(--design-muted)]">
+                {copy.noResults}
+              </div>
+            ) : (
+              <div className="grid gap-4">
+                {results.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    className="block rounded-[28px] border border-black/5 bg-[var(--header-bg)] px-5 py-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 dark:border-white/10"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--design-muted)]">
+                      {getTypeLabel(copy.types, item.type)}
+                    </p>
+                    <h2 className="mt-3 text-2xl font-bold text-[var(--foreground)]">{item.title}</h2>
+                    <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--design-muted)] sm:text-base">
+                      {item.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </section>
 
         <PageBottomSections />
