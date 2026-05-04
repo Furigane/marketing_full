@@ -14,6 +14,8 @@ import { getTeamProfileContent } from "@/lib/team-profiles";
 import { TEAM_MEMBERS, getTeamMember } from "@/lib/team-members";
 import { getLocalizedTeamMember } from "@/lib/team-members-localized";
 
+export const dynamic = "force-dynamic";
+
 const RELATED_SERVICES_BY_ROLE: Record<string, ServiceId[]> = {
   designer: ["adCreatives", "uxUiDesign", "brandIdentity"],
   targeting: ["targetedMetaVkTiktok", "contextGoogleYandex", "analyticsSetup"],

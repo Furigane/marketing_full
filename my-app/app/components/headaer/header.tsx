@@ -77,7 +77,7 @@ export default function Header({ matchTeamSurface = false }: HeaderProps) {
   const navLinks = [
     {
       label: t('team'),
-      href: "/#specialists",
+      href: "/team",
     },
     {
       label: t('services'),
