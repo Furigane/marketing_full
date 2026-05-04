@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocale } from "next-intl";
 
 import { normalizeSiteLocale } from "@/lib/site-locales";
@@ -134,25 +134,102 @@ const SECTION_COPY = {
   },
 } as const;
 
+function getWrappedIndex(index: number, length: number) {
+  return (index + length) % length;
+}
+
+function ReviewCard({
+  review,
+  badge,
+  side = false,
+}: {
+  review: ReviewItem;
+  badge: string;
+  side?: boolean;
+}) {
+  return (
+    <article
+      className={
+        side
+          ? "flex h-full w-[24vw] min-w-[280px] max-w-[340px] shrink-0 flex-col rounded-[2rem] bg-[#2b2b2b] p-6 text-white opacity-88 shadow lg:p-7"
+          : "flex h-full w-full min-w-0 flex-col rounded-[2rem] bg-[#2b2b2b] p-6 text-white shadow lg:p-8"
+      }
+    >
+      <div className="relative flex-1">
+        <span className="absolute right-0 top-0 rounded-full bg-[#191919] px-4 py-1.5 text-sm font-semibold text-[#f2d48c]">
+          {badge}
+        </span>
+
+        <div className="mb-6 flex items-center gap-4 pr-24">
+          <div className="h-14 w-14 rounded-full bg-[#d9d9df]" />
+          <div className="min-w-0">
+            <p className="truncate text-xl font-semibold leading-tight text-white">
+              {review.name}
+            </p>
+            <p className="mt-1 truncate text-base leading-tight text-white/75">
+              {review.role}
+            </p>
+          </div>
+        </div>
+
+        <p className="mb-4 inline-flex max-w-full rounded-full bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white/80">
+          <span className="truncate">{review.service}</span>
+        </p>
+
+        <h3
+          className={
+            side
+              ? "line-clamp-3 text-[1.1rem] font-extrabold leading-tight text-white"
+              : "max-w-4xl text-[2rem] font-extrabold leading-tight text-white lg:text-[2.25rem]"
+          }
+        >
+          {review.title}
+        </h3>
+        <p
+          className={
+            side
+              ? "mt-4 line-clamp-4 text-base font-medium leading-7 text-white/85"
+              : "mt-4 max-w-5xl text-lg font-medium leading-[1.7] text-white/85 lg:text-[1.15rem]"
+          }
+        >
+          {review.body}
+        </p>
+      </div>
+
+      <div className="mt-8 flex items-center gap-3">
+        <span className={side ? "text-[3.2rem] font-extrabold text-white" : "text-4xl font-extrabold text-white lg:text-5xl"}>
+          5.0
+        </span>
+        <span className={side ? "text-[1.85rem] tracking-[0.12em] text-[#f2d48c]" : "text-3xl tracking-[0.15em] text-[#f2d48c] lg:text-4xl"}>
+          {"★★★★★"}
+        </span>
+      </div>
+    </article>
+  );
+}
+
 export default function Comment() {
   const locale = normalizeSiteLocale(useLocale());
   const copy = SECTION_COPY[locale];
-  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollToIndex = (index: number) => {
-    const track = trackRef.current;
-    const nextIndex = (index + REVIEWS.length) % REVIEWS.length;
-    if (!track) return;
+  const indices = useMemo(() => {
+    const prevIndex = getWrappedIndex(activeIndex - 1, REVIEWS.length);
+    const nextIndex = getWrappedIndex(activeIndex + 1, REVIEWS.length);
 
-    const card = track.children[nextIndex] as HTMLElement | undefined;
-    if (!card) return;
+    return {
+      prev: prevIndex,
+      current: activeIndex,
+      next: nextIndex,
+    };
+  }, [activeIndex]);
 
-    track.scrollTo({
-      left: card.offsetLeft,
-      behavior: "smooth",
-    });
-    setActiveIndex(nextIndex);
+  const showPrev = () => {
+    setActiveIndex((current) => getWrappedIndex(current - 1, REVIEWS.length));
+  };
+
+  const showNext = () => {
+    setActiveIndex((current) => getWrappedIndex(current + 1, REVIEWS.length));
   };
 
   return (
@@ -167,66 +244,26 @@ export default function Comment() {
       </div>
 
       <div className="relative">
-        <div
-          ref={trackRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-2 pb-3 pt-2 overscroll-x-contain scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          onScroll={(event) => {
-            const track = event.currentTarget;
-            const firstCard = track.children[0] as HTMLElement | undefined;
-            if (!firstCard) return;
-            const step = firstCard.offsetWidth + 16;
-            const nextIndex = Math.round(track.scrollLeft / step);
-            if (nextIndex !== activeIndex && nextIndex >= 0 && nextIndex < REVIEWS.length) {
-              setActiveIndex(nextIndex);
-            }
-          }}
-        >
-          {REVIEWS.map((review, index) => (
-            <article
-              key={`${review.service}-${index}`}
-              className="relative min-w-full shrink-0 snap-start rounded-[2rem] bg-[#2b2b2b] p-6 text-white shadow transition-all duration-300 ease-out hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] lg:min-w-[calc((100%-1rem)/2)] lg:p-8"
-            >
-              <span className="absolute right-4 top-4 rounded-full bg-[#191919] px-4 py-1.5 text-sm font-semibold text-[#f2d48c]">
-                {copy.badge}
-              </span>
+        <div className="lg:hidden">
+          <ReviewCard review={REVIEWS[indices.current]} badge={copy.badge} />
+        </div>
 
-              <div className="mb-6 flex items-center gap-4 pr-24">
-                <div className="h-14 w-14 rounded-full bg-[#d9d9df]" />
-                <div>
-                  <p className="text-xl font-semibold leading-tight text-white">
-                    {review.name}
-                  </p>
-                  <p className="mt-1 text-base leading-tight text-white/75">
-                    {review.role}
-                  </p>
-                </div>
+        <div className="hidden overflow-hidden lg:block">
+          <div className="flex justify-center">
+            <div className="flex w-max items-stretch gap-4">
+              <ReviewCard review={REVIEWS[indices.prev]} badge={copy.badge} side />
+              <div className="w-[74vw] min-w-[860px] max-w-[1100px] shrink-0">
+                <ReviewCard review={REVIEWS[indices.current]} badge={copy.badge} />
               </div>
-
-              <p className="mb-4 inline-flex rounded-full bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white/80">
-                {review.service}
-              </p>
-
-              <h3 className="max-w-4xl text-[2rem] font-extrabold leading-tight text-white lg:text-[2.25rem]">
-                {review.title}
-              </h3>
-              <p className="mt-4 max-w-5xl text-lg font-medium leading-[1.7] text-white/85 lg:text-[1.15rem]">
-                {review.body}
-              </p>
-
-              <div className="mt-8 flex items-center gap-3">
-                <span className="text-4xl font-extrabold text-white lg:text-5xl">5.0</span>
-                <span className="text-3xl tracking-[0.15em] text-[#f2d48c] lg:text-4xl">
-                  {"★★★★★"}
-                </span>
-              </div>
-            </article>
-          ))}
+              <ReviewCard review={REVIEWS[indices.next]} badge={copy.badge} side />
+            </div>
+          </div>
         </div>
 
         <button
           type="button"
           aria-label={copy.prev}
-          onClick={() => scrollToIndex(activeIndex - 1)}
+          onClick={showPrev}
           className="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-xl text-zinc-900 shadow-lg transition-transform hover:scale-105 lg:grid"
         >
           {"\u2190"}
@@ -234,7 +271,7 @@ export default function Comment() {
         <button
           type="button"
           aria-label={copy.next}
-          onClick={() => scrollToIndex(activeIndex + 1)}
+          onClick={showNext}
           className="absolute right-0 top-1/2 z-10 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-xl text-zinc-900 shadow-lg transition-transform hover:scale-105 lg:grid"
         >
           {"\u2192"}
@@ -247,7 +284,7 @@ export default function Comment() {
             key={`${review.name}-${index}`}
             type="button"
             aria-label={`${copy.eyebrow} ${index + 1}`}
-            onClick={() => scrollToIndex(index)}
+            onClick={() => setActiveIndex(index)}
             className={
               index === activeIndex
                 ? "h-3 w-8 rounded-full bg-zinc-900 dark:bg-white"
