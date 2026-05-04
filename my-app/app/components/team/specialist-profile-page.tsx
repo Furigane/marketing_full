@@ -154,16 +154,26 @@ export default function SpecialistProfilePage({
                       />
                     </div>
 
-                    <div className="mt-4 grid grid-cols-3 gap-3">
+                    <div className="mt-3.5 grid grid-cols-3 gap-2 sm:gap-2.5">
                       {profile.highlightStats.map((item) => (
                         <div
                           key={item.label}
-                          className="rounded-[1.2rem] bg-[var(--services-bg)] px-3 py-4 text-center"
+                          className="flex min-h-[84px] flex-col justify-between rounded-[1rem] border border-[color:var(--foreground)]/6 bg-[linear-gradient(180deg,var(--services-bg),color-mix(in_srgb,var(--services-bg)_88%,var(--background)))] px-2.5 py-2.5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:min-h-[92px] sm:px-3 sm:py-3"
                         >
-                          <p className="text-xs uppercase tracking-[0.16em] text-[var(--design-muted)]">
+                          <p
+                            className={`text-balance text-[8px] uppercase leading-[1.2] text-[var(--design-muted)] sm:text-[9px] ${
+                              item.label.length > 12
+                                ? "tracking-[0.08em]"
+                                : "tracking-[0.15em]"
+                            }`}
+                          >
                             {item.label}
                           </p>
-                          <p className="mt-2 text-lg font-bold text-[var(--foreground)]">
+                          <p
+                            className={`text-balance text-[0.88rem] font-bold leading-[1.05] text-[var(--foreground)] sm:text-[1.02rem] ${
+                              locale === "ar" ? "text-[0.84rem] sm:text-[0.96rem]" : ""
+                            }`}
+                          >
                             {item.value}
                           </p>
                         </div>
