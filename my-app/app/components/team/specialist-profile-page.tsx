@@ -145,7 +145,7 @@ export default function SpecialistProfilePage({
 
                 <div className="relative">
                   <div className="rounded-[2rem] border border-[color:var(--foreground)]/10 bg-[var(--background)]/92 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.16)] backdrop-blur">
-                    <div className="aspect-[4/4.65] overflow-hidden rounded-[1.5rem]">
+                    <div className="aspect-[4/4.15] overflow-hidden rounded-[1.5rem]">
                       <OptimizedImage
                         src={profile.image}
                         alt={profile.imageAlt}

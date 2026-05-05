@@ -204,7 +204,7 @@ export default async function CaseStudyPage({
           </div>
         </section>
 
-        <section className="mt-2 p-4 [--card-radius:1.25rem] [--card-pad:1rem] md:p-6">
+        <section className="mt-2 px-3 py-4 [--card-radius:1.25rem] [--card-pad:1rem] md:px-6 md:py-6 lg:px-8">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {localizedCaseStudy.content.resultItems.map((item) => (
               <article
@@ -319,7 +319,7 @@ export default async function CaseStudyPage({
                 href={`/team/${specialist.id}`}
                 className="rounded-[1.75rem] border border-zinc-200/70 bg-[var(--background)] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
               >
-                <div className="relative mb-4 h-36 overflow-hidden rounded-[1.4rem]">
+                <div className="relative mb-4 h-48 overflow-hidden rounded-[1.4rem] md:h-52">
                   <OptimizedImage
                     src={specialist.image}
                     alt={specialist.imageAlt}

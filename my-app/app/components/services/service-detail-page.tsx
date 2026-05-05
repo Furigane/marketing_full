@@ -28,6 +28,11 @@ export default async function ServiceDetailPage({
   const t = await getTranslations({ locale, namespace: "serviceDetailPage" });
   const localizedService = getLocalizedService(service, locale);
   const title = repairMojibakeText(localizedService.content.title);
+  const cleanServiceText = (value: string) =>
+  repairMojibakeText(value)
+    .replace(/_*CGTOKEN_\d+_*/g, title)
+    .replace(/\s{2,}/g, " ")
+    .trim();
   const description = repairMojibakeText(localizedService.content.description);
   const summary = repairMojibakeText(localizedService.content.summary);
   const deliverables = localizedService.content.deliverables.map((item) =>
@@ -85,7 +90,7 @@ export default async function ServiceDetailPage({
                     alt={seoContent.imageAlt}
                     width={24}
                     height={24}
-                    className="h-6 w-6"
+                    className="h-6 w-6 dark:invert"
                   />
                 </div>
                 <p className="text-sm uppercase tracking-[0.16em] text-[var(--design-muted)]">
@@ -95,7 +100,7 @@ export default async function ServiceDetailPage({
                   {deliverables.map((item) => (
                     <li key={item} className="flex gap-3 text-sm leading-6 text-[var(--design-text)] md:text-base">
                       <span className="mt-2 h-2 w-2 rounded-full bg-[#9ab5f6]" />
-                      <span>{item}</span>
+                      <span>{cleanServiceText(item)}</span>
                     </li>
                   ))}
                 </ul>
@@ -126,7 +131,7 @@ export default async function ServiceDetailPage({
                         key={`${block.text}-${index}`}
                         className="pt-3 text-3xl font-bold leading-tight text-[var(--foreground)] md:text-4xl"
                       >
-                        {block.text}
+                        {cleanServiceText(block.text)}
                       </h2>
                     );
                   }
@@ -137,7 +142,7 @@ export default async function ServiceDetailPage({
                         key={`${block.text}-${index}`}
                         className="pt-2 text-2xl font-semibold leading-tight text-[var(--foreground)] md:text-3xl"
                       >
-                        {block.text}
+                        {cleanServiceText(block.text)}
                       </h3>
                     );
                   }
@@ -147,7 +152,7 @@ export default async function ServiceDetailPage({
                       key={`${block.text}-${index}`}
                       className="text-xl font-semibold leading-tight text-[var(--foreground)]"
                     >
-                      {block.text}
+                      {cleanServiceText(block.text)}
                     </h4>
                   );
                 }
@@ -158,7 +163,7 @@ export default async function ServiceDetailPage({
                       {block.items.map((item) => (
                         <li key={item} className="flex gap-3 text-base leading-7 text-[var(--design-text)]">
                           <span className="mt-2 h-2 w-2 rounded-full bg-[#9ab5f6]" />
-                          <span>{item}</span>
+                          <span>{cleanServiceText(item)}</span>
                         </li>
                       ))}
                     </ul>
@@ -167,7 +172,7 @@ export default async function ServiceDetailPage({
 
                 return (
                   <p key={`${block.text}-${index}`} className="text-[var(--design-text)]">
-                    {block.text}
+                    {cleanServiceText(block.text)}
                   </p>
                 );
               })}
@@ -194,7 +199,7 @@ export default async function ServiceDetailPage({
                 href={`/team/${specialist.id}`}
                 className="rounded-[1.75rem] border border-zinc-200/70 bg-[var(--background)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#9ab5f6] hover:shadow-[0_16px_40px_rgba(23,26,34,0.14)] dark:border-zinc-700/70"
               >
-                <div className="relative mb-4 h-40 overflow-hidden rounded-[1.4rem]">
+                <div className="relative mb-4 h-56 overflow-hidden rounded-[1.4rem] md:h-64">
                   <OptimizedImage
                     src={specialist.image}
                     alt={specialist.imageAlt}
@@ -230,10 +235,10 @@ export default async function ServiceDetailPage({
                   className="rounded-[1.5rem] border border-[color:var(--foreground)]/10 bg-[var(--background)] p-5"
                 >
                   <h3 className="text-xl font-semibold text-[var(--foreground)]">
-                    {item.question}
+                    {cleanServiceText(item.question)}
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-[var(--design-text)] md:text-base">
-                    {item.answer}
+                    {cleanServiceText(item.answer)}
                   </p>
                 </article>
               ))}

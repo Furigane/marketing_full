@@ -133,82 +133,81 @@ export default async function Projects({ variant = "featured" }: ProjectsProps) 
       </div>
 
       <div className="relative w-full min-w-0">
-        <div className="overflow-x-auto overflow-y-visible overscroll-x-contain lg:overflow-visible">
-          <div className="flex w-max snap-x snap-mandatory gap-4 pb-2 lg:grid lg:w-full lg:grid-cols-4 lg:overflow-visible lg:pb-0">
-            {projects.map((project) => (
-              <Link
-                href={`/projects/${project.slug}`}
-                key={project.id}
-                className="flex min-w-[260px] snap-start flex-col overflow-hidden rounded-3xl bg-[var(--workers-bg)] shadow transition-all duration-300 ease-out will-change-transform hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] lg:min-w-0"
-              >
-                <div className="relative h-44 w-full overflow-hidden rounded-t-3xl">
-                  <OptimizedImage
-                    assetId={`project-${project.id}`}
-                    src={project.image}
-                    alt={project.content.card.title}
-                    width={1200}
-                    height={750}
-                    className="h-full w-full object-cover"
-                    sizes="(max-width: 1024px) 260px, 25vw"
-                  />
+  <div className="overflow-visible">
+    <div className="grid grid-cols-1 gap-5 pb-2 sm:grid-cols-2 lg:grid-cols-4 lg:pb-0">
+      {projects.map((project) => (
+        <Link
+          href={`/projects/${project.slug}`}
+          key={project.id}
+          className="flex min-w-0 flex-col overflow-hidden rounded-3xl bg-[var(--workers-bg)] shadow transition-all duration-300 ease-out will-change-transform hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+        >
+          <div className="relative h-52 w-full overflow-hidden rounded-t-3xl sm:h-44 lg:h-44">
+            <OptimizedImage
+              assetId={`project-${project.id}`}
+              src={project.image}
+              alt={project.content.card.title}
+              width={1200}
+              height={750}
+              className="h-full w-full object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            />
 
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
 
-                  <span className="absolute right-3 top-3 max-w-[calc(100%-24px)] truncate whitespace-nowrap rounded-full bg-[#1e1e1e] px-3 py-1.5 text-xs font-semibold text-[#FDE3AC] shadow-[0_4px_18px_rgba(0,0,0,0.25)] lg:px-4 lg:py-2 lg:text-sm">
-                    {project.content.card.category}
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col p-4 lg:p-5">
-                  <h3 className="mb-2 text-xl font-bold leading-tight text-[var(--foreground)] lg:text-2xl">
-                    {project.content.card.title}
-                  </h3>
-
-                  <p className="mb-5 text-base font-medium leading-7 text-zinc-500 lg:text-lg lg:leading-8">
-                    {project.content.card.description}
-                  </p>
-
-                  <div className="mt-auto flex items-center justify-between gap-2">
-                    <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-2xl bg-[var(--projects-span-bg)] px-3 py-3">
-                      <p className="shrink-0 text-xs leading-none text-zinc-400 lg:text-sm">
-                        {portfolioT("priceLabel")}
-                      </p>
-
-                      <p className="min-w-0 whitespace-nowrap text-[20px] font-medium leading-none text-[var(--foreground)] lg:text-[22px]">
-                        {project.content.card.price.replace(/\bEUR\b/g, "EUR")}
-                      </p>
-                    </div>
-
-                    <span
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#9ab5f6] text-xl text-zinc-800"
-                      aria-label={portfolioT("openProject")}
-                    >
-                      <span aria-hidden>{"\u2197"}</span>
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+            <span className="absolute right-3 top-3 max-w-[calc(100%-24px)] truncate whitespace-nowrap rounded-full bg-[#1e1e1e] px-3 py-1.5 text-xs font-semibold text-[#FDE3AC] shadow-[0_4px_18px_rgba(0,0,0,0.25)] lg:px-4 lg:py-2 lg:text-sm">
+              {project.content.card.category}
+            </span>
           </div>
-        </div>
 
-        <button
-          type="button"
-          aria-label={portfolioT("prevSlide")}
-          className="absolute -left-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
-        >
-          <span aria-hidden>{"\u2190"}</span>
-        </button>
+          <div className="flex flex-1 flex-col p-4 lg:p-5">
+            <h3 className="mb-2 text-xl font-bold leading-tight text-[var(--foreground)] lg:text-2xl">
+              {project.content.card.title}
+            </h3>
 
-        <button
-          type="button"
-          aria-label={portfolioT("nextSlide")}
-          className="absolute -right-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
-        >
-          <span aria-hidden>{"\u2192"}</span>
-        </button>
+            <p className="mb-5 text-sm font-medium leading-6 text-zinc-500 sm:text-base lg:text-lg lg:leading-8">
+              {project.content.card.description}
+            </p>
+
+            <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-2xl bg-[var(--projects-span-bg)] px-3 py-3">
+                <p className="shrink-0 text-xs leading-none text-zinc-400 lg:text-sm">
+                  {portfolioT("priceLabel")}
+                </p>
+
+                <p className="min-w-0 break-words text-[18px] font-medium leading-tight text-[var(--foreground)] lg:text-[22px]">
+                  {project.content.card.price.replace(/\bEUR\b/g, "EUR")}
+                </p>
+              </div>
+
+              <span
+                className="grid h-10 w-10 shrink-0 place-items-center self-end rounded-full bg-[#9ab5f6] text-xl text-zinc-800 sm:self-auto"
+                aria-label={portfolioT("openProject")}
+              >
+                <span aria-hidden>{"\u2197"}</span>
+              </span>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+
+  <button
+    type="button"
+    aria-label={portfolioT("prevSlide")}
+    className="absolute -left-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
+  >
+    <span aria-hidden>{"\u2190"}</span>
+  </button>
+
+  <button
+    type="button"
+    aria-label={portfolioT("nextSlide")}
+    className="absolute -right-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 shadow lg:grid"
+  >
+    <span aria-hidden>{"\u2192"}</span>
+  </button>
       </div>
-
       <div className="mt-6 flex items-center justify-center gap-2">
         <span className="h-3 w-8 rounded-full bg-zinc-900" />
         <span className="h-3 w-3 rounded-full border-2 border-zinc-900" />

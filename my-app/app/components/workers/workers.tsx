@@ -120,8 +120,7 @@ const CARD_MOBILE =
   "flex aspect-square w-full min-w-0 flex-col overflow-hidden rounded-[1.05rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] min-[360px]:rounded-[1.1rem] sm:rounded-[1.15rem]";
 
 const CARD_DESKTOP =
-  "flex aspect-square w-[clamp(200px,min(72vw,260px),260px)] max-w-[260px] shrink-0 flex-col overflow-hidden rounded-[1.25rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]";
-
+  "flex h-[320px] w-[clamp(220px,min(72vw,280px),280px)] max-w-[280px] shrink-0 flex-col overflow-hidden rounded-[1.25rem] border border-zinc-200/80 bg-[var(--workers-bg)] shadow-sm transition-all duration-300 ease-out will-change-transform hover:z-[1] hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,0,0,0.35)] dark:border-zinc-600/50 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]";
 export default function Workers() {
   const locale = useLocale();
   const t = useTranslations("workers");
